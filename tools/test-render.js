@@ -103,12 +103,53 @@ chk('map reopen button labelled', $('#mapBtn').textContent.length > 0);
 chk('body scroll locked while open', doc.body.classList.contains('locked'));
 $('#mapOverlay .map-skip').click();
 chk('skip closes and unlocks', !doc.body.classList.contains('locked'));
+// regression: a dismissed overlay that stays in the document is a transparent
+// fixed layer over the whole page, and every button and slider stops working
+chk('closing REMOVES the overlay from the document', !$('#mapOverlay'));
+chk('overlay css cannot intercept clicks unless shown', (() => {
+  const css = fs.readFileSync(path.join(root, 'assets/styles.css'), 'utf8');
+  const base = css.match(/\.map-ov\{([^}]*)\}/);
+  const shown = css.match(/\.map-ov\.show\{([^}]*)\}/);
+  return base && shown &&
+    /pointer-events\s*:\s*none/.test(base[1]) &&
+    /pointer-events\s*:\s*auto/.test(shown[1]);
+})());
+chk('no other full-screen fixed layer can swallow clicks', (() => {
+  const css = fs.readFileSync(path.join(root, 'assets/styles.css'), 'utf8');
+  // every rule that pins itself over the viewport must either be click-through
+  // or be the overlay, which is handled above
+  return [...css.matchAll(/([^{}]+)\{([^}]*position\s*:\s*fixed[^}]*)\}/g)].every(m => {
+    const sel = m[1].trim(), body = m[2];
+    if (!/inset\s*:\s*0/.test(body)) return true;
+    return /pointer-events\s*:\s*none/.test(body) || sel.includes('.map-ov');
+  });
+})());
 
 rep.push('=== motion layer ===');
 chk('reveal classes applied', doc.querySelectorAll('.reveal').length > 30,
   `got ${doc.querySelectorAll('.reveal').length}`);
 chk('reveals fall back to visible without IntersectionObserver',
   doc.querySelectorAll('.reveal.in').length === doc.querySelectorAll('.reveal').length);
+// anything the stylesheet hides must have a matching rule that shows it again,
+// or content can end up permanently invisible with no error anywhere
+chk('every opacity:0 rule has a paired rule that restores it', (() => {
+  const css = fs.readFileSync(path.join(root, 'assets/styles.css'), 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '');                       // strip comments first
+  const rules = [...css.matchAll(/([^{}]+)\{([^}]*)\}/g)]
+    .map(m => ({ sel: m[1].trim(), body: m[2] }));
+  // classes that some rule restores to a non-zero opacity
+  const restored = new Set();
+  rules.forEach(r => {
+    if (/opacity\s*:\s*(?!0\s*[;}])[\d.]/.test(r.body))
+      (r.sel.match(/\.[\w-]+/g) || []).forEach(c => restored.add(c));
+  });
+  const unpaired = rules.filter(r =>
+    /opacity\s*:\s*0\s*[;}]/.test(r.body) &&
+    !r.sel.startsWith('@') &&
+    !(r.sel.match(/\.[\w-]+/g) || []).some(c => restored.has(c)));
+  if (unpaired.length) console.log('  unpaired:', unpaired.map(u => u.sel).join(' | '));
+  return unpaired.length === 0;
+})());
 
 rep.push('=== process lab ===');
 chk('lab tabs = 7', n('#labTabs') === 7, `got ${n('#labTabs')}`);
@@ -154,6 +195,9 @@ try {
   h = bad(doc.body.textContent);
   chk('zh: no undefined / NaN', h.length === 0, h.join(','));
   chk('zh: no stray English-only fallback in dossier', /[一-鿿]/.test($('#ddCqa').textContent));
+  chk('zh: nothing left invisible after a re-render',
+    doc.querySelectorAll('.reveal').every(n => n.classList.contains('in')),
+    `${doc.querySelectorAll('.reveal').filter(n => !n.classList.contains('in')).length} stuck at opacity 0`);
   $('#langBtn').click();
   chk('switched back to EN', !doc.body.classList.contains('zh'));
 } catch (e) { chk('language switch threw', false, e.message); }
@@ -247,6 +291,11 @@ try {
     tabs[idx + 1].click();
     const ok = $('#opStage').hidden === false && $('#fbStage').hidden === true;
     chk(`${id}: stage swaps`, ok);
+    // regression: panels hidden at boot never intersect, so their reveal never
+    // fires and the whole tab would open blank
+    chk(`${id}: revealed content is visible, not stuck at opacity 0`,
+      doc.querySelectorAll('#opStage .reveal').every(n => n.classList.contains('in')),
+      `${doc.querySelectorAll('#opStage .reveal').filter(n => !n.classList.contains('in')).length} stuck`);
     chk(`${id}: controls = ${expectCtl[id]}`, n('#opControls') === expectCtl[id], `got ${n('#opControls')}`);
     chk(`${id}: readouts rendered`, n('#opReadouts') >= 5, `got ${n('#opReadouts')}`);
     chk(`${id}: verdict has text`, $('#opVerdict').textContent.length > 80);

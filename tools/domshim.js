@@ -48,7 +48,12 @@ class El {
   }
   getAttribute(k) { return k === 'class' ? this.className : this.attrs[k]; }
   appendChild(c) { c.parent = this; this.children.push(c); return c; }
-  remove() { if (this.parent) this.parent.children = this.parent.children.filter(x => x !== this); }
+  get parentNode() { return this.parent; }
+  get parentElement() { return this.parent; }
+  remove() {
+    if (this.parent) this.parent.children = this.parent.children.filter(x => x !== this);
+    this.parent = null;
+  }
   get innerHTML() { return this._html || ''; }
   set innerHTML(h) {
     this._html = String(h); this.children = []; this._text = '';

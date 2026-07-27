@@ -495,8 +495,11 @@ body.locked{overflow:hidden}
   position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:24px;
   background:rgba(6,8,10,.93);backdrop-filter:blur(10px);
   opacity:0;transition:opacity .3s ease;overflow-y:auto;
+  /* never intercept clicks unless actually shown — a transparent fixed layer
+     over the page would silently kill every button and slider underneath */
+  pointer-events:none;
 }
-.map-ov.show{opacity:1}
+.map-ov.show{opacity:1;pointer-events:auto}
 .map-inner{max-width:1240px;width:100%;transform:translateY(14px);transition:transform .38s cubic-bezier(.2,.7,.3,1)}
 .map-ov.show .map-inner{transform:none}
 .map-head{text-align:center;margin-bottom:26px}

@@ -106,8 +106,9 @@ DATA_SOURCES.md       evidence log
 ### Tests
 
 ```bash
-node tools/test-models.js    # 164 checks — physics and figure geometry
-node tools/test-render.js    # 153 checks — rendering and interaction
+node tools/test-models.js       # 164 checks — physics and figure geometry
+node tools/test-render.js       # 164 checks — rendering and interaction
+node tools/test-interactive.js  # is anything invisible covering the page?
 ```
 
 `test-models.js` checks every model against literature values (minimum fluidisation and terminal velocity for a 250 µm sphere, compaction pressure at a given force and punch size, droplet size at a given homogenising pressure) and then verifies the *direction* of every response — more force gives a stronger and slower tablet, faster rotor gives smaller particles and more fines, a surfactant-starved emulsion does not improve with pressure. It also confirms every verdict is reachable, bilingual, and free of `NaN`.
@@ -115,6 +116,10 @@ node tools/test-render.js    # 153 checks — rendering and interaction
 `test-models.js` also audits the figures geometrically: every drawing must be well-formed, carry no dangling clip-path reference, contain no truncated text, and keep every label inside the canvas once group transforms are applied. That last check is transform-aware, because two labels legitimately live at `x="0"` inside a translated group.
 
 `test-render.js` loads the real page and the real application code against a minimal DOM shim, then checks every module renders, all seven simulators swap and respond, all 21 product figures draw cleanly, the map opens with every node pointing at a real section, the language toggle round-trips, and that no `undefined`, `NaN` or `[object Object]` reaches the screen in either language.
+
+`test-interactive.js` exists because of a bug that shipped. The landing map faded to `opacity: 0` on dismissal but stayed in the document — and a `position: fixed; inset: 0` element still covers the viewport at zero opacity, so every button and slider on the page silently stopped responding while the site looked completely normal. There is no layout engine in these tests, so nothing could hit-test it. This suite instead audits the *cause*: it finds every full-viewport fixed layer in the stylesheet, checks each is click-through unless deliberately shown, confirms the overlay is removed from the DOM on close, and then drives a slider and a button to confirm they still respond.
+
+The general lesson, kept here deliberately: a headless DOM cannot tell you what is on top of what. Anything that positions itself over the whole page needs `pointer-events` reasoned about explicitly, not tested for after the fact.
 
 ---
 

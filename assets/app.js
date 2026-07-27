@@ -305,11 +305,15 @@ function openMap() {
     ov.classList.remove('show');
     document.body.classList.remove('locked');
     if ($('#mapDont') && $('#mapDont').checked) localStorage.setItem('loemap', 'seen');
+    window.removeEventListener('keydown', onKey);
+    // Take it out of the document. Fading it to opacity 0 is not enough: a
+    // position:fixed inset:0 element still sits over the whole page and
+    // swallows every click, so the site would look fine and do nothing.
+    setTimeout(() => { if (ov.parentNode) ov.remove(); }, 340);
     if (goto) {
       const target = document.querySelector('#' + goto);
       if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); pulse(target); }
     }
-    window.removeEventListener('keydown', onKey);
   };
   const onKey = e => { if (e.key === 'Escape') close(); };
   window.addEventListener('keydown', onKey);
@@ -339,6 +343,15 @@ function pulse(node) {
 
 const REDUCED = typeof matchMedia === 'function' &&
   matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Force everything inside a subtree to its revealed state. Used whenever a
+   container is unhidden, because IntersectionObserver never fires for elements
+   that were display:none when it started watching them. */
+function revealNow(root) {
+  if (!root) return;
+  if (root.classList && root.classList.contains('reveal')) root.classList.add('in');
+  root.querySelectorAll('.reveal').forEach(n => n.classList.add('in'));
+}
 
 function wireReveals() {
   if (REDUCED || typeof IntersectionObserver !== 'function') {
@@ -1256,6 +1269,9 @@ function showLabStage() {
   $('#fbStage').hidden = !isFb;
   $('#opStage').hidden = isFb;
   if (isFb) { fbUpdate(); } else { renderOp(); }
+  // An element that was hidden when the observer ran never intersects, so its
+  // reveal never fires and it would stay at opacity 0 once unhidden.
+  revealNow($(isFb ? '#fbStage' : '#opStage'));
 }
 
 function currentOp() { return UNIT_OPS.find(o => o.id === labTab); }
@@ -1682,7 +1698,13 @@ function renderAll() {
   $('#mapBtn').textContent = t(UI.map.reopen);
   markReveals();
   wireReveals();
+  // Only the very first paint animates in. A later re-render — switching
+  // language, for instance — must not re-hide content the reader is already
+  // looking at, or anything above the current scroll position goes blank.
+  if (!firstPaint) revealNow(document.body);
+  firstPaint = false;
 }
+let firstPaint = true;
 
 document.addEventListener('DOMContentLoaded', () => {
   $('#langBtn').onclick = () => {
