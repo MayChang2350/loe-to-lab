@@ -4,6 +4,7 @@ const fs = require('fs'), path = require('path'), vm = require('vm');
 const { makeDocument } = require('./domshim.js');
 
 const root = path.join(__dirname, '..');
+
 const doc = makeDocument(fs.readFileSync(path.join(root, 'index.html'), 'utf8'));
 
 const store = {};
@@ -22,10 +23,12 @@ const sandbox = {
 sandbox.window = sandbox;
 sandbox.self = sandbox;
 sandbox.addEventListener = () => { };
+sandbox.removeEventListener = () => { };
+sandbox.matchMedia = () => ({ matches: false });
 vm.createContext(sandbox);
 
 const errs = [];
-const files = ['data/i18n.js', 'data/molecules.js', 'data/pathway.js', 'data/deepdive.js', 'data/protocol.js', 'data/fluidbed.js', 'assets/app.js'];
+const files = ['data/i18n.js', 'data/molecules.js', 'data/pathway.js', 'data/deepdive.js', 'data/protocol.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'assets/forms.js', 'assets/app.js'];
 files.forEach(f => {
   try { vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), sandbox, { filename: f }); }
   catch (e) { errs.push(`LOAD ${f}: ${e.message}`); }
@@ -71,6 +74,45 @@ chk('protocol steps = 8', n('#steps') === 8, `got ${n('#steps')}`);
 chk('API charge computed', /\d+\.\d+ g/.test($('#apiCharge') ? $('#apiCharge').textContent : ''), `got "${$('#apiCharge') && $('#apiCharge').textContent}"`);
 chk('trouble chips = 6', n('#tsChips') === 6, `got ${n('#tsChips')}`);
 chk('trouble body populated', $('#tsBody').textContent.length > 500);
+
+rep.push('=== new: readability + figure ===');
+chk('how-to-read strip = 4 cells', n('#howToRead') === 4, `got ${n('#howToRead')}`);
+chk('screener table starts compact (5 cols)', n('#molHead') === 5, `got ${n('#molHead')}`);
+chk('disclosures exist', doc.querySelectorAll('[data-disc]').length >= 4, `got ${doc.querySelectorAll('[data-disc]').length}`);
+chk('disclosures start closed', doc.querySelectorAll('[data-disc].open').length === 0);
+chk('dossier lead is one paragraph', n('#ddWhyLead') === 1, `got ${n('#ddWhyLead')}`);
+chk('capsule svg rendered', $('#capsuleFig').innerHTML.includes('<svg'));
+chk('capsule imprint matches label', $('#capsuleFig').innerHTML.includes('FL 145'));
+chk('figure has 3 notes + unit ops', n('#capsuleParts') === 4, `got ${n('#capsuleParts')}`);
+chk('figure names the selected product', $('#figWho').textContent.includes('LINZESS'));
+chk('DailyMed link set', ($('#dmLink').getAttribute('href') || '').includes('dailymed'));
+
+rep.push('=== landing map ===');
+chk('overlay opens on first visit', !!$('#mapOverlay'));
+chk('overlay is not in the served markup (JS-injected)',
+  !fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes('mapOverlay'));
+chk('map has 5 innovator + 6 module nodes', doc.querySelectorAll('#mapOverlay .mnode').length === 11,
+  `got ${doc.querySelectorAll('#mapOverlay .mnode').length}`);
+chk('six nodes are clickable', doc.querySelectorAll('#mapOverlay [data-go]').length === 6,
+  `got ${doc.querySelectorAll('#mapOverlay [data-go]').length}`);
+chk('every clickable node targets a real section',
+  doc.querySelectorAll('#mapOverlay [data-go]').every(g => !!doc.querySelector('#' + g.dataset.go)));
+chk('patent-cliff junction present', $('#mapOverlay').textContent.toLowerCase().includes('exclusivity'));
+chk('skip control present', !!$('#mapOverlay .map-skip'));
+chk('map reopen button labelled', $('#mapBtn').textContent.length > 0);
+chk('body scroll locked while open', doc.body.classList.contains('locked'));
+$('#mapOverlay .map-skip').click();
+chk('skip closes and unlocks', !doc.body.classList.contains('locked'));
+
+rep.push('=== motion layer ===');
+chk('reveal classes applied', doc.querySelectorAll('.reveal').length > 30,
+  `got ${doc.querySelectorAll('.reveal').length}`);
+chk('reveals fall back to visible without IntersectionObserver',
+  doc.querySelectorAll('.reveal.in').length === doc.querySelectorAll('.reveal').length);
+
+rep.push('=== process lab ===');
+chk('lab tabs = 7', n('#labTabs') === 7, `got ${n('#labTabs')}`);
+chk('fluid bed shown first', $('#fbStage').hidden === false && $('#opStage').hidden === true);
 
 rep.push('=== fluid bed ===');
 chk('fb sliders = 9 (wurster)', n('#fbSliders') === 9, `got ${n('#fbSliders')}`);
@@ -135,6 +177,44 @@ try {
   $('#molBody tr:nth-child(5)').click();
   chk('row selection updates detail', $('#molDetail').innerHTML.length > 800);
 
+  rep.push('=== per-drug figures ===');
+  const VIZ = vm.runInContext('DRUG_VIZ', sandbox);
+  const INFO = vm.runInContext('FORM_INFO', sandbox);
+  const MOLS = vm.runInContext('MOLECULES', sandbox);
+  chk('every molecule has a figure defined', MOLS.every(m => !!VIZ[m.id]),
+    MOLS.filter(m => !VIZ[m.id]).map(m => m.id).join(','));
+  chk('every figure references a known form', Object.values(VIZ).every(v => !!INFO[v.form]),
+    Object.values(VIZ).filter(v => !INFO[v.form]).map(v => v.form).join(','));
+  chk('every form has bilingual copy', Object.values(INFO).every(f =>
+    f.name.en && f.name.zh && f.made.en && f.made.zh && f.hard.en && f.hard.zh && f.ops.length));
+  chk('only LINZESS claims verified appearance',
+    Object.entries(VIZ).filter(([, v]) => v.verified).map(([k]) => k).join(',') === 'linaclotide');
+  chk('no other figure carries an imprint',
+    Object.entries(VIZ).every(([k, v]) => !v.imprint || k === 'linaclotide'));
+
+  const formsSeen = new Set();
+  let figFails = [];
+  MOLS.forEach((m, i) => {
+    const rows = doc.querySelectorAll('#molBody tr');
+    // find this molecule's row by brand and click it
+    const row = rows.find(r => r.textContent.includes(m.brand.split(' ')[0]));
+    if (!row) { figFails.push(m.id + ':norow'); return; }
+    row.click();
+    const svg = $('#capsuleFig').innerHTML;
+    if (!svg.includes('<svg') || svg.length < 400) figFails.push(m.id + ':nosvg');
+    if (bad($('#capsuleParts').textContent).length) figFails.push(m.id + ':dirty');
+    if (!$('#figWho').textContent.trim()) figFails.push(m.id + ':nolabel');
+    formsSeen.add(VIZ[m.id].form);
+  });
+  chk('all 21 products render a figure cleanly', figFails.length === 0, figFails.join(' '));
+  chk('at least 9 distinct dosage forms drawn', formsSeen.size >= 9, `got ${formsSeen.size}: ${[...formsSeen].join(',')}`);
+  chk('every drawn form produces distinct SVG', (() => {
+    const draw = vm.runInContext('drawDosageForm', sandbox);
+    const seen = new Set();
+    Object.keys(INFO).forEach(f => seen.add(draw(f, { sizeLabel: 'x' }).length));
+    return seen.size >= Object.keys(INFO).length - 1;
+  })());
+
   const bs = $('#batchSize'); bs.value = 120000; bs.dispatchEvent({ type: 'input', target: bs });
   chk('batch size recalculates', $('#batchOut').textContent.includes('120,000'), `"${$('#batchOut').textContent}"`);
   chk('formula scales', $('#formulaBody').textContent.includes('kg'));
@@ -158,6 +238,48 @@ try {
   const sl = doc.querySelectorAll('#fbSliders input')[3];
   sl.value = 70; sl.dispatchEvent({ type: 'input', target: sl });
   chk('moving a fluid-bed slider updates alerts', n('#fbAlerts') >= 1);
+
+  rep.push('=== each unit operation ===');
+  const tabs = doc.querySelectorAll('#labTabs .labtab');
+  const expectCtl = { psd: 4, blend: 5, compress: 6, coating: 8, dissol: 8, homog: 5 };
+  const ops = ['psd', 'blend', 'compress', 'coating', 'dissol', 'homog'];
+  ops.forEach((id, idx) => {
+    tabs[idx + 1].click();
+    const ok = $('#opStage').hidden === false && $('#fbStage').hidden === true;
+    chk(`${id}: stage swaps`, ok);
+    chk(`${id}: controls = ${expectCtl[id]}`, n('#opControls') === expectCtl[id], `got ${n('#opControls')}`);
+    chk(`${id}: readouts rendered`, n('#opReadouts') >= 5, `got ${n('#opReadouts')}`);
+    chk(`${id}: verdict has text`, $('#opVerdict').textContent.length > 80);
+    chk(`${id}: help notes on every control`, doc.querySelectorAll('#opControls .ctrl-help').length === expectCtl[id]);
+    const inputs = doc.querySelectorAll('#opControls input');
+    if (inputs.length) {
+      const a = $('#opReadouts').textContent;
+      inputs[0].value = +inputs[0].getAttribute('max');
+      inputs[0].dispatchEvent({ type: 'input', target: inputs[0] });
+      chk(`${id}: readouts respond to a slider`, $('#opReadouts').textContent !== a);
+      const b = $('#opVerdict').textContent;
+      inputs[0].value = +inputs[0].getAttribute('min');
+      inputs[0].dispatchEvent({ type: 'input', target: inputs[0] });
+      chk(`${id}: verdict changes at the other extreme`, $('#opVerdict').textContent !== b);
+    }
+    $('#opReset').click();
+    const hits = bad($('#opReadouts').textContent + $('#opVerdict').textContent);
+    chk(`${id}: clean numbers`, hits.length === 0, hits.join(','));
+  });
+  tabs[0].click();
+  chk('back to fluid bed', $('#fbStage').hidden === false);
+
+  rep.push('=== disclosure + column toggle ===');
+  const d0 = doc.querySelectorAll('[data-disc]')[0];
+  d0.querySelector('.disc-btn').click();
+  chk('disclosure opens', d0.classList.contains('open'));
+  d0.querySelector('.disc-btn').click();
+  chk('disclosure closes', !d0.classList.contains('open'));
+  $('#colToggle').click();
+  chk('column toggle expands to 9', n('#molHead') === 9, `got ${n('#molHead')}`);
+  chk('rows still render wide', doc.querySelectorAll('#molBody tr:nth-child(1) td').length === 9);
+  $('#colToggle').click();
+  chk('column toggle collapses to 5', n('#molHead') === 5);
   h = bad(doc.body.textContent);
   chk('post-interaction: no undefined / NaN', h.length === 0, h.join(','));
 } catch (e) { chk('interaction threw', false, e.stack.split('\n').slice(0, 3).join(' | ')); }

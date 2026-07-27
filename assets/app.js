@@ -50,10 +50,28 @@ function scrollSpy() {
 
 function renderHero() {
   $('#heroBody').innerHTML = t(UI.heroBody).map(p => `<p>${esc(p)}</p>`).join('');
+  $('#howToRead').innerHTML =
+    `<span class="howto-lbl">${esc(t(UI.howToRead.label))}</span>` +
+    UI.howToRead.items.map(i =>
+      `<div class="howto-i"><b>${esc(t(i.t))}</b><span>${esc(t(i.d))}</span></div>`).join('');
   $('#chain').innerHTML = UI.chainSteps.map(s =>
     `<div class="chain-item"><div class="n">${s.n}</div><div class="t">${esc(t(s.t))}</div><div class="d">${esc(t(s.d))}</div></div>`
   ).join('');
   $('#footSnapshot').textContent = t(UI.common.snapshot) + ': ' + SNAPSHOT_DATE;
+}
+
+/* ---------- progressive disclosure -------------------------------------- */
+/* Any element with [data-disc] containing .disc-btn + .disc-body collapses by
+   default. Add class "open" in the markup to have it start expanded. */
+function wireDisclosures() {
+  $$('[data-disc]').forEach(d => {
+    const btn = d.querySelector('.disc-btn');
+    const setLabel = () => {
+      btn.textContent = (d.classList.contains('open') ? t(UI.common.less) : t(UI.common.more));
+    };
+    setLabel();
+    btn.onclick = () => { d.classList.toggle('open'); setLabel(); };
+  });
 }
 
 /* ============================================================================
@@ -100,10 +118,16 @@ function dots(n, max, rev) {
   return s + '</span>';
 }
 
+let tableWide = false;
+
 function renderTable() {
+  const cols = tableWide
+    ? ['rank', 'brand', 'app', 'sales', 'entry', 'route', 'barrier', 'comp', 'score']
+    : ['rank', 'brand', 'sales', 'entry', 'score'];
   const head = $('#molHead');
-  head.innerHTML = ['rank', 'brand', 'app', 'sales', 'entry', 'route', 'barrier', 'comp', 'score']
-    .map(k => `<th>${esc(t(UI.scr.th[k]))}</th>`).join('');
+  head.innerHTML = cols.map(k => `<th>${esc(t(UI.scr.th[k]))}</th>`).join('');
+  const btn = $('#colToggle');
+  if (btn) btn.textContent = t(tableWide ? UI.common.showLess : UI.common.showAll);
 
   const scored = MOLECULES.map(m => ({ m, ...scoreMolecule(m, weights, TODAY) }))
     .sort((a, b) => b.score - a.score);
@@ -118,18 +142,24 @@ function renderTable() {
     const pillCls = m.pathway === 'ANDA' ? 'anda' : m.pathway === '351(k)' ? 'k' : 'b2';
     const entry = new Date(m.entryDate);
     const past = entry < TODAY;
-    tr.innerHTML =
-      `<td class="rank">${String(i + 1).padStart(2, '0')}</td>` +
-      `<td><span class="bname">${esc(m.brand)}</span><br><span class="binn">${esc(t(m.inn))}</span></td>` +
-      `<td class="mono" style="font-size:11px;color:var(--ink3)">${esc(m.app)}</td>` +
-      `<td class="num">${fmt(m.usSalesM)}</td>` +
-      `<td class="mono" style="font-size:11.5px;${past ? 'color:var(--bad)' : ''}">${m.entryDate.slice(0, 7)}</td>` +
-      `<td><span class="pill ${pillCls}">${esc(m.pathway)}</span></td>` +
-      `<td>${dots(m.techBarrier, 5)}</td>` +
-      `<td>${dots(m.competition, 5, true)}</td>` +
-      `<td><div class="bar"><i style="width:${(row.score / max * 100).toFixed(0)}%"></i></div>` +
-      `<span class="mono" style="font-size:10.5px;color:var(--ink3)">${row.score.toFixed(0)}</span></td>`;
-    tr.onclick = () => { selectedMol = m.id; renderTable(); renderDetail(m, row); $('#molDetail').scrollIntoView({ block: 'nearest' }); };
+    const cell = {
+      rank: `<td class="rank">${String(i + 1).padStart(2, '0')}</td>`,
+      brand: `<td><span class="bname">${esc(m.brand)}</span><br><span class="binn">${esc(t(m.inn))}</span></td>`,
+      app: `<td class="mono dim">${esc(m.app)}</td>`,
+      sales: `<td class="num">${fmt(m.usSalesM)}</td>`,
+      entry: `<td class="mono entry${past ? ' past' : ''}">${m.entryDate.slice(0, 7)}</td>`,
+      route: `<td><span class="pill ${pillCls}">${esc(m.pathway)}</span></td>`,
+      barrier: `<td>${dots(m.techBarrier, 5)}</td>`,
+      comp: `<td>${dots(m.competition, 5, true)}</td>`,
+      score: `<td><div class="bar"><i style="width:${(row.score / max * 100).toFixed(0)}%"></i></div>` +
+             `<span class="mono barv">${row.score.toFixed(0)}</span></td>`
+    };
+    tr.innerHTML = cols.map(c => cell[c]).join('');
+    tr.onclick = () => {
+      selectedMol = m.id;
+      renderTable(); renderDetail(m, row); renderCapsule();
+      $('#molDetail').scrollIntoView({ block: 'nearest' });
+    };
     body.appendChild(tr);
   });
 
@@ -155,6 +185,223 @@ function renderDetail(m, row) {
     </dl>
     <div class="callout"><b>${esc(t(UI.common.thesisLbl))}</b>${esc(t(m.thesis))}</div>
     <div class="srcs"><b>${esc(t(UI.common.sources))}</b> · ${esc(t(UI.common.conf))}: ${esc(confLabel)}<br>${m.sources.map(esc).join(' · ')}</div>`;
+}
+
+/* ============================================================================
+   LANDING MAP
+   ----------------------------------------------------------------------------
+   Injected by JavaScript over the finished page rather than being part of the
+   markup. Two consequences worth having: search engines and any visitor
+   without JavaScript get the whole site with no gate, and if this code ever
+   breaks the site still works. Dismissible by Esc, by the skip link, and by
+   clicking the backdrop; the choice can be remembered.
+   ========================================================================== */
+
+const MODULE_NODES = [
+  { id: 'screener',   n: '01' },
+  { id: 'pathway',    n: '02' },
+  { id: 'dossier',    n: '03' },
+  { id: 'protocol',   n: '04' },
+  { id: 'fluidbed',   n: '05' },
+  { id: 'validation', n: '06' }
+];
+
+/* Wrap a label to fit a node. Descriptions may carry an explicit "|" break;
+   otherwise words are packed to the character budget the box allows. */
+function wrapLines(txt, maxChars, maxLines) {
+  if (txt.includes('|')) return txt.split('|').slice(0, maxLines);
+  const words = txt.split(/\s+/), out = [];
+  let cur = '';
+  words.forEach(w => {
+    if ((cur + ' ' + w).trim().length <= maxChars) cur = (cur + ' ' + w).trim();
+    else { if (cur) out.push(cur); cur = w; }
+  });
+  if (cur) out.push(cur);
+  return out.slice(0, maxLines);
+}
+
+function buildMap() {
+  const inn = UI.map.innovator;
+  const W = 1180, H = 472, laneY1 = 84, laneY2 = 318;
+  const ih = 92, mh = 114;
+  const iw = 196, gap = (W - 60 - inn.length * iw) / (inn.length - 1);
+  const mw = 168, mgap = (W - 60 - MODULE_NODES.length * mw) / (MODULE_NODES.length - 1);
+  // usable text width inside a node, at roughly 0.5 em advance for the sans face
+  const iChars = Math.floor((iw - 32) / 5.6);
+  const mChars = Math.floor((mw - 32) / 5.6);
+
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="mapsvg">
+    <defs>
+      <marker id="mah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 0 L 8 4 L 0 8 z" fill="#3a444e"/></marker>
+      <marker id="mahT" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 0 L 8 4 L 0 8 z" fill="#2fc2c8"/></marker>
+    </defs>`;
+
+  s += `<text x="30" y="44" class="lane-lbl dim">${esc(t(UI.map.innovatorLane))}</text>`;
+  inn.forEach((it, i) => {
+    const x = 30 + i * (iw + gap);
+    const lines = wrapLines(t(it.d), iChars, 2);
+    s += `<g class="mnode dim" style="--i:${i}">
+      <rect x="${x}" y="${laneY1}" width="${iw}" height="${ih}" rx="8"/>
+      <text x="${x + 16}" y="${laneY1 + 30}" class="mn-t">${esc(t(it.t))}</text>` +
+      lines.map((l, k) => `<text x="${x + 16}" y="${laneY1 + 54 + k * 17}" class="mn-d">${esc(l)}</text>`).join('') +
+      `</g>`;
+    if (i < inn.length - 1) {
+      const x1 = x + iw, x2 = x + iw + gap;
+      s += `<line class="mlink dim" style="--i:${i}" x1="${x1 + 3}" y1="${laneY1 + ih / 2}" x2="${x2 - 7}" y2="${laneY1 + ih / 2}" marker-end="url(#mah)"/>`;
+    }
+  });
+
+  const cx = W / 2, cliffTop = laneY1 + ih + 38;
+  s += `<g class="mcliff">
+    <line x1="${cx}" y1="${laneY1 + ih + 6}" x2="${cx}" y2="${cliffTop - 4}" class="cliff-line" marker-end="url(#mahT)"/>
+    <rect x="${cx - 154}" y="${cliffTop}" width="308" height="54" rx="27" class="cliff-box"/>
+    <text x="${cx}" y="${cliffTop + 25}" class="cliff-t">${esc(t(UI.map.cliff))}</text>
+    <text x="${cx}" y="${cliffTop + 42}" class="cliff-d">${esc(t(UI.map.cliffSub))}</text>
+    <line x1="${cx}" y1="${cliffTop + 54}" x2="${cx}" y2="${laneY2 - 32}" class="cliff-line" marker-end="url(#mahT)"/></g>`;
+
+  s += `<text x="30" y="${laneY2 - 18}" class="lane-lbl">${esc(t(UI.map.genericLane))}</text>`;
+  MODULE_NODES.forEach((m, i) => {
+    const x = 30 + i * (mw + mgap);
+    const label = t(UI.nav[m.id]).replace(/^\d+\s*·\s*/, '');
+    const lines = wrapLines(t(UI.chainSteps[i].t), mChars, 2);
+    s += `<g class="mnode live" data-go="${m.id}" style="--i:${i}" tabindex="0" role="button">
+      <rect x="${x}" y="${laneY2}" width="${mw}" height="${mh}" rx="8"/>
+      <text x="${x + 16}" y="${laneY2 + 26}" class="mn-n">${m.n}</text>
+      <text x="${x + 16}" y="${laneY2 + 50}" class="mn-t live">${esc(label)}</text>` +
+      lines.map((l, k) => `<text x="${x + 16}" y="${laneY2 + 70 + k * 16}" class="mn-d">${esc(l)}</text>`).join('') +
+      `<text x="${x + mw - 14}" y="${laneY2 + mh - 10}" class="mn-go">${esc(t(UI.map.covered))} →</text></g>`;
+    if (i < MODULE_NODES.length - 1) {
+      const x1 = x + mw, x2 = x + mw + mgap;
+      s += `<line class="mlink live" style="--i:${i}" x1="${x1 + 2}" y1="${laneY2 + mh / 2}" x2="${x2 - 6}" y2="${laneY2 + mh / 2}" marker-end="url(#mahT)"/>`;
+    }
+  });
+  return s + '</svg>';
+}
+
+function openMap() {
+  if ($('#mapOverlay')) { $('#mapOverlay').classList.add('show'); return; }
+  const ov = el('div', 'map-ov');
+  ov.id = 'mapOverlay';
+  ov.innerHTML = `
+    <div class="map-inner">
+      <div class="map-head">
+        <span class="map-kicker">${esc(t(UI.map.kicker))}</span>
+        <h2>${esc(t(UI.map.title))}</h2>
+        <p>${esc(t(UI.map.lead))}</p>
+      </div>
+      <div class="map-canvas">${buildMap()}</div>
+      <div class="map-foot">
+        <button class="map-skip">${esc(t(UI.map.skip))} →</button>
+        <label class="map-remember"><input type="checkbox" id="mapDont"> ${esc(t(UI.map.dontShow))}</label>
+        <span class="map-esc">${esc(t(UI.map.esc))}</span>
+      </div>
+    </div>`;
+  document.body.appendChild(ov);
+  requestAnimationFrame(() => ov.classList.add('show'));
+
+  const close = (goto) => {
+    ov.classList.remove('show');
+    document.body.classList.remove('locked');
+    if ($('#mapDont') && $('#mapDont').checked) localStorage.setItem('loemap', 'seen');
+    if (goto) {
+      const target = document.querySelector('#' + goto);
+      if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); pulse(target); }
+    }
+    window.removeEventListener('keydown', onKey);
+  };
+  const onKey = e => { if (e.key === 'Escape') close(); };
+  window.addEventListener('keydown', onKey);
+
+  ov.querySelector('.map-skip').onclick = () => close();
+  ov.onclick = e => { if (e.target === ov) close(); };
+  ov.querySelectorAll('[data-go]').forEach(g => {
+    g.onclick = () => close(g.dataset.go);
+    g.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') close(g.dataset.go); };
+  });
+  document.body.classList.add('locked');
+}
+
+function pulse(node) {
+  node.classList.remove('arrived');
+  void node.offsetWidth;
+  node.classList.add('arrived');
+  setTimeout(() => node.classList.remove('arrived'), 1400);
+}
+
+/* ============================================================================
+   MOTION LAYER
+   ----------------------------------------------------------------------------
+   Everything here is optional decoration and is switched off entirely when the
+   visitor has asked their system for reduced motion.
+   ========================================================================== */
+
+const REDUCED = typeof matchMedia === 'function' &&
+  matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function wireReveals() {
+  if (REDUCED || typeof IntersectionObserver !== 'function') {
+    $$('.reveal').forEach(n => n.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
+  $$('.reveal').forEach(n => io.observe(n));
+}
+
+function markReveals() {
+  $$('.sec-head, .panel, .chain-item, .howto-i, .vst, .labtab, .step').forEach((n, i) => {
+    n.classList.add('reveal');
+    n.style.setProperty('--d', (i % 6) * 45 + 'ms');
+  });
+  $$('.prose p, .si, .qa').forEach((n, i) => {
+    n.classList.add('reveal', 'reveal-sm');
+    n.style.setProperty('--d', (i % 5) * 40 + 'ms');
+  });
+}
+
+/* ---------- product figure ----------------------------------------------
+   Follows whatever is selected in the screener. The dosage form is drawn
+   accurately for every product; colour and imprint stay neutral except for
+   LINZESS, whose appearance is taken from its FDA-approved label.         */
+
+function renderCapsule() {
+  const m = MOLECULES.find(x => x.id === selectedMol) || MOLECULES[0];
+  const viz = DRUG_VIZ[m.id] || { form: 'tablet-fc', sizeLabel: t(m.form) };
+  const info = FORM_INFO[viz.form] || FORM_INFO['tablet-fc'];
+
+  $('#figWho').innerHTML =
+    `<b>${esc(m.brand)}</b><span>${esc(t(info.name))} · ${esc(m.strengths)}</span>`;
+
+  $('#capsuleFig').innerHTML = drawDosageForm(viz.form, {
+    imprint: viz.imprint || '',
+    sizeLabel: viz.sizeLabel || t(m.form),
+    sizeNote: viz.sizeNote || ''
+  });
+
+  const rows = [
+    { t: t(UI.fig.howMade), d: t(info.made) },
+    { t: t(UI.fig.whatsHard), d: t(info.hard) }
+  ];
+  if (viz.note) rows.push({ t: m.brand, d: t(viz.note) });
+
+  $('#capsuleParts').innerHTML =
+    rows.map((r, i) =>
+      `<div class="fp"><span class="fp-n">${i + 1}</span><div><b>${esc(r.t)}</b><span>${esc(r.d)}</span></div></div>`
+    ).join('') +
+    `<div class="fp-ops"><span class="mini-label">${esc(t(UI.fig.unitOps))}</span>` +
+    info.ops.map(o => `<span class="pill">${esc(o)}</span>`).join(' ') + `</div>`;
+
+  $('#figNote').textContent = viz.verified ? t(UI.fig.disclaimer) : t(UI.fig.neutralNote);
+
+  const a = $('#dmLink');
+  a.href = viz.verified ? UI.fig.officialUrl
+    : 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=' + encodeURIComponent(m.brand);
+  a.textContent = t(UI.fig.official);
 }
 
 /* ============================================================================
@@ -341,11 +588,11 @@ function drawErosion() {
   }
   x.beginPath();
   for (let i = 0; i <= 12; i++) { const y = py(erodedPriceFraction(i)); i ? x.lineTo(px(i), y) : x.moveTo(px(i), y); }
-  x.strokeStyle = '#e0a338'; x.lineWidth = 2; x.stroke();
+  x.strokeStyle = '#2fc2c8'; x.lineWidth = 2; x.stroke();
 
   for (let i = 0; i <= 12; i++) {
     x.beginPath(); x.arc(px(i), py(erodedPriceFraction(i)), i === costState.rivals ? 5 : 2.5, 0, 7);
-    x.fillStyle = i === costState.rivals ? '#4fb3a5' : '#e0a338'; x.fill();
+    x.fillStyle = i === costState.rivals ? '#4a8fd6' : '#2fc2c8'; x.fill();
   }
   x.fillStyle = '#6a7683'; x.font = '10px "IBM Plex Mono", monospace'; x.textAlign = 'center';
   for (let i = 0; i <= 12; i += 2) x.fillText(i, px(i), H - 9);
@@ -364,7 +611,9 @@ function renderDossier() {
     ['Form', t(h.form)], ['Strengths', h.strengths], ['Sponsor', h.sponsor]
   ].map(([k, v]) => `<div><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join('');
 
-  $('#ddWhy').innerHTML = t(DD.rationale).map(p => `<p>${esc(p)}</p>`).join('');
+  const why = t(DD.rationale);
+  $('#ddWhyLead').innerHTML = `<p>${esc(why[0])}</p>`;
+  $('#ddWhy').innerHTML = why.slice(1).map(p => `<p>${esc(p)}</p>`).join('');
 
   $('#ddReg').innerHTML = DD.regulatory.map(r =>
     `<div class="qa"><div class="q">${esc(t(r.q))}</div><div class="src">${esc(r.src)}</div><div class="a">${esc(t(r.a))}</div></div>`
@@ -712,10 +961,10 @@ function drawVessel(x, g, r) {
     x.moveTo(g.cx + g.tubeHalf, g.tubeTopY); x.lineTo(g.cx + g.tubeHalf, g.tubeBotY);
     x.stroke();
     // gap indicator
-    x.strokeStyle = 'rgba(224,163,56,.55)'; x.lineWidth = 1; x.setLineDash([3, 3]);
+    x.strokeStyle = 'rgba(47,194,200,.55)'; x.lineWidth = 1; x.setLineDash([3, 3]);
     x.beginPath(); x.moveTo(g.cx - g.tubeHalf - 26, g.tubeBotY); x.lineTo(g.cx - g.tubeHalf - 26, g.plateY); x.stroke();
     x.setLineDash([]);
-    x.fillStyle = '#e0a338'; x.font = '9px "IBM Plex Mono", monospace'; x.textAlign = 'right';
+    x.fillStyle = '#2fc2c8'; x.font = '9px "IBM Plex Mono", monospace'; x.textAlign = 'right';
     x.fillText(fb.gap + 'mm', g.cx - g.tubeHalf - 32, (g.tubeBotY + g.plateY) / 2 + 3);
   }
 
@@ -830,8 +1079,8 @@ function drawParticles(x, r) {
   if (fb.spray > 0) {
     const ny = fb.mode === 'wurster' ? g.plateY : 152;
     const grad = x.createRadialGradient(g.cx, ny, 4, g.cx, ny, 175);
-    grad.addColorStop(0, `rgba(224,163,56,${0.10 + fb.spray / 400})`);
-    grad.addColorStop(1, 'rgba(224,163,56,0)');
+    grad.addColorStop(0, `rgba(47,194,200,${0.10 + fb.spray / 400})`);
+    grad.addColorStop(1, 'rgba(47,194,200,0)');
     x.fillStyle = grad; x.beginPath(); x.arc(g.cx, ny, 175, 0, 7); x.fill();
   }
 
@@ -845,12 +1094,14 @@ function drawParticles(x, r) {
     const rr = Math.round(150 + c * 74), gg = Math.round(154 - c * 6), bb = Math.round(160 - c * 88);
     x.fillStyle = `rgb(${rr},${gg},${bb})`;
     x.beginPath(); x.arc(p.x, p.y, p.r + c * 0.8, 0, 7); x.fill();
-    if (c > 0.55) { x.strokeStyle = `rgba(224,163,56,${(c - 0.55) * 0.9})`; x.lineWidth = 0.8; x.stroke(); }
+    if (c > 0.55) { x.strokeStyle = `rgba(47,194,200,${(c - 0.55) * 0.9})`; x.lineWidth = 0.8; x.stroke(); }
   });
 }
 
 function animate() {
   const cv = $('#fbCanvas'); if (!cv) return;
+  // don't burn frames animating a bed nobody is looking at
+  if (labTab !== 'fluidbed') { rafId = requestAnimationFrame(animate); return; }
   const x = cv.getContext('2d');
   const r = lastSolve || fbSolve(fb);
   x.clearRect(0, 0, CANV.W, CANV.H);
@@ -923,7 +1174,7 @@ function drawWindow() {
 
   // current point
   x.beginPath(); x.arc(px(fb.spray), py(fb.inletT), 6, 0, 7);
-  x.fillStyle = '#e0a338'; x.fill();
+  x.fillStyle = '#2fc2c8'; x.fill();
   x.strokeStyle = '#0b0d10'; x.lineWidth = 2; x.stroke();
 }
 
@@ -978,6 +1229,413 @@ function renderKnobs() {
 }
 
 /* ============================================================================
+   5b · PROCESS LAB — tabs and the six generic unit operations
+   ========================================================================== */
+
+let labTab = 'fluidbed';
+const opState = {};        // id -> current control values
+UNIT_OPS.forEach(op => {
+  opState[op.id] = {};
+  op.controls.forEach(c => opState[op.id][c.id] = c.def);
+});
+
+function renderLabTabs() {
+  const box = $('#labTabs'); box.innerHTML = '';
+  const mk = (id, label, sub) => {
+    const b = el('button', 'labtab' + (labTab === id ? ' on' : ''));
+    b.innerHTML = `<b>${esc(label)}</b><span>${esc(sub)}</span>`;
+    b.onclick = () => { labTab = id; renderLabTabs(); showLabStage(); };
+    box.appendChild(b);
+  };
+  mk('fluidbed', t(UI.fb.title), 'Wurster / GPCG');
+  UNIT_OPS.forEach(op => mk(op.id, t(op.name), t(op.tagline)));
+}
+
+function showLabStage() {
+  const isFb = labTab === 'fluidbed';
+  $('#fbStage').hidden = !isFb;
+  $('#opStage').hidden = isFb;
+  if (isFb) { fbUpdate(); } else { renderOp(); }
+}
+
+function currentOp() { return UNIT_OPS.find(o => o.id === labTab); }
+
+function renderOp() {
+  const op = currentOp(); if (!op) return;
+  const st = opState[op.id];
+
+  $('#opName').textContent = t(op.name);
+  $('#opTagline').textContent = t(op.tagline);
+  $('#opWhy').textContent = t(op.why);
+  $('#opTry').textContent = ' ' + t(op.tryThis);
+  $('#opReset').textContent = t(UI.lab.reset);
+  $('#opDeep').innerHTML = t(op.deep).map(p => `<p>${esc(p)}</p>`).join('');
+
+  // controls
+  const box = $('#opControls'); box.innerHTML = '';
+  op.controls.forEach(c => {
+    const row = el('div', 'wrow');
+    if (c.type === 'select') {
+      row.innerHTML = `<div class="wrow-top"><label>${esc(t(c.label))}</label></div>`;
+      const sel = el('select');
+      c.options.forEach(o => {
+        const opt = el('option'); opt.value = o.v; opt.textContent = t(o.l);
+        if (+st[c.id] === o.v) opt.setAttribute('selected', 'selected');
+        sel.appendChild(opt);
+      });
+      sel.value = st[c.id];
+      sel.onchange = () => { st[c.id] = +sel.value; updateOp(); };
+      row.appendChild(sel);
+    } else {
+      row.innerHTML = `<div class="wrow-top"><label>${esc(t(c.label))}</label>` +
+        `<span class="v">${st[c.id]} ${esc(c.unit || '')}</span></div>`;
+      const i = el('input');
+      i.type = 'range'; i.min = c.min; i.max = c.max; i.step = c.step; i.value = st[c.id];
+      i.oninput = () => {
+        st[c.id] = +i.value;
+        row.querySelector('.v').textContent = st[c.id] + ' ' + (c.unit || '');
+        updateOp();
+      };
+      row.appendChild(i);
+    }
+    const help = el('p', 'ctrl-help', esc(t(c.help)));
+    row.appendChild(help);
+    box.appendChild(row);
+  });
+
+  wireDisclosures();
+  updateOp();
+}
+
+function updateOp() {
+  const op = currentOp(); if (!op) return;
+  const st = opState[op.id];
+  const r = op.solve(st);
+
+  $('#opReadouts').innerHTML = op.readouts(r).map(o =>
+    `<div class="ro ${o.cls || ''}"><span class="k">${o.k}</span>` +
+    `<span class="v">${o.v}<span class="u">${o.u || ''}</span></span></div>`).join('');
+
+  const v = op.verdict(r);
+  $('#opVerdict').className = 'bench ' + v.tone;
+  $('#opVerdict').innerHTML =
+    `<span class="bench-lbl">${esc(t(UI.lab.onBench))}</span><p>${esc(LANG === 'zh' ? v.zh : v.en)}</p>`;
+
+  drawOpChart(op, st, r);
+}
+
+/* ---------- small chart toolkit ----------------------------------------- */
+
+function frame(cv, pad) {
+  const x = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  x.clearRect(0, 0, W, H);
+  x.font = '10px "IBM Plex Mono", monospace';
+  return { x, W, H, pad };
+}
+function axes(F, opt) {
+  const { x, W, H, pad } = F;
+  x.strokeStyle = '#232a32'; x.lineWidth = 1;
+  (opt.hLines || []).forEach(v => {
+    const y = opt.py(v);
+    x.beginPath(); x.moveTo(pad.l, y); x.lineTo(W - pad.r, y); x.stroke();
+    x.fillStyle = '#6a7683'; x.textAlign = 'right';
+    x.fillText(opt.yFmt ? opt.yFmt(v) : v, pad.l - 6, y + 3);
+  });
+  x.strokeStyle = '#2e3742';
+  x.beginPath(); x.moveTo(pad.l, pad.t); x.lineTo(pad.l, H - pad.b); x.lineTo(W - pad.r, H - pad.b); x.stroke();
+  x.fillStyle = '#6a7683'; x.textAlign = 'center';
+  (opt.xTicks || []).forEach(v => x.fillText(opt.xFmt ? opt.xFmt(v) : v, opt.px(v), H - pad.b + 15));
+  if (opt.xLabel) x.fillText(opt.xLabel, (W + pad.l) / 2, H - 4);
+  if (opt.yLabel) { x.save(); x.translate(11, H / 2); x.rotate(-Math.PI / 2); x.fillText(opt.yLabel, 0, 0); x.restore(); }
+  if (opt.y2Label) { x.save(); x.translate(W - 4, H / 2); x.rotate(-Math.PI / 2); x.fillStyle = '#4a8fd6'; x.fillText(opt.y2Label, 0, 0); x.restore(); }
+}
+function line(F, pts, colour, width, dash) {
+  const { x } = F;
+  x.beginPath();
+  pts.forEach((p, i) => i ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1]));
+  x.strokeStyle = colour; x.lineWidth = width || 2;
+  x.setLineDash(dash || []); x.stroke(); x.setLineDash([]);
+}
+function dot(F, cx, cy, colour, r) {
+  const { x } = F;
+  x.beginPath(); x.arc(cx, cy, r || 5, 0, 7); x.fillStyle = colour; x.fill();
+  x.strokeStyle = '#0b0d10'; x.lineWidth = 2; x.stroke();
+}
+function legend(F, items) {
+  const { x, pad } = F;
+  let lx = pad.l + 10;
+  x.textAlign = 'left';
+  items.forEach(it => {
+    x.fillStyle = it.c; x.fillRect(lx, pad.t + 4, 14, 3);
+    x.fillStyle = '#97a3b0'; x.fillText(it.l, lx + 19, pad.t + 8);
+    lx += 26 + x.measureText(it.l).width;
+  });
+}
+const T_ACC = '#2fc2c8', T_B = '#4a8fd6', T_OK = '#5fc08a', T_WARN = '#d8a13c', T_BAD = '#d9614f';
+
+/* ---------- per-operation charts ---------------------------------------- */
+
+function drawOpChart(op, p, r) {
+  const cv = $('#opCanvas'); if (!cv) return;
+  ({ psd: chPSD, blend: chBlend, compress: chCompress,
+     coating: chCoating, dissol: chDissol, homog: chHomog })[op.id](cv, p, r);
+}
+
+function chPSD(cv, p, r) {
+  const pad = { l: 52, r: 20, t: 26, b: 34 };
+  const F = frame(cv, pad); const { x, W, H } = F;
+  const lo = Math.log10(10), hi = Math.log10(3000);
+  const px = d => pad.l + (Math.log10(d) - lo) / (hi - lo) * (W - pad.l - pad.r);
+  const py = v => H - pad.b - v / 100 * (H - pad.t - pad.b);
+  axes(F, { py, px, hLines: [0, 25, 50, 75, 100], xTicks: [10, 30, 100, 300, 1000, 3000],
+    xLabel: LANG === 'zh' ? '粒徑 µm（對數）' : 'particle size  µm (log)',
+    yLabel: LANG === 'zh' ? '累積 %' : 'cumulative %' });
+
+  // fines region
+  x.fillStyle = 'rgba(217,97,79,.10)';
+  x.fillRect(pad.l, pad.t, px(45) - pad.l, H - pad.b - pad.t);
+  x.fillStyle = '#d9614f'; x.textAlign = 'left';
+  x.fillText(LANG === 'zh' ? '細粉' : 'fines', pad.l + 4, H - pad.b - 6);
+
+  const cum = [], dens = [];
+  let peak = 0;
+  for (let i = 0; i <= 160; i++) {
+    const d = Math.pow(10, lo + (hi - lo) * i / 160);
+    const c = lnBelow(d, r.d50, r.sg);
+    cum.push([px(d), py(c * 100)]);
+    const z = Math.log(d / r.d50) / Math.log(r.sg);
+    const q = Math.exp(-z * z / 2);
+    peak = Math.max(peak, q);
+    dens.push([px(d), q]);
+  }
+  line(F, dens.map(pt => [pt[0], H - pad.b - pt[1] / peak * (H - pad.t - pad.b) * 0.55]), 'rgba(47,194,200,.35)', 1.5);
+  x.beginPath();
+  dens.forEach((pt, i) => { const yy = H - pad.b - pt[1] / peak * (H - pad.t - pad.b) * 0.55; i ? x.lineTo(pt[0], yy) : x.moveTo(pt[0], yy); });
+  x.lineTo(px(3000), H - pad.b); x.lineTo(px(10), H - pad.b); x.closePath();
+  x.fillStyle = 'rgba(47,194,200,.10)'; x.fill();
+  line(F, cum, T_ACC, 2);
+
+  [['D10', r.d10], ['D50', r.d50], ['D90', r.d90]].forEach(([lbl, d]) => {
+    x.strokeStyle = 'rgba(220,227,234,.30)'; x.setLineDash([3, 3]); x.lineWidth = 1;
+    x.beginPath(); x.moveTo(px(d), pad.t); x.lineTo(px(d), H - pad.b); x.stroke(); x.setLineDash([]);
+    x.fillStyle = '#97a3b0'; x.textAlign = 'center';
+    x.fillText(lbl, px(d), pad.t - 6);
+    x.fillText(d.toFixed(0), px(d), pad.t + 8);
+  });
+  legend(F, [{ c: T_ACC, l: LANG === 'zh' ? '累積曲線' : 'cumulative' },
+             { c: 'rgba(47,194,200,.45)', l: LANG === 'zh' ? '粒徑分佈' : 'distribution' }]);
+}
+
+function chBlend(cv, p, r) {
+  const pad = { l: 48, r: 52, t: 30, b: 34 };
+  const F = frame(cv, pad); const { x, W, H } = F;
+  const px = tm => pad.l + tm / 60 * (W - pad.l - pad.r);
+  const py = v => H - pad.b - v / 28 * (H - pad.t - pad.b);
+  const py2 = v => H - pad.b - (v - 1) / 2.2 * (H - pad.t - pad.b);
+  axes(F, { py, px, hLines: [0, 5, 10, 15, 20, 25], xTicks: [0, 10, 20, 30, 40, 50, 60],
+    xLabel: LANG === 'zh' ? '混合時間 min' : 'blend time  min',
+    yLabel: LANG === 'zh' ? '混合 RSD %' : 'blend RSD  %',
+    y2Label: LANG === 'zh' ? '溶離延遲 ×' : 'dissolution delay  ×' });
+
+  // acceptable window shading
+  const rsdPts = [], delPts = [];
+  let winStart = null, winEnd = null;
+  for (let tm = 0; tm <= 60; tm += 0.5) {
+    const s = op_blendAt(p, tm);
+    rsdPts.push([px(tm), py(Math.min(s.rsd, 28))]);
+    delPts.push([px(tm), py2(Math.min(s.dissolDelay, 3.2))]);
+    const good = s.rsd <= 3 && s.dissolDelay <= 1.5 && s.ejectionOK > 0.9;
+    if (good && winStart === null) winStart = tm;
+    if (good) winEnd = tm;
+  }
+  if (winStart !== null) {
+    x.fillStyle = 'rgba(95,192,138,.10)';
+    x.fillRect(px(winStart), pad.t, px(winEnd) - px(winStart), H - pad.b - pad.t);
+    x.fillStyle = '#5fc08a'; x.textAlign = 'center';
+    x.fillText(LANG === 'zh' ? '可用窗口' : 'usable window', (px(winStart) + px(winEnd)) / 2, pad.t + 22);
+  }
+  line(F, rsdPts, T_ACC, 2);
+  line(F, delPts, T_B, 2, [5, 4]);
+
+  x.strokeStyle = 'rgba(216,161,60,.5)'; x.setLineDash([2, 3]); x.lineWidth = 1;
+  x.beginPath(); x.moveTo(pad.l, py(3)); x.lineTo(W - pad.r, py(3)); x.stroke(); x.setLineDash([]);
+  x.fillStyle = '#d8a13c'; x.textAlign = 'left'; x.fillText('RSD 3 %', pad.l + 4, py(3) - 4);
+
+  x.strokeStyle = T_ACC; x.lineWidth = 1;
+  x.beginPath(); x.moveTo(px(p.time), pad.t); x.lineTo(px(p.time), H - pad.b); x.stroke();
+  dot(F, px(p.time), py(Math.min(r.rsd, 28)), T_ACC);
+  dot(F, px(p.time), py2(Math.min(r.dissolDelay, 3.2)), T_B);
+  legend(F, [{ c: T_ACC, l: LANG === 'zh' ? '均勻度' : 'uniformity' },
+             { c: T_B, l: LANG === 'zh' ? '溶離延遲' : 'dissolution delay' }]);
+}
+function op_blendAt(p, tm) { return OP_BLEND.solve({ ...p, time: tm }); }
+
+function chCompress(cv, p, r) {
+  const pad = { l: 48, r: 56, t: 30, b: 34 };
+  const F = frame(cv, pad); const { x, W, H } = F;
+  const px = f => pad.l + (f - 2) / 33 * (W - pad.l - pad.r);
+  const py = v => H - pad.b - v / 6 * (H - pad.t - pad.b);
+  const py2 = v => H - pad.b - Math.min(v, 400) / 400 * (H - pad.t - pad.b);
+  axes(F, { py, px, hLines: [0, 1, 2, 3, 4, 5, 6], xTicks: [2, 10, 20, 30, 35],
+    xLabel: LANG === 'zh' ? '主壓力 kN' : 'main compression force  kN',
+    yLabel: LANG === 'zh' ? '抗張強度 MPa' : 'tensile strength  MPa',
+    y2Label: LANG === 'zh' ? '崩解 s' : 'disintegration  s' });
+
+  x.fillStyle = 'rgba(95,192,138,.10)';
+  x.fillRect(pad.l, py(3.5), W - pad.l - pad.r, py(1.5) - py(3.5));
+  x.fillStyle = '#5fc08a'; x.textAlign = 'right';
+  x.fillText(LANG === 'zh' ? '目標強度帶' : 'target strength band', W - pad.r - 6, py(3.5) + 12);
+
+  const sPts = [], dPts = [], cPts = [];
+  for (let f = 2; f <= 35; f += 0.5) {
+    const s = OP_COMPRESS.solve({ ...p, force: f });
+    sPts.push([px(f), py(Math.min(s.sigmaT, 6))]);
+    dPts.push([px(f), py2(s.disint)]);
+    cPts.push([px(f), H - pad.b - s.capping * (H - pad.t - pad.b) * 0.28]);
+  }
+  line(F, cPts, 'rgba(217,97,79,.45)', 1.5, [3, 3]);
+  line(F, dPts, T_B, 2, [5, 4]);
+  line(F, sPts, T_ACC, 2.2);
+  dot(F, px(p.force), py(Math.min(r.sigmaT, 6)), T_ACC);
+  dot(F, px(p.force), py2(r.disint), T_B);
+
+  // tablet inset
+  const ix = W - 128, iy = pad.t + 8, iw = 96;
+  const th = Math.max(6, Math.min(30, r.thick * 5));
+  x.fillStyle = '#1a2027'; x.strokeStyle = '#3a444e'; x.lineWidth = 1;
+  x.beginPath(); x.roundRect ? x.roundRect(ix, iy + 22 - th / 2, iw, th, th / 2) : x.rect(ix, iy + 22 - th / 2, iw, th);
+  x.fill(); x.stroke();
+  if (r.capping > 0.6) {
+    x.strokeStyle = T_BAD; x.lineWidth = 1.6;
+    x.beginPath(); x.moveTo(ix + 8, iy + 22 - th / 2 + 3); x.lineTo(ix + iw - 8, iy + 22 - th / 2 + 3); x.stroke();
+    x.fillStyle = T_BAD; x.textAlign = 'center';
+    x.fillText(LANG === 'zh' ? '頂裂' : 'capping', ix + iw / 2, iy + 52);
+  } else {
+    x.fillStyle = '#6a7683'; x.textAlign = 'center';
+    x.fillText(r.thick.toFixed(2) + ' mm', ix + iw / 2, iy + 52);
+  }
+  legend(F, [{ c: T_ACC, l: LANG === 'zh' ? '強度' : 'strength' },
+             { c: T_B, l: LANG === 'zh' ? '崩解' : 'disintegration' },
+             { c: 'rgba(217,97,79,.6)', l: LANG === 'zh' ? '頂裂風險' : 'capping risk' }]);
+}
+
+function chCoating(cv, p, r) {
+  const pad = { l: 48, r: 20, t: 30, b: 34 };
+  const F = frame(cv, pad); const { x, W, H } = F;
+  const splitX = W * 0.60;
+  const px = tm => pad.l + tm / Math.max(r.timeMin, 30) * (splitX - pad.l - 10);
+  const py = v => H - pad.b - v / 20 * (H - pad.t - pad.b);
+  axes(F, { py, px, hLines: [0, 5, 10, 15, 20], xTicks: [0, Math.round(r.timeMin / 2), Math.round(r.timeMin)],
+    xLabel: LANG === 'zh' ? '包衣時間 min' : 'coating time  min',
+    yLabel: LANG === 'zh' ? '包衣 CV %' : 'coating CV  %' });
+
+  const pts = [];
+  for (let tm = 1; tm <= r.timeMin; tm += Math.max(0.5, r.timeMin / 120)) {
+    const passes = tm * p.panRpm * Math.min(0.34, 0.30 * Math.pow(60 / p.load, 0.33));
+    pts.push([px(tm), py(Math.min(20, 100 * Math.sqrt(1.0 / Math.max(passes, 1))))]);
+  }
+  x.fillStyle = 'rgba(95,192,138,.10)';
+  x.fillRect(pad.l, py(5), splitX - pad.l - 10, H - pad.b - py(5));
+  line(F, pts, T_ACC, 2.2);
+  dot(F, px(r.timeMin), py(Math.min(r.coatCV, 20)), T_ACC);
+
+  // defect bars
+  const bars = [
+    { l: LANG === 'zh' ? '沾黏' : 'sticking', v: r.sticking },
+    { l: LANG === 'zh' ? '橘皮' : 'orange peel', v: r.orangePeel },
+    { l: LANG === 'zh' ? '雙錠' : 'twinning', v: r.twinning },
+    { l: LANG === 'zh' ? '邊緣磨損' : 'edge erosion', v: r.erosion }
+  ];
+  x.textAlign = 'left'; x.fillStyle = '#97a3b0';
+  x.fillText(LANG === 'zh' ? '缺陷風險' : 'defect risk', splitX + 20, pad.t + 8);
+  bars.forEach((b, i) => {
+    const by = pad.t + 34 + i * 42, bw = W - pad.r - splitX - 30;
+    x.fillStyle = '#1a2027'; x.fillRect(splitX + 20, by, bw, 12);
+    x.fillStyle = b.v > 0.55 ? T_BAD : b.v > 0.33 ? T_WARN : T_OK;
+    x.fillRect(splitX + 20, by, bw * clamp01u(b.v), 12);
+    x.fillStyle = '#97a3b0'; x.textAlign = 'left';
+    x.fillText(b.l, splitX + 20, by - 5);
+    x.textAlign = 'right'; x.fillStyle = '#6a7683';
+    x.fillText(b.v.toFixed(2), W - pad.r - 10, by - 5);
+  });
+  legend(F, [{ c: T_ACC, l: LANG === 'zh' ? '均勻度隨時間改善' : 'uniformity improves with time' }]);
+}
+
+function chDissol(cv, p, r) {
+  const pad = { l: 50, r: 20, t: 30, b: 34 };
+  const F = frame(cv, pad); const { x, W, H } = F;
+  const px = tm => pad.l + tm / 60 * (W - pad.l - pad.r);
+  const py = v => H - pad.b - v / 105 * (H - pad.t - pad.b);
+  axes(F, { py, px, hLines: [0, 25, 50, 75, 100], xTicks: [0, 10, 20, 30, 45, 60],
+    xLabel: LANG === 'zh' ? '時間 min' : 'time  min',
+    yLabel: LANG === 'zh' ? '溶離 %' : 'dissolved  %' });
+
+  x.strokeStyle = 'rgba(95,192,138,.45)'; x.setLineDash([4, 4]); x.lineWidth = 1;
+  x.beginPath(); x.moveTo(pad.l, py(85)); x.lineTo(W - pad.r, py(85)); x.stroke(); x.setLineDash([]);
+  x.fillStyle = '#5fc08a'; x.textAlign = 'left'; x.fillText('85 %', pad.l + 4, py(85) - 5);
+
+  const smooth = (Td, lag, b) => {
+    const pts = [];
+    for (let tm = 0; tm <= 60; tm += 0.5) {
+      const tt = Math.max(0, tm - lag);
+      pts.push([px(tm), py(100 * (1 - Math.exp(-Math.pow(tt / Td, b))))]);
+    }
+    return pts;
+  };
+  line(F, smooth(6.0, 1.2, 1.3), '#8892a0', 2, [5, 4]);
+  line(F, smooth(r.Td, r.lag, r.b), T_ACC, 2.4);
+
+  [10, 15, 20, 30].forEach(tm => {
+    const v = r.curve.find(c => c.t === tm);
+    x.strokeStyle = 'rgba(220,227,234,.14)';
+    x.beginPath(); x.moveTo(px(tm), pad.t); x.lineTo(px(tm), H - pad.b); x.stroke();
+    dot(F, px(tm), py(v.pct), T_ACC, 4);
+  });
+  x.fillStyle = '#6a7683'; x.textAlign = 'center';
+  x.fillText(LANG === 'zh' ? 'PSG 取樣點' : 'PSG sampling points', px(20), H - pad.b + 28);
+
+  x.textAlign = 'right';
+  x.fillStyle = r.bothFast ? T_OK : (r.f2 >= 50 ? T_OK : T_BAD);
+  x.font = '13px "IBM Plex Mono", monospace';
+  x.fillText(r.bothFast ? (LANG === 'zh' ? 'f2 免除' : 'f2 waived') : 'f2 = ' + r.f2.toFixed(0), W - pad.r - 8, pad.t + 16);
+  x.font = '10px "IBM Plex Mono", monospace';
+  legend(F, [{ c: T_ACC, l: LANG === 'zh' ? '測試品' : 'test' },
+             { c: '#8892a0', l: LANG === 'zh' ? '參考品' : 'reference' }]);
+}
+
+function chHomog(cv, p, r) {
+  const pad = { l: 56, r: 20, t: 30, b: 34 };
+  const F = frame(cv, pad); const { x, W, H } = F;
+  const px = pr => pad.l + (pr - 100) / 1400 * (W - pad.l - pad.r);
+  const py = v => H - pad.b - Math.min(v, 2500) / 2500 * (H - pad.t - pad.b);
+  axes(F, { py, px, hLines: [0, 500, 1000, 1500, 2000, 2500], xTicks: [100, 400, 700, 1000, 1300, 1500],
+    xLabel: LANG === 'zh' ? '均質壓力 bar' : 'homogenising pressure  bar',
+    yLabel: LANG === 'zh' ? '液滴 d₃₂ nm' : 'droplet d₃₂  nm' });
+
+  const real = [], ideal = [];
+  let starveFrom = null;
+  for (let pr = 100; pr <= 1500; pr += 10) {
+    const s = OP_HOMOG.solve({ ...p, pressure: pr });
+    real.push([px(pr), py(s.d32)]);
+    ideal.push([px(pr), py(s.dIdeal)]);
+    if (s.coverage < 1 && starveFrom === null) starveFrom = pr;
+  }
+  if (starveFrom !== null) {
+    x.fillStyle = 'rgba(217,97,79,.10)';
+    x.fillRect(px(starveFrom), pad.t, W - pad.r - px(starveFrom), H - pad.b - pad.t);
+    x.fillStyle = '#d9614f'; x.textAlign = 'left';
+    x.fillText(LANG === 'zh' ? '界面活性劑不足 → 再合併' : 'surfactant-starved → recoalescence',
+      Math.min(px(starveFrom) + 6, W - pad.r - 200), pad.t + 22);
+  }
+  line(F, ideal, 'rgba(136,146,160,.55)', 1.6, [4, 4]);
+  line(F, real, T_ACC, 2.4);
+  dot(F, px(p.pressure), py(r.d32), T_ACC);
+  legend(F, [{ c: T_ACC, l: LANG === 'zh' ? '實際粒徑' : 'actual' },
+             { c: 'rgba(136,146,160,.7)', l: LANG === 'zh' ? '若界面活性劑無限' : 'if surfactant were unlimited' }]);
+}
+
+/* ============================================================================
    6 · VALIDATION + METHOD
    ========================================================================== */
 
@@ -1009,15 +1667,21 @@ function renderAll() {
   renderHero();
   renderWeightUI();
   renderTable();
+  renderCapsule();
   renderTree();
   renderClockControls(); drawClock();
   renderCostControls(); renderCost();
   renderDossier();
   renderProtocolNumbers(); renderSteps(); renderProtocolNumbers(); renderTrouble();
-  renderFbControls(); fbUpdate();
+  renderFbControls();
   renderScenarios(); renderKnobs();
+  renderLabTabs(); showLabStage();
   renderValidation();
   renderMethod();
+  wireDisclosures();
+  $('#mapBtn').textContent = t(UI.map.reopen);
+  markReveals();
+  wireReveals();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1028,10 +1692,28 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   $('#treeReset').onclick = () => { treeNode = PATHWAY_TREE.start; treeTrail = []; renderTree(); };
   $('#batchSize').oninput = renderProtocolNumbers;
+  $('#colToggle').onclick = () => { tableWide = !tableWide; renderTable(); };
+  $('#opReset').onclick = () => {
+    const op = currentOp(); if (!op) return;
+    op.controls.forEach(c => opState[op.id][c.id] = c.def);
+    renderOp();
+  };
   $('#fbReset').onclick = () => { fb = { ...FB_BASE }; activeScenario = null; renderFbControls(); initParticles(); fbUpdate(); renderScenarios(); };
+
+  $('#mapBtn').onclick = () => { const o = $('#mapOverlay'); if (o) o.remove(); openMap(); };
 
   renderAll();
   initParticles();
   animate();
   scrollSpy();
+
+  // nav clicks pulse their destination so you can see where you landed
+  $$('#nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      const target = document.querySelector('#' + a.dataset.sec);
+      if (target) setTimeout(() => pulse(target), 320);
+    });
+  });
+
+  if (localStorage.getItem('loemap') !== 'seen') openMap();
 });

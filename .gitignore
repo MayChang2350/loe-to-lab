@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# editors / tooling
+.Rhistory
+.vscode/
+node_modules/
+package-lock.json
+
+# scratch
+*.log

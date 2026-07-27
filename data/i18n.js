@@ -14,26 +14,35 @@ const UI = {
     pathway:  { en: '2 · Pathway', zh: '2 · 路徑' },
     dossier:  { en: '3 · Dossier', zh: '3 · 產品評估' },
     protocol: { en: '4 · Pilot batch', zh: '4 · 中試批' },
-    fluidbed: { en: '5 · Fluid bed', zh: '5 · 流體床' },
+    fluidbed: { en: '5 · Process lab', zh: '5 · 製程實驗室' },
     validation: { en: '6 · Transfer', zh: '6 · 技術移轉' },
     method:   { en: 'Method & limits', zh: '方法與限制' }
   },
 
   heroLead: {
-    en: 'Six modules that follow one molecule from a line in a patent database to a set of numbers on a fluid-bed control panel. Every step is a decision someone has to make, and every decision has a document behind it.',
-    zh: '六個模組，追隨同一個分子，從專利資料庫裡的一行，一路走到流體床控制面板上的一組數字。每一步都是某個人必須做的決定，而每一個決定背後都有一份文件。'
+    en: 'A medicine loses its patent. Someone else has to be ready to make it. This site follows one molecule through every decision that takes — from a line in a patent database to a number on a machine.',
+    zh: '一款藥失去專利保護，就得有人準備好接手製造。這個網站追隨同一個分子，走過這件事所需的每一個決定——從專利資料庫裡的一行，到機台上的一個數字。'
   },
 
   heroBody: {
     en: [
-      'A CDMO is asked two questions that are usually answered by two different departments and rarely joined up. Business development asks which molecule to start. Technical services asks how to make it. The gap between those questions is where projects are lost: a product is selected on market size and only later discovered to require a clinical endpoint trial, or a process is designed for a formulation whose composition turns out to disqualify the cheap regulatory route.',
-      'This site is my attempt to close that gap in one continuous chain. It starts with twenty-one molecules losing exclusivity between 2026 and 2033, applies a scoring model that treats technical difficulty as both an asset and a liability, and lets you re-weight it. The molecule the model surfaces is then taken all the way down: its regulatory reading, its critical quality attributes, a pilot batch protocol with branching decisions, and a physics engine for the machine that would actually make it.',
-      'Nothing here is proprietary. Every regulatory fact is traceable to a public FDA source with an access date, and every number in the equipment model comes from a published correlation you can check. What is mine is the joining up.'
+      'When a medicine\'s patents expire, other manufacturers are allowed to copy it. Choosing which medicine to copy is a business decision. Actually making it is an engineering one. Those two decisions are usually made by different people who never sit in the same room — and the gap between them is where projects quietly fail.',
+      'So this site closes the gap on a single molecule. It starts with twenty-one medicines losing protection between 2026 and 2033 and ranks them by criteria you can change yourself. Then it follows the winner all the way down: which legal route to file under, what has to be proven, how the first batch is actually made, and what the machines are doing while they make it.',
+      'The machines are the part worth playing with. Seven of them are live — move a slider and real equations decide what comes out, including what goes wrong and what you would see when it does. Nothing here is confidential; every fact links to a public FDA source.'
     ],
     zh: [
-      'CDMO 會被問到兩個問題，而這兩個問題通常由兩個不同的部門回答，且很少被接在一起。業務開發問：該啟動哪一個分子？技術服務問：要怎麼做出來？專案就是在這兩個問題之間的縫隙裡輸掉的：產品依市場規模選定，事後才發現需要臨床終點試驗；或者製程為某個處方設計完成，最後才發現該組成使你失去了便宜的法規路徑。',
-      '這個網站是我嘗試用一條連續的鏈把這道縫隙補起來。它從 2026 至 2033 年間失去專屬權的二十一個分子開始，套用一個「把技術難度同時視為資產與負債」的評分模型，並讓你自行調整權重。模型浮現出來的那個分子，接著被一路帶到底：它的法規解讀、關鍵品質屬性、含分支決策的中試批操作程序，以及真正用來製造它的那台機器的物理引擎。',
-      '這裡沒有任何機密內容。每一項法規事實都可追溯到具查詢日期的公開 FDA 來源，設備模型中的每一個數字都出自可查證的已發表關聯式。屬於我的部分，是把它們接起來。'
+      '當一款藥的專利到期，其他廠商就可以合法地製造它。選哪一款藥來做，是商業決定；真正把它做出來，則是工程問題。這兩個決定通常由從未同桌的兩群人分別做出——而專案就在這道縫隙裡悄悄失敗。',
+      '所以這個網站在單一分子上把這道縫隙補起來。它從 2026 至 2033 年間失去保護的二十一款藥開始，依你可以自行更改的標準排序；接著把勝出的那一個一路帶到底：該依哪一條法規路徑送件、必須證明什麼、第一批要怎麼做出來，以及製造時機器在做什麼。',
+      '機器是最值得玩的部分。有七台是即時運算的——拖動滑桿，真實的方程式決定產出，包括會出什麼錯、以及出錯時你會看到什麼。這裡沒有任何機密內容；每一項事實都連結到公開的 FDA 來源。'
+    ]
+  },
+
+  howToRead: {
+    label: { en: 'How to read this', zh: '如何閱讀' },
+    items: [
+      { t: { en: '3 minutes', zh: '3 分鐘' }, d: { en: 'Skim the six headers below. Each section opens with two sentences.', zh: '瀏覽下方六個標題。每一節都以兩句話開場。' } },
+      { t: { en: '15 minutes', zh: '15 分鐘' }, d: { en: 'Go to the process lab and break something. Every machine tells you what you would see.', zh: '前往製程實驗室，把某個東西弄壞。每台機器都會告訴你，你會看到什麼。' } },
+      { t: { en: '45 minutes', zh: '45 分鐘' }, d: { en: 'Open the "why this matters" panels. That is where the reasoning lives.', zh: '打開「為什麼這重要」面板。推理都在那裡。' } }
     ]
   },
 
@@ -42,7 +51,7 @@ const UI = {
     { n: '02', t: { en: 'Which pathway?', zh: '走哪條路徑？' }, d: { en: '505(b)(1) · 505(b)(2) · ANDA · 351(k)', zh: '505(b)(1) · 505(b)(2) · ANDA · 351(k)' } },
     { n: '03', t: { en: 'What must we prove?', zh: '必須證明什麼？' }, d: { en: 'PSG, Q1/Q2, CQAs, analytical package', zh: 'PSG、Q1/Q2、CQA、分析組合' } },
     { n: '04', t: { en: 'How do we make it?', zh: '要怎麼做出來？' }, d: { en: 'Pilot batch protocol with decision branches', zh: '含決策分支的中試批操作程序' } },
-    { n: '05', t: { en: 'What does the machine do?', zh: '機器在做什麼？' }, d: { en: 'Fluid dynamics, thermodynamics, operating window', zh: '流體力學、熱力學、操作窗口' } },
+    { n: '05', t: { en: 'What do the machines do?', zh: '機器在做什麼？' }, d: { en: 'Seven live simulators — move a slider, watch it break', zh: '七台即時模擬器——拖動滑桿，看它壞掉' } },
     { n: '06', t: { en: 'How do we prove it stays right?', zh: '如何證明它持續正確？' }, d: { en: 'URS → PPQ → CPV, and the transfer gaps', zh: 'URS → PPQ → CPV，以及移轉落差' } }
   ],
 
@@ -132,9 +141,24 @@ const UI = {
     disclaimer: { en: 'Not a validated master batch record. A real MBR is a controlled GMP document with revision control, approvals and signature blocks.', zh: '這不是已驗證的主批次紀錄。真正的 MBR 是具版本控制、核准與簽章欄位的受控 GMP 文件。' }
   },
 
+  /* --- Process lab (tab shell around the seven simulators) --- */
+  lab: {
+    title: { en: 'Process lab', zh: '製程實驗室' },
+    lead: { en: 'Seven machines from the real manufacturing chain, each one live. Move a slider and equations decide what comes out — including what goes wrong, and what you would actually see on the bench when it does.', zh: '真實製造鏈上的七台機器，每一台都是即時運算的。拖動滑桿，方程式決定產出——包括會出什麼錯，以及出錯時你在現場真正會看到什麼。' },
+    pick: { en: 'Pick a machine', zh: '選擇機台' },
+    tryThis: { en: 'Try this', zh: '試試看' },
+    controls: { en: 'Controls', zh: '控制項' },
+    results: { en: 'Results', zh: '結果' },
+    onBench: { en: 'What you would see', zh: '你會看到什麼' },
+    deep: { en: 'Why this matters', zh: '為什麼這重要' },
+    reset: { en: 'Reset', zh: '重設' },
+    chainNote: { en: 'Some outputs feed the next machine. Particle size from the mill, hardness from the press and coating level all reappear as inputs to the dissolution test — which is the point.', zh: '部分輸出會餵給下一台機器。整粒機的粒徑、壓錠機的硬度與包衣量，都會再度出現在溶離試驗的輸入端——這正是重點。' },
+    carry: { en: 'Carried from', zh: '沿用自' }
+  },
+
   /* --- Fluid bed --- */
   fb: {
-    title: { en: 'Fluid bed simulator', zh: '流體床模擬器' },
+    title: { en: 'Fluid bed — Wurster & granulation', zh: '流體床——Wurster 與造粒' },
     lead:  { en: 'A live heat and mass balance with fluidisation mechanics, wired to a cross-section you can watch. Move a control and every number and every particle responds.', zh: '一個即時的熱質平衡模型，結合流化力學，並連動到可觀看的剖面動畫。移動任一控制項，所有數字與所有顆粒都會反應。' },
     mode: { en: 'Configuration', zh: '機台配置' },
     wurster: { en: 'Wurster bottom spray', zh: 'Wurster 底噴' },
@@ -209,8 +233,60 @@ const UI = {
     }
   },
 
+  map: {
+    kicker: { en: 'How a medicine reaches a patient', zh: '一款藥如何走到病人手上' },
+    title: { en: 'Where this project sits', zh: '這個專案的位置' },
+    lead: {
+      en: 'The top row is how a new medicine gets invented — twelve to fifteen years, mostly before anyone can make a copy. The bottom row is what happens once its patents run out, and that is the part this site is about. Pick anywhere to start.',
+      zh: '上排是一款新藥被發明出來的過程——十二到十五年，且幾乎都發生在任何人能製造仿製品之前。下排是它的專利到期之後所發生的事，而這個網站談的正是那一部分。從任何一處開始都可以。'
+    },
+    innovatorLane: { en: 'Innovator · creating the molecule', zh: '原開發廠 · 創造分子' },
+    genericLane: { en: 'CDMO · copying it, once the law allows', zh: 'CDMO · 在法律允許後複製它' },
+    cliff: { en: 'Loss of exclusivity', zh: '專屬權到期' },
+    cliffSub: { en: 'the moment the second row becomes legal', zh: '第二排在此刻成為合法' },
+    notCovered: { en: 'Not covered here', zh: '本站未涵蓋' },
+    covered: { en: 'Click to open', zh: '點擊進入' },
+    skip: { en: 'Skip and read the site', zh: '略過，直接閱讀' },
+    dontShow: { en: "Don't show this again", zh: '不要再顯示' },
+    reopen: { en: 'Map', zh: '地圖' },
+    esc: { en: 'Esc to close', zh: '按 Esc 關閉' },
+    innovator: [
+      { t: { en: 'Discovery', zh: '藥物發現' }, d: { en: 'Find a molecule that|does something useful', zh: '找到一個|有用的分子' } },
+      { t: { en: 'Preclinical', zh: '臨床前' }, d: { en: 'Test it in the lab|and in animals', zh: '在實驗室與|動物身上測試' } },
+      { t: { en: 'Clinical trials', zh: '臨床試驗' }, d: { en: 'Three phases,|thousands of patients', zh: '三個階段，|數千位受試者' } },
+      { t: { en: 'Approval', zh: '核准' }, d: { en: 'The regulator says yes,|and grants exclusivity', zh: '主管機關同意，|並給予專屬權' } },
+      { t: { en: 'Patent life', zh: '專利期' }, d: { en: 'Sole supplier,|protected price', zh: '獨家供應，|價格受保護' } }
+    ]
+  },
+
+  fig: {
+    capTitle: { en: 'What the product actually is', zh: '這個產品實際上是什麼' },
+    pickHint: { en: 'Select any product in the table above to see what it physically is and how that decides the way it gets made.', zh: '點選上方表格中的任一產品，即可看到它實際上的樣子，以及那如何決定它的製造方式。' },
+    howMade: { en: 'How it is made', zh: '如何製造' },
+    whatsHard: { en: 'What makes it hard', zh: '難在哪裡' },
+    unitOps: { en: 'Unit operations', zh: '單元操作' },
+    neutralNote: { en: 'Dosage form drawn accurately; colour and imprint are neutral and not product-specific. Only LINZESS carries verified appearance from its FDA label.', zh: '劑型為精確繪製；顏色與刻字為中性，並非該產品實際外觀。僅 LINZESS 採用其 FDA 標示中經查證的外觀。' },
+    capLead: {
+      en: 'Drawn to the FDA-approved label description: a white to off-white opaque hard gelatin capsule with a grey "FL 145" imprint. Inside are not powder but thousands of tiny spheres, each one carrying a peptide film about two parts per thousand of its own weight.',
+      zh: '依 FDA 核准標示的描述繪製：白色至類白色不透明硬膠囊，印有灰色「FL 145」字樣。裡面裝的不是粉末，而是數千顆微丸，每一顆都帶著一層約佔自身重量千分之二的胜肽薄膜。'
+    },
+    parts: [
+      { t: { en: 'Hard gelatin capsule', zh: '硬明膠膠囊殼' }, d: { en: 'Gelatin and titanium dioxide. Holds the dose and nothing else.', zh: '明膠與二氧化鈦。只負責裝載劑量，別無其他。' } },
+      { t: { en: 'Drug-layered beads', zh: '藥物層積微丸' }, d: { en: 'Roughly 65 mg of them per capsule. Small enough to pass through an 8 French feeding tube.', zh: '每顆膠囊約 65 mg。小到足以通過 8 French 的餵食管。' } },
+      { t: { en: 'Inert cellulose core', zh: '惰性纖維素核心' }, d: { en: '150–300 µm sphere. Carries no drug — it is just something to spray onto.', zh: '150–300 µm 的球體。不含藥物——它只是一個可以被噴附的載體。' } },
+      { t: { en: 'Peptide film', zh: '胜肽薄膜' }, d: { en: '145 micrograms of linaclotide per capsule, spread over thousands of beads. That is 0.22 % by weight.', zh: '每顆膠囊 145 微克的 linaclotide，分佈在數千顆微丸上。以重量計為 0.22 %。' } }
+    ],
+    official: { en: 'Official product photograph on DailyMed', zh: 'DailyMed 上的官方產品照片' },
+    officialUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=09beda19-56d6-4a56-afdc-9a77b70b2ef3',
+    disclaimer: { en: 'Diagram drawn from the label text, not a photograph. Bead structure is schematic.', zh: '本圖依標示文字繪製，非照片。微丸結構為示意圖。' }
+  },
+
   common: {
     source:   { en: 'Source', zh: '來源' },
+    more:     { en: 'Why this matters', zh: '為什麼這重要' },
+    less:     { en: 'Close', zh: '收合' },
+    showAll:  { en: 'Show all columns', zh: '顯示所有欄位' },
+    showLess: { en: 'Simplify table', zh: '簡化表格' },
     sources:  { en: 'Sources', zh: '來源' },
     note:     { en: 'Note', zh: '註' },
     snapshot: { en: 'Data snapshot', zh: '資料快照' },

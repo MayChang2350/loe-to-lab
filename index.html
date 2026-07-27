@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>From Patent Cliff to Pilot Batch — May Chang</title>
-<meta name="description" content="A CDMO decision chain: loss-of-exclusivity screening, FDA regulatory pathway selection, product dossier, pilot batch protocol, and a fluid-bed physics simulator. Technical Services participant project, Bora Pharmaceuticals / TWi, 2026.">
+<meta name="description" content="A medicine loses its patent; someone else has to make it. Seven live process simulators, an FDA pathway engine and a full product dossier, following one molecule end to end. Technical Services participant project, Bora Pharmaceuticals / TWi, 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -24,6 +24,7 @@
       </span>
     </a>
     <nav id="nav"></nav>
+    <button id="mapBtn" class="lang-btn map-btn" aria-label="Open the map"></button>
     <button id="langBtn" class="lang-btn" aria-label="Switch language">
       <span class="lang-on">EN</span><span class="lang-sep">/</span><span class="lang-off">繁中</span>
     </button>
@@ -40,6 +41,7 @@
     <h1 data-t="siteTitle"></h1>
     <p class="lead" data-t="heroLead"></p>
     <div id="heroBody" class="prose"></div>
+    <div id="howToRead" class="howto"></div>
     <div id="chain" class="chain"></div>
   </div>
 </section>
@@ -61,7 +63,10 @@
           <div id="presets" class="chips"></div>
         </div>
         <div id="wSliders"></div>
-        <p class="fine" data-t="scr.barrierNote"></p>
+        <div class="disc" data-disc>
+          <button class="disc-btn" type="button"></button>
+          <div class="disc-body"><p class="fine" data-t="scr.barrierNote"></p></div>
+        </div>
       </aside>
 
       <div class="panel table-panel">
@@ -71,11 +76,27 @@
             <tbody id="molBody"></tbody>
           </table>
         </div>
-        <p class="fine"><span data-t="scr.clickHint"></span> · <span class="warn-txt" data-t="scr.verify"></span></p>
+        <div class="tbl-foot">
+          <span class="fine"><span data-t="scr.clickHint"></span> · <span class="warn-txt" data-t="scr.verify"></span></span>
+          <button id="colToggle" class="btn tiny"></button>
+        </div>
       </div>
     </div>
 
     <div id="molDetail" class="panel detail-panel" hidden></div>
+
+    <div class="panel fig-panel">
+      <div class="fig-head">
+        <h3 data-t="fig.capTitle"></h3>
+        <span id="figWho" class="fig-who"></span>
+      </div>
+      <p class="fine" data-t="fig.pickHint"></p>
+      <div class="fig-grid">
+        <div id="capsuleFig" class="fig-svg"></div>
+        <div id="capsuleParts" class="fig-parts"></div>
+      </div>
+      <p class="fine"><span id="figNote"></span> · <a id="dmLink" href="#" target="_blank" rel="noopener"></a></p>
+    </div>
   </div>
 </section>
 
@@ -125,7 +146,11 @@
 
     <div class="panel">
       <h3 data-t="dd.why"></h3>
-      <div id="ddWhy" class="prose"></div>
+      <div id="ddWhyLead" class="prose"></div>
+      <div class="disc" data-disc>
+        <button class="disc-btn" type="button"></button>
+        <div class="disc-body"><div id="ddWhy" class="prose"></div></div>
+      </div>
     </div>
 
     <div class="panel">
@@ -202,65 +227,115 @@
   </div>
 </section>
 
-<!-- ================= 5. FLUID BED ================= -->
+<!-- ================= 5. PROCESS LAB ================= -->
 <section id="fluidbed" class="sec">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-n">05</span>
-      <h2 data-t="fb.title"></h2>
-      <p class="lead" data-t="fb.lead"></p>
+      <h2 data-t="lab.title"></h2>
+      <p class="lead" data-t="lab.lead"></p>
     </div>
 
-    <div class="sim-grid">
-      <aside class="panel sim-controls">
-        <div class="mode-row">
-          <span class="mini-label" data-t="fb.mode"></span>
-          <div class="chips" id="fbMode"></div>
+    <div class="lab-tabs" id="labTabs"></div>
+
+    <div id="opStage" hidden>
+      <div class="op-head">
+        <div>
+          <h3 id="opName"></h3>
+          <p id="opTagline" class="op-tag"></p>
         </div>
-        <div id="fbSliders"></div>
-        <button id="fbReset" class="btn ghost" data-t="fb.reset"></button>
-      </aside>
+        <button id="opReset" class="btn tiny"></button>
+      </div>
+      <p id="opWhy" class="op-why"></p>
+      <div class="op-try"><b data-t="lab.tryThis"></b><span id="opTry"></span></div>
 
-      <div class="panel sim-stage">
-        <canvas id="fbCanvas" width="560" height="620"></canvas>
-        <div id="fbRegime" class="regime-badge"></div>
+      <div class="op-grid">
+        <aside class="panel op-controls">
+          <h4 data-t="lab.controls"></h4>
+          <div id="opControls"></div>
+        </aside>
+        <div class="panel op-chart">
+          <canvas id="opCanvas" width="720" height="420"></canvas>
+        </div>
       </div>
 
-      <aside class="panel sim-readouts">
-        <h4 data-t="fb.thermo"></h4>
-        <div id="fbThermo" class="readout-grid"></div>
-        <h4 data-t="fb.hydro"></h4>
-        <div id="fbHydro" class="readout-grid"></div>
-        <h4 data-t="fb.quality"></h4>
-        <div id="fbQuality" class="readout-grid"></div>
-        <div id="fbAlerts" class="alerts"></div>
-      </aside>
-    </div>
-
-    <div class="two-col">
       <div class="panel">
-        <h3 data-t="fb.window"></h3>
-        <p class="fine" data-t="fb.windowLead"></p>
-        <canvas id="windowCanvas" width="620" height="380"></canvas>
+        <h4 data-t="lab.results"></h4>
+        <div id="opReadouts" class="readout-grid"></div>
+        <div id="opVerdict" class="bench"></div>
       </div>
+
       <div class="panel">
-        <h3 data-t="fb.scenarios"></h3>
-        <p class="fine" data-t="fb.scenLead"></p>
-        <div id="scenList"></div>
+        <div class="disc" data-disc>
+          <button class="disc-btn" type="button"></button>
+          <div class="disc-body"><div id="opDeep" class="prose"></div></div>
+        </div>
       </div>
     </div>
 
-    <div class="panel">
-      <h3 data-t="fb.knobs"></h3>
-      <div id="knobList" class="stack-list"></div>
+    <div id="fbStage">
+      <div class="op-head">
+        <div>
+          <h3 data-t="fb.title"></h3>
+          <p class="op-tag" data-t="fb.lead"></p>
+        </div>
+        <button id="fbReset" class="btn tiny" data-t="fb.reset"></button>
+      </div>
+
+      <div class="sim-grid">
+        <aside class="panel sim-controls">
+          <div class="mode-row">
+            <span class="mini-label" data-t="fb.mode"></span>
+            <div class="chips" id="fbMode"></div>
+          </div>
+          <div id="fbSliders"></div>
+        </aside>
+
+        <div class="panel sim-stage">
+          <canvas id="fbCanvas" width="560" height="620"></canvas>
+          <div id="fbRegime" class="regime-badge"></div>
+        </div>
+
+        <aside class="panel sim-readouts">
+          <h4 data-t="fb.thermo"></h4>
+          <div id="fbThermo" class="readout-grid"></div>
+          <h4 data-t="fb.hydro"></h4>
+          <div id="fbHydro" class="readout-grid"></div>
+          <h4 data-t="fb.quality"></h4>
+          <div id="fbQuality" class="readout-grid"></div>
+          <div id="fbAlerts" class="alerts"></div>
+        </aside>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3 data-t="fb.window"></h3>
+          <p class="fine" data-t="fb.windowLead"></p>
+          <canvas id="windowCanvas" width="620" height="380"></canvas>
+        </div>
+        <div class="panel">
+          <h3 data-t="fb.scenarios"></h3>
+          <p class="fine" data-t="fb.scenLead"></p>
+          <div id="scenList"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="disc" data-disc>
+          <button class="disc-btn" type="button"></button>
+          <div class="disc-body">
+            <h4 data-t="fb.knobs"></h4>
+            <div id="knobList" class="stack-list"></div>
+            <h4 class="spaced" data-t="fb.principles"></h4>
+            <div id="principleList" class="prin-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="fine" data-t="fb.modelNote"></p>
     </div>
 
-    <div class="panel">
-      <h3 data-t="fb.principles"></h3>
-      <div id="principleList" class="prin-list"></div>
-    </div>
-
-    <p class="fine" data-t="fb.modelNote"></p>
+    <p class="fine" data-t="lab.chainNote"></p>
   </div>
 </section>
 
@@ -319,11 +394,14 @@
 </footer>
 
 <script src="data/i18n.js"></script>
+<script src="data/dosageforms.js"></script>
+<script src="assets/forms.js"></script>
 <script src="data/molecules.js"></script>
 <script src="data/pathway.js"></script>
 <script src="data/deepdive.js"></script>
 <script src="data/protocol.js"></script>
 <script src="data/fluidbed.js"></script>
+<script src="data/unitops.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

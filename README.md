@@ -2,7 +2,7 @@
 
 A CDMO decision chain, end to end — built as the closing project of the Technical Services participant programme at Bora Pharmaceuticals / TWi, summer 2026.
 
-**Live:** `https://<your-github-username>.github.io/loe-to-lab/`
+**Live:** https://maychang2350.github.io/loe-to-lab/
 
 ---
 
@@ -18,10 +18,26 @@ This site closes that gap in one continuous chain, on one molecule, from a line 
 | 02 | **Pathway engine** | A four-question decision tree across 505(b)(1) / 505(b)(2) / ANDA 505(j) / 351(k), plus an exclusivity-and-entry clock and a programme-economics model built on FY2026 statutory user fees. |
 | 03 | **Product dossier** | Linaclotide (LINZESS, NDA 202811): regulatory reading, QTPP, formulation design target, CQA register, analytical package, phased development plan with gates. |
 | 04 | **Pilot batch coach** | A step-by-step Wurster drug-layering protocol whose quantities recalculate from batch size, with parameter rationales, in-process controls, decision branches, and a troubleshooting engine that ends each entry with the instinctive move that makes things worse. |
-| 05 | **Fluid-bed simulator** | A live heat-and-mass balance with fluidisation mechanics, wired to an animated cross-section. Move a control and every number and every particle responds. Includes an operating-window map and four graded training scenarios. |
+| 05 | **Process lab** | Seven live machines from the real manufacturing chain. Move a slider and equations decide what comes out — including what goes wrong and what you would see on the bench when it does. |
 | 06 | **Transfer & validation** | URS → DQ → FAT/SAT → IQ/OQ/PQ → PPQ → CPV, plus a seven-point gap assessment for technology transfer. |
 
 Fully bilingual (English / 繁體中文) with a single toggle — every panel, every rationale, every alert.
+
+### Navigation
+
+The site opens on a **map** of how a medicine reaches a patient: the innovator's twelve-to-fifteen-year chain along the top, the loss-of-exclusivity junction in the middle, and the six modules of this project along the bottom. Click any module to jump into it, or skip past and read normally. The map is reachable again from the header at any time.
+
+It is injected by JavaScript over the finished page rather than being part of the markup, so search engines and anyone without JavaScript get the whole site with no gate — and if that code ever breaks, the site still works. Esc, the skip link and the backdrop all close it, and the choice can be remembered.
+
+### Product figures
+
+Selecting any of the 21 products draws its actual dosage form. Eleven distinct builders cover hard capsules, drug-layered beads, delayed-release pellets, film-coated tablets, osmotic and matrix extended-release tablets, softgels, ophthalmic emulsions, nanocrystal suspensions, oral solutions and sterile vials — each alongside how that form is made, what makes it hard, and the unit operations it needs.
+
+**Only LINZESS carries verified appearance** (white to off-white opaque hard gelatin capsule, grey "FL 145" imprint), because that is the one product whose label text was checked directly. Every other figure draws the correct *structure* in neutral colours with no invented imprint, says so on the figure, and links to the official DailyMed photograph. Colour and debossing are product-specific facts and are not guessed here.
+
+### Motion
+
+Scroll reveals, an animated map, staggered prose and a pulse on the section you land in. Everything is under 300 ms and the whole layer switches off for anyone whose system asks for `prefers-reduced-motion`.
 
 ---
 
@@ -54,9 +70,13 @@ python3 -m http.server 8000
 
 ### Deploying to GitHub Pages
 
-1. Create a repository (e.g. `loe-to-lab`) and push this folder to the default branch.
+`index.html` sits at the repository root, so Pages serves it directly.
+
+1. Push to the default branch: `git push`
 2. **Settings → Pages → Build and deployment → Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
-3. The site appears at `https://<username>.github.io/loe-to-lab/`.
+3. The site appears at https://maychang2350.github.io/loe-to-lab/ within a minute or two.
+
+If you ever move the files into a subfolder again, the site moves with them — Pages serves whatever is at the root of the branch, so `index.html` has to stay here.
 
 Because the scripts are plain `<script>` tags rather than ES modules, the page also works when opened straight from the filesystem — useful for offline demos.
 
@@ -73,8 +93,12 @@ data/molecules.js     LOE screening dataset + scoring model
 data/pathway.js       route decision tree, exclusivity catalogue, fee & erosion model
 data/deepdive.js      linaclotide dossier
 data/protocol.js      pilot batch protocol + troubleshooting engine
-data/fluidbed.js      physics engine, knob dictionary, scenarios, validation content
+data/fluidbed.js      fluid-bed physics, knob dictionary, scenarios, validation content
+data/unitops.js       six unit-operation models, controls, verdicts and teaching notes
+data/dosageforms.js   what each product physically is, and why the form decides how it is made
+assets/forms.js       eleven dosage-form drawings
 tools/domshim.js      minimal DOM shim (testing only)
+tools/test-models.js  physics + figure geometry tests
 tools/test-render.js  headless render + interaction test
 DATA_SOURCES.md       evidence log
 ```
@@ -82,16 +106,42 @@ DATA_SOURCES.md       evidence log
 ### Tests
 
 ```bash
-node tools/test-render.js
+node tools/test-models.js    # 164 checks — physics and figure geometry
+node tools/test-render.js    # 153 checks — rendering and interaction
 ```
 
-Loads the real page and the real application code against a minimal DOM shim, then checks every module renders, the language toggle round-trips, the interactions fire, and that no `undefined`, `NaN` or `[object Object]` reaches the screen in either language.
+`test-models.js` checks every model against literature values (minimum fluidisation and terminal velocity for a 250 µm sphere, compaction pressure at a given force and punch size, droplet size at a given homogenising pressure) and then verifies the *direction* of every response — more force gives a stronger and slower tablet, faster rotor gives smaller particles and more fines, a surfactant-starved emulsion does not improve with pressure. It also confirms every verdict is reachable, bilingual, and free of `NaN`.
+
+`test-models.js` also audits the figures geometrically: every drawing must be well-formed, carry no dangling clip-path reference, contain no truncated text, and keep every label inside the canvas once group transforms are applied. That last check is transform-aware, because two labels legitimately live at `x="0"` inside a translated group.
+
+`test-render.js` loads the real page and the real application code against a minimal DOM shim, then checks every module renders, all seven simulators swap and respond, all 21 product figures draw cleanly, the map opens with every node pointing at a real section, the language toggle round-trips, and that no `undefined`, `NaN` or `[object Object]` reaches the screen in either language.
 
 ---
 
-## The physics engine
+## The process lab
 
-`data/fluidbed.js` is a lumped first-principles model, not CFD. Every correlation is published and checkable:
+Seven machines, each with its own model, its own chart, and a plain-language verdict that tells you what you would actually see if you ran those settings.
+
+| Machine | What you control | What breaks |
+|---|---|---|
+| **Fluid bed** (Wurster + top spray) | Air volume, inlet temperature, dew point, spray rate, atomisation, Wurster gap, load, solids | Over-wetting, spray drying, stalled circulation, elutriation |
+| **Milling & particle size** | Screen aperture, rotor speed, feed rate, granule friability | Fines that will not flow, oversize bypass, wide-span segregation |
+| **Blending & lubrication** | Blend time, speed, fill level, magnesium stearate, size mismatch | Under-mixing, re-segregation, over-lubrication |
+| **Tablet compression** | Compression force, pre-compression, turret speed, weight, punch size, moisture | Capping, friability, over-hard tablets that never disintegrate |
+| **Film coating** | Spray rate per gun, air temperature and volume, pan speed, atomisation, target gain, load, solids | Sticking, twinning, orange peel, edge erosion |
+| **Dissolution testing** | Apparatus, rpm, medium, pH dependence, plus particle size, hardness and coating carried over | f2 failure, and the f2 validity rule most people get wrong |
+| **Homogenisation** | Pressure, passes, oil phase, surfactant, temperature | Surfactant starvation, where more pressure makes it worse |
+
+Three of the operations deliberately share variables. Particle size from the mill, tablet strength from the press and coating level from the coater all reappear as inputs to the dissolution test — so a decision made in one machine shows up as a regulatory result in another. That is the argument of the whole site, made operable.
+
+Two failure modes are worth finding on purpose:
+
+- **Blending** is the only operation here whose objective function is not monotonic. Uniformity improves, then over-lubrication quietly destroys the tablet. There is a usable window and the chart shades it.
+- **Homogenisation** has a turning point. Below a certain surfactant level, extra pressure creates interface faster than the surfactant can stabilise it, and the droplets get *bigger*. The chart shows the ideal curve alongside the real one so you can see them separate.
+
+## The physics engines
+
+`data/fluidbed.js` and `data/unitops.js` are lumped first-principles models, not CFD. Every correlation is published and checkable:
 
 | Quantity | Correlation |
 |---|---|
@@ -102,6 +152,12 @@ Loads the real page and the real application code against a minimal DOM shim, th
 | Moist-air enthalpy, humidity ratio | Standard psychrometrics |
 | Droplet Sauter mean diameter | Empirical, from air-to-liquid mass ratio |
 | Coating uniformity | Variance ∝ 1/√N over N passes through the spray zone |
+| Particle size distribution | Log-normal, truncated at the screen aperture |
+| Compaction | Exponential porosity decay under pressure; Ryshkewitch strength–porosity |
+| Tablet hardness | Fell–Newton, from tensile strength and tablet geometry |
+| Dissolution | Weibull release with lag; f2 per the FDA similarity rule and its validity condition |
+| Emulsion droplet size | Energy scaling with a surfactant-coverage floor on interfacial area |
+| Creaming | Stokes settling |
 
 Spot values against literature (250 µm sphere, ρ = 1400 kg/m³, air at 45 °C): U<sub>mf</sub> = 0.027 m/s, U<sub>t</sub> = 1.27 m/s. Regime classification is deliberately different between Wurster and top-spray configurations, because superficial velocity over the whole distributor plate means completely different things in each.
 

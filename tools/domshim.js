@@ -21,7 +21,8 @@ class El {
   constructor(tag) {
     this.tagName = (tag || 'div').toUpperCase();
     this.className = ''; this.children = []; this.parent = null;
-    this._text = ''; this.attrs = {}; this.dataset = {}; this.style = {};
+    this._text = ''; this.attrs = {}; this.dataset = {};
+    this.style = { _p: {}, setProperty(k, v) { this._p[k] = v; }, getPropertyValue(k) { return this._p[k] || ''; } };
     this.classList = new ClassList(this);
     this._listeners = {}; this._uid = ++UID;
   }
@@ -29,6 +30,13 @@ class El {
   set id(v) { this.attrs.id = v; }
   get value() { return this.attrs.value; }
   set value(v) { this.attrs.value = String(v); }
+  // properties that browsers reflect into attributes
+  get href() { return this.attrs.href; }   set href(v) { this.attrs.href = String(v); }
+  get src() { return this.attrs.src; }     set src(v) { this.attrs.src = String(v); }
+  get type() { return this.attrs.type; }   set type(v) { this.attrs.type = String(v); }
+  get min() { return this.attrs.min; }     set min(v) { this.attrs.min = String(v); }
+  get max() { return this.attrs.max; }     set max(v) { this.attrs.max = String(v); }
+  get step() { return this.attrs.step; }   set step(v) { this.attrs.step = String(v); }
   get checked() { return !!this.attrs.checked; }
   set checked(v) { this.attrs.checked = !!v; }
   get hidden() { return !!this.attrs.hidden; }
@@ -86,8 +94,16 @@ function parseInto(root, str) {
     const tag = m[1].toLowerCase();
     if (m[0][1] === '/') { if (stack.length > 1) stack.pop(); continue; }
     const e = new El(tag);
-    const attrRe = /([a-zA-Z0-9_-]+)\s*=\s*"([^"]*)"/g; let a;
+    // value-bearing attributes, then bare boolean attributes (data-disc, hidden)
+    const attrRe = /([a-zA-Z0-9_:-]+)\s*=\s*"([^"]*)"/g; let a;
     while ((a = attrRe.exec(m[2]))) e.setAttribute(a[1], a[2]);
+    const bareRe = /(^|\s)([a-zA-Z][a-zA-Z0-9_:-]*)(?=\s|$)/g; let bm;
+    while ((bm = bareRe.exec(m[2]))) {
+      const nm = bm[2];
+      if (e.getAttribute(nm) === undefined && e.dataset[nm.replace(/^data-/, '')] === undefined) {
+        e.setAttribute(nm, '');
+      }
+    }
     const parent = stack[stack.length - 1];
     parent.appendChild(e);
     if (!(VOID.has(tag) || /\/>$/.test(m[0]))) stack.push(e);
@@ -125,6 +141,14 @@ function matchOne(el, part) {
 function walk(node, fn) { node.children.forEach(c => { fn(c); walk(c, fn); }); }
 
 function query(root, sel) {
+  // selector lists: "a, b, c" — match any, preserving document order
+  if (sel.includes(',')) {
+    const hit = new Set();
+    sel.split(',').forEach(s => query(root, s.trim()).forEach(n => hit.add(n)));
+    const out = [];
+    walk(root, c => { if (hit.has(c)) out.push(c); });
+    return out;
+  }
   const parts = sel.trim().split(/\s+/);
   let level = [root];
   parts.forEach(p => {
