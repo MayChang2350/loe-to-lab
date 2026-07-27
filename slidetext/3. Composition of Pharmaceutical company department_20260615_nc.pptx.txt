@@ -1,0 +1,521 @@
+=== 3. Composition of Pharmaceutical company department_20260615_nc.pptx (30 slides) ===
+--- slide 1 ---
+藥品公司部門組成與職涯方向
+整理補充版｜Pharmaceutical Company Departments & Career Paths
+從藥品生命週期、部門職責、跨部門協作到職涯選擇，建立一張可用於求職與內部溝通的全景圖。
+1
+--- slide 2 ---
+PHARMA VALUE CHAIN
+藥品價值鏈：從實驗室到上市後
+資料來源：FDA Drug Development Process；ICH Q10 Pharmaceutical Quality System。
+Discovery
+探索與候選藥物
+R&D / IP
+Preclinical
+非臨床研究
+R&D / Toxicology
+Clinical
+臨床試驗
+Clinical / DM / Biostat
+Regulatory Review
+審查與上市
+RA / CMC / QA
+Commercial
+量產與市場
+MFG / QA / Commercial
+Post-market
+上市後監測
+PV / Medical / PLM
+關鍵觀念
+藥品公司不是依單一部門運轉，而是圍繞「產品生命週期」分工。不同公司類型會把資源集中在不同環節。
+ICH Q10 對應
+PQS 覆蓋 pharmaceutical development、technology transfer、commercial manufacturing 與 product discontinuation；因此 CMC、QA、製造與 RA 是跨生命週期角色。
+2
+--- slide 3 ---
+INDUSTRY CONTEXT
+公司類型會改變部門比重
+公司類型
+通常較關鍵的部門與能力
+原廠藥 / Biopharma
+Discovery、臨床開發、醫學事務、IP、Global RA、Market Access
+學名藥 / Specialty Pharma
+CMC、BE/臨床、RA、QA、製造、供應鏈、商務開發
+原料藥 / API
+Process Chemistry、製程放大、EHS、QC、製造、供應鏈
+CDMO / CMO
+Tech Transfer、Validation、PMO、QA、客戶管理、製造效率
+補充
+同一個職稱在不同公司可能很不同。例如 RA 在原廠藥偏全球策略與臨床審查；在學名藥偏 CTD/ANDA/BE 與變更管理；在 CDMO 則更常支援客戶案與查廠。
+3
+--- slide 4 ---
+ORGANIZATION MAP
+藥廠部門地圖：核心技術 × 商業化 × 支援治理
+產品生命週期
+Product Lifecycle
+研發與證據
+R&D
+Clinical
+Biostat / DM
+技術與供應
+CMC
+MFG / Production
+SCM
+品質與合規
+QA / QC / QS
+RA
+PV
+商務與治理
+Commercial / BD
+PMO
+Corporate / EHS
+閱讀部門時，先判斷該角色是「創造產品、證明產品、製造產品、維持合規、賣出產品」中的哪一種價值。
+4
+--- slide 5 ---
+CORE FUNCTION
+R&D：從候選藥物到可開發產品
+核心任務
+Drug Discovery
+靶點研究、文獻與實驗、候選化合物篩選。
+Analytical Development
+建立原料藥與製劑檢驗方法，支援規格與穩定性。
+Formulation Development
+劑型設計、溶出、穩定性、生體可用率與製程可行性。
+Clinical Development
+臨床策略、試驗設計、醫學與營運執行。
+職涯入口
+藥學、化學、生物、藥劑學、分析化學；若想走臨床研發，GCP、protocol、醫學寫作與跨部門溝通是加分能力。
+5
+--- slide 6 ---
+BRIDGE FUNCTION
+CMC / 技術移轉：把可行處方變成可生產產品
+R&D
+處方 / 方法 / 初步製程
+CMC / Tech Transfer
+CTD Module 3
+製程風險評估
+製程驗證策略
+穩定性與規格
+變更控制
+Manufacturing
+商業化量產 / 查廠
+補充定位
+CMC 通常是技術與法規交界單位，尤其在學名藥、CDMO、技轉與上市後變更中非常關鍵。
+6
+--- slide 7 ---
+OPERATIONS
+製造、生產與供應鏈：把設計轉為穩定批次
+子功能
+主要工作
+製造 / 生產
+依 GMP 執行製程、批次紀錄、包裝與線上異常處理。
+Validation / Engineering
+設備、清潔、製程與電腦化系統驗證；維護產線可靠性。
+Supply Chain / Procurement
+物料規劃、供應商管理、庫存與交期；與 QA/QC/Production 協調。
+Warehouse / Logistics
+收貨、倉儲、溫控、出貨與批次追溯。
+職涯特性
+現場導向、時程壓力高、需強流程紀律。適合喜歡工程、改善、跨班別協調與解決問題的人。
+7
+--- slide 8 ---
+QUALITY
+品質部：QA、QC、QS 的差異
+角色
+核心價值
+常見交付物
+QA 品保
+品質系統執行與審查
+批次紀錄、偏差、CAPA、變更、稽核、放行審查
+QC 品管
+檢驗與數據產出
+原料 / 中間品 / 成品檢驗、儀器校正、OOS/OOT
+QS 品質系統
+制度與全球品質治理
+文件系統、內外部稽核、供應商品質、管理審查
+補充
+QA ≠ QC。QC 產生檢驗數據，QA 確保流程與資料可被信任；QS 則偏制度建置與稽核治理，在大型跨國公司或多廠區公司更常見。
+8
+--- slide 9 ---
+REGULATORY AFFAIRS
+RA：產品合規與上市路徑的設計者
+工作模組
+典型內容
+送件策略
+IND、ANDA、NDA、BLA、MAA；選擇法規路徑與資料橋接策略。
+文件整合
+CTD Module 1–5、標籤、回覆審查意見、承諾事項追蹤。
+法規情報
+追蹤 FDA / EMA / PMDA / TFDA 與 ICH 指引更新，轉換為內部需求。
+上市後維護
+變更、年報、renewal、site / process / labeling update。
+RA 的高階價值在於：不只是「寫文件」，而是把技術、臨床、品質與商業目標轉譯成可被主管機關接受的策略。
+9
+--- slide 10 ---
+CLINICAL DEVELOPMENT
+Clinical / Biostat / Data Management：臨床證據產出鏈
+Protocol
+試驗設計
+Clinical + Medical
+Site & Subject
+收案執行
+Clinical Ops / CRA
+EDC / CRF
+資料收集
+Data Management
+SAP / TLF
+統計分析
+Biostatistics
+CSR / Dossier
+報告送件
+Medical Writing + RA
+DM / Biostat 補充定位
+DM 建立可分析、可追溯的資料庫；Biostat 確保試驗設計與分析有統計合理性。兩者共同影響 CSR、NDA/ANDA 與醫學論文可信度。
+10
+--- slide 11 ---
+MEDICAL & SAFETY
+Medical Affairs / PV：上市後科學溝通與安全監測
+子功能
+主要工作
+Medical Affairs
+醫學資訊、學術簡報、KOL 溝通、醫師教育、醫學策略支援。
+MSL
+與臨床醫師 / KOL 進行非促銷性科學交流，回饋臨床洞察。
+Pharmacovigilance
+AE / SAE 收集通報、signal detection、RMP、PSUR/PADER。
+Risk Management
+風險最小化措施、上市後安全承諾、標籤與溝通策略。
+職涯特性
+適合具臨床 / 藥學 / 醫學背景且擅長科學溝通者。高階職務需能在臨床證據、法規限制與市場需求間取得平衡。
+11
+--- slide 12 ---
+COMMERCIALIZATION
+Commercial / BD / Market Access：把產品價值轉換為市場策略
+子功能
+主要工作
+Marketing / Sales
+產品定位、上市計畫、醫師與通路溝通、競品分析。
+Business Development
+授權、共同開發、M&A、國際合作與商務評估。
+Market Access / HEOR
+支付者價值、藥價、給付、成本效益與真實世界證據。
+Product Management
+產品生命週期、適應症擴充、包裝 / 標籤 / 市場資料追蹤。
+補充：Market Access 與 HEOR 在原廠藥與高價產品中特別重要，因為「核准上市」不等於「能被支付與廣泛使用」。
+12
+--- slide 13 ---
+ENABLING FUNCTIONS
+PMO / Corporate / Procurement / EHS：讓組織能持續運作
+部門
+主要價值
+PMO
+專案時程、里程碑、資源、風險、跨部門會議與高層報告。
+Corporate Functions
+HR、Finance、Legal、Compliance，維持組織治理與營運效率。
+Procurement
+供應商、請購、進貨、成本、品質與交期協調。
+EHS
+化學品 / 設備安全、廢棄物、排放、職業健康、事故調查。
+補充
+支援部門不是「後勤而已」。在 GMP 產業中，HR 的訓練、Finance 的預算、Legal 的合約、EHS 的暴露控制，都會直接影響產品品質與專案可行性。
+13
+--- slide 14 ---
+LARGE PHARMA EXTENSIONS
+大型藥廠補充部門：何時會出現？
+部門
+通常出現的情境
+Legal & IP
+有高研發投入、專利佈局、授權或訴訟風險時。
+Global Regulatory Strategy
+多國同步開發 / 註冊，需要全球資料策略與審查互動。
+Labeling / Packaging Development
+多市場上市、標籤語言與地區法規差異高時。
+Digital / Data Science / AI
+需要資料整合、自動化、AI 藥物發現、臨床與製造優化時。
+Public Affairs / Government Relations
+產品涉及政策、給付、協會或政府溝通時。
+14
+--- slide 15 ---
+CROSS-FUNCTIONAL WORKFLOW
+跨部門流程範例：IND / NDA / ANDA 專案
+流程階段
+主責 / 參與部門
+代表性產出
+策略定義
+RA / Clinical / CMC / BD
+目標市場、法規路徑、產品主張、資料缺口
+資料產出
+R&D / CMC / Clinical / DM / Biostat
+處方、方法、製程、非臨床、臨床、統計分析
+品質確保
+QA / QC / QS / EHS
+GxP、數據完整性、批次、放行、偏差與風險
+送件與審查
+RA / Medical Writing / CMC
+CTD、回覆審查意見、標籤與承諾事項
+上市與維護
+Commercial / Medical / PV / SCM
+上市計畫、醫學溝通、安全監測、供應穩定
+PMO 的價值在於把這些平行工作轉換為可追蹤、可交付、可決策的專案節奏。
+15
+--- slide 16 ---
+CAREER ENTRY MAP
+選部門：依個人背景與工作偏好判斷
+背景
+較容易切入的部門
+藥學 / 化學 / 藥劑
+R&D、Analytical、CMC、RA、QA/QC
+生科 / 醫檢 / 護理
+Clinical、PV、Medical Affairs、QA/QC
+工程 / 化工 / 機械
+Production、Validation、Engineering、EHS、CMC
+統計 / 資工 / 醫資
+Biostat、Data Management、Digital / AI、LIMS / CSV
+商管 / 法律 / 國際
+BD、Marketing、Market Access、Legal / Compliance、PMO
+16
+--- slide 17 ---
+VERTICAL CAREER PATHS
+垂直晉升路徑：從專員到部門負責人
+軌道
+初階
+中階
+高階
+R&D / CMC
+助理研究員 / 工程師
+專案負責人 / 技術移轉 Lead
+技術主管 / Director / VP
+QA / QC
+技術員 / 文件專員
+資深分析師 / QA reviewer
+品質經理 / 品質總監
+RA
+RA 專員
+註冊負責人 / CMC-RA / Global RA
+法規主管 / 藥政顧問
+Clinical / Data
+CRC / CRA / DM / 統計助理
+PM / Lead CRA / Biostat Lead
+Clinical Director / Data Head
+Commercial / BD
+業務 / 行銷助理
+Product Manager / BD Manager
+BU Head / BD VP
+17
+--- slide 18 ---
+LATERAL MOBILITY
+橫向轉職：從專業走向整合
+轉職方向
+關鍵理由 / 補強能力
+R&D → RA / CMC
+懂技術資料，能轉譯成法規與技轉文件。
+QA/QC → PV / RA / QS
+熟悉紀錄、偏差、品質風險與合規邏輯。
+RA → PMO / BD
+理解上市路徑，可管理時程與評估市場進入策略。
+Production → CMC / Validation
+熟悉現場製程，能處理放大、驗證與技術問題。
+Biostat / DM → Clinical PM / Digital
+理解試驗資料與分析，可支援臨床策略與數位化。
+Marketing → MSL / Medical
+需補臨床與科學深度，強項在溝通與需求理解。
+18
+--- slide 19 ---
+CAREER SKILL MATRIX
+T 型職涯能力矩陣
+橫向能力：跨部門理解、英文簡報、專案管理、法規與品質基本語言、商務敏感度
+垂直專業
+例：製劑 / 分析 / RA / QA / 臨床 / 統計 / 商務開發
+早期
+先建立一個能被市場辨識的硬技能。
+中期
+參與跨部門專案，累積溝通與決策經驗。
+長期
+從功能主管走向產品線、BU 或區域負責人。
+19
+--- slide 20 ---
+CERTIFICATIONS
+證照與課程建議：依職涯方向選擇
+方向
+建議補強
+RA / CMC
+RAC、ICH 指南、CTD/Module 3、英文技術寫作
+Quality / Manufacturing
+GMP、GDP、CSV、Data Integrity、ISO、Validation
+Clinical / PV
+GCP、臨床試驗管理、MedDRA、PV/RMP、醫學寫作
+PMO / BD
+PMP、Agile、財務模型、市場分析、授權談判
+Digital / Data
+SAS/R/Python、EDC、LIMS、CSV、AI/ML 基礎
+20
+--- slide 21 ---
+COMPENSATION LOGIC
+薪資判讀：不要只看部門，要看價值槓桿
+薪資區間依公司規模、職級、國家、獎金 / RSU、是否管理職與年度景氣不同而變動。
+薪資驅動因素
+說明
+稀缺性
+醫學、法務 / IP、Global RA、BD、資料科學等具高稀缺性者溢價較明顯。
+風險責任
+涉及審查、查廠、病人安全、重大合約或上市責任，薪資通常較高。
+國際性
+跨國送件、海外客戶、授權合作與英語溝通能力會放大職涯上限。
+組織規模
+大型原廠藥與跨國 CDMO 的薪酬結構，通常高於小型本土製造廠。
+21
+--- slide 22 ---
+TAIWAN PUBLIC SALARY DATA
+六家台灣藥廠：2025 全體員工平均年薪比較
+資料來源：Goodinfo 股價行情概況頁；單位：新台幣萬元 / 人 / 年。
+6446 藥華藥
+287.7 萬
+6472 保瑞
+158.6 萬
+4114 健喬
+127.6 萬
+1795 美時
+113.8 萬
+1720 生達
+83.8 萬
+4747 強生
+79.8 萬
+判讀提醒
+全體員工平均年薪可反映公司整體薪酬費用；但包含主管、一般員工與不同人力結構，不能直接代表一般職涯起薪或中位數。
+23
+--- slide 23 ---
+23
+TAIWAN PUBLIC SALARY DATA
+平均年薪 vs 非主管平均年薪：六家公司比較
+截至 2026/06/18，2025「非主管職員工每人平均薪資」尚未揭露；下表列 2025 全體員工平均與 2024 非主管最新可用值。
+公司 | 2025 全體員工
+平均年薪 | 2025 非主管
+平均年薪 | 2024 非主管
+平均年薪 | 判讀
+6446 藥華藥 | 287.7 萬 | 尚未揭露 | 119.0 萬 | 全體平均最高；非主管2024略高於健喬
+6472 保瑞 | 158.6 萬 | 尚未揭露 | 81.5 萬 | 全體平均第二；與非主管口徑不可直接比較
+4114 健喬 | 127.6 萬 | 尚未揭露 | 118.7 萬 | 全體平均第三；非主管2024接近藥華藥
+1795 美時 | 113.8 萬 | 尚未揭露 | 110.3 萬 | 非主管平均接近全體平均，需待2025確認
+1720 生達 | 83.8 萬 | 尚未揭露 | 89.8 萬 | 成熟本土藥廠；非主管最新值高於全體平均
+4747 強生 | 79.8 萬 | 尚未揭露 | 75.1 萬 | 小型本土藥廠，薪資水準相對保守
+重要口徑差異
+「全體員工平均」源自財報附註薪資費用；「非主管全時員工」排除經理人與部分工時人員，且 2025 年資料依公開資訊觀測站時程通常於 6 月底揭露。
+資料來源：Goodinfo；公開資訊觀測站 t100sb14 / t100sb15 定義與揭露時程。單位：新台幣萬元 / 人 / 年。
+24
+--- slide 24 ---
+24
+US TOP PHARMA R&D SALARY
+美國前五大藥廠：R&D Scientist / Principal Scientist 薪資參考
+以 2025 藥品 / 疫苗銷售額之美國總部公司排序；薪資為美國公開職缺 base pay 或薪資資料庫估計值，非公司全體 R&D 平均薪資。
+US
+Rank | 公司 | 2025
+藥品營收 | 代表職級 / 口徑 | USD k
+/ 年 | 約 NTD 萬
+/ 年 | 判讀
+1 | Eli Lilly | $65.20B | Research Scientist
+平均估計值 | 183.2 | 579 | GLP-1 / obesity 產品帶動成長，R&D人才競爭強
+2 | Pfizer | $62.58B | Research Scientist
+平均估計值 | 130.1 | 411 | 不同資料庫差異大；Senior Scientist total pay 可更高
+3 | AbbVie | $61.16B | Principal / Sr. Principal
+公開職缺 base pay | 124.5–305.0 | 393–964 | R&D公開職缺級距寬，含資料科學與研發策略職
+4 | J&J Innovative Medicine | $60.40B | Principal / Sr. Principal
+公開職缺 base pay | 117.0–235.8 | 370–745 | 正式職缺列明 bonus / LTI eligibility
+5 | Merck & Co. | $58.14B | Senior Scientist
+公開職缺 base pay | 117.0–206.8 | 370–654 | 依職務與地點，Senior Scientist base pay 約 12–21 萬美元
+美國大藥廠 R&D 常見基準
+Senior / Principal Scientist 約 US$117k–236k base pay
+折合約 NT$370–745 萬 / 年；高階或資料科學職可更高。
+與台灣公開薪資不可直接比
+台灣為公司平均；美國為職缺 / 職級薪資
+須同時校正職等、地點、bonus、RSU/LTI 與生活成本。
+資料來源：GetReskilled 2026 ranking；AbbVie / J&J / Merck careers 公開職缺；ZipRecruiter / Glassdoor 薪資資料庫。匯率以 1 USD ≈ NT$31.6 估算。
+25
+--- slide 25 ---
+CASE STUDY
+保瑞 Technical Development Participant Program：整理版
+資料來源：原簡報整理之 104 職缺內容。
+培育方向
+工作內容摘要
+可能職涯出口
+Technical Services
+產品技轉文件、製程 / 包裝驗證、技術評估、異常調查支援。
+CMC、Validation、Tech Transfer、製造支援
+MFG
+日常生產協調、GMP 現場執行、安全 / 品質 / 效率改善。
+Production、Manufacturing Excellence、Line Lead
+QA
+品質系統維護、內部稽核、主管機關查廠、供應商品質管理。
+QA、QS、Audit、Supplier Quality
+定位：偏「廠端技術與品質管理」的人才養成，不是純研究型 R&D；適合想從現場與技術移轉累積製藥核心能力者。
+25
+--- slide 26 ---
+CASE STUDY
+保瑞培育計畫：應補強的能力
+能力
+具體內容
+GMP / Data Integrity
+批次紀錄、偏差、CAPA、ALCOA+、查廠基本概念。
+製程與驗證
+製程流程、製程驗證、清潔驗證、包裝驗證、設備概念。
+跨部門溝通
+Production、QA、QC、CMC、Supply Chain 間的需求轉譯。
+技術文件撰寫
+SOP、protocol、report、investigation memo、change control。
+問題解決
+Root Cause Analysis、風險評估、CAPA 有效性確認。
+26
+--- slide 27 ---
+TAKEAWAYS
+結論：如何安排下一步
+1
+先定義想累積的核心專業：技術、品質、法規、臨床、數據或商務。
+2
+判斷目標公司類型：原廠藥、學名藥、API、CDMO 的部門權重不同。
+3
+用職缺 JD 反推真實工作，不只看部門名稱。
+4
+累積一項硬技能，再用 PM / RA / BD / Medical 等角色擴大橫向影響力。
+一句話總結
+藥廠職涯的核心不是「選一個部門」；而是選擇你要在產品生命週期中負責哪一種價值。
+27
+--- slide 28 ---
+APPENDIX
+常見縮寫與交付物對照
+縮寫
+英文
+用途
+IND
+Investigational New Drug
+臨床試驗啟動前申請
+NDA / BLA / ANDA
+New Drug / Biologics / Generic
+上市申請類型
+CTD Module 3
+Quality / CMC
+品質與製造管制文件
+SAP / TLF
+Statistical Analysis Plan / Tables, Listings, Figures
+統計分析計畫與輸出
+CSR
+Clinical Study Report
+臨床試驗報告
+CAPA / OOS / OOT
+Corrective Action / Out of Specification / Trend
+品質事件與改善
+RMP / PSUR
+Risk Management Plan / Periodic Safety Update Report
+藥品安全與風險管理
+28
+--- slide 29 ---
+Q: Technical Development Participant Program技術人才管理培育計畫
+Technical Development Participant Program技術人才管理培育計畫｜BORA PHARMACEUTICALS CO., LTD._保瑞藥業｜台北市－104 人力銀行
+--- slide 30 ---
+Q: Summarized 工作內容、 職能需求、工作職涯發展
+Technical Development Participant Program
+1. Job Title: Technical Services Development Participant Program 
+Job Summary:  The candidate will support and work with Technical Services team to complete product transfer document preparations, manufacturing/packaging process validation, process validation execution, provide trouble shooting efforts and technical assessments for investigation, and manufacturing operations.
+
+2. Job Title: MFG Development Participant Program 
+Job Summary:   Daily involvement in operations to ensure and effective execution and coordination of production activity under GMP compliances. The candidate will need to explore for safety, quality, and operating improvement opportunities.
+
+3. Job Title:  QA Development Participant Program
+Job Summary:   Support and complete the assigned jobs for maintaining of the quality systems including internal audit, regulatory inspection, and supplier quality management.

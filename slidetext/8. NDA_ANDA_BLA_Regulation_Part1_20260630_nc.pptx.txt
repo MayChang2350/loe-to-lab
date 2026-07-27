@@ -1,0 +1,1050 @@
+=== 8. NDA_ANDA_BLA_Regulation_Part1_20260630_nc.pptx (53 slides) ===
+--- slide 1 ---
+PART 1
+Introduction of NDA / ANDA / BLA Regulation
+法規架構、申請路徑、使用者付費與專屬期基礎
+Reorganized & updated edition · June 2026
+Regulatory Framework · Submission Routes · User Fees · Exclusivity
+For training and strategic discussion; verify current requirements before filing.
+本頁重點｜本冊建立 NDA、ANDA、BLA 的共同語言，先分清法源、路徑、費用與保護工具。
+[NOTES] 本頁重點：本冊建立 NDA、ANDA、BLA 的共同語言，先分清法源、路徑、費用與保護工具。
+備忘稿：開場時先說明這不是單純名詞介紹，而是把 NDA、ANDA、BLA 放在同一個法規決策框架中。提醒聽眾本資料為訓練與策略討論使用，正式送件前要依產品與送件日期重新查核。
+正確性確認：標題與範圍已與本版內容一致；本次新增 BLA 與 FY2026 user fee 資訊，並保留送件前再查核的警語。
+--- slide 2 ---
+ORIENTATION
+本冊定位與學習目標
+1
+讀懂法規層級
+區分法律、子法、指引與個案審查意見，避免把「建議」誤當成「法定要求」。
+2
+選對申請路徑
+以證據所有權、對既有資料的依賴方式與產品差異，判斷 505(b)(1)、505(b)(2)、ANDA 或 BLA。
+3
+拆解費用結構
+分清申請費、年度 program fee、DMF／設施費與技術諮詢費；不要把申請費當成總開發成本。
+4
+建立保護架構
+理解 Orange Book、專利聲明、法規專屬期與 180-day exclusivity 之間的關係。
+上下冊分工
+Part 1 建立共同語言與制度框架；Part 2 進一步拆解 505(b)(1)、505(b)(2)、351(a) BLA、ANDA 開發與美國／台灣專利連結實務。
+更新重點：FDA FY2026 PDUFA／BsUFA／GDUFA 費率、BLA 申請資料包、TFDA 現行收費與專屬期規則校正。
+2
+本頁重點｜學習目標是把產品分類、證據依賴、費用與專屬期串成可用的法規判斷框架。
+[NOTES] 本頁重點：學習目標是把產品分類、證據依賴、費用與專屬期串成可用的法規判斷框架。
+備忘稿：帶學員看五個學習目標：法規層級、路徑、費用、互動機制與市場保護。強調不是背表格，而是能在產品開發早期問對問題。
+正確性確認：學習目標與上下冊分工一致；BLA、BsUFA、TFDA 費用與專屬期均已納入。
+--- slide 3 ---
+ORIENTATION
+課程地圖：從制度到策略
+1
+Regulatory Architecture
+主管機關、法源層級、技術審查與最終決策
+2
+Submission Routes
+NDA／505(b)(2)／ANDA／BLA 的證據與依賴邏輯
+3
+User Fees & Interactions
+PDUFA、BsUFA、GDUFA、TFDA／CDE 費用與諮詢管道
+4
+Protection Architecture
+Hatch-Waxman、Orange Book、專利與法規專屬期
+Part 1：共同制度底座
+回答「誰管、依據什麼、走哪條路、需要付哪些法定費用、可獲得何種法規保護」。
+Part 2：開發與爭議實務
+回答「如何設計 NDA／BLA／ANDA 證據、如何完成送件，以及專利連結／上市限制如何影響策略」。
+3
+本頁重點｜課程順序由制度架構進到申請路徑、費用互動，再到專利與專屬期策略。
+[NOTES] 本頁重點：課程順序由制度架構進到申請路徑、費用互動，再到專利與專屬期策略。
+備忘稿：用這頁設定課程節奏。先把制度地圖建立起來，再談每條送件路徑與商業保護，不要一開始就跳到費用或專利結論。
+正確性確認：章節順序與簡報實際內容一致；無法規數字需特別校正。
+--- slide 4 ---
+01
+全球藥政架構
+Global Regulatory Architecture
+先辨識主管機關、技術審查機構與法源層級，再談申請策略。
+本頁重點｜不同市場的主管機關與法源層級不同，申請策略不可直接照搬。
+[NOTES] 本頁重點：不同市場的主管機關與法源層級不同，申請策略不可直接照搬。
+備忘稿：本頁是轉場頁。說明全球藥政架構的目的不是比較誰比較嚴，而是提醒同一產品在不同市場會面臨不同主管機關、法源與審查節點。
+正確性確認：屬概念性轉場，無特定數字；內容與後續各國比較相符。
+--- slide 5 ---
+GLOBAL REGULATORY ARCHITECTURE
+主要市場的主管機關與核心法源
+Source: FDA, EMA, PMDA, NMPA, TFDA official regulatory portals.
+市場 | 主管／審查體系 | 核心法源（例） | 常見藥品申請語彙
+美國 US | FDA／CDER、CBER | FD&C Act；PHS Act；21 CFR | NDA、505(b)(2)、ANDA、BLA
+歐盟 EU | European Commission／EMA／會員國機關 | Directive 2001/83/EC；Regulation (EC) No 726/2004 | MAA；Centralised／DCP／MRP／National
+日本 JP | MHLW／PMDA | PMD Act；MHLW Ordinances | New Drug Application；Generic Application
+中國 CN | NMPA／CDE | Drug Administration Law；Drug Registration Regulation | NDA；Generic／Consistency Evaluation
+台灣 TW | MOHW／TFDA；CDE 技術審查 | 藥事法；藥品查驗登記審查準則 | 新藥查驗登記；學名藥查驗登記
+閱讀原則
+技術審查機構可提供專業評估，但最終行政決定仍由法定主管機關作成。
+5
+[NOTES] 本頁重點：先確認主管機關、技術審查機構與核心法源，再進入個案送件判斷。
+備忘稿：讀表時請抓三個層次：主管機關、技術審查機構、核心法律。提醒 EMA/CHMP、MHLW/PMDA、TFDA/CDE 的分工不同，不能用一個名稱概括所有審查行為。
+正確性確認：主管機關與核心法源已按官方架構整理；個別國家細節仍需依當地最新公告查核。
+--- slide 6 ---
+GLOBAL REGULATORY ARCHITECTURE
+法規法源層級：同一問題要從上往下讀
+1  法律／Statute
+建立主管權限、申請路徑、專利與專屬期等基本制度。
+2  子法／Regulation
+將法律轉化為可執行的申請、審查、標示、GMP 與程序要求。
+3  指引／Guidance
+反映主管機關目前建議與審查思維；通常可提出科學上合理的替代方案。
+4  個案決定／Advice & Precedent
+會議紀錄、函詢、缺失信、產品特定指引與核准歷史。
+可執行性
+法律與子法通常具直接法定拘束力；指引說明主管機關建議，但不等於唯一可接受方法。
+個案化
+產品特性、既有資料、風險與歷史溝通會改變審查期待；不要只靠一張比較表。
+文件化
+路徑判斷、豁免、橋接與替代方案需在 dossier 中清楚說明法源與科學理由。
+6
+本頁重點｜法律、子法、指引與審查意見的拘束力不同，讀法規要由上而下。
+[NOTES] 本頁重點：法律、子法、指引與審查意見的拘束力不同，讀法規要由上而下。
+備忘稿：強調法律、regulation、guidance 的拘束力不同。遇到實務問題時，先找 statute/regulation 判斷硬性義務，再看 guidance 與審查案例判斷 FDA current thinking。
+正確性確認：法源層級說明與 FDA/TFDA/EMA 等官方用語一致；已避免把 guidance 說成法律。
+--- slide 7 ---
+6
+Regulatory Authority / Legal Hierarchy Structure
+國家 | 主管機關  
+Regulatory Authority | 簡稱 | 法規法源結構說明
+Legal Hierarchy Structure | 
+台灣 | 衛生福利部食品藥物管理署
+Taiwan Food and Drug Administration | TFDA | 法律 | 藥事法
+Pharmaceutical Affairs Act
+ |  |  | 子法 | 藥品查驗登記審查準則
+Regulations for Registration of Medicinal Products
+醫藥品優良製造準則
+Good Manufacturing Practice (GMP) for Medicinal Products
+ |  |  | 指引 | 新藥開發技術審查指引
+Guidelines for Technical Review of New Drug Development
+美國 | 美國食品藥物管理局
+U.S. Food and Drug Administration | FDA | 法律 | 聯邦食品、藥品和化妝品法案
+Federal Food, Drug, and Cosmetic Act (FDCA)
+ |  |  | 子法 | 聯邦法規第21章（21 CFR）
+Title 21 of the Code of Federal Regulations
+ |  |  | 指引 | FDA產業指引（如BE、CMC等）
+FDA Guidance for Industry (e.g., Bioequivalence, CMC)
+歐盟 | 歐洲藥品管理局
+European Medicines Agency | EMA | 法律 | 歐洲藥品法規 EC No. 726/2004 等
+Regulation (EC) No 726/2004, Directive 2001/83/EC
+ |  |  | 子法 | 歐盟委員會法規（EMA實施細則）
+European Commission Regulations / Implementing Acts
+ |  |  | 指引 | EMA 科學與程序性指引
+EMA Scientific and Procedural Guidelines
+[NOTES] 本頁重點：法律、子法、指引與審查意見的拘束力不同，讀法規要由上而下。
+備忘稿：強調法律、regulation、guidance 的拘束力不同。遇到實務問題時，先找 statute/regulation 判斷硬性義務，再看 guidance 與審查案例判斷 FDA current thinking。
+正確性確認：法源層級說明與 FDA/TFDA/EMA 等官方用語一致；已避免把 guidance 說成法律。
+--- slide 8 ---
+6
+Regulatory Authority / Legal Hierarchy Structure
+國家 | 主管機關  
+Regulatory Authority | 簡稱 | 法規法源結構說明
+Legal Hierarchy Structure | 
+日本 | 醫藥品醫療機器總合機構
+Pharmaceuticals and Medical Devices Agency | PMDA | 法律 | 醫藥品醫療機器等法（舊藥事法）
+Pharmaceuticals and Medical Devices Act (PMD Act)
+ |  |  | 子法 | MHLW 省令（如GCP、GMP相關）
+Ministerial Ordinances (e.g., GCP, GMP)
+ |  |  | 指引 | PMDA 審查指引 / 技術標準
+PMDA Review Guidelines / Technical Standards
+中國 | 國家藥品監督管理局
+National Medical Products Administration | NMPA | 法律（全國人大通過） | Law (Passed by the National People's Congress)
+最高層級，例如《藥品管理法》
+ |  |  | 行政法規（國務院制定） | Administrative Regulations (by State Council)
+如《疫苗管理法》、《化妝品監督條例》
+ |  |  | 部門規章（部委發布） | Ministerial Rules / Orders
+由NMPA等部門發布，執行細節規定
+ |  |  | 規範性文件 / 指導原則 | Normative Documents / Technical Guidelines
+為操作層級技術性文件，無法律約束力但具參考性
+[NOTES] 本頁重點：法律、子法、指引與審查意見的拘束力不同，讀法規要由上而下。
+備忘稿：強調法律、regulation、guidance 的拘束力不同。遇到實務問題時，先找 statute/regulation 判斷硬性義務，再看 guidance 與審查案例判斷 FDA current thinking。
+正確性確認：法源層級說明與 FDA/TFDA/EMA 等官方用語一致；已避免把 guidance 說成法律。
+--- slide 9 ---
+6
+Marketing Authorization Validity Period by Country
+國家/地區 | 名稱 | 有效期限 | 續期規定
+🇹🇼 台灣 | 藥品許可證
+Drug License / Marketing Authorization | 5年 | 每5年須申請展延（再評估）
+須提交變更紀錄與不良反應資料
+🇺🇸 美國 | 藥品上市許可（NDA/ANDA）
+NDA/ANDA Approval | 無固定期限 | 無需定期續期，但需持續符合法規與年費繳納
+可因未銷售、法規違規被撤銷
+🇪🇺 歐盟 | 上市許可（MAA）
+Marketing Authorization | 5年 初始有效 | 第一次續期後改為無限期有效（unlimited）
+須提交定期更新與風險管理報告
+🇯🇵 日本 | 製造銷售許可證
+Marketing Authorization 
+(Manufacturing/Sales License) | 無限期有效（自2019年起） | 原為5年，2019年4月起改為無需續展
+須持續符合法規與藥品監測要求
+🇨🇳 中國 | 藥品註冊證書
+Drug Registration Certificate | 5年 | 須提前6個月內提出續期申請
+過期未續即自動失效
+[NOTES] 本頁重點：法律、子法、指引與審查意見的拘束力不同，讀法規要由上而下。
+備忘稿：強調法律、regulation、guidance 的拘束力不同。遇到實務問題時，先找 statute/regulation 判斷硬性義務，再看 guidance 與審查案例判斷 FDA current thinking。
+正確性確認：法源層級說明與 FDA/TFDA/EMA 等官方用語一致；已避免把 guidance 說成法律。
+--- slide 10 ---
+6
+Drug License Renewal / Re-registration Fees by Country
+國家/地區 | 名稱 | 是否定期續期 | 續期費用（折合 USD） | 備註
+🇹🇼 台灣 | 藥品許可證展延費
+Drug License Renewal | ✅ 每5年 | $350（NDA）
+$225（ANDA） | 劑型/劑量數不同費用略異；TFDA公告
+🇺🇸 美國 | 無續期制度，繳年費
+No renewal – Annual Fee only | ❌ | $393,000/年（NDA）
+$229,000/年（ANDA） | 依 FDA FY2025 費率（Program Fee）不繳視同放棄藥證
+🇪🇺 歐盟 | 上市許可續期費
+Renewal of MA | ✅ 第5年需續期一次 | $120,000（NDA）
+$105,000（ANDA）
+（€95,000–€120,000） | 通過一次續期後改為無限期；EMA規定
+🇯🇵 日本 | 無需續期
+No Renewal Required | ❌（自2019起） | 無 | 須持續遵守 PV/GMP 要求；有定期報告費用
+🇨🇳 中國 | 藥品註冊證書續期費
+Renewal of Drug Registration Certificate | ✅ 每5年 | $4,300（NDA）
+$2,800（ANDA）
+（¥30,000–20,000） | 須提前6個月申請續期；NMPA公告定價
+[NOTES] 本頁重點：法律、子法、指引與審查意見的拘束力不同，讀法規要由上而下。
+備忘稿：強調法律、regulation、guidance 的拘束力不同。遇到實務問題時，先找 statute/regulation 判斷硬性義務，再看 guidance 與審查案例判斷 FDA current thinking。
+正確性確認：法源層級說明與 FDA/TFDA/EMA 等官方用語一致；已避免把 guidance 說成法律。
+--- slide 11 ---
+GLOBAL REGULATORY ARCHITECTURE
+核准、製造資格與上市後義務是三條平行線
+產品上市核准
+核心問題
+• 此產品是否安全、有效且品質可控？
+• 標示與風險管理是否可接受？
+
+常見文件
+NDA／ANDA／MAA／新藥或學名藥查驗登記
+製造與營業資格
+核心問題
+• 製造場所與品質系統是否符合 GMP？
+• 製造、輸入、持證或販售主體是否具資格？
+
+常見機制
+Establishment registration、GMP inspection、製造／輸入許可
+上市後持續合規
+核心問題
+• 變更、年報、藥物安全監視與品質事件是否依規定處理？
+
+常見義務
+Annual report、PV、變更管理、缺藥通報、召回、費用與持證維護
+一張藥證不代表工廠、供應鏈與上市後義務已自動滿足。
+7
+[NOTES] 本頁重點：上市核准、製造資格與上市後義務是平行管理線，不是單一許可即可涵蓋。
+備忘稿：說明產品核准不等於工廠、GDP/GMP、PV 都已自動完成。送件計畫應同步管理產品資料、製造/設施、上市後義務三條線。
+正確性確認：此頁為架構性說明，未涉及需年度更新的費率；內容邏輯正確。
+--- slide 12 ---
+GLOBAL REGULATORY ARCHITECTURE
+FDA 藥品監管：Center、Review Office 與 Inspection 分工
+Source: FDA organizational information; CDER/CBER/ORA official pages.
+8
+美國食品藥物管理局（FDA）隸屬於美國衛生及公共服務部，負責監管食品、藥品、生物製劑、醫療器材、化妝品及菸草產品。
+Center |  | Regulates | 中文對應
+CDER | Center for Drug Evaluation and Research | Drugs | 藥品
+CBER | Center for Biologics Evaluation and Research | Biologics (vaccines, cell therapies) | 生物製劑
+CDRH | Center for Devices and Radiological Health | Medical devices | 醫療器材
+CVM | Center for Veterinary Medicine | Animal drugs | 動物用藥
+CFSAN | Center for Food Safety and Applied Nutrition | Food, dietary supplements | 食品與營養補充品
+[NOTES] 本頁重點：FDA 內部分工依產品類型與審查功能切分；CDER、CBER、ORA 的角色不可混用。
+備忘稿：提醒 CDER 不只審小分子，也負責部分治療性生物製劑；CBER 負責疫苗、血液、細胞/基因治療等。ORA 負責檢查與執法支援，審查與檢查需同步準備。
+正確性確認：FDA center 分工已以官方組織資訊校正；實際 center assignment 仍以產品 jurisdiction 判定為準。
+--- slide 13 ---
+GLOBAL REGULATORY ARCHITECTURE
+FDA 藥品監管：Center、Review Office 與 Inspection 分工
+Source: FDA organizational information; CDER/CBER/ORA official pages.
+8
+The FDA drug regulation system governs the approval, manufacturing, marketing, and monitoring of pharmaceutical products in the United States to ensure their safety, efficacy, and quality.
+FDA Center | Full Name | Role in Drug Regulation | Legal Basis / Key Statutes
+CDER | Center for Drug Evaluation and Research | Regulates small-molecule drugs (Rx and OTC), generics, 505(b)(2), and therapeutic biologics (e.g., mAbs) | Federal Food, Drug, and Cosmetic Act (FD&C Act) §505
+CBER | Center for Biologics Evaluation and Research | Regulates biologics like vaccines, gene therapies, blood products, and some combination products | Public Health Service Act (PHS Act) §351 and FD&C Act
+CDRH | Center for Devices and Radiological Health | Oversees drug-device combinations (e.g., prefilled syringes, auto-injectors) and devices | FD&C Act §510, §515; 21 CFR Parts 800–899
+[NOTES] 本頁重點：FDA 內部分工依產品類型與審查功能切分；CDER、CBER、ORA 的角色不可混用。
+備忘稿：提醒 CDER 不只審小分子，也負責部分治療性生物製劑；CBER 負責疫苗、血液、細胞/基因治療等。ORA 負責檢查與執法支援，審查與檢查需同步準備。
+正確性確認：FDA center 分工已以官方組織資訊校正；實際 center assignment 仍以產品 jurisdiction 判定為準。
+--- slide 14 ---
+GLOBAL REGULATORY ARCHITECTURE
+TFDA 與 CDE：正式受理／決策與技術評估的分工
+Source: TFDA official history; CDE official organization and service pages.
+TFDA 成立
+2010
+法定主管機關
+CDE 成立
+1998
+技術審查法人
+申請人
+TFDA
+受理、程序管理、法規適用、最終核准與對外發文
+CDE
+品質、非臨床、臨床／BE 與風險效益的技術審查與諮詢
+最終決定
+CDE 提供技術意見；TFDA 綜合法規、行政與技術評估作成決定。
+實務提醒
+正式受理窗口是 TFDA；CDE 的付費諮詢與技術審查服務不等同於 TFDA 的行政申請費。
+9
+國家主管機關，負責法規制定、審查核准與執法管理
+受 TFDA 委託，專責藥品及醫療器材的技術審查與專家評估
+[NOTES] 本頁重點：台灣由 TFDA 作行政決策，CDE 負責技術評估與審查建議。
+備忘稿：說明 TFDA 是正式受理與發證窗口，CDE 是受委託的技術審查機構。回覆補件時，雖然意見常源自 CDE 技術評估，正式溝通仍以 TFDA 發文為準。
+正確性確認：TFDA/CDE 分工與官方機構角色一致；CDE 非正式收件/發證單位的表述已確認。
+--- slide 15 ---
+02
+美國藥品與生物製劑申請路徑
+Submission Routes under the FD&C Act and PHS Act
+先判斷產品法定類別，再判斷對既有資料的依賴方式。
+[NOTES] 本頁重點：美國路徑判斷先看 drug 或 biologic，再看證據是否自有或依賴既有資料。
+備忘稿：本頁轉入美國申請路徑。開場可以先問：這個產品是 chemical drug 還是 biological product？再問：資料是自己做、部分依賴，或是 RLD duplicate？
+正確性確認：轉場內容與 FD&C Act 505 / PHS Act 351 的分流邏輯一致。
+--- slide 16 ---
+SUBMISSION ROUTES
+FDA 法規分支：505(b)(1)、505(b)(2)、505(j) 與 BLA
+FDA Marketing Application
+先判斷：drug 或 biological product?
+FD&C Act §505｜Drugs
+NDA / ANDA under drug approval framework
+PHS Act §351｜Biological products
+BLA under biologics licensure framework
+505(b)(1) NDA｜Stand-alone new drug
+申請人自行完成／擁有引用權的完整安全性與有效性資料
+常見：NCE/NME、新適應症或完整新藥開發；適用 PDUFA
+505(b)(2) NDA｜Hybrid / reliance pathway
+NDA，但可部分依賴文獻或 FDA 對 listed drug 的既有認定
+需用 BA/BE、PK bridge、臨床或非臨床資料補足差異；適用 PDUFA
+505(j) ANDA｜Generic duplicate of RLD
+與 RLD 在 API、劑型、途徑、強度、標示等具 sameness（允許少數差異）
+通常以 BE + 完整 CMC 支持，不重做安全／療效試驗；適用 GDUFA
+351(a) BLA｜Original / reference biologic
+Stand-alone BLA；提交完整品質、非臨床與臨床資料
+FDA 以安全性、純度與效價／potency 及製造設施能力作為核准核心；適用 PDUFA
+351(k) BLA｜Biosimilar / interchangeable
+以 reference product 為比較基準，證明高度相似且無臨床上有意義差異
+資料包通常以 analytical comparability 為核心，並視需要補非臨床／臨床；適用 BsUFA
+Source: FDA guidance on 505(b)(2)/ANDA; FDA BPCI Act “Deemed to be a License”; Purple Book database.
+11
+[NOTES] 本頁重點：FDA 上市申請的第一個分支不是 NDA/ANDA，而是 product class：drug 走 FD&C Act §505；biological product 走 PHS Act §351。
+備忘稿：講解時先提醒學員不要把 BLA 當成 NDA 的一種。小分子或傳統 drug product 進入 §505 後，再依資料依賴方式分為 505(b)(1)、505(b)(2) 與 505(j)。505(b)(1) 是 stand-alone NDA，申請人需自行完成或擁有完整引用權；505(b)(2) 是 hybrid NDA，可部分依賴 published literature 或 FDA 對 listed drug 的既有安全性／有效性認定，但要用橋接資料補足產品差異；505(j) ANDA 則是 RLD 的 generic duplicate，核心是 sameness、品質與 BE。生物製劑則改看 PHS Act §351：原創／reference biologic 走 351(a) BLA；biosimilar 或 interchangeable 走 351(k) BLA。
+正確性確認：FDA 505(b)(2) guidance 說明 §505 包含 505(b)(1)、505(b)(2)、505(j) 三類；FDA BPCI Act “Deemed to be a License” 頁面說明 2020/3/23 後相關 biological product 應改由 PHS Act §351 送件，包含 351(a) stand-alone BLA 與 351(k) biosimilar/interchangeable BLA；Purple Book 也以 351(a)／351(k) 標示已核准生物製劑。
+--- slide 17 ---
+SUBMISSION ROUTES
+505(b)(1)、505(b)(2) 與 ANDA 的核心差異
+Source: FD&C Act §505; FDA 505(b)(2) vs ANDA guidance.
+比較面向 | 505(b)(1) NDA | 505(b)(2) NDA | 505(j) ANDA
+法規定位 | Stand-alone NDA | Hybrid / reliance NDA | Abbreviated generic application
+對既有資料依賴 | 申請人自有或具引用／使用權 | 可依賴 FDA 既有認定或公開資料 | 依賴 FDA 對 RLD 的安全與有效性認定
+典型產品 | 全新活性成分／全新產品 | 新劑型、途徑、組合、適應症、鹽／酯等 | 與 RLD 相同的學名藥
+臨床證據 | 完整開發計畫 | 依差異補橋接、PK／BE 或必要臨床 | 通常以 BE／biowaiver 為核心
+CMC 標準 | 完整 | 完整 | 完整；並證明與 RLD 可比／等效
+專利聲明 | 不以 RLD 為基礎 | 對 listed drug 專利作適用聲明 | 對 RLD 每項 Orange Book 專利作聲明
+專屬期潛力 | 5 年 NCE、3 年、Orphan 等 | 3 年；符合時亦可能有 5 年／Orphan 等 | 符合資格之 first applicant 可能 180 天
+12
+[NOTES] 本頁重點：505(b)(1)、505(b)(2)、ANDA 的差別在證據所有權、依賴方式與產品 sameness。
+備忘稿：這頁是 Part 1 核心。505(b)(1) 是完整自有/具引用權證據；505(b)(2) 是部分 reliance；ANDA 是 duplicate + sameness + BE。請把「資料依賴」和「產品差異」一起看。
+正確性確認：505(b)(1)、505(b)(2)、505(j) 的差異已依 FD&C Act 與 FDA route-selection guidance 校正。
+--- slide 18 ---
+SUBMISSION ROUTES
+生物製劑邊界：不要把 BLA 當成 NDA 的一種
+Source: FDA: Deemed to be a License provision; Purple Book database.
+Drugs under FD&C Act
+主要申請
+• 505(b)(1) NDA
+• 505(b)(2) NDA
+• 505(j) ANDA
+
+主要專利／專屬期資料庫
+Orange Book
+
+常見核心概念
+Active moiety、RLD、BE、TE code
+Biological products under PHS Act
+主要申請
+• 351(a) BLA：stand-alone biologic
+• 351(k)：biosimilar／interchangeable
+
+主要專利／專屬期資訊
+Purple Book
+
+2020 transition
+部分既有 protein products 依法轉為 licensed biologics。
+「分子是否新穎」與「法定申請路徑」是不同判斷；先確認 product class。
+13
+本頁重點｜BLA 是 PHS Act 351 路徑，不是 NDA 的子類；生物製劑需另看 Purple Book。
+[NOTES] 本頁重點：BLA 是 PHS Act 351 路徑，不是 NDA 的子類；生物製劑需另看 Purple Book。
+備忘稿：強調 BLA 不是 NDA 的一種。生物製劑走 PHS Act 351，專利/專屬期資訊主要看 Purple Book，biosimilar 走 351(k)，不是 ANDA。
+正確性確認：BLA 法源與 Purple Book/Orange Book 分界已校正；351(a) 與 351(k) 未混用。
+--- slide 19 ---
+SUBMISSION ROUTES
+CTD／eCTD：不同路徑共用骨架
+Source: ICH M4 Common Technical Document; FDA eCTD resources.
+14
+[NOTES] 本頁重點：CTD/eCTD 架構共通，但各申請路徑需要的證據深度不同。
+備忘稿：說明 CTD 是共同資料骨架：M1 行政、M2 summary、M3 品質、M4 非臨床、M5 臨床。不同路徑不是格式不同，而是每個 module 的證據深度不同。
+正確性確認：CTD/eCTD 架構與 ICH/FDA 資源一致；無需年度費率更新。
+--- slide 20 ---
+SUBMISSION ROUTES
+CTD／eCTD：不同路徑共用骨架
+Source: ICH M4 Common Technical Document; FDA eCTD resources.
+Module 1｜區域行政資料
+表單、標示、專利聲明、費用、環境評估等
+Module 2｜總結與概述
+Quality overall summary、nonclinical／clinical overview & summaries
+Module 3｜Quality / CMC
+原料藥、製劑、製程、分析方法、規格、驗證、安定性；三條路徑皆需完整
+Module 4｜Nonclinical
+505(b)(1) 通常完整；505(b)(2) 依 gap 補充；ANDA 通常很少或不需要
+Module 5｜Clinical / BE
+505(b)(1) 完整臨床；505(b)(2) 橋接／必要試驗；ANDA 以 BE、biowaiver 與相關臨床資料為主
+共用格式 ≠ 共用證據要求
+eCTD 是傳輸與組織標準，不會降低特定法定路徑的證據門檻。
+CMC 不會因 abbreviated 而 abbreviated
+ANDA 仍需完整產品與製程控制；差異在安全／療效證據的依賴方式。
+Lifecycle 可追溯
+序號、變更、補件與年度報告需維持 dossier 的版本與審查歷史。
+14
+本頁重點｜CTD/eCTD 架構共通，但各申請路徑需要的證據深度不同。
+[NOTES] 本頁重點：CTD/eCTD 架構共通，但各申請路徑需要的證據深度不同。
+備忘稿：說明 CTD 是共同資料骨架：M1 行政、M2 summary、M3 品質、M4 非臨床、M5 臨床。不同路徑不是格式不同，而是每個 module 的證據深度不同。
+正確性確認：CTD/eCTD 架構與 ICH/FDA 資源一致；無需年度費率更新。
+--- slide 21 ---
+--- slide 22 ---
+SUBMISSION ROUTES
+從策略到上市後：審查只是全生命週期的一段
+1
+Strategy
+產品分類、RLD／文獻、專利、證據 gap
+2
+Development
+CMC、非臨床、臨床／BE、供應鏈
+3
+Pre-submission
+會議、函詢、預審與 dossier readiness
+4
+Filing
+行政／技術完整性檢查
+5
+Review
+科學審查、標示、查廠、補件
+6
+Decision & Lifecycle
+Approval／CRL；變更、PV、年報、持續 GMP
+Development clock
+從候選物、處方與製程到可送件資料的形成時間。
+Review clock
+主管機關承諾的 filing／review goal；不等於核准保證。
+Launch clock
+專利、專屬期、商業製造、定價與供應鏈可能在核准後仍限制上市。
+時程管理應同時追蹤三個 clock，而不是只看 PDUFA／GDUFA goal date。
+15
+本頁重點｜送件只是生命週期的一段，專利、製造、檢查與上市後義務會同步影響上市。
+[NOTES] 本頁重點：送件只是生命週期的一段，專利、製造、檢查與上市後義務會同步影響上市。
+備忘稿：用 lifecycle 提醒：送件前的策略、開發、review、approval 後的變更與 PV 都要連成一條路。PDUFA/GDUFA goal date 只是其中一個 clock。
+正確性確認：生命週期與 review clock 的表述已修正為概念性提醒，未把 goal date 誤稱為保證。
+--- slide 23 ---
+03
+使用者付費與法規互動
+User Fees and Regulatory Interactions
+費用是制度性資源配置，不是「付費買核准」；諮詢機制也不等同於單獨收費項目。
+[NOTES] 本頁重點：使用者付費是審查資源制度，不是購買核准；諮詢也要選對法規工具。
+備忘稿：轉場到費用。先說明 user fee 是 FDA 審查資源與績效承諾的一部分，不是買 approval。後續費用都要標註 fiscal year。
+正確性確認：轉場內容正確；費用數字在後續頁逐一用 FY2026 官方費率校正。
+--- slide 24 ---
+USER FEES
+PDUFA 與 GDUFA：適用對象、費用結構與目標
+Source: FDA PDUFA and GDUFA official program pages; FY2026 fee notices.
+面向 | PDUFA | GDUFA
+主要適用 | Prescription drug／biologic applications：
+NDA、適用之 351(a) BLA | Generic drugs：ANDA、DMF、generic facilities／applicant programs
+首次立法 | 1992 | 2012
+現行授權週期 | PDUFA VII：FY2023–FY2027 | GDUFA III：FY2023–FY2027
+主要費用 | Application fee；annual program fee | ANDA fee；DMF fee；facility fee；applicant program fee
+制度目的 | 支持及時、高品質的新藥審查與溝通 | 支持學名藥審查、查廠、品質與透明度
+重要觀念 | 依法定公式每年調整；可有豁免／減免 | 不同角色可能同時承擔多種費用
+不可誤解
+User fee 不是按件購買審查結果；繳費不代表資料可接受或必然核准。
+17
+[NOTES] 本頁重點：PDUFA、GDUFA 分別支援創新藥/生物製劑與學名藥審查，費用結構不同。
+備忘稿：比較 PDUFA 與 GDUFA 的適用對象、費用類型與政策目的。提醒 PDUFA 包含 NDA 與部分 BLA，GDUFA 主要是 ANDA/DMF/facility/applicant program。
+正確性確認：PDUFA/GDUFA 的立法週期與適用範圍已以 FDA 官方 user fee pages 校正。
+--- slide 25 ---
+USER FEES
+FDA FY2026 PDUFA 費率｜NDA / 351(a) BLA
+Source: Federal Register, Prescription Drug User Fee Rates for Fiscal Year 2026 (effective Oct. 1, 2025–Sep. 30, 2026).
+NDA / 351(a) BLA requiring clinical data
+US$4,682,003
+Full PDUFA application fee
+Human drug application not requiring clinical data
+US$2,341,002
+Statutory half-fee category
+Prescription drug / biologic program fee
+US$442,213
+Annual fee per eligible NDA / BLA product
+年度調整
+費率依法律公式每年公告；簡報或預算模型需標註 fiscal year。
+減免／豁免
+小型企業、孤兒藥等可能有法定減免，但資格與適用範圍須個案確認。
+會議不另列 tariff
+PDUFA 正式會議具有時程目標，但不是每次 Type A／B／C 另收固定會議費。
+Effective period: 1 Oct 2025–30 Sep 2026
+18
+[NOTES] 本頁重點：FY2026 PDUFA 適用 NDA 與 351(a) BLA；申請費與 program fee 需分開列預算。
+備忘稿：講費用時請分三筆：application fee、是否 clinical data、annual program fee。NDA 與 351(a) BLA 使用 PDUFA；正式預算要依 FY 與 waiver/exception 判斷。
+正確性確認：FY2026 PDUFA 數字已核對：clinical data US$4,682,003；no clinical data US$2,341,002；program US$442,213。
+--- slide 26 ---
+USER FEES
+FDA FY2026 BsUFA 費率｜351(k) Biosimilar BLA
+Source: FDA Biosimilar User Fee Amendments — FY2026 rates (effective Oct. 1, 2025–Sep. 30, 2026).
+Initial / annual BPD fee
+US$10,000
+每產品進入 BPD program 的 initial fee；後續 fiscal year 可能產生 annual BPD fee。
+Application｜clinical data
+US$1,200,794
+351(k) application requiring clinical data。
+Application｜no clinical data
+US$600,397
+法定 half-fee category；是否適用依申請內容判定。
+Annual program fee
+US$209,097
+每一符合條件的 biosimilar biological product。
+Reactivation fee
+US$20,000
+已退出 BPD program 後重新啟動時適用；非年度 program fee。
+制度邊界
+351(a) stand-alone BLA 適用 PDUFA；351(k) biosimilar／interchangeable BLA 適用 BsUFA。兩套費率不可互換。
+總預算仍另計
+使用者費不含 comparative analytics、臨床／PK、製程放大、comparability、查廠整改與商業化製造成本。
+BPD 費用在送件前即可能發生；application fee 只是 biosimilar 開發預算的一部分。
+本頁重點｜351(k) biosimilar/interchangeable BLA 適用 BsUFA，不適用 PDUFA 351(a) 費率。
+[NOTES] 本頁重點：351(k) biosimilar/interchangeable BLA 適用 BsUFA，不適用 PDUFA 351(a) 費率。
+備忘稿：重點是不要把 biosimilar BLA 的 BsUFA 與 351(a) BLA 的 PDUFA 混用。BPD fee 在送件前就可能發生；application fee 只是 biosimilar 開發成本的一小部分。
+正確性確認：FY2026 BsUFA 數字已核對：BPD initial/annual US$10,000；reactivation US$20,000；application clinical US$1,200,794；no clinical US$600,397；program US$209,097。
+--- slide 27 ---
+USER FEES
+FDA FY2026 GDUFA 費率
+Source: FDA Generic Drug User Fee Amendments: FY2026 rates.
+ANDA filing fee
+US$358,247
+per original ANDA
+Type II API DMF fee
+US$102,584
+first referenced under GDUFA
+Applicant program tier | FY2026 annual fee
+Large (20+ approved ANDAs) | US$1,918,377
+Medium (6–19) | US$767,351
+Small (1–5) | US$191,838
+Facility type | Domestic | Foreign
+API facility | US$43,549 | US$58,549
+Finished dosage form facility | US$238,943 | US$253,943
+Contract manufacturing organization | US$57,346 | US$72,346
+預算模型
+同一 ANDA 可能同時涉及 filing、DMF、facility 與 applicant program 費；不可只列一筆 ANDA fee。
+20
+[NOTES] 本頁重點：FY2026 GDUFA 要同時考量 ANDA、DMF、facility 與 applicant program 費。
+備忘稿：GDUFA 成本常被低估。除了 ANDA filing fee，也要看 DMF 首次 reference、FDF/API/CMO facility fee，以及 applicant program fee 的公司規模。
+正確性確認：FY2026 GDUFA 數字已核對：ANDA US$358,247；DMF US$102,584；facility/program fee 已依 FDA FY2026 表更新。
+--- slide 28 ---
+項目 | PDUFA
+Prescription Drug User Fee Act |  |  | GDUFA
+Generic Drug User Fee Act |  |  |  | 
+適用對象 | 創新藥（NDA） |  |  | 學名藥（ANDA） |  |  |  | 
+法案起源 | 1992 年 |  |  | 2012 年 |  |  |  | 
+目的 | 加速新藥審查 |  |  | 確保學名藥高品質並提升審查效率 |  |  |  | 
+審查內容 | 臨床試驗、標籤、CMC 等 |  |  | 無需臨床（一般為 BE 試驗） |  |  |  | 
+收費內容 | NDA filing, annual program fees |  |  | ANDA、DMF、facility fee 等 |  |  |  | 
+更新週期 | 每 5 年（目前 PDUFA VII） |  |  | 每 5 年（目前 GDUFA III） |  |  |  | 
+費用類型
+（2025 年度） | 項目 |  | 費用（USD） | 項目 |  | 費用（USD） |  | 
+ | Sponsor | NDA 
+(with /without clinical data) | 約 $4,048,695 / $2,024,348 | Sponsor | ANDA Filing Fee | 約 $245,000 |  | 
+ |  | Prescription Drug Program Fee
+(每產品線每年) | $416,734 |  | Finished Dosage Form (FDF) 
+Facility annual Fee 
+(US/ Non-US) | 約 $240,000 / $275,000 |  | 
+ |  |  |  |  | Applicant Program annual Fee | > 20 | Large size | $1,891,664
+ |  |  |  |  |  | 6–19 | Medium size | $756,666
+ |  |  |  |  |  | 1–5 | Small size | $189,166
+ | API
+Vendor | DMF filling | 0 | API
+Vendor | DMF filling (Type II) 
+(首次被 ANDA reference 時) | $ 78,293_FY2024
+$ 87,411_FY2025 |  | 
+ |  | Facility annual Fee   
+(US / Non-US) | n/a |  | Facility annual Fee   
+(US / Non-US) | 約 $42,625 / $57,625 |  | 
+ |  | Foreign inspection cost | 不定額 |  | Foreign inspection cost | 不定額 |  | 
+--- slide 29 ---
+USER FEES
+申請費不等於總開發成本
+可見的法定費用
+Application／program／DMF／facility／諮詢費
+臨床／BE 與生物分析
+受試者、試驗中心、方法驗證、統計與報告
+CMC 與供應鏈
+處方、製程、放大、驗證、安定性、批次與原料藥
+品質系統與查廠準備
+GMP remediation、文件化、供應商管理與 inspection readiness
+智慧財產與上市策略
+Freedom-to-operate、PIV 訴訟、和解、庫存與商業化
+跨國比較的陷阱
+各市場的 fee taxonomy、審查程序與是否包含檢驗／查廠不同；單純換算美元會造成假精確。
+建議的預算表
+分成 regulator fee、external study、internal FTE、manufacturing、IP/legal、contingency 六類，並標示年份與假設。
+比較「總方案」而不是比較一個 filing fee。
+21
+[NOTES] 本頁重點：法定申請費只是總成本的一部分，臨床、BE、CMC、查廠與補件成本常更關鍵。
+備忘稿：用這頁提醒財務與專案團隊：法定申請費不是總成本。臨床/BE、生物分析、CMC、製程驗證、查廠整改與專利訴訟可能遠高於申請費。
+正確性確認：此頁為成本分類，不宣稱固定總額；避免將概算當作法定費率。
+--- slide 30 ---
+USER FEES
+台灣 TFDA 現行核心收費（新藥／學名藥）
+Source: TFDA current Standards of Review Fees for the Registration of Western Medicines; revision draft announced 8 Apr 2026.
+申請／審查項目 | 現行費用
+（NT$）
+新成分新藥 | 1,500,000
+新療效複方／新給藥途徑 | 500,000
+新劑型／新用量／新單位含量／控釋 | 250,000
+監視中新藥之學名藥 | 140,000
+其他學名藥 | 80,000
+技術／維護項目 | 現行費用
+（NT$）
+BA／BE 試驗計畫書審查 | 30,000
+BA／BE 試驗報告審查 | 60,000
+溶離曲線比對審查 | 40,000
+原料藥登記／技術審查（每來源） | 60,000；
+上限 300,000
+藥品許可證展延 | 10,000
+諮詢／輔導會議 | 30,000
+2026 修法動態
+TFDA 已於 2026/4/8 預告收費標準修正草案；在正式發布生效前，送件預算仍應以現行有效標準為準，並於送件前再次查核。
+22
+[NOTES] 本頁重點：TFDA 現行收費與 2026 修正草案須分開看，正式送件前需再查生效版本。
+備忘稿：說明台灣現行費用與修正草案的關係。現行費用仍以有效收費標準為準；草案代表政策方向但正式生效前不能當作已生效費率。
+正確性確認：TFDA 現行新藥、學名藥、BA/BE、原料藥與展延費用已依現行收費標準核對；2026/4/8 修正草案已標註為預告。
+--- slide 31 ---
+USER FEES
+CDE 學名藥策略諮詢：與 TFDA 申請費分開計算
+Source: CDE official generic-drug paid consultation service and fee schedule.
+策略討論
+NT$30,000
+可依規定抵扣第二階段費用
+一般學名藥 CMC 或 PK
+NT$150,000
+每一專業領域
+複雜學名藥 CMC 或 PK
+NT$250,000
+每一專業領域
+行政費
+NT$80,000
+依服務方案另計
+適合使用時機
+路徑／BE 策略不確定、複雜製劑、PSG 不完整、Q1/Q2/Q3 或臨床端點存在重大風險。
+準備重點
+提供明確產品背景、比較藥資訊、具體問題、申請人立場與 supporting data；避免把會議當成一般教學。
+費用關係
+CDE 付費服務是技術諮詢成本；TFDA 查驗登記與技術審查規費仍另行計收。
+優惠
+特定關鍵性藥品方案可依公告享有折減；資格與最新價格應以 CDE 當期公告為準。
+23
+[NOTES] 本頁重點：CDE 付費諮詢是技術/策略服務，與 TFDA 法定申請費不是同一筆費用。
+備忘稿：提醒 CDE 付費諮詢是技術性服務，可以用於策略討論、資料缺口、會議前準備，但不取代 TFDA 查驗登記申請，也不代表審查結論。
+正確性確認：CDE 諮詢費用與 TFDA 法定審查費已分開呈現；避免雙重計入或誤認為同一費用。
+--- slide 32 ---
+CDE 新藥付費諮詢公告價目表 (單位: 台幣)
+--- slide 33 ---
+CDE 學名藥策略諮詢付費諮詢公告價目表 (單位: 台幣)
+--- slide 34 ---
+REGULATORY INTERACTIONS
+FDA 溝通工具：選對機制比「開會」更重要
+Source: FDA PDUFA formal meetings guidance; GDUFA III complex generic drug product meeting guidance.
+PDUFA product meetings
+Type A
+解決 stalled program 或重大爭點
+
+Type B / B(EOP)
+Pre-IND、EOP、Pre-NDA／BLA 等里程碑
+
+Type C / D
+其他或較聚焦議題
+
+Written Response Only
+以書面回覆替代會議
+Generic-drug interactions
+Controlled Correspondence
+聚焦技術問題
+
+Product Development Meeting
+複雜產品早期策略
+
+Pre-Submission Meeting
+eCTD／送件完整性與 readiness
+
+Mid-review／Post-CRL scientific meeting
+審查中或 CRL 後的技術議題
+收費澄清
+FDA 未對每次 Type A／B／C 或 generic meeting 設定獨立固定「會議費」。
+
+這些機制的績效目標由 PDUFA／GDUFA 整體使用者付費制度支持。
+
+是否接受會議、時程與形式仍受 guidance 與資源管理規則限制。
+24
+本頁重點｜FDA 溝通工具要依問題性質選擇會議、WRO、controlled correspondence 或正式補件。
+[NOTES] 本頁重點：FDA 溝通工具要依問題性質選擇會議、WRO、controlled correspondence 或正式補件。
+備忘稿：先選問題類型再選工具。重大臨床/安全議題走 formal meeting；學名藥具體技術問題可考慮 controlled correspondence；已送件問題通常進申請案溝通。
+正確性確認：PDUFA meeting 與 GDUFA communication 的分類已依 FDA guidance 調整；已刪除「每次 Type B 固定另收費」的錯誤概念。
+--- slide 35 ---
+REGULATORY INTERACTIONS
+FDA Controlled Correspondence：適合「聚焦、技術性、可書面回答」的問題
+Source: FDA Controlled Correspondence Related to Generic Drug Development; GDUFA III commitment goals.
+Level 1 goal
+60 days
+90% response goal
+Level 2 goal
+120 days
+90% response goal
+Clarification goal
+21 days
+clarify ambiguity in a response
+適合主題
+• BE／biowaiver 設計
+• PSG 解讀
+• dissolution／CMC 技術問題
+• 標示或 RLD 選擇的聚焦問題
+提問品質
+• 一次處理有限且清楚的問題
+• 說明產品、RLD、背景與申請人立場
+• 附必要數據，不要求 FDA 代做開發策略
+不宜使用
+• 已進入個案審查的缺失回覆
+• 需要多領域即時討論的重大問題
+• 期待 FDA 先行保證核准或完整評估方案
+時間計算
+上述為 GDUFA III 績效目標，不是每一案件的法定保證；問題分類與完整性會影響處理。
+25
+本頁重點｜Controlled Correspondence 適合聚焦的學名藥技術問題，非臨床療效大題。
+[NOTES] 本頁重點：Controlled Correspondence 適合聚焦的學名藥技術問題，非臨床療效大題。
+備忘稿：Controlled Correspondence 應寫成聚焦、可回答的技術問題，通常不適合問大範圍臨床安全/療效議題。可以示範一個 BE 或 Q1/Q2 問題的寫法。
+正確性確認：Level 1 60 days、Level 2 120 days、clarification 21 days 已依 FDA/GDUFA official content 核對，並標註為績效目標。
+--- slide 36 ---
+Example : Q1/Q2
+--- slide 37 ---
+04
+Hatch-Waxman 與市場保護
+Patents, Orange Book and Regulatory Exclusivity
+專利、法規專屬期與首仿 180 天是不同工具；保護範圍與觸發條件不能直接相加。
+本頁重點｜Hatch-Waxman 建立創新保護與學名藥競爭的制度交換。
+[NOTES] 本頁重點：Hatch-Waxman 建立創新保護與學名藥競爭的制度交換。
+備忘稿：轉場到市場保護。提醒專利和專屬期是兩套制度：一套由 USPTO/法院處理，一套由 FDA 依 statutory approval block 操作。
+正確性確認：轉場內容正確；後續已將 patent、Orange Book、exclusivity 與 180-day 分開說明。
+--- slide 38 ---
+PROTECTION ARCHITECTURE
+Hatch-Waxman 的制度交換：創新誘因 × 學名藥競爭
+Source: Drug Price Competition and Patent Term Restoration Act of 1984; FD&C Act §505.
+Hatch-Waxman Architecture
+ANDA pathway
+以 BE 與品質證據取代重複的完整安全／療效試驗，降低重複研發。
+Patent certification
+Orange Book 專利聲明與 PIV 通知，將上市前專利爭議前移。
+Exclusivity incentives
+NCE、3-year exclusivity 與 first-applicant 180 天等法規誘因。
+Patent term restoration
+在法定條件下補償部分臨床與審查期間，最長延長受法規限制。
+制度目的
+讓原研藥可獲得可預期的保護與補償，同時建立可依賴既有安全／療效認定的學名藥路徑；兩端並非單純「保護」或「放寬」。
+27
+本頁重點｜ANDA、專利聲明、專屬期、PTE 與 180 天首仿獨占共同構成 Hatch-Waxman 架構。
+[NOTES] 本頁重點：ANDA、專利聲明、專屬期、PTE 與 180 天首仿獨占共同構成 Hatch-Waxman 架構。
+備忘稿：用制度交換來理解 Hatch-Waxman：原廠得到專利期補償、專屬期與 Orange Book 訴訟機制；學名藥得到 ANDA 簡化路徑與 PIV 挑戰誘因。
+正確性確認：Hatch-Waxman 核心機制已依 FD&C Act §505 與 FDA 資源校正。
+--- slide 39 ---
+PROTECTION ARCHITECTURE
+Orange Book：產品、專利、專屬期與治療等效性資訊的入口
+Source: FDA Orange Book: Approved Drug Products with Therapeutic Equivalence Evaluations; FDA patent/exclusivity FAQ.
+列載內容
+• 已核准 NDA／ANDA 產品
+• RLD／RS 資訊
+• TE code
+• NDA holder 提交的 eligible patents
+• FDA regulatory exclusivity
+使用方式
+• 選擇 RLD／RS
+• 盤點 patent certification
+• 讀取 exclusivity code／expiry
+• 分析可否 carve-out 或何時可核准
+比較 | Orange Book patent | FDA regulatory exclusivity
+授予／來源 | USPTO 核准；NDA holder 向 FDA 提交列載 | FDA 依 statute 與核准資料認定
+保護基礎 | 新穎性、非顯而易見性與可專利主題 | 特定申請／研究／適應症或 first applicant 資格
+期限 | 通常自申請日起 20 年；可能有 PTE | 180 天、3 年、5 年、7 年、12 年或法定加成
+執行 | 由權利人提起民事訴訟 | FDA 依法延後受理或核准競爭申請
+FDA 角色 | 列載與程序管理；不裁判有效性／侵權 | 決定專屬期資格、範圍與核准阻卻
+關鍵
+專利到期不代表所有法規專屬期均已結束；反之亦然。
+28
+本頁重點｜Orange Book 是 drug patent/exclusivity/TE 的入口，但不是所有專利風險的總表。
+[NOTES] 本頁重點：Orange Book 是 drug patent/exclusivity/TE 的入口，但不是所有專利風險的總表。
+備忘稿：Orange Book 可查 approved products、RLD/RS、TE code、專利與 FDA regulatory exclusivity。提醒 FDA 對 patent listing 多為登錄/管理角色，不是專利有效性判決者。
+正確性確認：Orange Book 功能與侷限已校正；未列載專利風險會在 Part 2 另談。
+--- slide 40 ---
+PROTECTION ARCHITECTURE
+美國主要法規專屬期：資格、期間與保護範圍
+Source: FDA FAQ on patents and exclusivity; Orphan Drug Act; BPCA; GAIN Act; BPCIA.
+類型 | 期間 | 典型資格 | 保護重點
+NCE exclusivity | 5 年 | 首次核准 active moiety | 限制同 active moiety 的 505(b)(2)／ANDA 提交或核准；PIV 有例外時點
+New clinical investigation | 3 年 | 申請人執行／贊助、非 BA、且為核准必要的新臨床研究 | 僅保護被新研究支持的核准條件／變更
+Orphan drug exclusivity | 7 年 | 孤兒藥指定且獲核准 | 同 drug、同 orphan indication 的核准阻卻（有法定例外）
+Pediatric exclusivity | +6 個月 | 依 Written Request 完成並符合要求 | 附加於既有專利與特定專屬期尾端
+QIDP extension | +5 年 | 合格抗菌／抗黴菌產品 | 加到特定既有 exclusivity 上
+ANDA 180-day | 180 天 | 符合 first applicant／PIV 與未 forfeiture | 阻卻後續 ANDA 最終核准；AG 可不受阻
+Reference biologic | 4 年提交／12 年核准 | 符合 first licensure 的 351(a) reference product | 351(k) 最早第 4 年可提交、第 12 年可生效核准；資訊見 Purple Book
+Biosimilar BLA 351(k) | 1年 | 符合 first licensure 的 351(k) | 首個獲得可互換性授權的生物相似藥享有 1 年獨佔地位
+29
+[NOTES] 本頁重點：美國專屬期各有資格、期間與保護範圍，不能只看年數。
+備忘稿：逐項講專屬期時強調 scope。NCE、3-year、orphan、pediatric、QIDP、180-day、biologic reference exclusivity 的被阻擋申請類型不同。
+正確性確認：專屬期期間與資格已依 FDA FAQ、BPCIA、BPCA、GAIN Act 及相關法源確認。
+--- slide 41 ---
+PROTECTION ARCHITECTURE
+沒有一個通用的「同一藥證最長專屬期」答案
+Source: FDA exclusivity statutes and scope-specific approval blocking rules.
+期間可重疊或加成
+例如 pediatric +6 個月可附加於符合條件的專利／專屬期；QIDP +5 年可加到特定專屬期。
+範圍可能不同
+3-year exclusivity 可能只涵蓋新適應症或新劑型；不必然阻擋所有同成分競爭品。
+不同法源不能任意相加
+NCE、orphan、QIDP、pediatric、專利與 180 天各有不同資格、trigger 與被阻擋的申請。
+Illustrative scope-based timeline
+2026
+2028
+2030
+2032
+2034
+NCE 5 years + eligible pediatric add-on
+Later 3-year exclusivity: new indication only
+同一成分的「整體市場保護」必須逐一分析：適應症、劑型、申請類型、專利與每一 exclusivity code。
+30
+本頁重點｜沒有通用的「同一藥證最長年限」；要逐一判斷 scope、trigger 與可加成規則。
+[NOTES] 本頁重點：沒有通用的「同一藥證最長年限」；要逐一判斷 scope、trigger 與可加成規則。
+備忘稿：這頁用來修正「全部相加」的迷思。即使年限可重疊或加成，也要看是否同一產品、同一適應症、同一劑型、同一被阻擋申請。
+正確性確認：已避免宣稱單一固定最長年限；pediatric 與 QIDP 加成以法定適用條件為前提。
+--- slide 42 ---
+Q:專屬期（Exclusivity）
+Q 1 : 某公司以 505(b)(2) 路徑獲得 FDA 核准一款週服一次的長效錠劑，而原始藥品為每日服用錠劑。
+該公司進行了 12 週臨床試驗以支持此新劑型。請問該公司是否可獲得專屬期？
+
+Q 2 : 一個新化學實體（NCE）於2020年1月1日以 505(b)(1) NDA 核准，並於2022年完成 FDA 要求的兒
+科試驗。其專屬期何時結束？
+
+Q 3 : 兩家仿製藥公司皆提出 ANDA 並進行專利挑戰（PIV），其中 A 公司首先提出但挑戰失敗，B 公司後
+提交但挑戰成功。B 公司是否可獲得 180 天專屬期？
+
+Q 4 : 同一張藥證 Exclusivity  最長可達 ?
+專屬期類型
+（Exclusivity Type） | 專屬期間
+（Duration） | 適用申請路徑
+（Eligible Submission Types）
+NCE Exclusivity
+新化學實體專屬期 | 5 年 | NDA 505(b)(1)
+3-Year Hatch-Waxman
+具新臨床數據者 | 3 年 | NDA 505(b)(1)、505(b)(2)
+Orphan Drug Exclusivity
+孤兒藥專屬期 | 7 年 | NDA 505(b)(1)、505(b)(2)、BLA 351(a)
+Pediatric Exclusivity
+兒科延展期 | +6 個月 | 附加於現有的 NDA 或 BLA 專利或專屬期之後
+180-Day Generic Exclusivity
+首仿專屬期 | 180 天 | ANDA 505(j)
+（首家提出 PIV 的仿製藥）
+--- slide 43 ---
+A:專屬期（Exclusivity）
+Q 1 : 某公司以 505(b)(2) 路徑獲得 FDA 核准一款週服一次的長效錠劑，而原始藥品為每日服用錠劑。
+該公司進行了 12 週臨床試驗以支持此新劑型。請問該公司是否可獲得專屬期？
+ 
+A : 該公司可獲得 3 年 Hatch-Waxman 專屬期，因為其使用臨床數據支持了一個新劑型（new dosage form）改變。
+專屬期類型
+（Exclusivity Type） | 專屬期間
+（Duration） | 適用申請路徑
+（Eligible Submission Types）
+NCE Exclusivity
+新化學實體專屬期 | 5 年 | NDA 505(b)(1)
+3-Year Hatch-Waxman
+具新臨床數據者 | 3 年 | NDA 505(b)(1)、505(b)(2)
+Orphan Drug Exclusivity
+孤兒藥專屬期 | 7 年 | NDA 505(b)(1)、505(b)(2)、BLA 351(a)
+Pediatric Exclusivity
+兒科延展期 | +6 個月 | 附加於現有的 NDA 或 BLA 專利或專屬期之後
+180-Day Generic Exclusivity
+首仿專屬期 | 180 天 | ANDA 505(j)
+（首家提出 PIV 的仿製藥）
+--- slide 44 ---
+Q:專屬期（Exclusivity）
+Q 2 : 一個新化學實體（NCE）於2020年1月1日以 505(b)(1) NDA 核准，並於2022年完成 FDA 要求的兒
+科試驗。其專屬期何時結束？
+
+A : 原始 NCE 專屬期為 2025/1/1，兒科完成後可延長 6 個月至 2025/7/1。
+      2020+ 5Y + 6M
+專屬期類型
+（Exclusivity Type） | 專屬期間
+（Duration） | 適用申請路徑
+（Eligible Submission Types）
+NCE Exclusivity
+新化學實體專屬期 | 5 年 | NDA 505(b)(1)
+3-Year Hatch-Waxman
+具新臨床數據者 | 3 年 | NDA 505(b)(1)、505(b)(2)
+Orphan Drug Exclusivity
+孤兒藥專屬期 | 7 年 | NDA 505(b)(1)、505(b)(2)、BLA 351(a)
+Pediatric Exclusivity
+兒科延展期 | +6 個月 | 附加於現有的 NDA 或 BLA 專利或專屬期之後
+180-Day Generic Exclusivity
+首仿專屬期 | 180 天 | ANDA 505(j)
+（首家提出 PIV 的仿製藥）
+--- slide 45 ---
+Q:專屬期（Exclusivity）
+Q 3 : 兩家仿製藥公司皆提出 ANDA 並進行專利挑戰（PIV），其中 A 公司首先提出但挑戰失敗，B 公司後
+提交但挑戰成功。B 公司是否可獲得 180 天專屬期？
+
+A : 否。180 天專屬期僅授予 first-to-file 且成功挑戰者。若首家失敗，且無放棄資格（forfeiture），後者亦不得享有獨佔期。
+專屬期類型
+（Exclusivity Type） | 專屬期間
+（Duration） | 適用申請路徑
+（Eligible Submission Types）
+NCE Exclusivity
+新化學實體專屬期 | 5 年 | NDA 505(b)(1)
+3-Year Hatch-Waxman
+具新臨床數據者 | 3 年 | NDA 505(b)(1)、505(b)(2)
+Orphan Drug Exclusivity
+孤兒藥專屬期 | 7 年 | NDA 505(b)(1)、505(b)(2)、BLA 351(a)
+Pediatric Exclusivity
+兒科延展期 | +6 個月 | 附加於現有的 NDA 或 BLA 專利或專屬期之後
+180-Day Generic Exclusivity
+首仿專屬期 | 180 天 | ANDA 505(j)
+（首家提出 PIV 的仿製藥）
+--- slide 46 ---
+Q:專屬期（Exclusivity）
+Q 4 : 同一張藥證 Exclusivity  最長可達?
+
+A :   7.5 年，即：7 年 Orphan Exclusivity + 6 個月 Pediatric Extension
+專屬期類型
+（Exclusivity Type） | 專屬期間
+（Duration） | 適用申請路徑
+（Eligible Submission Types）
+NCE Exclusivity
+新化學實體專屬期 | 5 年 | NDA 505(b)(1)
+3-Year Hatch-Waxman
+具新臨床數據者 | 3 年 | NDA 505(b)(1)、505(b)(2)
+Orphan Drug Exclusivity
+孤兒藥專屬期 | 7 年 | NDA 505(b)(1)、505(b)(2)、BLA 351(a)
+Pediatric Exclusivity
+兒科延展期 | +6 個月 | 附加於現有的 NDA 或 BLA 專利或專屬期之後
+180-Day Generic Exclusivity
+首仿專屬期 | 180 天 | ANDA 505(j)
+（首家提出 PIV 的仿製藥）
+--- slide 47 ---
+策略性分段保護（Staggered exclusivity）
+策略性運用分段保護（Staggered Exclusivity）且不限於單一藥證（NDA/ANDA）時，理論上可以創造超過15年甚至更長的市場保護期。以
+年度 | NDA/ANDA | 適應症/劑型 | 對應Exclusivity | 結束時間
+2025 | NDA-1 | 成分A原始產品（NCE） | NCE (5年) + Pediatric (6M) | 2030
+2028 | NDA-2 | 成分A的新罕病適應症 | Orphan (7年) + Pediatric | 2035
+2031 | NDA-3 | 成分A緩釋劑型 | 505(b)(2) + Pediatric | 2034.5
+2034 | NDA-4 | 不同適應症，具臨床數據 | 505(b)(2) + Orphan | 2041
+✅ 總體壟斷保護：2025–2041，達16年（但分屬不同藥證）✅ 若搭配專利保護與Orange Book訴訟（30-month stay），還可再延長
+--- slide 48 ---
+實例：Gleevec®（Imatinib）
+原廠：Novartis
+用途：慢性骨髓性白血病（CML）等多種癌症
+NDA/藥證 | 年份 | 適應症 / 劑型 | 法規機制 | Exclusivity 類型 | 保護期
+NDA #1 | 2001 | 原始CML適應症 | NCE申請 | NCE (5年) | 2006
+NDA #2 | 2003 | 小兒使用劑量（Oral suspension） | Pediatric Study | Pediatric (6M) | 延長至2006.5
+NDA #3 | 2006 | GIST（胃腸基質瘤） | 新適應症 + 臨床資料 | Orphan Drug (7年) | 2013
+NDA #4 | 2012 | GIST新劑型 | 新劑型有臨床試驗支持 | 505(b)(2) (3年) | 2015
+NDA #5 | 2013 | 小兒CML | 新適應症 + Orphan | Orphan + Pediatric | 到2020
+✅ 總保護期：2001–2020，長達約19年但這是透過多張藥證、不同適應症、不同劑型的組合達成。
+--- slide 49 ---
+Q:
+AbbVie – Humira® (Adalimumab)
+Truvada®（Emtricitabine/TDF）→ Descovy®
+Vigabatrin（Sabril）
+--- slide 50 ---
+KNOWLEDGE CHECK
+快速檢核：四個常見誤區
+Q1  505(b)(2) 一定只能拿 3 年專屬期？
+Answer
+不一定。若為某 active moiety 的首次核准，仍可能符合 5-year NCE；也可能符合 orphan、pediatric 等其他制度。
+Q2  Type B meeting 是否固定另收一筆會議費？
+Answer
+不是。FDA 會議有績效目標，但 PDUFA 費率表沒有每次 Type B 的獨立固定 tariff。
+Q3  專利到期是否代表學名藥一定可立即核准？
+Answer
+不一定。仍需確認 FDA regulatory exclusivity、180-day exclusivity、完整審查與設施狀態。
+Q4  所有 exclusivity 是否可直接相加成一個總年數？
+Answer
+不可。必須看法定加成規則、保護範圍、trigger 與被阻擋的申請類型。
+下一冊：把這些制度套用到 505(b)(1)、505(b)(2)、ANDA 與 PIV 的實際開發決策。
+31
+[NOTES] 本頁重點：常見誤區多來自把路徑、費用、專利與專屬期混成單一規則。
+備忘稿：請用四題快速測驗確認學員是否把路徑、費用、專利與專屬期分清。可以讓學員先口頭回答，再用答案區逐一校正。
+正確性確認：四題答案已依本版校正內容更新；尤其 FDA 會議費與專屬期相加問題已修正。
+--- slide 51 ---
+KEY TAKEAWAYS
+Part 1 重點整理
+1｜先分類，再選路徑
+產品是 drug 或 biologic？資料是自有、可依賴既有認定，或只是 RLD 的 duplicate？
+2｜費用要拆成角色與年度
+PDUFA／BsUFA／GDUFA、TFDA／CDE、DMF／facility／program 都是不同費用，且可能每年調整。
+3｜申請費不是總成本
+真正的投資通常集中在 CMC、臨床／BE、品質系統、供應鏈與 IP／訴訟。
+4｜專利與專屬期要分開讀
+Orange Book patent 由權利人執行；regulatory exclusivity 由 FDA 在核准程序中執行。
+5｜範圍與 trigger 比單一數字更重要
+同一產品可能有多個不同 scope 的保護；不能只問「最長幾年」。
+Part 2 → Development Pathways · 351(a) BLA · ANDA · Paragraph IV · U.S./Taiwan Patent Linkage
+32
+本頁重點｜Part 1 的重點是建立分類、費用、互動與保護架構，供 Part 2 個案使用。
+[NOTES] 本頁重點：Part 1 的重點是建立分類、費用、互動與保護架構，供 Part 2 個案使用。
+備忘稿：收束 Part 1：先分類、再選路徑；費用拆成角色與年度；互動機制不是越多越好；專利與專屬期要分開讀。
+正確性確認：重點整理與各章內容一致；Part 2 的銜接項目已含 351(a) BLA 與 PIV。
+--- slide 52 ---
+REFERENCES
+主要法規與官方資料來源（1/2）
+1. FDA — Determining Whether to Submit an ANDA or a 505(b)(2) Application
+Official FDA guidance on 505(b)(1), 505(b)(2) and ANDA route selection.
+2. FDA — Orange Book
+Approved Drug Products with Therapeutic Equivalence Evaluations.
+3. FDA — Frequently Asked Questions on Patents and Exclusivity
+NCE, 3-year, orphan, pediatric, 180-day and related concepts.
+4. Federal Register — FY2026 PDUFA Fee Rates
+Application and annual prescription drug program fees; effective FY2026.
+5. FDA — Biosimilar User Fee Amendments (FY2026)
+BPD, 351(k) application and biosimilar program fees.
+6. FDA — Generic Drug User Fee Amendments (FY2026)
+ANDA, DMF, applicant program and facility fees.
+7. FDA — Biologics License Applications (BLA) Process
+BLA definition, Form 356h content and product / establishment responsibilities.
+8. FDA — Purple Book
+Licensed biological products and biosimilar/interchangeable information.
+Accessed / checked: 30 Jun 2026 · Part 1
+33
+本頁重點｜參考資料以 FDA 官方 guidance、FY2026 費率與 Orange/Purple Book 資源為主。
+[NOTES] 本頁重點：參考資料以 FDA 官方 guidance、FY2026 費率與 Orange/Purple Book 資源為主。
+備忘稿：參考資料頁不需逐條講完，但要提醒聽眾實際作業時應回到官方 guidance、fee pages、Orange Book/Purple Book 查最新版本。
+正確性確認：FDA FY2026 PDUFA/BsUFA/GDUFA、BLA、Orange Book 與 505(b)(2)/ANDA 資料已再次查核。
+--- slide 53 ---
+REFERENCES
+主要法規與官方資料來源（2/2）
+1. Taiwan Pharmaceutical Affairs Act
+Core legal basis for pharmaceutical regulation and patent linkage.
+2. TFDA — Regulations for Registration of Medicinal Products
+Taiwan registration requirements for new drugs and generics.
+3. TFDA — Standards of Review Fees for the Registration of Western Medicines
+Current official fee schedule; check later amendments before filing.
+4. TFDA — 2026 fee revision draft notice (8 Apr 2026)
+Draft only until formally promulgated and effective.
+5. CDE Taiwan — Generic Drug Paid Consultation Service
+Strategy, CMC and PK consultation fees and process.
+6. ICH M4 — Common Technical Document
+CTD modules and organization.
+7. 21 CFR and FD&C Act / PHS Act
+Primary U.S. statutory and regulatory framework.
+8. FDA — Formal Meetings / Controlled Correspondence
+PDUFA and GDUFA development-interaction mechanisms.
+Accessed / checked: 30 Jun 2026 · Part 1
+34
+本頁重點｜台灣與國際資料需標註版本日期；送件前仍應查最新公告與有效法規。
+[NOTES] 本頁重點：台灣與國際資料需標註版本日期；送件前仍應查最新公告與有效法規。
+備忘稿：台灣與國際資料同樣要看日期。送件前至少重新確認 TFDA 收費標準、查驗登記審查準則、藥品專利連結專區與最新公告。
+正確性確認：TFDA 現行收費與 2026 草案公告已納入；參考日期已更新為 30 Jun 2026。

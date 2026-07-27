@@ -1,0 +1,1431 @@
+=== 10. Pharmaceutical_process_20260716_nc.pptx (62 slides) ===
+--- slide 1 ---
+常見製劑製造流程、
+關鍵參數與設備驗證
+Introduction of Common Pharmaceutical Process｜整理與補充版
+設備 → 流程 → 製程 → CPP/CQA → 驗證與控制策略
+Version: 2026-07-08
+01
+--- slide 2 ---
+課程目標與使用方式
+Learning objectives｜從設備看懂製程控制與驗證文件
+Overview
+02
+1. 讀懂製程流程
+將每個 unit operation 對應至設備、物料狀態與中間品品質。
+例：濕式造粒 → 濕顆粒 → 乾燥/整粒。
+2. 找出 CPP / CQA
+把可調參數（轉速、壓力、時間、溫度、流速）連結到產品品質。
+品質不是終檢才開始。
+3. 建立控制策略
+理解 IPC、PAT、警報、校正、清潔與維護如何共同降低批次變異。
+4. 看懂驗證文件
+URS → DQ → FAT/SAT → IQ/OQ/PQ：由需求逐步轉換為可測試的證據。
+5. 對照實務風險
+缺陷、偏差與 OOS/OOT 需回到「物料 × 設備 × 參數 × 人員」分析。
+6. 支援設備採購
+把採購規格寫成驗收標準，降低買錯設備或驗證補件風險。
+Key words: QbD｜CQA｜CPP｜CMA｜IPC｜PAT｜DQ/IQ/OQ/PQ
+--- slide 3 ---
+全貌：設備不是目的，穩定品質才是目的
+Manufacturing logic｜從原料輸入到合格產品輸出
+Overview
+03
+API / 賦形劑
+包材
+設備
+Equipment
+單元操作
+Unit operation
+中間品控制
+IPC / PAT
+CQA 達標
+Release
+物料屬性 CMA
+粒徑、晶型、含水量、流動性、黏度、pH、微生物限度、包材相容性。
+製程參數 CPP
+時間、溫度、速度、剪切力、壓力、流速、加料速率、持液時間、清潔/滅菌條件。
+品質屬性 CQA
+含量均勻性、粒徑、含水量、硬度、崩解、溶離、填充量、無菌性、微粒、CCI。
+• 同一台設備會因物料、批量、設定值、清潔狀態而產生不同品質風險。
+• 設備驗證的核心問題：在界定範圍內，設備能否穩定支援預定用途？
+• 製程驗證的核心問題：製程能否持續產出符合預定 CQA 的產品？
+Ref: FDA Process Validation / ICH Q8-Q10 concepts
+--- slide 4 ---
+QbD / QRM / PQS：建議的思考框架
+Quality by Design｜把開發知識轉成可驗證的控制策略
+Overview
+04
+QTPP
+目標產品輪廓
+CQA
+關鍵品質屬性
+CMA / CPP
+物料與參數
+Design Space
+設計空間
+Control Strategy
+控制策略
+PV / CPV
+驗證與持續確認
+QbD：從產品需求往回推製程
+先定義產品要達成的安全性、療效、品質與使用需求，再決定哪些品質屬性不可失控。
+
+常見輸出：CQA清單、風險評估、實驗設計、設計空間、控制策略。
+QRM：以風險決定深度
+高風險項目需要更嚴格的監測、驗證、警報與變更控制；低風險項目則可採較精簡的驗證策略。
+
+工具：FMEA、Ishikawa、HACCP、風險矩陣。
+PQS：讓知識可被維持
+產品生命週期中的知識管理、CAPA、偏差、變更、供應商管理、持續製程確認（CPV）需形成閉環。
+• 實務建議：每介紹一台設備，都補上「可調參數、監測方法、失控後果、文件證據」。
+• PAT 可用於即時或近即時監控，例如 NIR、扭力、粒徑、重量、壓力或流速趨勢。
+Ref: ICH Q8/Q9/Q10, FDA PAT Framework
+--- slide 5 ---
+固體劑型製程
+Solid dosage form processing
+從粉體流動性、含量均勻性到錠劑機械強度。
+06
+--- slide 6 ---
+固體劑型：製程流程與控制點
+Typical flow｜秤料 → 混合 → 製粒 → 乾燥 → 整粒 → 終混 → 壓錠/充填 → 包衣 → 包裝
+Solid dosage
+07
+秤料
+Dispensing
+預混
+Pre-blend
+製粒
+Granulation
+乾燥
+Drying
+整粒
+Sizing
+終混
+Final blend
+壓錠/充填
+Compression
+包衣
+Coating
+包裝
+Packaging
+前段粉體控制
+• 原料放行與批號追溯
+• 稱量與交叉污染防止
+• 預混均勻性
+• 粉塵控制 / 防爆
+中段顆粒控制
+• 顆粒大小與含水量
+• 乾燥終點
+• 整粒粒徑分佈
+• 堆積密度與流動性
+後段成型控制
+• 充填重量
+• 壓力/硬度/厚度
+• 崩解/溶離
+• 外觀缺陷
+放行前控制
+• 金屬檢測
+• 包裝完整性
+• 標籤與批號
+• 成品檢驗
+• 固體劑型的常見風險來源：粉體流動性不穩、API 分佈不均、顆粒含水量偏差、壓錠條件波動。
+• 建議訓練方式：依序追問「這一步輸入是什麼？輸出是什麼？最怕哪個 CQA 失控？可調 CPP 是什麼？」
+--- slide 7 ---
+固體劑型：設備總覽
+Equipment overview｜設備名稱可變，單元操作與品質目的不變
+Solid dosage
+08
+製程階段
+主要設備
+設備目的
+關鍵輸出 / 關注 CQA
+秤料 / 投料
+Dispensing
+電子秤、稱量隔離罩、料桶/料袋系統
+確保投料正確、避免交叉污染與粉塵外洩
+投料量、批號追溯、清潔狀態
+混合
+Blending
+V 型/雙錐混合機、Bin blender、高剪混合機
+使 API 與賦形劑達到均勻分佈
+混合均勻度、含量均勻性
+濕式造粒
+Wet granulation
+高速混合造粒機、流動床造粒機
+改善流動性、壓縮性與低劑量 API 分佈
+顆粒大小、含水量、堆積密度
+乾燥 / 整粒
+Drying / Sizing
+流動床乾燥機、箱型乾燥機、整粒機、錐式磨
+使水分達標並校正粒徑分佈
+LOD、粒徑、流動性、粉塵
+終混
+Final blending
+Bin blender、V 型混合機、潤滑劑添加系統
+加入潤滑劑/助流劑並避免過度潤滑
+含量均勻性、壓錠性、溶離
+壓錠 / 充填
+Compression / Filling
+旋轉式壓錠機、膠囊充填機
+將粉末/顆粒轉為單位劑量
+錠重、硬度、崩解、溶離、外觀
+包衣 / 包裝
+Coating / Packaging
+包衣機、鋁塑包裝線、瓶裝線、金檢/檢重
+改善外觀、遮味、保護、控釋與最終防護
+膜衣均一、包裝完整性、標籤正確
+廠商/型號可作市場調查範例；真正的採購判斷需回到 URS、產能、GMP/資料完整性、維護與驗證支援。
+--- slide 8 ---
+濕式造粒：目的、設備與風險
+Wet granulation｜把粉末變成可流動、可壓縮且較均一的顆粒
+Solid dosage
+09
+https://www.glatt.com/technologies/agglomeration-granulation/high-shear-granulation/
+--- slide 9 ---
+濕式造粒：目的、設備與風險
+Wet granulation｜把粉末變成可流動、可壓縮且較均一的顆粒
+Solid dosage
+09
+常用設備
+• High shear granulator
+• Fluid bed granulator
+• Binder solution tank
+• PAT / torque monitoring
+
+選型需考量批量、剪切需求、清潔性與放大策略。
+造粒目的
+• 改善粉體流動性
+• 降低分層 segregation
+• 改善壓縮性
+• 提升低劑量 API 分佈
+主要風險
+• 加液不均導致結塊
+• 過濕造成大顆粒/乾燥困難
+• 不足造粒導致粉末比例高
+• 熱敏 API 降解
+終點判定
+• 扭力/功率曲線
+• 顆粒外觀與手感
+• NIR/水分/粒徑 PAT
+• 依驗證批建立可接受範圍
+--- slide 10 ---
+濕式造粒：CPP → CQA 對照
+High shear / fluid bed granulation｜關鍵不是單一設定，而是參數組合
+Solid dosage
+10
+CPP / 可調參數
+控制目的
+可能影響的 CQA
+常見監測/證據
+混合時間 / Mixing time
+使 API、稀釋劑與內加賦形劑均勻分佈
+含量均勻性、批內變異
+混合均一性取樣、NIR、混合紀錄
+Impeller / Chopper speed
+控制剪切能量、顆粒形成速率與破碎程度
+粒徑分佈、D50/Span、顆粒強度
+轉速紀錄、功率/扭力趨勢
+黏合液量 / Binder volume
+控制液橋形成、顆粒緻密與強度
+顆粒硬度、密度、壓錠性、崩解
+投液量、固含量、配製紀錄
+加液速率 / Addition rate
+避免局部過濕、結塊或造粒不均
+粒徑均一性、結塊風險、乾燥負荷
+泵速/流量、噴嘴狀態、目視檢查
+終點 / Endpoint
+確保濕顆粒達到可乾燥且可壓縮狀態
+粒徑、含水量、壓錠性、溶離
+扭力/功率終點、NIR、操作紀錄
+批量 / 裝載率 / Bowl load
+確保混合與剪切效率在可放大範圍內
+均勻度、顆粒大小、批次一致性
+批量紀錄、放大比對、偏差評估
+補充：濕式造粒常與乾燥終點一起評估；濕顆粒品質不佳會直接放大到壓錠缺陷。
+--- slide 11 ---
+乾燥、整粒與終混
+Drying / Milling / Final blending｜造粒後最容易被低估的三個控制點
+Solid dosage
+11
+乾燥 Drying
+目的：把濕顆粒含水量降到可壓錠、可穩定的範圍。
+
+CPP：
+• 進風溫度/濕度
+• 風量 / 風速
+• 產品溫度
+• 乾燥時間
+• 裝載量
+
+CQA：LOD、水活性、顆粒脆性、穩定性、溶離。
+整粒 Milling / Sizing
+目的：破除結塊並縮窄粒徑分佈。
+
+CPP：
+• 篩網孔徑
+• 轉子速度
+• 進料速率
+• 刀型/篩型
+• 批間清潔
+
+CQA：粒徑分佈、細粉比例、流動性、含量均勻性、粉塵暴露。
+終混 Final blending
+目的：加入外加崩散劑、助流劑與潤滑劑。
+
+CPP：
+• 混合時間/轉速
+• 裝載率
+• 加料順序
+• 潤滑劑量與混合時間
+
+CQA：混合均勻性、壓錠性、硬度、崩解、溶離。
+
+註：硬脂酸鎂常作潤滑劑；滑石粉常作助流/抗黏成分，依配方設計判定。
+• 放大時需比較水分曲線、粒徑分佈與終混均勻性，而不只是複製設備設定值。
+--- slide 12 ---
+壓錠：粉體到單位劑量的關鍵轉換
+Tablet compression｜充填、預壓、主壓與出錠的連續控制
+Solid dosage
+12
+https://www.youtube.com/watch?v=-XAdgM7essA
+--- slide 13 ---
+壓錠：粉體到單位劑量的關鍵轉換
+Tablet compression｜充填、預壓、主壓與出錠的連續控制
+Solid dosage
+12
+充填
+Filling
+刮平/計量
+Dosing
+預壓
+Pre-compression
+主壓
+Main compression
+出錠
+Ejection
+• 壓錠機常以壓力、錠重、厚度、出錠力與速度作為製程穩定性的即時訊號。
+• 粉體流動性、含水量、顆粒強度與潤滑程度會決定壓錠窗口；調壓力不一定能解決根因。
+• 模具磨耗或安裝不良會造成邊緣缺陷、厚度變異、黏沖與出錠異常。
+--- slide 14 ---
+壓錠：粉體到單位劑量的關鍵轉換
+Tablet compression｜充填、預壓、主壓與出錠的連續控制
+Solid dosage
+12
+--- slide 15 ---
+壓錠：CPP → CQA 對照
+Compression CPP/CQA map｜壓力、速度、充填與模具共同決定品質
+Solid dosage
+13
+CPP / 可調參數
+控制目的
+可能影響的 CQA
+異常徵兆
+主壓力
+Main compression force
+形成足夠強度與厚度的一致錠劑
+硬度、厚度、磨損度、崩解/溶離
+過低：鬆散；過高：分層、過硬
+預壓壓力
+Pre-compression force
+排除空氣、提高主壓穩定性
+分層/裂片、硬度變異
+Capping、lamination
+轉盤速度 / Dwell time
+決定粉體受壓時間與產能
+硬度、分層、重量變異
+高速下空氣滯留、硬度不足
+充填深度 / Feed frame
+控制模孔填充量與錠重
+錠重、含量均勻性、劑量
+重量趨勢漂移、RSD 偏高
+模具與沖頭狀態
+保持錠型、刻痕與表面完整
+外觀、厚度、刻痕、缺角
+黏沖、刮痕、缺角、雙印
+出錠力
+Ejection force
+確保錠劑順利離模並避免損傷
+外觀、裂痕、邊緣完整性
+出錠力升高、表面擦傷、卡錠
+壓錠參數需搭配 IPC：錠重、硬度、厚度、磨損度、崩解、外觀與必要時溶離。
+--- slide 16 ---
+補充：常見錠劑缺陷與第一層對策
+Tablet defects｜先定位是物料、模具、壓力、速度或環境問題
+Solid dosage
+14
+--- slide 17 ---
+補充：常見錠劑缺陷與第一層對策
+Tablet defects｜先定位是物料、模具、壓力、速度或環境問題
+Solid dosage
+14
+缺陷
+常見原因
+先檢查
+Capping / Lamination
+頂裂 / 分層
+空氣滯留、壓速過快、顆粒彈性回復、含水量不適
+預壓、轉速、顆粒含水量、壓力曲線
+Sticking / Picking
+黏沖 / 摳字
+濕度偏高、潤滑不足、沖頭表面/刻字問題、黏性配方
+LOD、模具表面、潤滑時間、室內濕度
+Weight variation
+錠重變異
+流動性不佳、料斗架橋、feed frame 設定不適
+粒徑/細粉、料位、充填深度、轉速
+Chipping / Edge crack
+缺角 / 邊裂
+硬度不足、出錠力高、模具磨耗、顆粒脆弱
+出錠力、模具、硬度/磨損度
+Mottling / Color variation
+色斑
+顏料分佈不均、乾燥/混合不均、API/色素遷移
+混合、乾燥、色素粒徑、溫度
+實務判斷順序
+1) 先看趨勢：是批內逐漸偏移還是突然異常？
+2) 再看位置：單一沖站、單台設備、單批物料或全線？
+3) 最後調參：避免只用壓力掩蓋顆粒或潤滑問題。
+--- slide 18 ---
+膜衣與包裝：產品保護與最終可用性
+Coating and packaging｜外觀、保護、控釋、標示與防偽
+Solid dosage
+15
+膜衣 Coating
+目的：
+• 改善外觀與吞服性
+• 遮味/防潮/避光
+• 功能性釋放控制
+
+CPP：
+• 噴液速率
+• 霧化壓力
+• 鍋速/裝載量
+• 進/排風溫度
+• 錠床溫度
+
+CQA：增重、色差、外觀缺陷、崩解/溶離。
+檢查與包裝
+目的：
+• 去除異物與不良品
+• 防潮、避光、防誤用
+• 確保批號/效期/標籤正確
+
+設備：
+• 金屬檢測 / 檢重
+• 鋁塑包裝 / 瓶裝線
+• 視覺檢查 / 貼標
+
+CQA：包裝完整性、標籤正確、可追溯性。
+常見風險
+膜衣：
+• Picking / sticking
+• Orange peel
+• 色差 / 噴斑
+• 溶離延遲
+
+包裝：
+• 鋁箔密封不良
+• 乾燥劑漏放
+• 混批 / 標籤錯誤
+• 序號或批號不可讀
+
+對策：IPC、線清場、視覺系統與挑戰測試。
+--- slide 19 ---
+膜衣：
+Coating  ｜外觀、保護、控釋
+Solid dosage
+15
+https://www.glatt.com/technologies/coating/
+--- slide 20 ---
+代表廠商與設計特色｜固體製程（一）
+混合、製粒、乾燥、整粒與最終混合
+設備代表廠商與設計特色
+39
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+高剪切混合／濕式造粒
+GEA Gral／UltimaGral／PMA；Glatt VG；Freund-Vector GMX
+GEA 上驅 Gral 偏多用途與高階製程整合，
+PMA 底驅重視密封與清潔維護；
+Glatt 強調垂直高速造粒與緊實均一顆粒；
+Freund-Vector 常與一鍋式或整線整合搭配。選型看批量、扭矩趨勢、WIP/CIP、溶劑防爆。
+流動床乾燥／造粒／包衣
+Glatt GPCG；GEA Aeromatic／FlexStream；Freund-Vector Flo-Coater
+Glatt GPCG 可依頂噴、底噴、切線噴切換多種製程；
+Freund-Vector Tri-Axial wand 強化霧化與噴霧控制；
+GEA 可與連續線整合。選型看噴槍位置、濾袋清潔、進排風與放大策略。
+連續濕式造粒／乾燥
+GEA ConsiGma；Glatt 連續模組
+連續線將濕式造粒、乾燥、整粒／壓錠串接，強調小持料量、PAT 與即時控制；批次線導入較直觀，但需管理批間變異與轉料風險。
+整粒／粉碎／乾式造粒
+Frewitt EasyMill／FlexMill；Fitzpatrick FitzMill／Chilsonator；Alexanderwerk WP
+Frewitt 模組化可在錐式篩、錘式與篩分間切換；
+Fitzpatrick 強項為錘式粉碎與 roll compaction；
+Alexanderwerk roll compactor 可搭配真空脫氣。選型看 PSD、熱敏性、粉塵與清潔拆裝。
+最終混合／容器混合
+GEA IBC blender；L.B. Bohle PM；Patterson-Kelley V blender；PAT Group
+IBC 混合減少轉料與交叉污染，搭配出料防分層；
+Bohle 容器混合可做大範圍放大；
+V blender 結構簡單但對低劑量、易分層或帶電粉體需較嚴格評估。
+--- slide 21 ---
+代表廠商與設計特色｜固體製程（二）
+壓錠、包衣、膠囊充填、檢查與包裝
+設備代表廠商與設計特色
+40
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+壓錠機
+Fette FE／P 系列；KORSCH XL／X；IMA Prexima
+Fette 常見於高速量產與易操作平台；
+KORSCH 涵蓋研發、放大、高速、多層與包芯錠；
+IMA Prexima 強調機械區與製程區隔離、快速換轉塔與高壓結構。
+選型看壓力、dwell time、多層需求與 containment。
+包衣機
+IMA Perfima／Performa；O’Hara Labcoat／Fastcoat；GEA Solidlab／ConsiGma Coater
+IMA 以穿孔鍋、噴槍與 CIP/WIP 完整性為重點；
+O’Hara 連續包衣的淺床設計有利均一與降低錠劑破損；
+GEA 可做批次到連續整合。
+選型看鍋體幾何、噴槍、排風／除濕與清洗驗證。
+膠囊充填
+Syntegon GKF；IMA Zanasi／THC；MG2 Planeta
+Syntegon 強調模組化、100% 檢重與 PAT；
+IMA THC 可做 OEB 5 containment 與多種給料；
+MG2 Planeta 為連續運轉高產能平台。
+選型看粉末、顆粒、微丸、液體組合與換線時間。
+金檢／檢重／視覺
+METTLER TOLEDO；Minebea Intec；Sartorius
+組合式檢重＋金檢／X-ray／視覺可節省線體空間並集中剔除邏輯；重點在 false reject、校正砝碼／測試片、資料輸出與電子紀錄完整性。
+鋁塑／瓶裝包裝
+Uhlmann；Marchesini；IMA；Romaco
+Uhlmann 強調伺服驅動、工具輕量與快速換線；
+Marchesini 常見整合機械手臂、視覺檢查與 line clearance；
+IMA／Romaco 適合多種泡罩與瓶裝線。
+選型看 format changeover、序號化與批號列印驗證。
+--- slide 22 ---
+液體與懸液製程
+Liquid and suspension processing
+溶解、分散、均質、過濾、持液與灌裝的一致性。
+16
+--- slide 23 ---
+液體/懸液：製程流程與控制點
+Typical flow｜秤料 → 溶解/分散 → pH/防腐 → 均質 → 過濾/脫泡 → 灌裝封口
+Liquid & suspension
+17
+--- slide 24 ---
+液體/懸液：製程流程與控制點
+Typical flow｜秤料 → 溶解/分散 → pH/防腐 → 均質 → 過濾/脫泡 → 灌裝封口
+Liquid & suspension
+17
+秤料
+Dispensing
+純水/溶媒
+Preparation
+溶解/分散
+Dissolve / disperse
+pH / 防腐
+Adjustment
+均質
+Homogenize
+過濾/脫泡
+Filter / deaerate
+儲槽
+Hold
+灌裝封口
+Fill / seal
+包裝
+Pack
+溶液 Solution
+核心：API 完全溶解、澄清、pH 與防腐效能穩定。
+風險：析出、降解、顏色/氣味變化。
+懸液 Suspension
+核心：粒徑、黏度、再分散性與沉降控制。
+風險：結塊、絮凝、劑量不均。
+乳劑/半固體延伸
+需額外關注油水相、乳化能量、相分離、流變與微生物控制。
+共通 CQA
+含量、pH、黏度、外觀、微粒、微生物限度、填充量。
+• 液體製程最常見的變異來自溶解順序、溫度、剪切能量、持液時間、氣泡與灌裝系統校正。
+• 懸液須特別連結粒徑分佈、黏度與灌裝一致性；放置後仍需能再分散。
+--- slide 25 ---
+液體與懸液：設備總覽
+Equipment overview｜依產品黏度、是否無菌、是否熱敏來選型
+Liquid & suspension
+18
+製程階段
+主要設備
+設備目的
+關鍵輸出 / 關注 CQA
+溶解 / 加熱
+Dissolution / heating
+夾套槽、攪拌槽、線上加熱/冷卻系統
+促進 API 與賦形劑溶解，控制溫度與混合效率
+溶解度、pH、澄清度、含量
+分散 / 均質
+Dispersion / homogenization
+高剪混合機、轉子定子、線上均質機
+降低顆粒或液滴尺寸，提高懸浮或乳化穩定性
+PSD、D50/D90、黏度、均勻性
+pH / 添加劑調整
+攪拌槽、計量泵、線上混合器
+控制 pH、防腐劑、甜味劑、緩衝鹽與風味劑分佈
+pH、含量、防腐效能、口感
+過濾 / 脫泡
+管線式濾器、板框濾機、真空脫泡槽
+去除顆粒/氣泡，改善外觀與灌裝穩定
+微粒、氣泡、澄清度、灌裝準確性
+儲槽 / 持液
+SS316 儲槽、一次性袋、攪拌保溫槽
+在灌裝前維持均一狀態並控制 hold time
+均一性、微生物限度、溫度、沉降
+灌裝 / 封口
+活塞式/蠕動泵/質量流量灌裝機、旋蓋機、鋁封機
+定量充填並密封，防止洩漏/污染
+填充量、封口完整性、外觀、標示
+--- slide 26 ---
+補充：溶液 vs 懸液的控制差異
+Solution vs suspension｜同樣是液體，關鍵品質風險不同
+Liquid & suspension
+19
+比較項目
+溶液製劑 Solution
+懸液製劑 Suspension
+共同管理重點
+產品狀態
+API 完全溶解於溶媒中；理想狀態下無可見顆粒。
+API 或固體微粒分散於液相中，需長期保持可再分散。
+配方穩定性、批間一致性、包材相容性。
+主要 CQA
+含量、pH、澄清度、顏色、降解物、防腐效能。
+PSD、D50/D90、黏度、沉降體積、再分散性、劑量均勻。
+微生物限度/無菌性、填充量、外觀、標籤。
+關鍵 CPP
+加料順序、溫度、攪拌速率、pH 調整、過濾條件。
+均質能量、分散時間、濕潤劑/分散劑、黏度劑、持液攪拌。
+CIP/SIP、hold time、灌裝校正、環境控制。
+常見失效
+析出、顏色變化、pH 漂移、防腐效能不足。
+沉降結塊、絮凝、粒徑長大、倒置後劑量不均。
+微粒、氣泡、漏液、灌裝不足或過量。
+檢測建議
+pH、澄清度、含量/降解物、微生物、防腐效能。
+粒徑、黏度、再分散、含量均勻、沉降/穩定性。
+重量/容量、密封完整性、目視檢查、穩定性。
+實務提醒：懸液灌裝前與灌裝期間的攪拌條件必須被定義；否則頭中尾瓶可能產生劑量差異。
+--- slide 27 ---
+均質/分散：CPP → CQA 對照
+Homogenization and dispersion｜剪切能量與配方流變共同決定穩定性
+Liquid & suspension
+20
+控制目標：讓微粒尺寸夠小且分佈可控，但避免造成 API 降解、氣泡、黏度異常或過度剪切。
+--- slide 28 ---
+均質/分散：CPP → CQA 對照
+Homogenization and dispersion｜剪切能量與配方流變共同決定穩定性
+Liquid & suspension
+20
+CPP / 可調參數
+控制目的
+可能影響的 CQA
+均質機轉速 / rpm
+決定剪切力與破碎效率
+粒徑分佈、D50/D90、外觀
+均質時間
+避免分散不足或過度發熱
+均勻性、黏度、API 降解
+剪切能量 / 能量密度
+控制懸浮或乳化穩定性
+沉降、絮凝、口感、穩定性
+分散溫度
+控制黏度、溶解性與熱降解風險
+含量、降解物、黏度
+投料順序
+降低局部過濃、結塊與相容性風險
+均勻性、pH、外觀
+分散劑 / 濕潤劑濃度
+降低界面張力與聚集傾向
+粒徑長大、再分散性、穩定性
+放大注意事項
+小試均質時間不可直接等比例放大。放大時應比較功率密度、循環次數、槽內流場與產品溫升，並以 PSD/黏度/含量均勻性確認。
+控制目標：讓微粒尺寸夠小且分佈可控，但避免造成 API 降解、氣泡、黏度異常或過度剪切。
+--- slide 29 ---
+過濾、防腐與持液控制
+Filtration, preservative and hold time｜液體製程的隱形風險
+Liquid & suspension
+21
+過濾 Filtration
+用途：去除未溶顆粒、纖維、包材碎屑或生物負載。
+
+控制點：
+• 濾材相容性
+• 孔徑與壓差
+• 預過濾
+• 濾器完整性/批次追溯
+
+風險：API/防腐劑吸附、堵塞、壓差過高、過濾後二次污染。
+防腐 Preservative
+用途：降低多次使用或非無菌液體製劑的微生物風險。
+
+控制點：
+• 添加順序與溶解完整
+• pH 對防腐效能的影響
+• 與包材/濾器吸附相容性
+• 防腐效能試驗
+
+風險：濃度不足、局部過濃、沉澱或與 API/賦形劑交互作用。
+持液 Hold Time
+用途：定義配製後至灌裝前可接受的等待時間與條件。
+
+控制點：
+• 儲槽溫度
+• 攪拌方式/轉速
+• 生物負載/微生物限度
+• 懸液沉降與再分散
+• 取樣點與時間點
+
+風險：降解、沉降、微生物增長、含量不均。
+--- slide 30 ---
+灌裝與封口：CPP → CQA 對照
+Filling and sealing｜單位劑量準確性與包裝完整性
+Liquid & suspension
+22
+--- slide 31 ---
+灌裝與封口：CPP → CQA 對照
+Filling and sealing｜單位劑量準確性與包裝完整性
+Liquid & suspension
+22
+CPP / 設定
+控制目的
+可能影響的 CQA
+灌裝速度
+避免飛濺、氣泡、液面不穩
+填充量、外觀、污染風險
+泵校正 / 活塞行程
+確保每瓶/每支定量
+容量/重量準確性、劑量
+噴嘴位置/插入深度
+降低泡沫、拉絲與瓶口污染
+外觀、微粒、封口品質
+產品溫度/黏度
+維持流動性與充填穩定
+填充量、氣泡、含量均一性
+瓶身定位 / 輸送速度
+避免漏灌、偏灌與碰撞
+頭尾瓶品質、外觀、漏液
+封口扭力 / 鋁封壓力
+確保密封完整與使用便利
+Seal integrity、洩漏、微生物風險
+頭尾瓶控制
+啟動、停機、補料、換批與收尾階段的灌裝量最容易偏移。應定義剔除邏輯、線上檢重/取樣頻率與偏差處理。
+對懸液：灌裝前/灌裝中攪拌條件與管線死角是關鍵；對黏稠液：泵型與回吸機構需驗證。
+--- slide 32 ---
+代表廠商與設計特色｜液體與懸液製程（一）
+溶解、均質、線上混合、過濾與脫泡
+設備代表廠商與設計特色
+41
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+溶解／配製槽
+GEA PharmaConnect；IMA vessel；Pharmalab；De Dietrich
+差異在槽體幾何、夾套加熱／冷卻、CIP/SIP 噴球、稱重模組與磁力或頂入式攪拌。選型看黏度、溫控、死角、表面粗糙度與底部排空性。
+高剪切均質
+IKA ULTRA-TURRAX／inline；Silverson；FrymaKoruma／ProXES
+IKA 常見於實驗室到線上轉子-定子；Silverson 一機多用途並可縮短混合時間；FrymaKoruma 真空製程利於脫泡與乳化。選型看 D50/D90、發熱、剪切能量與產品降解風險。
+線上混合／閥組
+GEA VARIVENT／MIXPROOF；SPX/APV；Alfa Laval
+Mixproof 雙座閥可降低交叉污染並支援 CIP 路徑；模組化閥陣適合多配方與自動 recipe 切換。選型看 dead leg、排空性、CIP 覆蓋與閥位回饋。
+過濾／預過濾
+Sartorius Sartopore；Merck Millipore Express／Durapore；Pall；Amazon Filters
+差異在膜材 PES/PVDF/PTFE、預濾層、孔徑組合、capsule/cartridge 與吸附性。高價 API 或蛋白質需做相容性、吸附、通量與 extractables/leachables 評估。
+真空脫泡／暫存
+IMA／Pharmalab；De Dietrich；VACUUBRAND；BMT
+真空脫泡可降低灌裝氣泡；暫存槽重點在氮封、攪拌防沉降、溫控與 hold time。黏稠或懸液產品需確認底部排空、低剪切循環與無死角設計。
+--- slide 33 ---
+代表廠商與設計特色｜液體與懸液製程（二）
+灌裝、封口、貼標、視檢與清潔滅菌公用系統
+設備代表廠商與設計特色
+42
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+液體／懸液灌裝
+IMA EXCELLINE；Syntegon Flexliquid；Romaco Macofar；Marchesini
+活塞式適合高黏度或懸液；蠕動泵降低交叉污染但需管控 tubing；質量流量計適合高精度液體。選型看灌裝精度、泡沫、CIP/SIP、頭尾瓶處理邏輯。
+上蓋／旋蓋／鋁封
+AROL；Marchesini；Krones；Zalkin
+差異在扭矩控制、cap sorting、壓蓋／旋蓋相容性與剔除邏輯。選型看容器尺寸範圍、扭矩趨勢紀錄、鋁封外觀與密封完整性檢查。
+貼標／外包裝
+Herma；Marchesini；Uhlmann；Krones
+差異在貼標精度、瓶身定位、印字／視覺驗證、序號化與 carton aggregation。選型看法規標示、資料整合、換線時間與批號防混批。
+目視／異物檢查
+Syntegon；Seidenader；Antares Vision；Körber
+自動視檢透過多相機、打光與旋瓶邏輯偵測粒子、液位、塞蓋與容器缺陷；人工複檢仍需訓練、缺陷庫與檢查員資格管理。
+CIP/SIP skid／公用系統
+GEA；Stilmas；Getinge；Fedegari
+差異在 recipe、導電度／TOC、溫度保持、蒸汽品質與回路設計；直接影響清潔殘留、微生物控制、交叉污染與批間可重現性。
+--- slide 34 ---
+無菌製程與注射劑製造
+Aseptic processing and injection manufacturing
+無菌性來自設計、環境、人員、設備與過程控制，不是終檢。
+23
+--- slide 35 ---
+無菌製程：全流程與無菌保證思維
+Aseptic flow｜Preparation → Sterile filtration → Aseptic filling → CCI → Inspection
+Aseptic & injection
+24
+配製
+Compounding
+預過濾
+Pre-filter
+濾膜滅菌
+Sterile filtration
+無菌轉移
+Aseptic transfer
+無菌充填
+Filling
+加塞/封口
+Stopper / seal
+目檢/CCI
+Inspection
+產品與組件
+藥液、濾器、管線、接頭、容器、塞子、鋁蓋都必須有適合的滅菌/除熱原與保持無菌策略。
+環境與人員
+潔淨室/隔離器、壓差、氣流、溫濕度、環境監測、手套完整性與人員動作是關鍵控制。
+過程與文件
+批記錄、無菌組裝、hold time、SIP/CIP、滅菌紀錄、偏差、培養基灌裝與趨勢分析需閉環。
+• 注射劑 CQA 包含無菌性、細菌內毒素/熱原、可見與不可見微粒、含量/效價、pH、滲透壓、CCI、可萃取/浸出物。
+• 無菌保證需要以 contamination control strategy（CCS）整體管理，而非只依賴終成品無菌試驗。
+Ref: FDA Aseptic Processing, EU GMP Annex 1
+--- slide 36 ---
+終端滅菌 vs 無菌製程
+Terminal sterilization vs aseptic processing｜先判斷產品能否承受終滅菌
+Aseptic & injection
+25
+比較項目
+終端滅菌 Terminal sterilization
+無菌製程 Aseptic processing
+判斷重點
+基本概念
+產品已封裝後再以濕熱/乾熱/輻射等方式滅菌。
+各組件先滅菌，藥液經濾膜滅菌後在受控環境下充填封口。
+若產品與容器可承受，通常優先評估終端滅菌。
+優點
+封口後處理，微生物污染風險較易以滅菌週期控制。
+適合熱敏或無法終滅菌的生物製劑/蛋白/疫苗等。
+依產品穩定性、包材與法規要求決定。
+主要風險
+高溫/壓力造成降解、相分離、包材變形或 CCI 變化。
+人員、環境、設備組裝、無菌轉移與灌裝過程帶入污染。
+風險評估需涵蓋整個污染控制策略。
+關鍵證據
+滅菌週期開發、熱分布/熱穿透、F0、BI/CI、CCI。
+濾器完整性、培養基灌裝、環境監測、無菌組裝、hold time。
+驗證證據需能支持商業批條件。
+常見設備
+Autoclave、乾熱滅菌器、終端滅菌線。
+隔離器/RABS、無菌灌裝線、一次性系統、無菌接頭。
+設備能力需與製程風險相匹配。
+Ref: EU GMP Annex 1, FDA Aseptic Processing
+--- slide 37 ---
+無菌製程- 濾膜滅菌：CPP → CQA 對照
+Sterile filtration｜使用經驗證的 sterilizing-grade filter 與完整性測試
+Aseptic & injection
+26
+CPP / 控制項
+控制目的
+可能影響的 CQA
+濾膜孔徑 / 等級
+以經驗證阻菌能力移除微生物
+無菌保證、生物負載
+完整性測試 Pre/Post use
+確認濾膜無破損且具阻菌能力
+無菌性、偏差風險
+過濾壓力 / 流速
+避免過壓破裂、過慢造成 hold time 風險
+無菌性、效價、微粒
+產品溫度
+控制黏度與熱敏產品降解
+含量/效價、降解物、蛋白穩定
+預過濾 / 生物負載控制
+降低堵塞與濾膜負荷
+流速、微粒、生物負載
+濾材相容性/吸附
+避免 API 或蛋白被吸附、濾材釋出物
+含量、效價、E&L
+過濾與持液時間
+避免產品在系統中滯留過久
+降解物、微生物風險、含量
+實務提醒
+「0.22 µm」不能單獨視為充分證據；須搭配濾器等級、產品相容性、微生物挑戰/驗證資料、完整性測試與批次紀錄。濾器選型也要評估吸附、E&L、可滅菌性與最大可過濾量。
+--- slide 38 ---
+無菌連接與一次性轉移：風險與控制
+Aseptic connectors / single-use systems｜降低開放式操作與二次污染風險
+Aseptic & injection
+27
+控制項
+風險 / CQA
+連接面潔淨度與完整性
+微生物、微粒、CCI
+連接力/插入深度/扭力
+連接失敗、洩漏、操作者安全
+密封維持時間與操作步驟
+無菌屏障失效、SAL
+滅菌方式相容性
+材料脆化、E&L、無菌性
+藥液/清潔劑相容性
+吸附、析出、效價下降
+流速與壓差
+接頭破裂、洩漏、泡沫
+使用次數/組裝壽命
+機械完整性與追溯性
+驗證/文件建議
+將一次性系統視為「設備 + 包材接觸材料 + 無菌屏障」的一部分。URS 應定義材質、滅菌方式、連接型式、壓力範圍、流量、E&L 資料、供應商變更通知與批號追溯。
+--- slide 39 ---
+BFS、PFS 與凍晶技術
+BFS / pre-filled syringe / lyophilization｜常見注射劑與無菌包裝技術
+Aseptic & injection
+28
+BFS
+Blow-Fill-Seal
+概念：容器成型、灌裝、封口在連續封閉系統中完成。
+
+關鍵控制：
+• 樹脂/塑料相容性
+• 模具與切刀狀態
+• 成型溫度/壓力
+• 充填量
+• 容器完整性
+• 環境與設備生物負載
+
+適用：小容量無菌液體、眼用液、吸入液等。
+PFS
+Pre-filled syringe
+概念：將注射劑預先灌裝於針筒或 cartridge，提升使用便利與劑量準確。
+
+關鍵控制：
+• 填充量與氣泡
+• 矽油/潤滑與蛋白相容性
+• plunger/stopper/needle shield
+• CCI
+• 可見/不可見微粒
+• 使用力與抽推力
+
+適用：疫苗、生物製劑、慢性病自我注射產品。
+凍晶
+Lyophilization
+概念：凍結 → 一次乾燥（升華）→ 二次乾燥（脫附），提升熱敏產品穩定性。
+
+CPP：
+• 冷凍速率
+• 棚板溫度
+• 腔體壓力
+• 一/二次乾燥時間
+• 回填氣體與壓塞
+
+CQA：蛋糕外觀、殘留水分、復溶時間、效價、穩定性、CCI。
+--- slide 40 ---
+代表廠商與設計特色｜無菌核心設備（一）
+滅菌、濾膜滅菌、無菌連接與一次性系統
+設備代表廠商與設計特色
+43
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+濕熱／乾熱滅菌
+Fedegari；Getinge；Belimed；Stilmas
+Fedegari 強調整合工程與驗證、蒸汽滅菌器可支援多尺寸與 316L；Getinge GSS/GTS 著重 GMP/驗證支援與節能模組。選型看熱分布、F0、負載型態、冷點與資料紀錄。
+純蒸汽／水系統
+Stilmas；Bram-Cor；MECO；BWT
+差異在蒸汽品質、非冷凝氣體控制、取樣／排凝設計、材質與 sanitization。需與 autoclave、SIP、CIP 使用點及水系統品質趨勢串接。
+無菌過濾
+Sartorius；Merck；Pall
+設計差異在膜材 PES/PVDF/PTFE、孔徑組合、預濾層與 capsule/cartridge。選型須做產品相容性、吸附、通量、使用前後完整性測試與 hold time 管理。
+無菌連接
+CPC AseptiQuik／Steam-Thru；Sartorius Biowelder；Cytiva ReadyMate；Merck Lynx
+CPC 快接頭可於非無菌環境做無菌連接；Sartorius tube welding 適合熱塑管；Cytiva／Merck 多為一次性 genderless 或單次啟動設計。選型看管徑、流量與滅菌相容性。
+一次性系統
+Sartorius；Cytiva；Pall；Thermo Fisher
+差異在 bag film、connector ecosystem、mixing bag、預滅菌供應鏈與完整性測試。需評估 extractables/leachables、批量成本、供應風險與廢棄物。
+--- slide 41 ---
+代表廠商與設計特色｜無菌核心設備（二）
+無菌灌裝、預充填注射器、BFS、凍晶與後段檢查
+設備代表廠商與設計特色
+44
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+Vial filling line
+Syntegon ALF／MLD；Bausch+Ströbel；groninger；IMA Life
+Syntegon 可整合 isolator/RABS、CIP/SIP、PUPSIT、100% IPC；groninger 支援 RTU tub/nest 多容器；B+S 模組化高精度 dosing；IMA Life 強調 robotic/gloveless。
+PFS／cartridge line
+Bausch+Ströbel；groninger；Syntegon；IMA Life
+差異在 tub opening、debag／denest、plunger placement、backstop／label、低損耗與微量充填。高價生物藥應重視 100% IPC、低 hold-up volume 與產品暴露時間。
+BFS 成型充填封口
+Rommelag；Weiler Engineering；ApiJect system
+BFS 在同一自動無菌流程中成型、充填、封口，可降低開放暴露與人工介入；Weiler 可客製 luer lock、twist-off、hanger 等容器。選型看樹脂、熱負荷與 E&L。
+凍晶機
+Telstar；Optima；IMA Lyofast；GEA
+Telstar／Optima 提供不同板層面積、CIP/SIP、自動裝卸與 isolator/RABS 整合。選型看板層溫度均一性、冷阱容量、stoppering、週期開發與裝卸方式。
+軋蓋／後段檢查
+Syntegon；Bausch+Ströbel；Marchesini；Körber
+差異在 stopper/cap 缺陷檢測、鋁蓋壓合高度、視覺檢查與 tray loading。對無菌品而言，CCI、外觀缺陷與批次追溯為主要選型重點。
+--- slide 42 ---
+設備設計差異速查：選型時先問這些問題
+把「廠商比較」轉成可審核的工程與品質問題
+設備代表廠商與設計特色
+46
+判斷面向
+要問廠商的問題
+對 URS／DQ／FAT 的影響
+物料／產品風險
+高活性、黏稠、蛋白質、懸液、熱敏或易氧化？
+決定 containment、剪切／溫升、吸附、E&L、氮封與清潔策略。
+製程模式
+批次、半連續或連續？單品大批量或多品項小批量？
+影響持料量、residence time、PAT、排程、批次定義與偏差切分。
+清潔／滅菌
+手洗、WIP、CIP、SIP 或 VHP？是否需要無菌邊界？
+確認死角、排空性、Ra、拆裝時間、滅菌 cycle 與清潔驗證取樣點。
+換線與格式
+容器、模具、膠囊號數、泡罩格式是否頻繁切換？
+比較 tool-less changeover、format parts 數量、line clearance 與首件確認。
+自動化與資料
+PLC/HMI、recipe、audit trail、電子簽名與資料備份？
+支援 Part 11/Annex 11、ALCOA+、權限分級、batch report 與備份還原。
+品質檢測與攔截
+IPC、100% 檢重、vision、PUPSIT、CCI 是否在線化？
+把 CQA 監控與剔除邏輯前移，降低 OOS、混批與人工判定差異。
+放大策略
+Lab、pilot、commercial 是否使用相似平台？
+關注幾何相似、功率密度、噴霧通量、乾燥空氣量與壓錠 dwell time。
+廠商支援／TCO
+亞洲服務、備品、耗材、PM、文件包與交期？
+評估 5 年總成本、關鍵備品清單、停機風險、FAT/SAT 支援與教育訓練。
+--- slide 43 ---
+可放進 URS／DQ 的廠商比較欄位
+從「品牌偏好」轉成「可驗證、可追溯、可審核」的需求
+設備代表廠商與設計特色
+47
+比較項目
+應向廠商索取／確認
+URS／DQ 寫法範例
+製程能力與範圍
+批量、黏度、壓力、溫度、轉速、產能、適用容器／模具。
+設備應覆蓋目標批量與 worst-case 參數，且能穩定達成目標 CQA。
+GMP／Hygienic design
+接液材質、表面粗糙度、dead leg、可排空性、CIP/SIP/WIP 覆蓋。
+接液面材質、Ra、焊道、排空斜率與清潔方法須明確列入 URS。
+Containment／無菌
+OEB、isolator/RABS、VHP、glove leak、PUPSIT、無菌連接。
+符合目標 Grade/OEB；支援完整性測試，並把人工介入最小化。
+自動化／資料完整性
+PLC/HMI、recipe、audit trail、e-signature、備份、報表輸出。
+系統應支援使用者權限、audit trail、電子批次資料與備份還原測試。
+驗證文件包
+DQ、FAT、SAT、IQ/OQ template、校正證書、材質證明、軟體版本。
+廠商需提供可審核文件包；FAT/SAT 測試矩陣要對應 URS 條款。
+維護與總成本
+lead time、備品、PM、遠端支援、耗材、local service。
+評估 5 年 TCO、關鍵備品清單、保養週期、訓練與停機風險。
+建議：不要只比較報價；應同時比較製程風險、清潔／滅菌策略、資料完整性、文件完整度與售後支援。
+--- slide 44 ---
+無菌環境與監測：CCS 思維
+Contamination Control Strategy｜把污染控制從「點」串成「系統」
+Aseptic & injection
+29
+廠房/設備設計
+Premises
+人員與更衣
+Personnel
+清潔消毒
+Cleaning
+滅菌/除熱原
+Sterilization
+環境監測
+EM
+培養基灌裝
+Media fill
+偏差/CAPA
+Lifecycle
+環境監測 EM
+• 非活性微粒
+• 活性微生物
+• 沉降菌/接觸碟/空氣採樣
+• 壓差、溫濕度、氣流
+• 趨勢與警戒/行動限度
+
+重點：監測點、頻率與限度需基於風險與製程暴露位置。
+人員與操作
+• 更衣訓練與資格
+• 手套/袖套完整性
+• 干預分類：例行/非例行
+• 操作動作與暴露時間
+• 無菌操作觀察
+
+重點：人員常是無菌製程最大風險源之一。
+製程模擬 / Media fill
+• 模擬最差條件
+• 涵蓋正常與必要干預
+• 培養條件與判讀
+• 偏差調查與再資格
+
+重點：用實證證明無菌製程在操作條件下可被控制。
+Annex 1 已明確強調 CCS；設備、設施、監測、清潔與人員都應納入污染控制策略。
+Ref: EU GMP Annex 1
+--- slide 45 ---
+級區設備｜Cleanroom & Critical Utilities
+比照固體、液體與無菌製程，新增潔淨分級區與關鍵公用系統的設備主軸
+新增｜級區設備
+49
+定位
+級區設備不是直接改變配方的製程設備，但它建立污染控制的基線：空氣潔淨度、壓差、溫濕度、水質、純蒸汽與製程氣體品質。
+
+無菌製程尤其需要將 HVAC、WFI/PW、純蒸汽、空壓與環境監測一起納入 CCS。
+設備範圍
+• 空調/HVAC、AHU、HEPA/ULPA、FFU
+• 純化水 PW、注射用水 WFI、純蒸汽 PS
+• 無油空壓、製程氣體、使用點除菌過濾
+• 壓差、粒子、微生物、溫濕度與 BMS/EMS
+• 傳遞窗、氣鎖、物料/人員流邏輯
+選型重點
+不是只看品牌或產能，而是確認：
+• 是否支援目標 Grade/潔淨分級
+• 是否可被驗證、監測與趨勢分析
+• 對製程 CQA 的風險是否可控
+• FAT/SAT/IQ/OQ/PQ 文件是否足夠
+• 異常時 alarm、偏差與復歸邏輯是否清楚
+建議教學順序：製程設備 → 關鍵公用系統 → CPP/CQA → URS/DQ/FAT/SAT/IOPQ。
+--- slide 46 ---
+級區設備｜設備總覽與功能定位
+把級區視為「污染控制系統」：空氣、水、蒸汽、氣體與監測資料一起決定製程邊界
+新增｜級區設備
+50
+系統
+功能說明
+代表廠商／設備商
+主要控制目的 / 影響品質
+空調／HVAC
+AHU・HEPA・FFU
+控制供風、回風、壓差、換氣、溫濕度與終端過濾。
+Camfil、AAF、Air Innovations、Howorth、Exyte、AES Clean Technology
+潔淨度、粒子數、壓差、氣流方向、復歸時間。
+水系統
+PW・WFI・分配迴路
+產水、儲水、迴路輸送與使用點供應；用於配製、清洗、沖洗與製程。
+BWT、MECO、Stilmas、Bram-Cor、Veolia、STERIS
+導電度、TOC、微生物、內毒素、流速、溫度、取樣點。
+純蒸汽
+Pure Steam / Clean Steam
+供 SIP、滅菌器、管路與設備濕熱滅菌；常由 PW/WFI 製備。
+Stilmas、MECO、Fedegari、Getinge、STERIS
+乾度、過熱度、非冷凝氣體、冷凝水品質、SIP F0/時間。
+空壓／製程氣體
+Compressed Air / N2
+供氣動元件、吹瓶/吹掃、製程接觸氣體、儀錶空氣與惰性保護。
+Atlas Copco、Kaeser、Ingersoll Rand、Donaldson、Parker domnick hunter
+粒子、水分/露點、油分、微生物、壓力、使用點除菌濾芯。
+環境監測／BMS/EMS
+監控粒子、浮游菌/沉降菌、壓差、溫濕度、警報與趨勢。
+PMS、TSI、Lighthouse、Climet、Vaisala、Siemens、Eurotherm
+警報分級、趨勢、資料完整性、偏差連結、批放行支持。
+註：級區設備需配合人流、物流、壓差 cascade、清潔/消毒、環境監測與 Contamination Control Strategy (CCS) 一起設計。
+--- slide 47 ---
+級區設備｜代表廠商與設備設計特色
+新增「級區設備」廠商比較欄位：HVAC、水系統、純蒸汽、空壓與監測
+新增｜級區設備
+51
+設備/系統
+代表廠商／系列
+設計差異、特色與選型提醒
+HVAC / HEPA / ULPA
+Camfil Megalam；AAF AstroCel II / MEGAcel；AAF／Camfil FFU
+重點差異在濾材玻纖/ePTFE、gel seal/knife-edge/dry seal、壓降低、PAO/完整性測試便利性、終端過濾箱與 laminar/turbulent airflow 應用。
+Cleanroom / AHU / Turnkey
+Exyte；AES Clean Technology；Howorth；Air Innovations；Clean Air Products
+差異在房間模組化、AHU 節能/除濕、氣流模擬、壓差 cascade、復歸時間、BMS 整合與在地施工/驗證能力。
+PW / WFI / 分配迴路
+BWT；MECO；Veolia；Bram-Cor；Stilmas
+差異在 RO/EDI/UF、多效蒸餾、蒸氣壓縮、熱水或臭氧冷水迴路、sanitary design、取樣點與連續監測導入程度。
+Pure Steam Generator
+Stilmas PSG；MECO PSG；Fedegari / Getinge 整合方案
+差異在 thermosyphon/蒸發分離、重力分離、產能調節、非冷凝氣體控制、冷凝水品質與 SIP/autoclave 使用點配置。
+Compressed Air / Gas
+Atlas Copco Class 0；Kaeser；Ingersoll Rand；Donaldson；Parker domnick hunter
+差異在無油/含油壓縮機、dryer/露點控制、活性碳與 coalescing filter、使用點 0.2 µm 除菌濾芯、ISO 8573-1 級別與微生物監測策略。
+選型提醒：公用系統常是跨產品、跨線共用的關鍵設備；URS 應定義產品接觸/非接觸、目標等級、取樣/監測頻率與異常應對邏輯。
+--- slide 48 ---
+代表廠商與設計特色｜隔離與環境控制
+Isolator、RABS、潔淨室、傳遞系統與環境監測
+設備代表廠商與設計特色
+45
+設備類型
+代表廠商／系列
+設計差異、特色與選型提醒
+Aseptic isolator
+SKAN；Comecer；Telstar；Syntegon
+SKAN 產品線涵蓋 isolator、RABS、glove testing 與 transfer systems；Comecer 強調安全潔淨與無菌防護；Telstar 可將灌裝、凍晶、封蓋整合於隔離環境。選型看 VHP cycle、leak test 與 transfer。
+RABS
+SKAN；Syntegon；IMA Life；Franz Ziel
+RABS 介於潔淨室開放線與 isolator 之間，較容易改造既有線體，但人員介入風險通常高於封閉 isolator。需定義 intervention strategy 與手套／門禁連鎖。
+潔淨室／HVAC
+Camfil；AAF；Howorth；Air Innovations
+差異在 HEPA/ULPA、壓差 cascade、氣流型態、溫濕度控制、濾網監測與能耗。設計需與 CCS、環境監測、煙霧研究與房間級別一致。
+傳遞／去汙系統
+SKAN；Getinge；Fedegari；Systec & Solutions
+VHP pass box、RTP、alpha-beta port 用於物料進出；差異在 cycle time、材質相容、殘留控制與連鎖邏輯，影響 Grade A/B 邊界完整性。
+環境監測／粒子
+PMS；TSI；Lighthouse；Climet
+差異在遠端粒子計數、微生物採樣、趨勢軟體與 alarm escalation。資料應能連到 batch release、偏差調查與 Annex 1 污染控制策略。
+--- slide 49 ---
+級區設備｜CPP、CQA 與控制策略
+級區設備的 CPP 多數是「環境與公用系統參數」，CQA 則反映在污染控制與供應品質
+新增｜級區設備
+52
+控制面向
+主要 CPP / 監測參數
+影響的 CQA / 風險
+控制策略
+空氣量 / 換氣 / 風速
+AHU 送風量、ACH、單向流速度、回風比例、filter loading
+粒子數、復歸時間、氣流型態、Grade 維持能力
+房間確認、煙霧研究、HEPA 完整性、壓差/風量趨勢。
+壓差 cascade
+房間壓差、門禁 interlock、airlock purge time
+污染流向、交叉污染、微生物/粉塵進出控制
+BMS 連續監測、警報分級、開門偏差評估。
+溫濕度
+供風露點、除濕/再熱、熱負荷、操作人數
+產品穩定性、粉體吸濕、靜電、操作舒適度
+連續趨勢、季節 worst-case、OOS/OOT 判定。
+水系統
+RO/EDI/UF、loop 溫度/流速、sanitization、UV/臭氧、取樣點
+PW/WFI 導電度、TOC、微生物、內毒素
+熱水/臭氧消毒、死角 review、趨勢與週期性再驗證。
+純蒸汽 / 空壓
+純蒸汽乾度/過熱度/NCG；空壓露點、油分、粒子、使用點濾芯
+SIP 滅菌效能、冷凝水品質、產品接觸氣體潔淨度
+蒸汽品質測試、ISO 8573-1 級別、除菌濾芯完整性與更換。
+URS/DQ 寫法建議：將 CPP、警報限值、趨勢、校正、備援、資料完整性與偏差復歸標準寫入設備需求，而非只寫「符合 GMP」。
+--- slide 50 ---
+水系統
+目標：穩定供應符合用途的 PW、WFI 與 Pure Steam，並維持儲存/分配迴路受控
+設備原理與實務介紹
+56
+藥廠的純水等級主要受 USP（美國藥典）與 EP（歐洲藥典）規範，依據用途與嚴格度分為兩大類：
+
+純化水 (Purified Water, PW)。
+用途：一般非注射藥品（如口服藥、外用藥膏）的配製、容器清洗。
+製程：可透過離子交換、逆滲透 (RO)、超過濾或蒸餾等方法製備。
+要求：化學指標與微生物需符合藥典規範，無特殊細菌內毒素標準。
+
+注射用水 (Water for Injection, WFI)。
+用途：注射劑（針劑）的調配溶解及直接接觸無菌產品的最後沖洗。
+製程：必須以純化水為原水進行「蒸餾」，確保能徹底去除內毒素及揮發性雜質。
+要求：除了一般理化與微生物標準外，強制要求必須通過「細菌內毒素」測試（無熱原），且儲存與分配系統需維持在特定高溫（如 70°C 以上）以防止微生物滋生。 
+
+高度純化水（HPW, Highly Purified Water）
+適用於對生物負荷與內毒素有嚴格要求、但尚未達到必須使用注射用水的特殊製程。
+--- slide 51 ---
+水系統
+目標：穩定供應符合用途的 PW、WFI 與 Pure Steam，並維持儲存/分配迴路受控
+設備原理與實務介紹
+56
+--- slide 52 ---
+水系統
+目標：穩定供應符合用途的 PW、WFI 與 Pure Steam，並維持儲存/分配迴路受控
+設備原理與實務介紹
+56
+--- slide 53 ---
+設備原理與實務介紹｜級區設備：純蒸汽 / 水系統
+目標：穩定供應符合用途的 PW、WFI 與 Pure Steam，並維持儲存/分配迴路受控
+設備原理與實務介紹
+56
+飲用水
+預處理
+RO/EDI/UF
+PW / WFI 產水
+儲槽
+分配迴路
+使用點
+PSG 純蒸汽
+SIP / 滅菌器
+系統原理
+水系統以預處理、RO/EDI/UF 或蒸餾製備 PW/WFI，再以儲槽與循環迴路供應使用點。品質維持依賴 sanitary design、流速、溫度/臭氧、取樣與趨勢。
+純蒸汽原理
+Pure Steam Generator 以潔淨進水產生乾飽和蒸汽，用於 SIP、滅菌器或設備/管線滅菌。需控制非冷凝氣體、乾度、過熱度與冷凝水品質。
+設計差異
+• WFI：多效蒸餾、蒸氣壓縮或 RO-based 組合
+• 迴路：hot loop vs cold ozone loop
+• PSG：thermosyphon、分離器、產能調節
+• 材質：316L、orbital weld、坡度排空
+主要 CPP / 監測
+• 進水品質、壓力、溫度
+• 導電度、TOC、微生物、內毒素
+• loop 流速、溫度、回水品質
+• sanitization 週期、UV/臭氧
+• PSG 乾度、NCG、過熱度、冷凝水
+影響 CQA / 風險
+• 製劑或清洗水質不合格
+• 生物膜、內毒素、微生物趨勢上升
+• SIP 未達熱穿透或 F0 要求
+• rouging、金屬離子、微粒
+• 使用點取樣代表性不足
+實務導入注意
+• DQ 階段做 dead-leg 與排空 review
+• 建立週期性取樣與趨勢規則
+• 工程/QA 共同定義 alert/action limits
+• 變更管制：膜、樹脂、濾芯、焊道、取樣點
+• 年度回顧與再驗證
+代表廠商：BWT、MECO、Stilmas、Bram-Cor、Veolia、Fedegari、Getinge、STERIS。
+--- slide 54 ---
+設備採購與驗證
+Procurement, qualification and lifecycle management
+把需求寫成規格，把規格轉成測試，把測試變成可審計證據。
+30
+--- slide 55 ---
+設備生命週期：從 URS 到維運
+Equipment lifecycle｜需求、設計、驗收、確認、交機與持續維護
+Procurement & qualification
+31
+URS
+需求規格
+DQ
+設計確認
+供應商
+選擇/簽約
+FAT
+工廠驗收
+SAT
+現場驗收
+IQ
+安裝確認
+OQ
+操作確認
+PQ
+性能確認
+維運/變更
+Lifecycle
+規劃階段
+• 使用目的 / 產能 / 劑型
+• GMP 等級與清潔需求
+• EHS、空間、公用系統
+• 數據完整性 / Part 11
+• 預算與交期
+設計與採購
+• 技術方案比選
+• 供應商能力評估
+• DQ 文件
+• FAT/SAT 驗收標準
+• 備品、保固、維修條款
+驗證與維運
+• IQ/OQ/PQ 計畫與報告
+• 校正/保養/SOP
+• 人員訓練
+• 偏差/CAPA/變更
+• 定期回顧與再確認
+• 風險基礎驗證：高風險功能（直接影響 CQA、無菌性、電子紀錄、批次放行）需更完整證據。
+• URS 應避免只寫「要好用」；需寫成可測量、可驗收、可追溯的需求。
+Ref: FDA Process Validation, EU GMP Annex 15
+--- slide 56 ---
+URS 寫法：從需求到驗收標準
+Example｜2 位小數電子秤 User Requirement Specification
+Procurement & qualification
+32
+需求編號
+使用者需求 / Requirement
+建議驗收標準 / Acceptance criteria
+驗證階段
+UR-001
+精度至少達 0.01 g
+顯示解析度為 0.01 g，校正/查核結果符合內部允收標準。
+DQ / IQ / OQ
+UR-002
+量程覆蓋日常稱重需求
+最大稱量 ≥ 3 kg；最小稱量依內部 SOP 或風險評估定義。
+DQ / OQ
+UR-003
+讀值穩定且反應快速
+具穩定指示；典型穩定時間 < 2 秒，需於 OQ 測試。
+OQ
+UR-004
+具調平功能
+具水平泡與調平腳；安裝位置穩固且避震/防風。
+IQ
+UR-005
+支援校正
+可進行內校或外校；提供校正程序、砝碼等級與紀錄。
+IQ / OQ
+UR-006
+資料紀錄/輸出
+可連接電腦/印表機或輸出稱重紀錄；若電子紀錄用於 GMP，需評估 Part 11/資料完整性。
+DQ / OQ
+UR-007
+適合 GMP 清潔與維護
+秤盤與面板易清潔；提供操作/保養/維修手冊與備品資訊。
+DQ / IQ
+UR-008
+安全與錯誤提示
+具過載/低電壓/自我診斷或錯誤提示；警示功能需測試。
+OQ
+URS 的品質：每一條需求都應可追溯到設計文件、驗收測試或日常管制。
+--- slide 57 ---
+FAT / SAT / IQ / OQ / PQ：目的與文件證據
+Qualification deliverables｜不同階段不要測同一件事，也不要漏掉關鍵功能
+Procurement & qualification
+33
+階段
+目的
+典型測試 / 確認內容
+主要文件 / 證據
+FAT
+Factory Acceptance Test
+出貨前在供應商端確認設備基本功能與構造符合約定。
+外觀與構造、I/O、HMI、基本功能、報表輸出、安全聯鎖、初步偏差。
+FAT Protocol/Report、偏差清單、照片、簽核。
+SAT
+Site Acceptance Test
+到場後確認設備未因運輸受損，且可與現場環境整合。
+到貨檢查、公用系統接點、開機、HMI、基本功能、場地/電源/壓縮空氣。
+SAT Report、交機驗收、偏差/缺件追蹤。
+IQ
+Installation Qualification
+確認設備、零件、軟體、公用系統與文件已正確安裝。
+型號/序號、材質、安裝圖、校正、軟體版本、SOP/手冊、備品。
+IQ Plan/Report、校正證書、安裝紀錄、文件清單。
+OQ
+Operational Qualification
+在無產品或模擬條件下確認設備功能、警報與操作範圍。
+運轉範圍、警報/聯鎖、功能鍵、清潔程序、資料輸出、權限、異常恢復。
+OQ Plan/Report、測試紀錄、偏差與 CAPA。
+PQ
+Performance Qualification
+在實際或代表性製程條件下證明設備可穩定支援預定用途。
+代表性批次、關鍵參數、IPC/CQA 結果、清潔/換批、操作者與批間變異。
+PQ Plan/Report、批記錄、檢驗報告、趨勢分析。
+--- slide 58 ---
+--- slide 59 ---
+--- slide 60 ---
+HDGC 200
+HDGC 3000
+Diskjet diameter 817(mm)
+--- slide 61 ---
+Dinner: Restaurant Hirtenbrunnen
+--- slide 62 ---
+參考資料與來源
+References｜官方法規/指南 + 使用者提供原始教材
+References
+37
+主要來源
+• 使用者提供原始檔：10. Introduction of Common Pharmaceutical Process_20250416_nc.pptx
+• FDA: Process Validation: General Principles and Practices Guidance for Industry
+• FDA: Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice
+• FDA: PAT — A Framework for Innovative Pharmaceutical Development, Manufacturing, and Quality Assurance
+• ICH: Q8 Pharmaceutical Development, Q9(R1) Quality Risk Management, Q10 Pharmaceutical Quality System
+補充參考與使用聲明
+• European Commission EudraLex Volume 4: EU GMP Annex 1, Annex 11, Annex 15
+• eCFR: 21 CFR Part 11 — Electronic Records; Electronic Signatures
+• USP chapter names mentioned for conceptual training only;實際允收標準需以公司核准之方法、藥典版本與註冊規格為準。
+• 設備廠商與型號僅作市場認識與訓練範例，不構成採購推薦；正式採購應依 URS、品質風險、售後支援、文件完整性與現場條件評估。
+補充頁接續

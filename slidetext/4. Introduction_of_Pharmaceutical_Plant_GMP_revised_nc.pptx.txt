@@ -1,0 +1,1220 @@
+=== 4. Introduction_of_Pharmaceutical_Plant_GMP_revised_nc.pptx (58 slides) ===
+--- slide 1 ---
+Introduction of
+Pharmaceutical Plant (GMP)
+藥品工廠與 GMP 查廠概論
+Focus: TFDA / PIC/S GMP / FDA Inspection Readiness
+1
+--- slide 2 ---
+「工廠定位 → 設施設計 → 品質系統 → 查廠實務」四個層次
+1  工廠定位
+藥廠角色、劑型／製程分類、產品生命週期
+2  TFDA/GMP制度
+台灣製造許可、PIC/S GMP、GMP/cGMP定位
+3  設施與潔淨區
+人流物流、壓差、HVAC、公用系統、交叉污染控制
+4  品質系統
+QMS、文件、資料完整性、驗證與CAPA
+5  查廠與案例
+FDA/TFDA查廠流程、常見缺失、Warning Letter lessons
+「設施條件」與「查廠實務」分層，補充風險導向、Data Integrity、Inspection Readiness 與官方來源。
+2
+--- slide 3 ---
+藥品工廠的目的與角色
+GMP工廠不是「把藥做出來」而已，而是要讓每批產品在可控條件下被一致地製造與放行
+品質一致
+每批產品符合核准規格與製程條件，避免批間差異造成安全或療效風險。
+污染控制
+透過廠房分區、HVAC、清潔驗證與人流物流，降低微生物、微粒與交叉污染。
+可追溯
+從原料、製程、檢驗到放行均有文件紀錄，支援偏差調查與召回。
+可查核
+能接受TFDA、FDA、EMA等主管機關或客戶稽核，支持上市與出口。
+工廠設計與GMP系統需依「產品風險」而非單一固定格式決定。
+
+劑型、製程開放程度、活性/毒性、無菌風險與委外角色都會影響廠房要求。
+
+最終目標是建立可預防、可偵測、可矯正的品質系統。
+3
+--- slide 4 ---
+藥廠類型：用不同風險看工廠設計
+同樣是藥廠，設施設計、查廠重點與品質系統成熟度要求會因產品與業務模式不同而改變
+分類方式
+主要類型
+設計/查廠關注
+劑型
+固體製劑、液體製劑、半固體、氣霧/吸入、無菌注射劑、眼用製劑
+粉塵、微生物、無菌屏障、清潔驗證、包材相容性
+製造對象
+API原料藥廠、製劑廠、生物藥廠、疫苗/細胞治療設施
+Part II/API、Annex 1、冷鏈、病毒安全、批量與製程變異
+製程風險
+密閉系統 vs 開放系統；自動化 vs 手動操作；高活性/致敏性產品
+Containment、壓差方向、PPE、職安、專用或campaign設備
+商業模式
+自有產品廠、CMO/CDMO、出口專用廠、包裝/貼標廠
+委外品質協議、責任界面、客戶稽核、資料與變更溝通
+廠房要求不是「越高越好」，而是應以產品與製程風險為基礎，建立合理、可持續維護的污染控制與品質系統。
+Source: PIC/S GMP Guide PE 009-17 Part I/II and Annexes
+4
+--- slide 5 ---
+台灣藥品製造許可：從設廠到製造
+重點在於：工廠本身、劑型別、生產活動與產品許可需要分層管理
+設立地點
+與設施設計
+→
+提出設廠/
+製造申請
+→
+設施與GMP
+符合性審查
+→
+取得藥物
+製造許可
+→
+劑型/加工項目
+查核核可
+→
+藥品查驗登記
+或委託製造
+階段
+需確認事項
+常見輸出文件
+設廠前
+用地、消防、環評、建築配置、潔淨區需求、產能與產品風險
+Layout、URS、DQ、Site Master File草案
+設施審查
+人流物流、HVAC、壓差、關鍵公用系統、設備配置與清潔性
+設施設備清單、空調分區、驗證計畫
+GMP符合性
+QMS、SOP、訓練、批紀錄、偏差/CAPA、驗證、供應商管理
+GMP文件清單、驗證報告、品質手冊
+劑型/活動變更
+新增劑型、新增加工、擴建/遷廠/復業需評估是否重新查核
+變更控制、差異評估、查廠申請資料
+注意：實際申請路徑仍需依產品、劑型、國內/國外廠與TFDA最新公告判定。
+Source: TFDA 製藥工廠管理(GMP/GDP) / GMP藥廠名單
+5
+--- slide 6 ---
+TFDA查廠關注：不是只看硬體
+查廠會同時看「廠房條件」與「品質系統是否能長期維持」
+查核面向
+重點問題
+常見查核資料
+廠區配置
+潔淨區分級、人流物流、物料與廢棄物是否避免逆流與混雜？
+Layout、人流物流圖、差壓圖、清潔分區
+設備設施
+HVAC、水系統、壓縮空氣、設備校正保養是否有驗證與趨勢？
+DQ/IQ/OQ/PQ、校正保養、EMS趨勢
+文件系統
+SOP、批紀錄、Logbook是否完整、即時且可追溯？
+Master Batch Record、BMR、SOP清單
+品質單位
+QA/QC是否具獨立審查、放行、偏差調查與CAPA追蹤能力？
+組織圖、品質手冊、偏差/OOS/CAPA
+人員訓練
+進出級區、更衣、清潔、製程與資料完整性訓練是否到位？
+訓練矩陣、測驗、上線資格
+驗證與監測
+清潔、製程、分析方法、環境監測是否有科學依據？
+驗證計畫、報告、年度回顧
+查廠邏輯：從一個異常往上追溯 SOP、訓練、驗證、QA審查與管理責任；單一缺失常會被延伸為系統性缺失。
+Source: TFDA GMP查廠實務；PIC/S GMP Guide Chapter 1–9
+6
+--- slide 7 ---
+Facility Design
+從平面圖到污染控制策略
+Introduction of Pharmaceutical Plant (GMP)
+7
+--- slide 8 ---
+GMP廠房核心區域與功能
+區域不是單純的空間名稱，而是製程控制點、文件紀錄與責任分工的集合
+功能區域
+主要功能
+GMP控制重點
+倉儲區 Warehouse
+原料、包材、成品、退貨品與待驗/合格/拒用狀態管理
+狀態標示、溫濕度、FEFO、隔離、盤點與追溯
+秤重區 Dispensing
+原料稱量、分裝、核對與轉交製程
+防交叉污染、稱量紀錄、雙人覆核、集塵/壓差
+製程區 Production
+混合、造粒、乾燥、壓錠、包衣、配液、充填等
+IPC、設備清潔、製程參數、偏差與批紀錄
+包裝區 Packaging
+貼標、印字、裝瓶/裝盒、最終包裝
+防混標、線清場、批號/效期、包材平衡
+QC Lab
+原料、中間體、成品、穩定性與微生物檢驗
+方法驗證、OOS、儀器校正、樣品留樣
+Utility/Engineering
+純水/WFI、HVAC、壓縮空氣、清潔蒸氣、維修
+系統驗證、趨勢監測、變更與停機復歸
+QA/文件支援
+品質系統、文件、放行、稽核、訓練與供應商管理
+獨立性、審查權限、CAPA與品質文化
+Source: PIC/S GMP Guide Chapter 3, 4, 5, 6
+8
+--- slide 9 ---
+設施設計的5個原則
+GMP設計應以「避免污染、避免混雜、方便清潔、方便維修、方便查核」為主軸
+1. 分區隔離
+依產品風險、潔淨等級與製程階段分區，建立清楚的物理界線。
+2. 單向流
+人員、物料、廢棄物、設備清洗應盡量避免逆流與交叉。
+3. 可清潔
+牆面、天花、地坪與設備材質需耐清潔、低積塵、少死角。
+4. 可監控
+壓差、溫濕度、微粒、微生物與關鍵公用系統應可監控與趨勢化。
+5. 可維修
+維修動線與技術夾層應避免破壞潔淨區與產品暴露區。
+Source: PIC/S GMP Guide Chapter 3; Annex 1 for sterile products
+9
+--- slide 10 ---
+人流、物流、廢棄物流：避免交叉污染的三條線
+動線設計應把「人員污染」、「物料混雜」與「廢棄物回流」分別管理
+動線
+設計重點
+典型控制
+人流 Personnel Flow
+進入廠區 → 更衣/更鞋 → 氣閘 → 製造/包裝/潔淨區；避免跨級區逆流
+更衣級數、門禁、進出紀錄、行為規範、健康狀態管理
+物流 Material Flow
+原料/包材 → 待驗/合格 → 秤重 → 製程 → 中間體/成品 → 包裝/倉儲
+物料氣閘、狀態標示、線清場、批次追蹤、包材平衡
+廢棄物流 Waste Flow
+製程廢棄物、清潔廢液、污染耗材應以低風險路徑移出
+專用容器、封口、移出頻率、清潔消毒、紀錄與廢棄物SOP
+配置圖閱讀重點
+是否能從圖上看出人員入口、物料入口、緩衝/氣閘與清洗室？
+
+相鄰房間壓差方向是否與產品保護或人員保護邏輯一致？
+
+製程順序是否符合批次製造邏輯，並能支持線清場與查核？
+Source: Original ZL2 floor plan image from uploaded deck
+10
+--- slide 11 ---
+Pharmaceutical Manufacturing Facility
+防止交叉污染 
+空間設計與壓差控制
+[NOTES] https://www.theqpnotebook.com/basic-cleanroom-layout
+--- slide 12 ---
+潔淨等級：依劑型與製程風險決定
+潔淨等級不是單看劑型，而是由產品暴露、無菌要求、製程開放程度與操作方式共同決定
+風險因子
+較高風險
+較低風險
+設計影響
+劑型/給藥途徑
+注射劑、眼用、吸入、傷口接觸
+口服固體、外用非無菌
+潔淨等級、微生物監測、無菌屏障
+製程開放程度
+開放投料、人工取樣、開放充填
+密閉輸送、密閉混合、封閉系統
+壓差方向、局部排氣、隔離器/RABS
+操作方式
+手動、頻繁介入、多人同時操作
+自動化、少介入、固定配方
+人員訓練、更衣、行為監測
+產品特性
+高活性、致敏性、抗生素、荷爾蒙、細胞毒性
+一般低毒性產品
+Containment、專用設備、清潔限度
+A/B/C/D潔淨級區主要來自無菌製劑監管框架；
+非無菌口服固體製劑通常更強調粉塵、交叉污染、清潔驗證與環境控制，而不必然套用無菌等級。
+Source: PIC/S GMP Annex 1; PIC/S GMP Chapter 3 and 5
+12
+--- slide 13 ---
+潔淨等級對照與常見用途
+實務上應以產品與製程風險評估建立潔淨區設計基準，並於URS/DQ/CCS中說明理由
+Source: PIC/S GMP Annex 1; ISO 14644-1
+13
+潔淨等級的選擇與設定，依據產品的劑型與製程風險來區分 
+劑型風險：注射劑 > 吸入劑 > 眼藥水 > 外用 > 口服錠劑
+製程風險：
+開放系統 > 密閉系統；
+手動操作 > 自動設備
+風險等級愈高，所需的潔淨等級與監控措施愈嚴格。
+
+
+
+
+
+
+
+Temperature and Humidity Control 
+General limit for temperature is 18–22°C ±2°C& relative humidity is maintained at 30–65% RH.
+Differential Pressure In Cleanrooms
+As per WHO guidelines of HVAC 10 to 15 Pascal differential pressure must be maintained.
+Standard | Common Use | Cleanliness Levels
+ISO 14644-1 | Global/US | ISO Class 1 to ISO Class 9
+EU GMP / PIC/S | EU, Taiwan, etc. | Grade A, B, C, D
+--- slide 14 ---
+潔淨等級對照與常見用途
+實務上應以產品與製程風險評估建立潔淨區設計基準，並於URS/DQ/CCS中說明理由
+EU/PIC/S Grade
+常見ISO對照
+典型用途（示例）
+監控/控制重點
+Grade A
+ISO 5
+無菌充填、關鍵開放操作、無菌連接/轉移
+單向流、連續微粒監測、嚴格介入控制
+Grade B
+ISO 5 at rest / Background
+Grade A背景區域（傳統無菌作業）
+背景潔淨維持、更衣與人員行為控制
+Grade C
+約ISO 7 at rest
+較低風險無菌配製或前處理區
+環境監測、壓差、清潔消毒、製程暴露時間
+Grade D
+約ISO 8 at rest
+清洗、初步處理、非關鍵支援區；部分非無菌操作參考
+壓差、溫濕度、清潔、粉塵與微生物趨勢
+Isolator / RABS
+Cleanroom
+Process Area
+Source: PIC/S GMP Annex 1; ISO 14644-1
+14
+--- slide 15 ---
+潔淨等級對照與常見用途
+實務上應以產品與製程風險評估建立潔淨區設計基準，並於URS/DQ/CCS中說明理由
+Isolator / RABS
+Cleanroom
+Process Area
+Source: PIC/S GMP Annex 1; ISO 14644-1
+15
+ISO Class (ISO 14644-1) | EU GMP Grade | At Rest
+每立方米最大微粒數 |  | In Operation
+每立方米最大微粒數 |  | Air changes/hr | Microbial count EU | 主要應用區域
+ |  | ≥0.5 µm | ≥5 µm | ≥0.5 µm | ≥5 µm |  |  | 
+ISO Class 5 | Grade A | 3,520 | 29 | 3,520 | 29 | 240-480 | <1 cfu/m³ | 無菌充填、關鍵操作
+Isolator /RABS
+ISO Class 6 | Grade B | 352,000 | 293 | 352,000 | 2930 | 150-240 | 10 cfu/m³ | Grade A 背景區域
+ISO Class 7 | Grade C | 352,000 | 2930 | 3,520,000 | 29300 | 60-90 | 100 cfu/m³ | 配液、初步開放製程
+ISO Class 8 | Grade D | 3,520,000 | 29300 | Not Defined | Not Defined | 5-48 | 200 cfu/m³ | 清洗、初步處理區域
+非無菌產品生產
+--- slide 16 ---
+更衣與人員行為：最常被低估的污染來源
+人員是微粒與微生物的重要來源；更衣制度應與潔淨等級、操作風險與介入頻率相匹配
+級區
+典型更衣要求
+行為管制重點
+Grade D
+髮帽、口罩、工作服/實驗衣、潔淨鞋或鞋套
+進出紀錄、手部清潔、避免攜入個人物品
+Grade C
+無塵衣、口罩、髮帽、手套、專用鞋
+動作緩慢、避免接觸關鍵表面、定期更換手套
+Grade B
+連身無塵服、面罩、手套、靴套；通常多級更衣
+完整覆蓋、無菌操作訓練、介入紀錄與媒體充填連結
+Grade A操作
+通常在B級背景或隔離器/RABS內執行，不是人員直接置身於Grade A
+禁止不必要介入；任何介入需評估與記錄
+查廠常追問
+更衣資格如何訓練與再確認？人員偏差如何調查？環境監測趨勢與人員更衣/操作紀錄是否能連結？
+實務補充
+更衣室本身也要分級，且需有由低級區往高級區逐步更衣的設計邏輯。
+Source: PIC/S GMP Annex 1; original gowning images from uploaded deck
+16
+--- slide 17 ---
+--- slide 18 ---
+--- slide 19 ---
+壓差、HVAC與環境監測
+HVAC的目的不是只達到溫濕度，而是以空氣流向、過濾、換氣與監測支持污染控制策略
+控制項目
+目的
+設計/監測重點
+壓差 Pressure Differential
+控制空氣流向，避免污染物進入高潔淨或關鍵區域
+常見相鄰區壓差約10–15 Pa；實際值需依風險與CCS合理化
+HEPA/過濾
+降低微粒與微生物負荷
+完整性測試、風速/風量、濾網壽命與更換紀錄
+溫濕度
+維持產品穩定、人員舒適與製程條件
+警報限、趨勢、偏差調查；高吸濕產品需特別管控
+環境監測
+以數據證明潔淨狀態可被維持
+微粒、浮游菌、落菌、表面菌；趨勢與警戒/行動限
+復歸與異常
+停機、警報、維修後需確認可恢復受控狀態
+偏差、風險評估、復歸確認、必要時產品影響評估
+壓差方向需依目的設定
+保護產品：高潔淨區維持正壓。
+保護人員/環境：高活性或有害粉塵區可能需要負壓或局部捕集。
+Source: PIC/S GMP Annex 1; WHO HVAC guidance concepts; original pressure layout image from uploaded deck
+19
+--- slide 20 ---
+配置案例：從平面圖檢查GMP設計邏輯
+以口服固體製劑區為例，平面圖應能回答製程、動線、清潔與壓差的合理性
+查核閱讀清單
+秤重、造粒、乾燥、整粒、混合、壓錠/膠囊、包衣與暫存是否符合製程順序？
+清洗室、工具室、IPC、緩衝室與物流出入口是否足夠？
+粉塵源頭是否配置集塵、局部排氣與可清潔表面？
+相鄰房間壓差與門禁互鎖是否可支援污染控制？
+維修與公用系統通道是否能減少進入潔淨區的需求？
+補充建議
+若要對外說明此案例，建議加上：級區顏色、壓差方向、人流物流箭頭、關鍵設備與IPC點位，才能讓非工程背景聽眾快速理解。
+Source: Original ZL2 layout image from uploaded deck
+20
+--- slide 21 ---
+OEL / OEB：高活性藥品設施設計的起點
+OEL/OEB 將毒理與職業衛生風險轉換為可執行的廠房、設備與操作控制要求
+OEL｜Occupational Exposure Limit
+職業暴露限值；通常以 8 小時 TWA 空氣中濃度表示（如 µg/m³）。用途是界定多數作業人員可反覆暴露而不預期產生不良健康影響的上限。OEL 是「定量」限值，應由毒理、臨床、藥理與不確定因子推導。
+OEB｜Occupational Exposure Band
+職業暴露分級；將化合物依危害、效價與可接受空氣濃度範圍分成 band（常見 OEB 1–5）。OEB 是「分級/溝通工具」，可在精確 OEL 尚未完整建立時，先導引控制策略。
+核心差異
+項目
+OEL
+OEB
+表達方式
+定量數值（µg/m³ 或 mg/m³）
+分級區間（Band 1–5 或 A–E）
+決策用途
+判定暴露是否低於可接受限值
+快速決定控制層級與設備設計方向
+適用情境
+資料較完整、需精準驗證/監測
+早期開發、資料不足、跨部門溝通與初步URS
+注意事項
+需定期由毒理/職衛專家重新評估
+各公司分級範圍不完全一致，不宜直接套用他廠標準
+OEL/OEB 不是單純職安名詞；它會直接決定是否需要高圍堵、專用設備、HVAC排風方式與清潔/監測策略。
+Source: NIOSH Occupational Exposure Banding Process (2019); ISPE containment equipment selection concepts
+21
+--- slide 22 ---
+OEB分級範例：從一般GMP到高圍堵
+OEB越高，代表可接受暴露濃度越低；控制策略會由一般工程控制逐步提升至封閉化、隔離化與專用化
+OEB
+範例OEL範圍
+8 hr TWA*
+典型控制策略
+常見設施設備影響
+OEB 1
+> 1000 µg/m³
+一般GMP控制、基本局部排氣與清潔
+一般製造室、標準HVAC、共用設備可行
+OEB 2
+100–1000 µg/m³
+低度圍堵；降低粉塵擴散與直接接觸
+稱量罩/局部排氣、基本HEPA過濾、標準PPE
+OEB 3
+10–100 µg/m³
+中度圍堵；開放操作需工程控制
+Downflow booth、密閉轉移、負壓房間、粉塵收集
+OEB 4
+1–10 µg/m³
+高度圍堵；以物理屏障取代單純通風
+Isolator/RABS、split butterfly valve、WIP/CIP、HEPA排風
+OEB 5
+< 1 µg/m³
+極高圍堵；封閉系統與專用化管理
+專用suite/設備、BIBO HEPA、單向/不回風排風、嚴格廢棄物與除污
+*OEL範圍僅為常見實務範例，非國際強制標準；正式分級需依公司SOP、毒理評估、產品狀態與製程暴露風險決定。
+Source: NIOSH OEB concept; pharmaceutical containment best-practice examples; company-specific banding required
+22
+--- slide 23 ---
+OEL/OEB 對工廠設施的影響
+高活性產品的廠房設計核心是「把粉塵與污染控制在源頭」，並證明人員與其他產品不會被不當暴露
+廠房配置與分區
+• 高OEB產品優先採獨立suite或campaign生產
+• 人流/物流/廢棄物流分離，避免交叉回流
+• 高風險稱量、投料、取樣點需設置局部圍堵或隔離區
+HVAC、壓差與排風
+• potent area多採負壓，避免粉塵外逸；與無菌正壓邏輯不同
+• 高OEB排風需HEPA過濾，必要時不回風
+• 壓差、風速、門禁與警報需納入BMS監控
+公用系統與廢棄物
+• 排氣、集塵、真空、排水需評估污染回流風險
+• 高活性粉塵濾網更換需safe-change或BIBO
+• 廢棄物、清潔液與耗材需封口、標示與去活化/委外處理
+職衛監測與應急
+• 作業區空氣採樣、個人採樣與表面擦拭監測
+• spill kit、除污SOP、緊急撤離與醫療諮詢流程
+• 定期趨勢分析，將結果回饋至CAPA與再驗證
+若產品OEL很低，單靠PPE通常不足；優先採用工程控制與封閉/隔離設計，再以SOP與PPE作為補強。
+Source: Hierarchy of controls; ISPE containment equipment selection; occupational hygiene monitoring practice
+23
+--- slide 24 ---
+OEL/OEB 對製程設備與操作模式的影響
+設備選型應以「暴露點」為單位評估，而非只看整體製程名稱；稱量、投料、轉移、清潔通常是最高風險點
+製程/操作點
+低OEB控制
+中OEB控制
+高OEB控制
+原料稱量
+開放稱量＋局部排氣
+Downflow booth / ventilated balance enclosure
+Isolator、手套箱、專用稱量suite
+投料/轉移
+人工投料＋集塵
+封閉投料、IBC、真空轉移、連接件密封
+Split butterfly valve、alpha-beta port、全封閉轉移
+混合/造粒/乾燥
+標準設備＋粉塵控制
+密閉設備、負壓連接、濕式清潔
+CIP/WIP、safe access、維修前除污驗證
+壓錠/膠囊/包裝
+設備護罩與集塵
+高效集塵、局部隔離、線上清潔
+Containment press/capsule filler、隔離包裝線
+清潔/維修
+SOP清潔與PPE
+濕式清潔、擦拭監測、工具專用化
+CIP/WIP、lock-out、decontamination hold point、QA放行
+設備採購URS應要求供應商提供 containment performance data；必要時用 SMEPAC / surrogate powder test 驗證實際暴露是否符合目標OEL/OEB。
+Source: SMEPAC containment-performance concept; pharmaceutical containment equipment selection practice
+24
+--- slide 25 ---
+導入流程：從化合物資料到URS與查廠證據
+OEL/OEB應在廠房設計與設備採購前導入，否則後續改造成本通常很高
+1. 收集資料
+毒理/臨床/SDS
+效價與暴露途徑
+→
+2. 建立限值
+PDE/ADE/OEL
+或暫定OEB
+→
+3. 製程暴露評估
+粉塵、開放性
+批量、頻率、時間
+→
+4. 設計控制策略
+工程控制優先
+SOP/PPE補強
+→
+5. 確認與驗證
+DQ/IQ/OQ/PQ
+壓差/HEPA/SMEPAC
+→
+6. 監測與改善
+個人/區域/表面
+偏差/CAPA/再評估
+文件/證據
+應包含內容
+查廠或客戶稽核關注
+風險評估報告
+OEL/OEB依據、製程暴露點、控制策略與殘餘風險
+是否科學合理、是否定期更新、是否與實際操作一致
+URS/DQ文件
+設備密閉等級、排風/濾網、安全更換、清潔與維修需求
+採購前是否已將OEL/OEB轉成工程要求
+驗證/監測紀錄
+壓差、風量、HEPA完整性、空氣/表面採樣、SMEPAC或替代測試
+是否證明控制有效，而非只宣稱設備可達成
+SOP與訓練
+稱量投料、清潔、spill、PPE、廢棄物與異常處理
+員工是否理解為何要這樣做，紀錄是否完整
+新產品導入前先完成 OEL/OEB screen；
+若OEB升高，需啟動MOC/變更控制評估廠房、HVAC、設備、清潔與職衛監測。
+Source: ICH Q9(R1) risk management concept; NIOSH OEB process; containment verification practice
+25
+--- slide 26 ---
+關鍵公用系統（Utility）與驗證重點
+公用系統通常是跨區域、跨批次的共用風險來源，也是查廠時很容易被串聯追溯的系統
+系統
+用途
+GMP控制/驗證重點
+純水 PW / WFI
+清洗、配製、製程或注射用水
+水質規格、循環溫度、微生物/內毒素、取樣點、趨勢與sanitization
+Clean Steam
+滅菌、SIP、直接接觸產品或接觸面
+品質、乾度、非凝結氣體、冷凝水、用途分級
+Compressed Air / Gas
+設備驅動、吹掃、製程接觸氣體
+油、水、微粒、微生物、壓力、使用點濾器完整性
+HVAC
+潔淨度、壓差、溫濕度與氣流方向
+DQ/IQ/OQ/PQ、濾網完整性、風量、警報、復歸
+Dust Collection
+粉塵捕集、交叉污染與職安控制
+捕集效率、HEPA完整性、清潔、爆炸/高活性風險
+Monitoring System
+連續監測溫濕度、壓差、警報與審計追蹤
+CSV/Part 11、ALCOA+、資料備份、警報回應
+實務提醒：Utility變更常被低估。任何更換濾網、泵浦、管路、PLC、警報限或取樣點，都應走變更控制與再確認。
+Source: PIC/S GMP Chapter 3, Annex 1, Annex 15, Annex 11
+26
+--- slide 27 ---
+GMP Quality System
+品質系統如何支撐藥品工廠長期受控
+Introduction of Pharmaceutical Plant (GMP)
+27
+--- slide 28 ---
+GMP / cGMP / PIC/S：三者如何定位
+重點不是名詞比較，而是理解各制度如何支撐「持續符合法規與當代品質標準」
+概念
+核心含義
+實務意義
+GMP
+Good Manufacturing Practice；
+藥品應依品質標準被一致地生產與管制。
+建立基本品質系統、設施、人員、文件、製造與QC要求。
+cGMP
+Current GMP；
+美國FDA用語，強調使用當代、合適、已驗證的技術與品質系統。
+21 CFR Part 210/211為成品藥主要CGMP規範；查廠聚焦是否持續符合current standard。
+PIC/S GMP
+國際醫藥品稽查協約組織發布之GMP Guide，已成多國GMP稽查共同基礎。
+台灣西藥GMP管理與PIC/S接軌；Part I（製劑）、Part II（API）、Annexes（無菌等專題）。
+管理重點
+同一工廠若要供應美國市場，需同時理解台灣TFDA/PIC/S框架與FDA 21 CFR 210/211、資料完整性、OOS/偏差調查與Inspection Readiness。
+常見誤解
+PIC/S不是產品上市許可；GMP合格也不代表每個產品/劑型自動取得藥證。產品許可、劑型核可與工廠GMP需分層確認。
+Source: FDA CGMP Regulations; PIC/S Publications PE 009-17; TFDA GMP專區
+28
+--- slide 29 ---
+台灣GMP制度演進
+台灣藥廠從GMP、cGMP到PIC/S GMP，核心方向是提升品質系統成熟度與國際接軌
+1982
+推動GMP
+→
+1999
+導入cGMP
+→
+2007
+公告PIC/S GMP時程
+→
+2010
+正式採用PIC/S GMP標準
+→
+2014/2015
+西藥製劑廠全面符合PIC/S GMP
+→
+現在
+以TFDA公告名單與最新法規為準
+階段
+管理意義
+對藥廠的要求提升
+GMP初期
+建立基本廠房、人員、設備、衛生與文件制度
+從經驗製造轉向制度化與批次追溯
+cGMP
+強化製程確效與品質系統管理
+製程驗證、偏差調查、變更控制逐步成熟
+PIC/S GMP
+與國際稽查標準接軌
+要求更完整的PQS、風險管理、資料完整性與專題Annex符合性
+當前實務
+TFDA定期公布GMP藥廠名單與專區文件
+需持續追蹤最新公告，不宜僅引用舊版數量或過期名單
+Source: TFDA 藥品製造工廠GMP FAQ and GMP藥廠名單
+29
+--- slide 30 ---
+GMP五大原則：5P
+可用5P作為初學者理解GMP的入口，但查廠時會進一步深入到各子系統
+原則
+說明
+為什麼重要
+People 
+人員
+人員需接受適當訓練、具備資格並了解其職責。
+操作與紀錄多由人員執行；訓練不足會造成錯誤、污染與資料問題。
+Premises & Equipment 
+廠房設備
+廠房與設備需適合製程、可清潔、可維護、可校正。
+良好的硬體是避免污染、混雜與製程不穩定的基礎。
+Products/Materials 
+原物料
+原料、包材、中間體與成品需有規格、狀態、檢驗與追溯。
+材料品質直接影響產品安全性、有效性與放行判定。
+Procedures 
+程序
+所有關鍵作業需有核准SOP並依程序執行。
+降低人為差異，確保同一作業可重複、可訓練、可查核。
+Paperwork 
+文件紀錄
+所有製造與檢驗活動應即時、原始、完整、可追溯。
+文件是放行、調查、召回與稽核的法規證據。
+5P對應PIC/S：Chapter 2 Personnel、Chapter 3 Premises、Chapter 4 Documentation、Chapter 5 Production、Chapter 6 Quality Control。
+Source: PIC/S GMP Guide Chapter 2–6
+30
+--- slide 31 ---
+15個GMP子系統：查廠時會被串聯檢查
+GMP系統不是分散文件，而是由品質單位統籌、用風險管理與CAPA閉環持續改善
+群組
+子系統
+查核關注
+PQS
+品質管理系統、偏差/CAPA、變更控制、管理審查
+QA權限、根因分析、CAPA有效性、品質風險管理
+文件/數據
+SOP、BMR、Logbook、DI、電子系統/CSV
+ALCOA+、審計追蹤、版本控管、資料備份與權限
+人員/設施
+訓練、廠房、設備、校正保養、清潔與交叉污染控制
+資格認定、可清潔性、維修復歸、清潔驗證
+製造/QC
+原物料、供應商、製造IPC、QC、OOS、穩定性
+批次追蹤、規格合理性、方法驗證、趨勢分析
+外部品質
+委外製造/檢驗、客訴、召回、自我查核與供應商稽核
+品質協議、責任界面、召回演練、稽核CAPA
+查廠員的典型追溯邏輯
+一筆偏差 → 批紀錄 → SOP → 訓練 → 設備/驗證 → QA審查 → CAPA → 產品影響評估 → 是否有趨勢與管理審查。
+Source: PIC/S GMP Chapter 1–9; FDA 21 CFR Part 211
+31
+--- slide 32 ---
+Documentation & Data Integrity：ALCOA+落地
+資料完整性不是IT議題，而是所有GMP判斷可否被信任的基礎
+ALCOA+元素
+實務解釋
+常見證據
+Attributable 可歸屬
+知道誰在何時完成、審查或修改資料
+簽名/帳號、審計追蹤、權限清單
+Legible 清晰可讀
+紀錄可辨識，不因塗改、影印或掃描而失真
+原始紀錄、修正紀錄、清晰影像
+Contemporaneous 即時
+活動發生時即時紀錄，不事後補填
+時間戳、Logbook、BMR即時填寫
+Original 原始
+保留原始資料或經驗證的true copy
+原始圖譜、原始電子資料、備份
+Accurate 正確
+計算、轉錄與審查準確，錯誤有合理修正
+第二人覆核、系統驗證、偏差紀錄
+Complete / Consistent / Enduring / Available
+完整、一致、可保存、可供查核
+全資料集、版本控管、保留期限、調閱能力
+常見缺失：未保存原始數據、手動積分無科學理由、審計追蹤未審查、共用帳號、事後補紀錄、刪除/覆蓋資料。
+Source: FDA Data Integrity and Compliance With Drug CGMP Guidance; MHRA GxP DI Guidance
+32
+--- slide 33 ---
+Validation & Qualification Lifecycle
+驗證的目的不是完成文件，而是證明設計、設備、製程與系統能在受控狀態下穩定運作
+URS
+需求規格
+→
+DQ
+設計確認
+→
+IQ
+安裝確認
+→
+OQ
+操作確認
+→
+PQ
+性能確認
+→
+Routine
+持續監測
+類型
+範例
+查核重點
+設備/設施確認
+HVAC、水系統、壓縮空氣、製程設備、倉儲溫控
+需求是否明確、測試是否覆蓋風險、偏差是否關閉
+製程驗證
+混合均勻度、乾燥、壓錠、包衣、充填、滅菌
+關鍵製程參數CPP、品質屬性CQA、批次數與CPV
+清潔驗證
+產品殘留、清潔劑、微生物、目視清潔
+MACO/PDE、最差情境、回收率、Dirty/Clean hold time
+分析方法驗證
+含量、雜質、溶離、微生物、穩定性方法
+專一性、準確性、精密度、線性、範圍、耐用性
+電腦化系統驗證
+LIMS、ERP、eBR、EMS、儀器軟體
+URS、權限、審計追蹤、備份、資料完整性
+Source: PIC/S GMP Annex 15; FDA Process Validation Guidance
+33
+--- slide 34 ---
+GMP互補體系：GLP / GCP / GDP / GSP如何接上生命週期
+不同GxP規範共同形成藥品從研發到配送的品質鏈
+體系
+適用階段
+核心目的
+與GMP的連接點
+GLP
+非臨床安全性/毒理試驗
+確保非臨床資料品質與可追溯性
+支持IND/NDA/查驗登記資料可信度
+GCP
+臨床試驗
+保護受試者權益與確保臨床數據可靠
+臨床批製造、IMP標示、供應與保存需與GMP/GDP銜接
+GMP
+製造、檢驗、包裝、放行
+確保產品一致生產與品質控制
+產品批次品質、穩定性、變更、偏差與CAPA
+GDP
+運銷與配送
+維持產品在運輸與配送過程的品質
+溫控、序列化、退貨、回收與委外物流管理
+GSP
+倉儲
+維持儲存條件並避免混雜/劣化
+原物料/成品倉儲、狀態管理與環境監測
+Source: OECD GLP; ICH E6(R2/R3); WHO/EU GDP concepts; original lifecycle image from uploaded deck
+34
+--- slide 35 ---
+Inspections
+TFDA & FDA 查廠與缺失案例
+Introduction of Pharmaceutical Plant (GMP)
+35
+--- slide 36 ---
+FDA Inspections
+--- slide 37 ---
+tFDA Inspection
+--- slide 38 ---
+FDA Inspections
+--- slide 39 ---
+TFDA（衛生福利部食品藥物管理署）對藥品製造許可有明確的法規規定與申請流程
+39
+TFDA（衛生福利部食品藥物管理署）對藥品製造許可有明確的法規規定與申請流程
+法源依據
+《藥事法》第20、22、24、26條
+《藥品優良製造規範（PIC/S GMP）》
+《藥品查驗登記審查準則》
+《藥品製造業設廠及設施設備標準》
+步驟 | 說明
+1️⃣ 預定設立地點查詢 | 須符合工業用地與環評等規範
+2️⃣ 提出設廠申請 | 向 TFDA 或地方衛生局 申請，需含設施設計圖與符合「製藥設施標準」
+3️⃣ 工廠設施審查 | TFDA 實地查核工廠符合GMP與建築技術標準
+4️⃣ 初步製藥許可證核發 | 通過後取得「製藥許可證」
+5️⃣ PIC/S GMP 認證 | 必須完成完整性GMP稽查並取得合格證書
+6️⃣ 劑型查廠與核可 | 每個**劑型別（固體、液體、針劑等）**都需個別查核與許可
+7️⃣ 製造登記（如製造自有藥品） | 須再提出藥品查驗登記，取得藥品許可證（license number）
+--- slide 40 ---
+GMP查廠內容重點&劑型查廠制度
+40
+GMP查廠內容重點
+廠區配置（動線、人流物流、潔淨區分級）
+設備設施（潔淨區、HVAC、壓差、交叉污染控制）
+文件系統（SOP、批次紀錄、變更控制）
+品保單位（品質保證 QA、品質管制 QC）
+人員訓練與管理紀錄
+水系統、環境監測、校正、驗證資料
+
+劑型查廠制度（TFDA 特有）
+台灣TFDA規定：新增劑型必須申請查廠與核准
+意義：即使是相同廠址、相同製藥公司，每個劑型（如錠劑、懸液劑、針劑、眼藥水）都必須個別通過查廠
+查廠前須提出：
+劑型說明書
+配方與製程流程圖
+製程控制點與品質管制資料
+使用設備與潔淨區等級
+--- slide 41 ---
+TFDA  「製藥許可」
+41
+--- slide 42 ---
+TFDA（衛生福利部食品藥物管理署）對藥品製造許可有明確的法規規定與申請流程
+42
+符合 GMP 要求的設施條件
+設施建築設計：避免交叉污染，維持產品純度與穩定性
+製程控制系統：SOP 規範、Batch Record 記錄
+品質管理系統（QMS）：CAPA、偏差處理、OOS、變更控制
+設施校驗與再驗證：包括HVAC、純水系統、製程設備
+文件管理與數位轉型（DI）：符合 ALCOA+ 原則（Attributable, Legible, Contemporaneous, Original, Accurate）
+--- slide 43 ---
+FDA監管工具：現場查廠 + 遠距工具 + 紀錄請求
+疫情後FDA工具更彈性，但核心仍是風險導向與資料可信度
+工具
+目的
+實務重點
+On-site Inspection
+由FDA investigator到廠執行PAI、例行、For-cause或Follow-up查廠
+現場觀察、訪談、文件調閱、樣品採集；可能開立FDA 483
+Remote Regulatory Assessment (RRA)
+遠距評估設施或紀錄，以支援監管判斷或上市審查
+視訊、螢幕分享、遠距文件審查；不等同正式inspection但可影響後續決策
+Records Request / 704(a)(4)
+FDA可要求藥廠提供特定紀錄或資訊
+未合理提供紀錄可能被視為限制/延誤查核並導致執法風險
+Alternative Tools
+使用外國主管機關檢查報告、遠距互動評估或其他資訊
+常用於優先排序、風險評估與補足申請審查資訊
+補充：RRA/RRR本身也需要SOP
+建議建立遠距查核/紀錄請求回應程序，包含窗口、保密、資料室、版本控管、回覆時限、翻譯與QA審查。
+Source: FDA Conducting Remote Regulatory Assessments Q&A; FDA Remote Oversight Tools
+43
+--- slide 44 ---
+FDA查廠類型與目的
+不同查廠類型的核心問題不同；準備文件包與應對策略也應不同
+Inspection Type
+Purpose
+常見觸發/焦點
+Pre-Approval Inspection (PAI)
+確認申請資料真實性與商業化生產準備度
+ANDA/NDA/BLA中的製程、方法、批次與場址資訊
+Routine Surveillance
+定期確認上市後CGMP持續符合性
+品質系統、偏差/CAPA、OOS、資料完整性、變更與年度回顧
+For-Cause Inspection
+因投訴、召回、不良事件、資料疑慮或前次缺失觸發
+特定事件、批次或系統缺陷；風險較高
+Follow-Up Inspection
+確認前次Observation/Warning Letter後的矯正措施
+CAPA完成度、有效性與是否重複發生
+PAI準備重點
+Application中的製程、批次、檢驗方法、穩定性、設施與委外資訊必須能在現場被一致地證明。
+Surveillance準備重點
+平時品質系統是否受控，尤其是偏差/OOS調查、CAPA有效性、資料完整性與品質單位權限。
+Source: FDA Inspection Program and CGMP regulations
+44
+--- slide 45 ---
+FDA查廠流程與結果
+查廠從FDA 482開始，到Exit Meeting後才進入正式回覆與執法判定流程
+FDA 482
+到廠通知
+→
+Opening
+Meeting
+→
+Facility Tour
+& Interviews
+→
+Document
+Review
+→
+Daily
+Wrap-up
+→
+Exit Meeting
+483/EIR
+結果/文件
+含義
+廠商重點
+NAI
+No Action Indicated；無重大缺失
+維持系統與持續改善
+VAI
+Voluntary Action Indicated；有缺失但通常不需正式行政措施
+自願改善並追蹤CAPA有效性
+OAI
+Official Action Indicated；重大缺失，可能引發Warning Letter、Import Alert等
+高層介入、全面根因分析與系統性矯正
+FDA 483
+查廠結束時列出的Inspectional Observations
+通常建議15個工作天內提交完整書面回覆
+EIR
+Establishment Inspection Report；FDA查廠後正式報告
+用於後續監管判定與歷史紀錄
+Source: FDA Inspection outcomes and Form FDA 483 response practices
+45
+--- slide 46 ---
+TFDA vs FDA：查廠邏輯差異
+兩者皆重視GMP，但觸發情境、文件形式與執法後果略有不同
+項目
+TFDA
+FDA
+主要目的
+製造許可、GMP符合性、劑型/加工項目核可、藥證與國內外委查核
+CGMP遵循、上市申請審查、上市後監控、外國廠查核與執法
+法規框架
+藥事法、藥物製造業者檢查辦法、PIC/S GMP相關規範
+FD&C Act、21 CFR Part 210/211、相關Guidance與Compliance Program
+查廠通知
+通常有通知與申請流程；依案件性質而異
+可事前通知，也可能無預警或以遠距/紀錄請求方式進行
+缺失後果
+限期改善、複查、影響許可/製造活動或行政處分
+483、Warning Letter、Import Alert、Application delay、Consent Decree等
+準備策略
+建立符合PIC/S與TFDA程序的文件包與現場示範能力
+建立FDA風格的資料追溯、英文文件、DI與快速紀錄調閱能力
+Source: TFDA GMP專區; FDA CGMP Regulations and inspection references
+46
+--- slide 47 ---
+查廠資訊如何查詢：先確認「廠址」與「資訊層級」
+公開資料通常只能看到合格狀態、查廠分類與處分紀錄；詳細缺失需透過廠商提供、FOIA或付費資料庫補足
+查詢起點
+1
+Firm / Site Identity公司名、實際廠址、FEI/DUNS、劑型/產品別
+↓
+2
+Inspection Classification最近查廠日期、NAI / VAI / OAI、project area
+↓
+3
+Observation Detail483 citations、Inspection Observations、EIR/FOIA
+↓
+4
+Enforcement SignalWarning Letter、Import Alert、Recall、Application delay
+↓
+5
+Certificate / ListTFDA GMP名單、EudraGMDP GMP certificate / non-compliance
+資訊層級
+可查到什麼
+實務限制 / 判讀提醒
+合格/登錄狀態
+GMP名單、製造/輸入許可、FDA registration線索
+合格狀態不等於近期無缺失；同公司不同廠址需分開判讀
+查廠分類
+FDA NAI / VAI / OAI、查廠日期與product/project area
+不一定包含所有PAI或尚待執法判定之查廠；分類可能依project area分列
+缺失內容
+483、citation統計、EIR或廠商CAPA摘要
+公開483不完整；EIR通常需FOIA或由廠商提供；483不是最終違規結論
+處分/警訊
+Warning Letter、Import Alert/DWPE、Recall、non-compliance statement
+需確認是否已close-out、是否限於特定產品/廠址/時間點
+實務原則：先用「實際製造廠址」查公開資料，再向廠商索取最近一次查廠結果、483/CAPA close-out、GMP certificate與Quality Agreement。
+Source: FDA Data Dashboard caveats; FDA Form 483 FAQ; TFDA 製藥工廠管理(GMP/GDP); EMA EudraGMDP
+35
+--- slide 48 ---
+FDA 查廠資訊查詢：用 FEI / Firm / Site Address 串聯資料
+FDA公開資料可用於供應商初篩，但需注意PAI、手寫483、待最終執法判定案件等可能不完整公開
+Firm / FEI確認廠址
+→
+Inspection Dashboard查NAI/VAI/OAI
+→
+483 / Citations看缺失趨勢
+→
+Warning / Import判斷處分風險
+FDA工具
+查詢關鍵字
+可回答的問題
+注意事項
+Firm/Supplier Evaluation Resources
+Firm name 或 FEI；用地址確認site
+該廠是否有inspection classification、citations、compliance actions、recall/import records
+相同公司可能多個廠址；無結果不代表無查廠史
+Inspection Classification / Data Dashboard
+FEI、公司名、產品類別、國家、日期
+最近查廠日期、NAI/VAI/OAI、project area、是否有posted citations
+不含所有PAI、州政府查廠、等待最終執法者等；classification可依project area分列
+Published 483 / Inspection Observations
+公司名、FEI、FY、product area、CFR citation
+常見483條文、系統性缺失方向、可作內部稽核checklist
+483不是最終FDA判定；公開483與citation資料不完整
+Warning Letters
+公司名、subject：CGMP/API/Finished Pharmaceuticals
+是否已有重大CGMP指摘、FDA要求與回覆/close-out狀態
+內容可能因後續互動改變；需查最新status與close-out
+Import Alerts
+公司名、產品名、country、alert number
+是否被DWPE、涉及產品/廠商/違規原因與移除條件
+精準公司名建議加引號；確認紅/黃/綠名單及產品範圍
+Source: FDA Firm/Supplier Evaluation Resources; FDA Data Dashboard; FDA 483 FAQ; FDA Warning Letters; FDA Import Alerts
+36
+--- slide 49 ---
+TFDA / EMA 查詢：重點在 GMP 合格名單、核准狀態與不符合聲明
+台灣公開資料偏向名單/申請/核准狀態；歐盟EudraGMDP可查GMP certificate與non-compliance statement
+TFDA 製藥工廠管理(GMP/GDP)
+•
+國內藥廠：GMP查廠申請、GMP藥廠名單、GMP變更事項
+•
+國外藥廠：PMF、海外查廠、後續檢查、通過GMP核准名單
+•
+GDP：符合PIC/S GDP藥商名單、GDP檢查申請、Q&A與SOP範例
+用途：台灣製造許可、劑型/加工項目、國外藥廠GMP核准狀態確認
+EudraGMDP / EMA
+•
+GMP certificates：製造廠GMP合規證書
+•
+Statements of non-compliance：不符合性質與主管機關採取或擬採取行動
+•
+Manufacturing/import authorisation、GDP、active substance registration
+用途：歐盟供應鏈、API/製劑廠、MAH/進口商GMP/GDP狀態查核
+廠商直接提供文件
+•
+最近一次查廠報告摘要、483/EIR或等同缺失清單
+•
+CAPA close-out evidence、GMP certificate、Site Master File
+•
+Quality Agreement、供應商稽核報告、重大變更/召回/警告信聲明
+用途：補足公開資料不足，確認品質責任界面與查廠後改善是否閉環
+Source: TFDA 製藥工廠管理(GMP/GDP); TFDA GMP藥廠名單; EMA EudraGMDP database and GMP non-compliance statements
+37
+--- slide 50 ---
+供應商 / CMO / CDMO 查廠資訊 Due Diligence 流程
+目標不是找到單一證明文件，而是用公開資料 + 廠商文件 + 品質協議建立可稽核的風險判斷
+1
+確認Site法律名稱、地址、FEI、劑型/產品
+→
+2
+查公開資料FDA / TFDA / EMA / Warning / Import
+→
+3
+索取證據GMP證書、最近查廠、CAPA close-out
+→
+4
+品質評估缺失嚴重度、重複性、產品影響
+→
+5
+合約控管Quality Agreement、變更/通知義務
+→
+6
+持續監測年審、再稽核、警訊追蹤
+輸出文件（建議放入供應商檔案）
+文件
+內容
+查詢紀錄
+截圖/下載日期、查詢關鍵字、廠址比對結果
+風險摘要
+最近查廠分類、重大缺失/警訊、CAPA狀態
+決策紀錄
+核准/有條件核准/不核准；後續稽核頻率
+品質協議
+變更通知、偏差/OOS/召回通報、資料提供時限
+高風險警訊（Red Flags）
+!
+OAI / Import Alert / GMP non-compliance
+!
+重複同類缺失： Data Integrity 、無菌、環境監測、偏差調查
+!
+廠商拒絕提供查廠或CAPA close-out摘要
+!
+同一公司多廠址混用證書或查詢結果
+!
+產品/劑型與證書或許可範圍不一致
+判讀原則：單一缺失可看CAPA，重複/系統性缺失需升級為供應商資格與供應鏈風險。
+Source: FDA, TFDA and EMA public GMP/inspection databases; supplier qualification and quality agreement best practices
+38
+--- slide 51 ---
+Inspection Readiness：建議準備文件包
+查廠準備不是臨時找文件，而是要能快速、受控、一致地提供證據
+文件包
+內容範例
+準備重點
+Site & QMS
+Site Master File、品質手冊、組織圖、品質政策、年度產品回顧
+版本一致、英文摘要、QA審查
+SOP & Records
+SOP清單、BMR、Logbook、主配方、線清場、設備使用紀錄
+可追溯到實際批次與人員簽名
+Deviation/OOS/CAPA
+偏差、OOS/OOT、投訴、召回、變更控制、CAPA tracking
+根因合理、產品影響評估、CAPA有效性
+Validation
+設備/設施確認、製程驗證、清潔驗證、方法驗證、CSV
+矩陣化管理，證明關鍵系統有週期性回顧
+Personnel
+訓練矩陣、職務說明、GMP/DI訓練、上線資格
+訓練與實際操作/簽核權限一致
+Data Integrity
+審計追蹤、權限、備份、電子紀錄與紙本紀錄控制
+能說明資料生命週期與審查機制
+Suppliers/Outsourcing
+供應商評估、品質協議、委外檢驗/製造資料
+責任界面與放行責任清楚
+Source: FDA inspection readiness practices; PIC/S GMP Chapter 1 and 4
+39
+--- slide 52 ---
+Warning Letters
+https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters
+--- slide 53 ---
+FDA常見缺失：從單點缺失到Quality System Failure
+FDA觀察不只是「某一份文件錯」，常會被放大到品質單位未有效監督
+缺失項目
+常見情境
+相關法規示例
+未建立或未遵守SOP
+製程控制、偏差、清潔、檢驗未依核准程序執行
+21 CFR 211.100(a)
+製造/控制紀錄不完整
+批紀錄遺漏、事後補填、Logbook不一致
+21 CFR 211.100(b), 211.188
+實驗室控制不足
+方法未驗證、OOS調查不足、規格不合理
+21 CFR 211.160, 211.165, 211.192
+穩定性資料不足
+有效期限/儲存條件缺乏足夠資料支持
+21 CFR 211.166
+QA責任未落實
+QA未審查批紀錄/偏差，未有效拒用或放行
+21 CFR 211.22
+設備清潔/維護不當
+清潔限度不足、維修後未復歸、非專用設備無清潔紀錄
+21 CFR 211.67, 211.68
+資料完整性問題
+刪除資料、共用帳號、審計追蹤未審查、原始資料不全
+多個CGMP條文均可能涉及
+Source: FDA CGMP Regulations; eCFR 21 CFR Part 211
+53
+--- slide 54 ---
+Warning Letter案例：Zenzi Pharmaceutical Industries Pvt. Ltd.（2025）
+案例重點：未回應FDA紀錄請求本身即可升高為重大監管風險
+FDA主要指摘
+FDA依FD&C Act 704(a)(4)要求提供紀錄；公司在多次要求後未充分回應。FDA將該行為視為無法評估設施合規狀態的重要風險。
+監管後果
+警告信指出該廠產品被列入Import Alert 66-79，等同阻擋相關藥品進入美國市場，直到問題充分矯正。
+Lesson learned
+建立紀錄請求SOP與資料室機制：指定窗口、回覆時限、QA/法務審查、英文資料準備、版本控管、回覆追蹤。
+不提供資料 ≠ 保護公司；在FDA情境下，未回應或不完整回應可能被解讀為阻礙監管評估。
+Source: FDA Warning Letter: Zenzi Pharmaceutical Industries Pvt. Ltd., MARCS-CMS 701130, Feb. 13, 2025
+54
+--- slide 55 ---
+Warning Letter案例：Taiwan Biotech Co., Ltd.（信東，2018）
+案例重點：環境監測、文件、穩定性與品質監督缺失會被視為CGMP系統問題
+FDA關注面向
+可能反映的系統性問題
+Environmental Monitoring
+潔淨區狀態、微生物趨勢、警戒/行動限與調查不足
+Documentation
+紀錄不完整、可追溯性不足或資料完整性控制不足
+Stability Program
+有效期限、儲存條件與規格維持缺乏足夠科學支持
+Quality Oversight
+QA未充分審查、未能有效拒用/放行或推動CAPA
+Lesson learned
+查廠缺失若涉及「QA沒有有效監督」，通常會比單一技術缺失更嚴重。需用完整CAPA證明系統已被修正，而不是只補文件。
+適用於台灣廠的實務提醒：若有美國市場或美國客戶，應定期用FDA 21 CFR 210/211與DI觀點重新檢視既有PIC/S GMP系統。
+Source: FDA Warning Letter: Taiwan Biotech Co., Ltd., 542530, May 31, 2018
+55
+--- slide 56 ---
+練習題與討論
+可作為課後測驗或內部GMP訓練的討論題
+題目
+討論重點/建議答案方向
+1. GMP五大原則是哪些？請分別說明重要性。
+People、Premises & Equipment、Products/Materials、Procedures、Paperwork；可連結到污染控制、追溯性與批次一致性。
+2. FDA查廠最常提出哪些缺失？
+SOP未遵守、批紀錄不完整、實驗室/OOS不足、穩定性不足、QA責任不落實、清潔維護與資料完整性問題。
+3. 選一個Warning Letter案例分析。
+描述事實 → 對應CGMP條文/系統 → 產品風險 → 根因 → CAPA → 如何預防重複發生。
+4. 若要新增一個劑型，應先問哪些問題？
+產品風險、製程是否開放、設備共用、清潔限度、級區需求、HVAC/壓差、人流物流、驗證與查廠需求。
+Source: Training exercise based on GMP and FDA inspection concepts
+56
+--- slide 57 ---
+練習題與討論
+可作為課後測驗或內部GMP訓練的討論題
+Source: Training exercise based on GMP and FDA inspection concepts
+57
+GMP 缺失案例分析 (擇一)
+Rechon Life Science AB – Warning Letter #701040, dated April 30, 2025
+YiLing Pharmaceutical Ltd. – Warning Letter #699738, dated March 27, 2025
+Sanofi – Warning Letter #690604, January 15, 2025
+Akron Formulations India Private Limited – Warning Letter #693938, December 17, 2024
+--- slide 58 ---
+附錄：建議補充文件與官方來源
+後續若要做正式教育訓練或對外簡報，建議以官方來源更新版本與日期
+主題
+官方來源/文件
+用途
+TFDA GMP
+TFDA 製藥工廠管理(GMP/GDP)、GMP藥廠名單、藥品製造/PMF申請資訊
+台灣製造許可、GMP符合性與藥廠名單確認
+PIC/S GMP
+PIC/S GMP Guide PE 009-17: Introduction, Part I, Part II, Annexes
+藥品製造、API、無菌製劑、驗證、電腦化系統等基準
+FDA CGMP
+FDA CGMP Regulations; 21 CFR Part 210 and 211; eCFR
+美國成品藥製造與查廠核心法規
+FDA RRA/RRR
+FDA Conducting Remote Regulatory Assessments Q&A; Remote Oversight Tools
+遠距查核、紀錄請求與應對程序建立
+Data Integrity
+FDA Data Integrity and Compliance With Drug CGMP Guidance; MHRA GxP DI Guidance
+ALCOA+與電子/紙本資料完整性控管
+OEL/OEB & Containment
+NIOSH Occupational Exposure Banding Process; ISPE containment equipment / SMEPAC concepts
+高活性產品OEL/OEB、設備選型與圍堵驗證依據
+Warning Letters
+FDA Warning Letters database; Zenzi 701130; Taiwan Biotech 542530; Rechon 701040
+案例分析與CAPA訓練素材
+版本控管建議：正式引用前再次確認官方網站最新版本、發布日期與適用範圍。
+Source: Sources verified from official TFDA, FDA, PIC/S webpages as of deck preparation
+58

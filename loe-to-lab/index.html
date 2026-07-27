@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Patent Cliff to Pilot Batch — May Chang</title>
+<meta name="description" content="A CDMO decision chain: loss-of-exclusivity screening, FDA regulatory pathway selection, product dossier, pilot batch protocol, and a fluid-bed physics simulator. Technical Services participant project, Bora Pharmaceuticals / TWi, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header id="top">
+  <div class="hdr-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark"></span>
+      <span class="brand-txt">
+        <b data-t="siteTitle"></b>
+        <i data-t="siteSub"></i>
+      </span>
+    </a>
+    <nav id="nav"></nav>
+    <button id="langBtn" class="lang-btn" aria-label="Switch language">
+      <span class="lang-on">EN</span><span class="lang-sep">/</span><span class="lang-off">繁中</span>
+    </button>
+  </div>
+  <div class="scrollbar"><div id="scrollProgress"></div></div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section id="thesis" class="sec hero">
+  <div class="wrap">
+    <div class="eyebrow" data-t="byline"></div>
+    <h1 data-t="siteTitle"></h1>
+    <p class="lead" data-t="heroLead"></p>
+    <div id="heroBody" class="prose"></div>
+    <div id="chain" class="chain"></div>
+  </div>
+</section>
+
+<!-- ================= 1. SCREENER ================= -->
+<section id="screener" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-n">01</span>
+      <h2 data-t="scr.title"></h2>
+      <p class="lead" data-t="scr.lead"></p>
+    </div>
+
+    <div class="screener-grid">
+      <aside class="panel weights">
+        <h3 data-t="scr.weights"></h3>
+        <div class="preset-row">
+          <span class="mini-label" data-t="scr.preset"></span>
+          <div id="presets" class="chips"></div>
+        </div>
+        <div id="wSliders"></div>
+        <p class="fine" data-t="scr.barrierNote"></p>
+      </aside>
+
+      <div class="panel table-panel">
+        <div class="tbl-scroll">
+          <table id="molTable" class="data-tbl">
+            <thead><tr id="molHead"></tr></thead>
+            <tbody id="molBody"></tbody>
+          </table>
+        </div>
+        <p class="fine"><span data-t="scr.clickHint"></span> · <span class="warn-txt" data-t="scr.verify"></span></p>
+      </div>
+    </div>
+
+    <div id="molDetail" class="panel detail-panel" hidden></div>
+  </div>
+</section>
+
+<!-- ================= 2. PATHWAY ================= -->
+<section id="pathway" class="sec alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-n">02</span>
+      <h2 data-t="pw.title"></h2>
+      <p class="lead" data-t="pw.lead"></p>
+    </div>
+
+    <div class="panel tree-panel">
+      <div id="treeTrail" class="trail"></div>
+      <div id="treeBody"></div>
+      <button id="treeReset" class="btn ghost" data-t="pw.restart"></button>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <h3 data-t="pw.clockTitle"></h3>
+        <p class="fine" data-t="pw.clockLead"></p>
+        <div id="clockControls" class="ctrl-grid"></div>
+        <div id="clockChart" class="gantt"></div>
+        <div id="clockVerdict" class="verdict"></div>
+      </div>
+
+      <div class="panel">
+        <h3 data-t="pw.costTitle"></h3>
+        <p class="fine" data-t="pw.costLead"></p>
+        <div id="costControls" class="ctrl-grid"></div>
+        <div id="costOut" class="readout-grid"></div>
+        <canvas id="erosionCanvas" width="620" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. DOSSIER ================= -->
+<section id="dossier" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-n">03</span>
+      <h2 data-t="dd.title"></h2>
+      <div id="ddHeader" class="dd-header"></div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="dd.why"></h3>
+      <div id="ddWhy" class="prose"></div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="dd.reg"></h3>
+      <div id="ddReg" class="qa-list"></div>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <h3 data-t="dd.qtpp"></h3>
+        <div id="ddQtpp" class="stack-list"></div>
+      </div>
+      <div class="panel">
+        <h3 data-t="dd.form"></h3>
+        <div id="ddForm"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="dd.cqa"></h3>
+      <div id="ddCqa" class="stack-list"></div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="dd.ana"></h3>
+      <div id="ddAna" class="stack-list"></div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="dd.plan"></h3>
+      <div id="ddPlan" class="plan"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. PROTOCOL ================= -->
+<section id="protocol" class="sec alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-n">04</span>
+      <h2 data-t="pr.title"></h2>
+      <p class="lead" data-t="pr.lead"></p>
+    </div>
+
+    <div class="panel">
+      <div class="batch-row">
+        <label class="mini-label" data-t="pr.batch"></label>
+        <input id="batchSize" type="range" min="10000" max="300000" step="5000" value="50000">
+        <output id="batchOut" class="mono"></output>
+      </div>
+      <div class="two-col tight">
+        <div>
+          <h4 data-t="pr.formula"></h4>
+          <table class="data-tbl compact"><thead><tr>
+            <th data-t="pr.component"></th><th data-t="pr.perCap"></th><th data-t="pr.perBatch"></th>
+          </tr></thead><tbody id="formulaBody"></tbody></table>
+        </div>
+        <div>
+          <h4 data-t="pr.derived"></h4>
+          <div id="derivedOut" class="readout-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="steps" class="steps"></div>
+    <p class="fine warn-txt" data-t="pr.disclaimer"></p>
+
+    <div class="panel">
+      <h3 data-t="pr.tsTitle"></h3>
+      <p class="fine" data-t="pr.tsLead"></p>
+      <div id="tsChips" class="chips"></div>
+      <div id="tsBody" class="ts-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. FLUID BED ================= -->
+<section id="fluidbed" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-n">05</span>
+      <h2 data-t="fb.title"></h2>
+      <p class="lead" data-t="fb.lead"></p>
+    </div>
+
+    <div class="sim-grid">
+      <aside class="panel sim-controls">
+        <div class="mode-row">
+          <span class="mini-label" data-t="fb.mode"></span>
+          <div class="chips" id="fbMode"></div>
+        </div>
+        <div id="fbSliders"></div>
+        <button id="fbReset" class="btn ghost" data-t="fb.reset"></button>
+      </aside>
+
+      <div class="panel sim-stage">
+        <canvas id="fbCanvas" width="560" height="620"></canvas>
+        <div id="fbRegime" class="regime-badge"></div>
+      </div>
+
+      <aside class="panel sim-readouts">
+        <h4 data-t="fb.thermo"></h4>
+        <div id="fbThermo" class="readout-grid"></div>
+        <h4 data-t="fb.hydro"></h4>
+        <div id="fbHydro" class="readout-grid"></div>
+        <h4 data-t="fb.quality"></h4>
+        <div id="fbQuality" class="readout-grid"></div>
+        <div id="fbAlerts" class="alerts"></div>
+      </aside>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <h3 data-t="fb.window"></h3>
+        <p class="fine" data-t="fb.windowLead"></p>
+        <canvas id="windowCanvas" width="620" height="380"></canvas>
+      </div>
+      <div class="panel">
+        <h3 data-t="fb.scenarios"></h3>
+        <p class="fine" data-t="fb.scenLead"></p>
+        <div id="scenList"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="fb.knobs"></h3>
+      <div id="knobList" class="stack-list"></div>
+    </div>
+
+    <div class="panel">
+      <h3 data-t="fb.principles"></h3>
+      <div id="principleList" class="prin-list"></div>
+    </div>
+
+    <p class="fine" data-t="fb.modelNote"></p>
+  </div>
+</section>
+
+<!-- ================= 6. VALIDATION ================= -->
+<section id="validation" class="sec alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-n">06</span>
+      <h2 data-t="vl.title"></h2>
+      <p class="lead" data-t="vl.lead"></p>
+    </div>
+    <div id="vlChain" class="vchain"></div>
+    <div class="panel">
+      <h3 data-t="vl.gaps"></h3>
+      <p class="fine" data-t="vl.gapsLead"></p>
+      <div id="gapList" class="stack-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section id="method" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-t="mt.title"></h2>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <h3 data-t="mt.dataTitle"></h3>
+        <div id="mtData" class="prose"></div>
+      </div>
+      <div class="panel">
+        <h3 data-t="mt.srcTitle"></h3>
+        <ul id="mtSources" class="src-list"></ul>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 data-t="mt.curTitle"></h3>
+      <p class="fine" data-t="mt.curLead"></p>
+      <ol id="mtCurriculum" class="cur-list"></ol>
+    </div>
+    <div class="panel closing">
+      <h3 data-t="mt.closingTitle"></h3>
+      <div id="mtClosing" class="prose"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-t="byline"></span>
+    <span class="mono" id="footSnapshot"></span>
+  </div>
+</footer>
+
+<script src="data/i18n.js"></script>
+<script src="data/molecules.js"></script>
+<script src="data/pathway.js"></script>
+<script src="data/deepdive.js"></script>
+<script src="data/protocol.js"></script>
+<script src="data/fluidbed.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

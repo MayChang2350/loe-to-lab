@@ -1,0 +1,430 @@
+=== EMA.pptx (14 slides) ===
+--- slide 1 ---
+EU 藥品法規演進與送件規範
+European Medicines Agency (EMA)
+與 FDA / TFDA 的監管比較
+Governance
+
+EMA+EC+NCA
+網絡式監管
+Submission
+
+CTD / eCTD
+多路徑上市申請
+Reform
+
+AI / ePI 
+供應安全改革
+CHMP
+PRAC
+CAT
+COMP
+CMDh
+NCA
+EMA
+[NOTES] 這一頁先交代今天這段 Part 3 的定位：不是只介紹 EMA，而是要理解 EU 如何透過 EMA、European Commission 與各國主管機關共同完成藥品審查、核准與上市後監管。
+
+延伸故事：對台灣公司來說，EU 不是只有『多一個市場』，而是另一套監管哲學。和 FDA 的單一機關模式不同，EU 是 network model；因此產品策略、申請路徑、文件準備與溝通方式都會不一樣。
+
+建議口頭強調三件事：
+1) Governance：EMA 不等於最後核准單位。
+2) Submission：EU 有四大 authorization procedures。
+3) Reform：最近幾年最大的關鍵字是 shortages、incentives reform、digitalisation。
+
+Sources: EMA, European Commission, FDA, TFDA official sites.
+--- slide 2 ---
+為什麼 EU 法規值得單獨理解？
+2
+監管架構不同
+EMA 提供科學審查；European Commission 核發 EU 層級 MA；各會員國主管機關參與評估與查核
+上市路徑不同
+Centralised、DCP、MRP、National 四套路徑並存
+送件與溝通不同
+雖然與 FDA、TFDA 一樣使用 CTD/eCTD，但 Module 1、時程節點、List of Questions 與 clock-stop 機制很有 EU 特色。
+政策趨勢正在改變
+近年討論焦點轉向 shortages、supply resilience、digital product information、抗菌藥誘因與可近性。
+投影片會回答的問題
+1
+1. EU 的藥品治理架構
+2
+2. 法規是如何從 1965 走到 2025 ？
+3
+3. 原廠藥 / 學名藥 / biosimilar / ATMP 送件差在哪裡？
+4
+4. CMC、GMP、QP、變更管理有哪些 EU 特色？
+5
+5. 目前業界最關注的 EU 議題是什麼？
+[NOTES] EU 藥政的難點不是單一法規，而是多層級治理——EU 法規、EMA 科學審查、European Commission 核准，以及各 Member State 的在地執行同時存在。
+
+延伸故事：對原廠藥公司，EU 的核心是 centralised procedure 與早期科學諮詢；對學名藥公司，常見焦點反而是 DCP/MRP 的效率與多國 label harmonisation；對 CDMO / API 公司，重點是 Module 3、inspection readiness、QP release 與 variation management。
+--- slide 3 ---
+EU 藥品治理架構：EMA、EC 與會員國主管機關
+EU 採用 network model：科學評估、法律核准與在地執行彼此分工。
+3
+European Commission
+European Medicines Agency (EMA)
+中央科學評估與程序協調
+會員國主管機關
+查廠、PV、DCP/MRP 評估
+委派 experts 給 EMA
+National Competent
+Authorities (NCAs)
+EMA + EC + NCAs
+共同構成 EU 監管網絡
+European Medicines
+Regulatory Network
+CHMP
+human medicines
+benefit-risk opinion
+PRAC
+safety / RMP / signal
+management
+CAT
+cell & gene therapy
+(ATMP)
+COMP
+orphan designation
+CMDh
+DCP / MRP coordination
+在 EU，『誰做科學評估』與『誰正式核准』不是同一個單位；對申請人而言，這會影響 route selection、溝通對象與上市後責任分工。
+[NOTES] 這一頁建議先把三個角色說清楚。
+
+第一，EMA 是中央科學評估與程序協調機構，但它不是最後發證的法律主體。
+第二，European Commission 才是 centralised procedure 下核發 EU marketing authorisation 的機關。
+第三，各會員國的主管機關仍非常重要，因為 DCP/MRP、GMP inspection、pharmacovigilance 與實際執行都離不開 NCA。
+
+延伸故事：很多剛接觸 EU 法規的人會把 EMA 直接等同 FDA。其實比較精準的說法是：FDA 是 single-agency model；EU 則是 network model。這也是為什麼 EU 在制度上更重視 committee work、rapporteur system 與 Member State collaboration。
+
+最下層是：EMA 關鍵委員會與功能分工
+不同產品類型與監管議題，會進入不同的 scientific committee / coordination body。
+CHMP: Human medicines committee，新藥 benefit-risk 評估的核心委員會。
+PRAC: Safety / PV committee，負責 safety、RMP、signal 與上市後風險管理。
+CAT: ATMP committee，cell / gene therapy 等 ATMP 的專責科學評估。
+COMP: Orphan committee，負責 orphan designation 與相關資格議題。
+CMDh: DCP/MRP coordination，協調 DCP / MRP，處理會員國歧見。
+
+新藥：CHMP 為主，PRAC 同步看 RMP
+--- slide 4 ---
+EU 藥品法規歷史演進
+從 1965 首部共同法規，到 2020s 以 availability、innovation 與 resilience 為核心的 modernisation。
+4
+1965
+Directive 65/65/EEC
+上市前授權
+安全與品質管制起點
+1975
+75/318 & 75/319
+committee cooperation 更一致
+1995
+EMA 開始運作
+中央化 scientific review
+2001
+Directive 2001/83/EC
+Community Code 整併
+人用藥共同規則
+2004
+Reg. 726/2004
+centralised procedure
+DCP 時代成形
+2010–2012
+PV reform
+藥品安全監測與
+PRAC 制度強化
+2022
+EMA extended mandate
+Shortages
+Emergency
+Preparedness
+2023–2025
+Pharma reform
+更新 20 年舊規則
+Access、Supply、Innovation
+Safety crisis → Single market harmonisation → Biotechnology & innovation → Pharmacovigilance → COVID/shortages & supply resilience
+[NOTES] 法規不是一次到位，而是被事件推著走。
+
+第一階段：1960s–1970s，重點是建立藥品上市前授權與基本品質、安全原則。這一段與 thalidomide 後的全球監管強化背景有關。
+第二階段：1990s–2000s，歐洲單一市場與 EMA 中央化審查機制成形，目標是 harmonisation。
+第三階段：2010s，pharmacovigilance 與 safety governance 強化。
+第四階段：2020s，COVID 與藥品短缺讓 EU 更重視 supply security、emergency coordination 與制度 modernisation。
+--- slide 5 ---
+EMA vs. FDA vs. TFDA：三大監管模式比較
+三者都要求 quality / safety / efficacy，但制度設計、審查權力與溝通節點並不相同。
+5
+比較面向 | EU (EMA / EC / NCAs) | FDA | TFDA
+治理模式 | Network model；EMA 科學評估、EC 核准、NCA 執行 | Single-agency model；FDA 集中審查與核准 | Single-agency model；隸屬衛福部
+主要送件格式 | CTD / eCTD；Module 1 為 EU-specific | CTD / eCTD | CTD / eCTD（依產品類型要求）
+主要上市路徑 | Centralised / DCP / MRP / National | NDA 505(b)(1)、505(b)(2)、ANDA、BLA、351(k) | 新藥、學名藥、原料藥、改良型新藥等查驗登記
+標準審查節奏 | Centralised 210 active days + EC decision；含 clock-stop | PDUFA standard 10 months；priority 6 months | 依案件類型公告辦理期限
+常見加速機制 | Accelerated assessment、PRIME、conditional MA | Priority review、Fast Track、Breakthrough、Accelerated Approval | 個案諮詢、優先審查/重大公共衛生需求等工具
+上市後安全監測 | PRAC、EudraVigilance、RMP | FAERS、REMS、PMR/PMC | 藥品安全監視與風險管理制度
+特殊製造特色 | QP certification、EU GMP、variations | cGMP、PAR/PAS/CBE-30 changes | PIC/S GMP、在地法規與審查一致性要求
+[NOTES] 1) Governance：FDA 與 TFDA 比較像單一機關；EU 則是 network model。
+2) Route complexity：EU 有四大 authorization procedures，因此 route planning 較複雜。
+3) Manufacturing nuance：EU 的 QP certification 是最有辨識度的特色之一。
+
+延伸故事：如果公司同時做 FDA 與 EU 送件，最常見的誤區是以為 CTD 相同就代表 strategy 相同。實務上不是，因為 Module 1、審查節點、會議型態、上市後變更與 labeling expectation 都會不同。
+--- slide 6 ---
+EU 四大上市申請路徑
+先選對程序，往往比文件多寫兩頁更重要。
+6
+Centralised
+Procedure
+審查：EMA + CHMP
+核准：European Commission
+結果：1 張 EU-wide MA
+常見：biologics、orphan、ATMP
+Decentralised
+Procedure (DCP)
+審查：Reference Member State + Concerned Member States
+結果：多國同步取得 national MAs
+常見：尚未在 EU 國家核准
+Mutual Recognition
+Procedure (MRP)
+起點：已取得 1 國 national MA
+目標：讓其他會員國承認
+常見：既有 national product 擴展到更多 EU 國家
+National
+Procedure
+審查：單一 Member State NCA
+結果：只在一國有效
+常見：單一市場策略或區域性產品
+Route choice = market scope + product type + lifecycle strategy
+[NOTES] 這一頁建議先從大圖像切入：EU 並不是只有一條『EMA 路徑』。
+
+Centralised procedure 是最容易被記住的，但不是所有產品都走 centralised。對很多 conventional generic 或 lifecycle products，DCP/MRP 反而更常見。
+
+可強調 practical question：公司要先問自己，目標是單一 Member State？多國同步？還是整個 EU 單一授權？這個商業問題會直接影響 regulatory route。
+--- slide 7 ---
+CTD/eCTD 與 EU Module 1 重點
+文件不只是要交出去，更要能被審查、回覆問題與持續維護。
+7
+Module 5｜Clinical
+安全性、有效性、BE / comparability
+Module 4｜Nonclinical
+藥理、毒理、PK
+Module 3｜Quality / CMC
+Drug substance、drug product、manufacturing、validation、stability
+Module 2｜Summaries
+Quality / nonclinical / clinical overviews
+Module 1｜Administrative
+Application form、SmPC、labeling、PIL、RMP、orphan / PIP、fees
+公司最常遇到的 4 個 dossier 問題
+• Module 1 與仿單/語言版本如何準備？
+• Module 3 是否足以支撐商業量產與查廠？
+• generic / biosimilar 依賴多少 reference data？
+• 回覆 LoQ 時，資料追溯與版本控管是否清楚？
+與 FDA / TFDA 相比，EU 的特色
+• 相同：都用 CTD/eCTD
+• EU 特有：Module 1、RMP、SmPC/PIL
+• EU 特有：milestones + clock-stop
+• EU 特有：variations 框架
+溝通方式
+• Pre-submission meeting
+• Scientific advice / protocol assistance
+• Responses to LoQ / LoOI
+• Oral explanation（必要時）
+• eSubmission Gateway
+[NOTES] 這一頁可以把『文件』和『流程』連在一起。
+
+表面上看，CTD 好像只是五個模組；但實務上 dossier 必須同時滿足三件事：可審查、可製造、可維護。尤其對 CMC 來說，Module 3 不是單純交資料，而是要證明產品在商業化條件下也能保持一致性。
+
+可延伸講一個觀念：很多申請失敗不是因為完全沒有資料，而是資料之間不一致、版本控管不清楚、或無法快速回覆 regulator 的 question。這就是為什麼 RA 與 CMC、QA、manufacturing 的 interface 這麼重要。
+--- slide 8 ---
+EMA 送件流程、溝通方式與典型時程
+Centralised procedure 的 210 active days 是『審查時計』，不包含申請人回覆問題的 clock-stop。
+8
+Pre-submission
+6–7 個月前
+LOI / meeting
+Submission &
+Validation
+MAA 遞件
+validation 約 30 天
+Assessment 1
+Day 80
+初步評估
+LoQ &
+Clock-stop
+Day 120
+List of Questions
+Assessment 2
+Day 180
+Outstanding issues
+CHMP Opinion
+Day 210
+科學意見
+EC Decision
+約 67 天
+正式 MA
+申請人怎麼與 EMA / rapporteurs 溝通？
+• pre-submission：確認 route、timing、readiness
+• scientific advice / PRIME：更早討論開發計畫
+• 回覆 LoQ / LoOI：以書面資料為主
+• 必要時 oral explanation
+時程管理的兩個重點
+• 210 active days 不等於真實 calendar time
+• Day 120 與 Day 180 是重要節點
+• Clock-stop 長短取決於公司回覆速度與資料成熟度
+• accelerated assessment 可縮至 150 days（適用情況有限）
+與 FDA / TFDA 比較
+• FDA 用 PDUFA 目標日期思考；EU 用 assessment milestones 思考
+• FDA/TFDA 諮詢會議更偏 agency-centric；EU 常見 committee / rapporteur interaction
+• EU 更常把問題集中在 lists of questions 與 clock-stop cycle
+[NOTES] 這一頁的核心是幫大家建立對 EU 審查『節奏』的感覺。
+
+可先講：Centralised procedure 不是一個連續 210 天的黑箱，而是有 milestone 的。Day 80 會有初步觀察；Day 120 通常會出現第一輪 list of questions；公司回覆後再進入第二輪；最後在 Day 210 左右由 CHMP 形成科學意見。
+
+延伸故事：很多專案時程延誤，不是因為 regulator 太慢，而是公司在 Day 120 LoQ 後發現 CMC、統計或標示問題還沒準備好，導致長時間 clock-stop。這也是 project management 能力在 RA 裡非常重要的原因。
+--- slide 9 ---
+EU 正在討論什麼？Pharmaceutical Reform 重點
+2023 提案與後續政治協議後，EU 焦點放在 access、availability、innovation 與 sustainability。
+9
+Access
+更及時、較公平地取得安全、有效且可負擔的藥品
+Supply
+提升供應安全，減少 shortages，強化 EU 危機應變能力
+Innovation
+維持對研發、製造與新技術的吸引力，同時重新思考誘因設計
+Sustainability
+更重視環境永續、數位化資訊與系統效率
+Policy Hot Topics
+• 供應短缺政策
+• 抗菌藥（AMR）相關研發誘因
+• 數位化的病人用藥資訊
+• AI、RWE 與新型證據在監管中的使用邊界
+對藥廠的策略含義
+• Shortage & Supply Reliability 將影響競爭力與監管風險
+• CDMO / API：需更重視供應韌性、資料更新速度與變更管理
+• Taiwan companies：不能只複製 FDA strategy，必須把 EU governance 與 local module 1 要求納入 planning
+[NOTES] 這一頁建議把重點放在『方向』而不是過度糾結單一條文數字。
+
+可以先說：EU 的 pharmaceutical reform 本質上是在回答四個問題——病人能不能更快拿到藥？供應能不能更穩？歐洲是否仍有研發吸引力？制度能不能更現代化？
+
+延伸故事：對業界來說，這不是遙遠的政策討論。它會直接影響 launch sequencing、portfolio prioritisation、evidence generation、supply-chain planning，以及某些產品是否值得在所有 Member States 同步推進。
+--- slide 10 ---
+不同產品怎麼選 route？對應哪些 legal basis？
+產品類型、參考資料依賴程度與市場策略，會決定你走哪條路。
+7
+先回答三個問題：① 是否必須 centralised？② 是否能依賴 reference product？③ 目標是一國、多國，還是全 EU？
+產品類型 | 常見 legal basis | 常見 route | 實務重點
+原創新藥 / biologic / orphan / ATMP | Directive 2001/83/EC Art. 8(3) full dossier | 多數走 Centralised | 完整 quality + nonclinical + clinical；早期 scientific advice 很重要
+學名藥 generic | Art. 10(1) | DCP / MRP / National；部分情況 centralised | 證明與 reference product 的 sameness + BE；label harmonisation 與 multi-country lifecycle 管理重要
+Hybrid product（劑型、途徑、強度不同） | Art. 10(3) | DCP / MRP / National 或 centralised（視產品） | 需額外 bridge data；常見在改良型產品
+Biosimilar | Art. 10(4) | 多數走 Centralised | 分析 comparability 是核心；PK/PD ± residual clinical package
+Well-established use / bibliographic | Art. 10a | 多見於 non-centralised routes | 依賴文獻與既有使用經驗，不一定要完整自有臨床套件
+Source: EMA, European Commission, EUR-Lex, FDA, TFDA (accessed Jun 2026)
+[NOTES] 這一頁是把『route』與『legal basis』連在一起講。這兩者常常被混為一談，但其實不一樣。
+
+legal basis 回答的是：你依賴什麼證據架構？例如 full dossier、generic、hybrid、biosimilar。
+route 回答的是：你透過哪個 EU 程序進入市場？例如 centralised、DCP、MRP。
+
+延伸故事：同樣是沒有新 active substance 的產品，也可能因為 route、dosage form、claim、reference reliance 的不同，而走 generic、hybrid 或 bibliographic route。這是 RA strategy 的關鍵判斷點。
+--- slide 11 ---
+不同產品類型的證據需求
+同樣是上市申請，但原廠藥、學名藥、biosimilar 與 ATMP 的證據邏輯完全不同。
+11
+產品類型 | 資料邏輯 | 通常需要的臨床/比較資料 | 常見監管重點
+Innovator / full dossier | 自建完整 quality、nonclinical、clinical package | 完整 Phase I–III 或其他完整支持資料 | benefit-risk、適應症外推、RMP、commercial manufacturing readiness
+Generic | 依賴 reference product 的既有安全有效性；自己證明 quality + sameness + BE | 多數以 BE 為主，不需重做完整 efficacy trials | Q1/Q2 / dissolution / BE、label alignment、patent / exclusivity awareness
+Biosimilar | 依賴 reference biologic，但不能只做 BE；核心是 analytical comparability | 高解析分析比較、PK/PD、必要時 residual clinical package | CQAs、免疫原性、extrapolation、manufacturing consistency
+ATMP | 產品與製程高度耦合；常需 case-specific scientific dialogue | 臨床資料可能較小但風險管理更複雜 | CAT 參與、potency / comparability、traceability、long-term follow-up
+原廠藥
+late-stage CMC / label 缺口
+學名藥
+route / BE / reference product
+Biosimilar
+similarity + totality of evidence
+ATMP
+早期、頻繁與 regulator 溝通
+Source: EMA, European Commission, EUR-Lex, FDA, TFDA (accessed Jun 2026)
+[NOTES] 這一頁可以提醒聽眾：產品類型不同，監管者到底在問什麼也不同。
+
+對原廠藥，監管者要確定新的 benefit-risk 值得上市。
+對 generic，核心是你能否可靠地連接到 reference product。
+對 biosimilar，最重要的是 comparability 與 totality of evidence，而不是『再做一次全部臨床』。
+對 ATMP，產品與製程綁得最緊，因此 manufacturing 與 quality 的角色更大。
+
+延伸故事：很多公司在 generic 與 biosimilar 的開發邏輯上容易混淆。generic 的核心語言是 sameness + BE；biosimilar 的核心語言是 similarity + residual uncertainty。
+--- slide 12 ---
+CMC 與製造：EU 的 QP、GMP 與變更管理
+EU 的關鍵不是『要不要做 CMC』，而是如何把 CMC 做到可審查、可放行、可變更。
+11
+EU commercial manufacturing flow
+API / ASMF / CEP
+Drug Product
+EU GMP / Inspection
+QP Certification
+Batch Release
+& Distribution
+Drug substance
+source, process, specs, impurities
+Drug product
+formula, process, control strategy
+Validation & stability
+process validation, hold time, shelf-life
+Lifecycle
+variations, comparability, change control
+EU 特色：Qualified Person (QP)
+• QP certification：每批產品上市前需由合格人員認證。
+• EU GMP：inspection 由會員國主管機關執行；無菌產品受 Annex 1 關注。
+• ASMF / CEP：常用於 API 來源與品質資料管理。
+• Variations：上市後變更依 Type IA / IB / II 管理。
+• 對 CDMO / API：資料完整度、供應商 qualification 與 inspection readiness 很關鍵。
+Source: EMA, European Commission, EUR-Lex, FDA, TFDA (accessed Jun 2026)
+[NOTES] 這一頁非常適合連回 Bora / CDMO 的工作內容。
+
+可以直接強調：對 regulator 來說，CMC 並不是 supporting material，而是 marketing authorisation 的核心支柱之一。尤其在 EU，QP release 與 variations framework 讓『上市後如何維持控制』變得非常重要。
+
+延伸故事：對很多美國導向的團隊而言，EU QP 是最需要重新理解的點。QP 不只是簽名流程，而是與法規責任、批次放行與供應鏈可追溯性綁在一起。這對委託製造、跨境供應與 site transfer 都有實質影響。
+--- slide 13 ---
+爭議、風險事件與監管教訓
+法規演進往往不是理論推動，而是被 safety crisis 與 supply crisis 推著走。
+13
+Thalidomide（1960s）
+全球出生缺陷事件成為現代藥品法規的象徵性轉折點。雖不只屬於 EU，但深刻影響歐洲對 safety、evidence 與上市前審查的態度。
+Lesson：上市前證據門檻與風險意識提高
+Nitrosamine impurities（2018–）
+NDMA / NDEA 等雜質事件擴大成全球性 API 與 finished product 風險管理議題，促使公司重新盤點 impurities、supplier changes 與 lifecycle control。
+Lesson：CMC 與供應鏈風險管理不能只在開發期做一次
+COVID-19 & medicine shortages
+疫情與後續 shortages 問題讓 EU 更關注 emergency preparedness、shortage monitoring、critical medicines 與 regulatory agility。
+Lesson：availability 與 supply security 已成為法規核心議題之一
+從 RA/CMC 角度看：重大事件最後都會轉化成新的 guidance、更多 risk assessment、更多 inspection focus，以及更高的文件維護要求。
+Source: EMA, European Commission, EUR-Lex, FDA, TFDA (accessed Jun 2026)
+[NOTES] 這一頁不只是講八卦，而是講『事件如何變成制度』。
+
+可以把三個例子分別對應到三種監管壓力：
+- Thalidomide：上市前 evidence 與 safety culture
+- Nitrosamines：CMC / impurities / supplier risk
+- COVID / shortages：availability / resilience / emergency governance
+
+延伸故事：對藥廠來說，最值得記住的是，重大風險事件很少只停在單一產品，最後通常會變成橫跨整個產品組合的 remediation 工作，例如全 portfolio 的 risk assessment、supplier requalification、variation submission。
+--- slide 14 ---
+Key Takeaways：從 EU 法規看到的策略意義
+如果把 EU 看成『另一個 FDA』，通常就會錯估送件設計、時程與上市後維護工作量。
+Part 3｜法規、製造與上市
+15
+1
+EMA 不等於最後核准者；EU 是 EMA + EC + NCA 的 network model。
+2
+Centralised、DCP、MRP、National 四路並存；route selection 是策略問題，不只是行政流程。
+3
+CTD/eCTD 結構全球相通，但 EU 的 Module 1、SmPC/PIL、RMP、clock-stop 與 multilingual maintenance 很有特色。
+4
+對 CMC / 製造來說，QP certification、EU GMP、ASMF/CEP 與 variations framework 是 EU 最具辨識度的制度。
+5
+未來趨勢將持續圍繞 availability、shortages、innovation incentives、digitalisation 與 evidence modernisation。
+對象 | 最該注意的 EU 能力
+原廠藥團隊 | 早期 scientific advice、centralised strategy、RMP / labeling / launch planning
+學名藥團隊 | DCP/MRP 管理、reference product strategy、BE / label harmonisation
+Biosimilar / specialty team | comparability package、PRAC/CAT interaction、residual uncertainty management
+CDMO / API / 製造 | Module 3 readiness、inspection preparedness、QP / variation support、supply resilience
+Bora 角度：若未來要支援 EU 客戶或 EU 市場，除了文件交付，更要理解『產品生命周期中的法規維護能力』。
+Sources: EMA, European Commission, EUR-Lex, FDA, TFDA official materials; slide content synthesised for training use.
+[NOTES] 最後一頁可以用來收斂成『這對公司意味著什麼』。
+
+如果聽眾是研發或製造背景，可以強調：EU 法規真正的挑戰，不是在第一次送件前夕才補資料，而是要在整個產品生命週期中維持 dossier、製造與供應的一致性。
+
+如果聽眾是商業或策略背景，可以強調：route selection、launch sequencing、供應佈局與市場覆蓋策略，在 EU 都和法規設計緊密連動。
+
+收尾可以用一句話：EU 法規的核心能力，不只是 'getting approved'，而是 'getting approved, staying compliant, and remaining available across a multi-country market.'
