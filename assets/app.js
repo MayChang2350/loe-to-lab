@@ -865,10 +865,6 @@ function renderDossier() {
      <div><ul>${t(p.items).map(i => `<li>${esc(i)}</li>`).join('')}</ul>
      <div class="gate">${esc(t(p.gate))}</div></div></div>`
   ).join('');
-
-  // teaser: a one-line count so the collapsed CQA panel is still
-  // informative, instead of an empty-looking header with a lone toggle
-  $('#ddCqaTeaser').textContent = `${dd.cqas.length} ${t(UI.dd.cqaTeaser)}`;
 }
 
 /* ============================================================================

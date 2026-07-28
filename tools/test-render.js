@@ -94,14 +94,15 @@ chk('disclosures exist', doc.querySelectorAll('[data-disc]').length >= 4, `got $
 chk('disclosures start closed', doc.querySelectorAll('[data-disc].open').length === 0);
 chk('dossier CQA/regulatory/analytics are behind disclosures (density pass)',
   doc.querySelectorAll('[data-disc]').length >= 7, `got ${doc.querySelectorAll('[data-disc]').length}`);
-chk('regulatory reading and analytical package now live inside the Development Plan panel',
+chk('CQA, regulatory reading and analytical package all now live inside the Development Plan panel',
   (() => {
     const panel = [...doc.querySelectorAll('.panel')].find(p => p.querySelector('#ddPlan'));
-    return !!panel && !!panel.querySelector('#ddReg') && !!panel.querySelector('#ddAna');
+    return !!panel && !!panel.querySelector('#ddCqa') && !!panel.querySelector('#ddReg') && !!panel.querySelector('#ddAna');
   })());
-chk('regulatory reading panel is no longer a separate top-level panel',
-  ![...doc.querySelectorAll('.panel')].some(p => p.querySelector('#ddReg') && !p.querySelector('#ddPlan')));
-chk('CQA teaser gives a count', /^\d+/.test($('#ddCqaTeaser').textContent));
+chk('CQA and regulatory reading are no longer separate top-level panels',
+  ![...doc.querySelectorAll('.panel')].some(p => (p.querySelector('#ddReg') || p.querySelector('#ddCqa')) && !p.querySelector('#ddPlan')));
+chk('dossier now has 4 panels (why / qtpp / form / development plan) instead of 6',
+  doc.querySelectorAll('#dossier .panel').length === 4, `got ${doc.querySelectorAll('#dossier .panel').length}`);
 chk('dossier lead is one paragraph', n('#ddWhyLead') === 1, `got ${n('#ddWhyLead')}`);
 chk('capsule svg rendered', $('#capsuleFig').innerHTML.includes('<svg'));
 chk('capsule imprint matches label', $('#capsuleFig').innerHTML.includes('FL 145'));
