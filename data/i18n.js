@@ -91,7 +91,6 @@ const UI = {
     title: { en: 'Regulatory pathway engine', zh: '法規路徑引擎' },
     lead:  { en: 'Four questions that decide which statute you are filing under, followed by a clock that shows when you could actually launch.', zh: '四個問題決定你依哪一部法律送件，接著是一個顯示你實際何時能上市的時鐘。' },
     restart: { en: 'Start over', zh: '重新開始' },
-    why: { en: 'Why this question matters', zh: '為什麼問這個問題' },
     result: { en: 'Indicated pathway', zh: '建議路徑' },
     clockTitle: { en: 'Exclusivity and entry clock', zh: '專屬權與進場時鐘' },
     clockLead: { en: 'Patents and regulatory exclusivities run on separate clocks and are read separately. Set the inputs and see which one is actually binding.', zh: '專利與法規專屬權各自獨立計時、獨立判讀。設定輸入值，看看真正產生拘束力的是哪一個。' },
@@ -103,7 +102,8 @@ const UI = {
     litScope:  { en: 'Litigation and settlement tracking in this snapshot is U.S.-only (Orange Book / Paragraph IV filings and settlement disclosures). Taiwan and EU patent status are NOT tracked here — use the official registers linked above to check them directly for any molecule before a decision gate.', zh: '本快照的訴訟與和解追蹤僅涵蓋美國（Orange Book／Paragraph IV 申請與和解揭露）。台灣與歐盟的專利狀態「未」於此追蹤——任何決策關卡前，請使用上方連結的官方資料庫直接查詢。' },
     litLinkUS: { en: 'US — Orange Book patent listing', zh: '美國——Orange Book 專利清單' },
     litLinkTW: { en: 'Taiwan — TIPO patent search', zh: '台灣——TIPO 專利檢索' },
-    litLinkEU: { en: 'Europe — Espacenet / EPO register', zh: '歐洲——Espacenet／EPO 專利註冊簿' }
+    litLinkEU: { en: 'Europe — Espacenet / EPO register', zh: '歐洲——Espacenet／EPO 專利註冊簿' },
+    litAll: { en: 'View all 21 products →', zh: '檢視全部 21 項產品 →' }
   },
 
   lit: {
@@ -130,7 +130,7 @@ const UI = {
   /* --- Protocol --- */
   pr: {
     title: { en: 'Pilot batch protocol', zh: '中試批操作程序' },
-    lead:  { en: 'Set a batch size and the quantities recalculate. Each step carries what it is for, what to set, what to watch, and what to do when the number moves the wrong way.', zh: '設定批量後，各項數量會自動重新計算。每個步驟都載明其目的、設定值、觀察重點，以及當數字往錯的方向移動時該怎麼做。' },
+    lead:  { en: 'Set a batch size and the quantities recalculate.', zh: '設定批量後，各項數量會自動重新計算。' },
     batch: { en: 'Batch size', zh: '批量' },
     capsules: { en: 'capsules', zh: '顆膠囊' },
     formula: { en: 'Batch formula', zh: '批次配方' },
@@ -156,7 +156,6 @@ const UI = {
   /* --- Process lab (tab shell around the seven simulators) --- */
   lab: {
     title: { en: 'Process lab', zh: '製程實驗室' },
-    lead: { en: 'Seven machines from the real manufacturing chain, each one live. Move a slider and equations decide what comes out — including what goes wrong, and what you would actually see on the bench when it does.', zh: '真實製造鏈上的七台機器，每一台都是即時運算的。拖動滑桿，方程式決定產出——包括會出什麼錯，以及出錯時你在現場真正會看到什麼。' },
     pick: { en: 'Pick a machine', zh: '選擇機台' },
     tryThis: { en: 'Try this', zh: '試試看' },
     controls: { en: 'Controls', zh: '控制項' },
@@ -264,6 +263,10 @@ const UI = {
     dontShow: { en: "Don't show this again", zh: '不要再顯示' },
     reopen: { en: 'Map', zh: '地圖' },
     esc: { en: 'Esc to close', zh: '按 Esc 關閉' },
+    close: { en: 'Close', zh: '關閉' },
+    litKicker: { en: 'The junction on the map', zh: '地圖上的關鍵節點' },
+    litPageTitle: { en: 'Loss of exclusivity — patent life and litigation status', zh: '專屬權到期——專利存續期與訴訟狀態' },
+    litPageLead: { en: 'All 21 screened products, read against the same U.S. patent and settlement data as the Pathway module. Select any card to open that product everywhere else on the site.', zh: '所有 21 個篩選產品，依與「路徑」模組相同的美國專利與和解資料判讀。點選任一卡片，即可在站內其他各處切換到該產品。' },
     innovator: [
       { t: { en: 'Discovery', zh: '藥物發現' }, d: { en: 'Find a molecule that|does something useful', zh: '找到一個|有用的分子' } },
       { t: { en: 'Preclinical', zh: '臨床前' }, d: { en: 'Test it in the lab|and in animals', zh: '在實驗室與|動物身上測試' } },

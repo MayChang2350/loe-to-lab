@@ -138,6 +138,39 @@ chk('no other full-screen fixed layer can swallow clicks', (() => {
   });
 })());
 
+rep.push('=== litigation overlay (from the map cliff / pathway panel) ===');
+chk('cliff junction is clickable', !!$('#litAllBtn'));
+$('#litAllBtn').click();
+chk('litigation overlay opens', !!$('#litOverlay'));
+chk('litigation overlay has 21 product cards', doc.querySelectorAll('#litOverlay .lit-card').length === 21,
+  `got ${doc.querySelectorAll('#litOverlay .lit-card').length}`);
+chk('litigation overlay is not in the served markup (JS-injected)',
+  !fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes('litOverlay'));
+chk('body scroll locked while litigation overlay open', doc.body.classList.contains('locked'));
+{
+  const card = doc.querySelectorAll('#litOverlay .lit-card')[3];
+  const molId = card.dataset.goMol;
+  card.click();
+  chk('clicking a card closes the overlay', !$('#litOverlay'));
+  chk('clicking a card unlocks scroll', !doc.body.classList.contains('locked'));
+  chk('clicking a card selects that molecule', vm.runInContext('selectedMol', sandbox) === molId);
+}
+chk('reopening the litigation overlay works after closing', (() => {
+  $('#litAllBtn').click();
+  const ok = !!$('#litOverlay');
+  if (ok) { $('#litOverlay .map-skip').click(); }
+  return ok;
+})());
+chk('litigation overlay removed after closing again', !$('#litOverlay'));
+
+// reset back to linaclotide — later checks (steps, protocol numbers) assume
+// the flagship molecule is selected
+{
+  const rows = doc.querySelectorAll('#molBody tr');
+  const linRow = rows.find(r => r.textContent.includes('LINZESS'));
+  if (linRow) linRow.click();
+}
+
 rep.push('=== opens straight from the filesystem ===');
 chk('no fetch / XHR / ES modules — needs no web server', (() => {
   const files = ['index.html', 'assets/app.js', 'assets/forms.js']
@@ -247,6 +280,13 @@ try {
   }
   chk('zh: jurisdiction note is Chinese', /[一-鿿]/.test($('#jurNote').textContent));
   chk('zh: litigation status is Chinese', /[一-鿿]/.test($('#litStatus').textContent));
+  {
+    $('#litAllBtn').click();
+    chk('zh: litigation overlay is Chinese', /[一-鿿]/.test($('#litOverlay').textContent));
+    h = bad($('#litOverlay').textContent);
+    chk('zh: litigation overlay has no undefined / NaN', h.length === 0, h.join(','));
+    $('#litOverlay .map-skip').click();
+  }
   chk('zh: nothing left invisible after a re-render',
     doc.querySelectorAll('.reveal').every(n => n.classList.contains('in')),
     `${doc.querySelectorAll('.reveal').filter(n => !n.classList.contains('in')).length} stuck at opacity 0`);

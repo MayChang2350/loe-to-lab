@@ -130,6 +130,19 @@ function dots(n, max, rev) {
 
 let tableWide = false;
 
+/* Shared "pick this molecule" action — used by the screener table rows and
+   by the litigation overlay's product cards, so both stay in sync instead
+   of maintaining two copies of the same re-render sequence. */
+function selectMolecule(id, opts) {
+  selectedMol = id;
+  renderTable(); renderCapsule();
+  renderDossier(); renderProtocol(); renderLitigation();
+  if (opts && opts.scrollTo) {
+    const target = document.querySelector(opts.scrollTo);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 function renderTable() {
   const cols = tableWide
     ? ['rank', 'brand', 'app', 'sales', 'entry', 'route', 'barrier', 'comp', 'score']
@@ -166,9 +179,7 @@ function renderTable() {
     };
     tr.innerHTML = cols.map(c => cell[c]).join('');
     tr.onclick = () => {
-      selectedMol = m.id;
-      renderTable(); renderDetail(m, row); renderCapsule();
-      renderDossier(); renderProtocol(); renderLitigation();
+      selectMolecule(m.id);
       $('#molDetail').scrollIntoView({ block: 'nearest' });
     };
     body.appendChild(tr);
@@ -280,7 +291,7 @@ function buildMap() {
   });
 
   const cx = W / 2, cliffTop = laneY1 + ih + 38;
-  s += `<g class="mcliff">
+  s += `<g class="mcliff live" data-cliff="1" tabindex="0" role="button">
     <line x1="${cx}" y1="${laneY1 + ih + 6}" x2="${cx}" y2="${cliffTop - 4}" class="cliff-line" marker-end="url(#mahT)"/>
     <rect x="${cx - 154}" y="${cliffTop}" width="308" height="54" rx="27" class="cliff-box"/>
     <text x="${cx}" y="${cliffTop + 25}" class="cliff-t">${esc(t(UI.map.cliff))}</text>
@@ -330,6 +341,11 @@ function refreshMapOverlay() {
     g.onclick = () => closeMapOverlay(g.dataset.go);
     g.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') closeMapOverlay(g.dataset.go); };
   });
+  const cliff = ov.querySelector('[data-cliff]');
+  if (cliff) {
+    cliff.onclick = () => { closeMapOverlay(); openLitigationPage(); };
+    cliff.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { closeMapOverlay(); openLitigationPage(); } };
+  }
   const skipBtn = ov.querySelector('.map-skip');
   if (skipBtn) skipBtn.onclick = () => closeMapOverlay();
 }
@@ -380,6 +396,71 @@ function openMap() {
   ov.querySelectorAll('[data-go]').forEach(g => {
     g.onclick = () => close(g.dataset.go);
     g.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') close(g.dataset.go); };
+  });
+  const cliff0 = ov.querySelector('[data-cliff]');
+  if (cliff0) {
+    cliff0.onclick = () => { close(); openLitigationPage(); };
+    cliff0.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { close(); openLitigationPage(); } };
+  }
+  document.body.classList.add('locked');
+}
+
+/* Litigation overlay — reachable from the map's "loss of exclusivity"
+   junction, and reopenable from the Pathway section's litigation panel.
+   Shares .map-ov so it inherits the same click-safety rules (pointer-events
+   none unless .show, removed from the DOM on close) established for the
+   landing map, rather than re-deriving them for a second overlay. */
+function buildLitigationCards() {
+  return MOLECULES.map(m => {
+    let dots = '<span class="sev">'; for (let i = 1; i <= 5; i++) dots += `<i class="${i <= m.legalRisk ? 'f' : ''}"></i>`; dots += '</span>';
+    const basis = t(m.entryBasis);
+    const snippet = basis.length > 200 ? basis.slice(0, 200) + '…' : basis;
+    return `<div class="lit-card" data-go-mol="${m.id}" tabindex="0" role="button">
+      <div class="lit-card-h"><b>${esc(m.brand)}</b>${dots}</div>
+      <div class="lit-card-date mono">${esc(m.entryDate)}</div>
+      <p>${esc(snippet)}</p>
+    </div>`;
+  }).join('');
+}
+
+let closeLitOverlay = () => {};
+
+function openLitigationPage() {
+  if ($('#litOverlay')) { $('#litOverlay').classList.add('show'); return; }
+  const ov = el('div', 'map-ov lit-ov');
+  ov.id = 'litOverlay';
+  ov.innerHTML = `
+    <div class="map-inner lit-inner">
+      <div class="map-head">
+        <span class="map-kicker">${esc(t(UI.map.litKicker))}</span>
+        <h2>${esc(t(UI.map.litPageTitle))}</h2>
+        <p>${esc(t(UI.map.litPageLead))}</p>
+      </div>
+      <div class="lit-grid">${buildLitigationCards()}</div>
+      <div class="map-foot">
+        <button class="map-skip">${esc(t(UI.map.close))} →</button>
+        <span class="map-esc">${esc(t(UI.map.esc))}</span>
+      </div>
+    </div>`;
+  document.body.appendChild(ov);
+  requestAnimationFrame(() => ov.classList.add('show'));
+
+  const close = () => {
+    ov.classList.remove('show');
+    document.body.classList.remove('locked');
+    window.removeEventListener('keydown', onKey);
+    setTimeout(() => { if (ov.parentNode) ov.remove(); }, 340);
+  };
+  const onKey = e => { if (e.key === 'Escape') close(); };
+  window.addEventListener('keydown', onKey);
+  closeLitOverlay = close;
+
+  ov.querySelector('.map-skip').onclick = close;
+  ov.onclick = e => { if (e.target === ov) close(); };
+  ov.querySelectorAll('[data-go-mol]').forEach(card => {
+    const go = () => { close(); selectMolecule(card.dataset.goMol, { scrollTo: '#pathway' }); };
+    card.onclick = go;
+    card.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') go(); };
   });
   document.body.classList.add('locked');
 }
@@ -546,7 +627,6 @@ function renderTree() {
   const node = PATHWAY_TREE.nodes[treeNode];
   if (!node) return;
   body.appendChild(el('div', 'q-title', esc(t(node.q))));
-  body.appendChild(el('div', 'q-why', `<b>${esc(t(UI.pw.why))}</b>${esc(t(node.why))}`));
   const opts = el('div', 'opts');
   node.opts.forEach(o => {
     const b = el('button', 'opt', esc(t(o.label)));
@@ -2003,6 +2083,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#fbDownload').onclick = () => downloadText(`fluidbed-${fb.mode}-protocol-sheet.txt`, buildFbSheet());
 
   $('#mapBtn').onclick = () => { const o = $('#mapOverlay'); if (o) o.remove(); openMap(); };
+  $('#litAllBtn').onclick = () => { const o = $('#litOverlay'); if (o) o.remove(); openLitigationPage(); };
 
   renderAll();
   initParticles();
