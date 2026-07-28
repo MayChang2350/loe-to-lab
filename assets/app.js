@@ -782,6 +782,12 @@ function renderDossier() {
      <div><ul>${t(p.items).map(i => `<li>${esc(i)}</li>`).join('')}</ul>
      <div class="gate">${esc(t(p.gate))}</div></div></div>`
   ).join('');
+
+  // teasers: a one-line count so the collapsed panel is still informative,
+  // instead of an empty-looking header with a lone "expand" button
+  $('#ddCqaTeaser').textContent = `${dd.cqas.length} ${t(UI.dd.cqaTeaser)}`;
+  $('#ddAnaTeaser').textContent = `${dd.analytics.length} ${t(UI.dd.anaTeaser)}`;
+  $('#ddPlanTeaser').textContent = `${dd.plan.length} ${t(UI.dd.planTeaser)}`;
 }
 
 /* ============================================================================

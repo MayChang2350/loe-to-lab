@@ -121,7 +121,10 @@ const UI = {
     form:  { en: 'Formulation design target', zh: '處方設計目標' },
     cqa:   { en: 'Critical quality attributes', zh: '關鍵品質屬性' },
     ana:   { en: 'Analytical package', zh: '分析方法組合' },
-    plan:  { en: 'Development plan and gates', zh: '開發計畫與關卡' }
+    plan:  { en: 'Development plan and gates', zh: '開發計畫與關卡' },
+    cqaTeaser: { en: 'critical quality attributes identified, each with its driver, control and in-process check.', zh: '項關鍵品質屬性，各附驅動因子、管制方式與製程中檢驗。' },
+    anaTeaser: { en: 'analytical tests in the package.', zh: '項分析方法納入此組合。' },
+    planTeaser: { en: 'development phases with go/no-go gates.', zh: '個開發階段，各附通過／中止關卡。' }
   },
 
   /* --- Protocol --- */

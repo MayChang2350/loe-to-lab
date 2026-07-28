@@ -88,6 +88,11 @@ chk('how-to-read strip = 4 cells', n('#howToRead') === 4, `got ${n('#howToRead')
 chk('screener table starts compact (5 cols)', n('#molHead') === 5, `got ${n('#molHead')}`);
 chk('disclosures exist', doc.querySelectorAll('[data-disc]').length >= 4, `got ${doc.querySelectorAll('[data-disc]').length}`);
 chk('disclosures start closed', doc.querySelectorAll('[data-disc].open').length === 0);
+chk('dossier CQA/analytics/plan are behind disclosures (density pass)',
+  doc.querySelectorAll('[data-disc]').length >= 7, `got ${doc.querySelectorAll('[data-disc]').length}`);
+chk('CQA teaser gives a count', /^\d+/.test($('#ddCqaTeaser').textContent));
+chk('analytics teaser gives a count', /^\d+/.test($('#ddAnaTeaser').textContent));
+chk('plan teaser gives a count', /^\d+/.test($('#ddPlanTeaser').textContent));
 chk('dossier lead is one paragraph', n('#ddWhyLead') === 1, `got ${n('#ddWhyLead')}`);
 chk('capsule svg rendered', $('#capsuleFig').innerHTML.includes('<svg'));
 chk('capsule imprint matches label', $('#capsuleFig').innerHTML.includes('FL 145'));
