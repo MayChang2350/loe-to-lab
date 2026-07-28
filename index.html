@@ -170,11 +170,6 @@
       </div>
     </div>
 
-    <div class="panel">
-      <h3 data-t="dd.reg"></h3>
-      <div id="ddReg" class="qa-list"></div>
-    </div>
-
     <div class="two-col">
       <div class="panel">
         <h3 data-t="dd.qtpp"></h3>
@@ -196,21 +191,29 @@
     </div>
 
     <div class="panel">
-      <h3 data-t="dd.ana"></h3>
-      <p id="ddAnaTeaser" class="fine"></p>
-      <div class="disc" data-disc>
-        <button class="disc-btn" type="button"></button>
-        <div class="disc-body"><div id="ddAna" class="stack-list"></div></div>
-      </div>
-    </div>
-
-    <div class="panel">
       <h3 data-t="dd.plan"></h3>
-      <p id="ddPlanTeaser" class="fine"></p>
+      <p class="fine" data-t="dd.planLead"></p>
+
+      <h4 data-t="dd.reg"></h4>
       <div class="disc" data-disc>
         <button class="disc-btn" type="button"></button>
-        <div class="disc-body"><div id="ddPlan" class="plan"></div></div>
+        <div class="disc-body">
+          <div id="ddReg" class="qa-list"></div>
+        </div>
       </div>
+
+      <h4 data-t="dd.ana"></h4>
+      <div class="disc" data-disc>
+        <button class="disc-btn" type="button"></button>
+        <div class="disc-body">
+          <table class="data-tbl compact"><thead><tr>
+            <th data-t="dd.anaTest"></th><th data-t="dd.anaMethod"></th><th data-t="dd.anaPurpose"></th>
+          </tr></thead><tbody id="ddAna"></tbody></table>
+        </div>
+      </div>
+
+      <h4 data-t="dd.planSub"></h4>
+      <div id="ddPlan" class="plan"></div>
     </div>
   </div>
 </section>

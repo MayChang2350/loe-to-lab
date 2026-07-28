@@ -853,8 +853,11 @@ function renderDossier() {
       <p><span class="tag">IPC</span> ${esc(t(c.ipc))}</p></div>`;
   }).join('');
 
+  // analytical package as a compact table (was a stack of cards) — a
+  // denser, more scannable visualisation for a list that is really just
+  // test / method / purpose triples
   $('#ddAna').innerHTML = dd.analytics.map(a =>
-    `<div class="si"><div class="si-h"><b>${esc(t(a.test))}</b><span class="meta">${esc(a.method)}</span></div><p>${esc(t(a.purpose))}</p></div>`
+    `<tr><td>${esc(t(a.test))}</td><td class="mono dim">${esc(a.method)}</td><td>${esc(t(a.purpose))}</td></tr>`
   ).join('');
 
   $('#ddPlan').innerHTML = dd.plan.map(p =>
@@ -863,11 +866,9 @@ function renderDossier() {
      <div class="gate">${esc(t(p.gate))}</div></div></div>`
   ).join('');
 
-  // teasers: a one-line count so the collapsed panel is still informative,
-  // instead of an empty-looking header with a lone "expand" button
+  // teaser: a one-line count so the collapsed CQA panel is still
+  // informative, instead of an empty-looking header with a lone toggle
   $('#ddCqaTeaser').textContent = `${dd.cqas.length} ${t(UI.dd.cqaTeaser)}`;
-  $('#ddAnaTeaser').textContent = `${dd.analytics.length} ${t(UI.dd.anaTeaser)}`;
-  $('#ddPlanTeaser').textContent = `${dd.plan.length} ${t(UI.dd.planTeaser)}`;
 }
 
 /* ============================================================================

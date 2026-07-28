@@ -122,9 +122,12 @@ const UI = {
     cqa:   { en: 'Critical quality attributes', zh: '關鍵品質屬性' },
     ana:   { en: 'Analytical package', zh: '分析方法組合' },
     plan:  { en: 'Development plan and gates', zh: '開發計畫與關卡' },
-    cqaTeaser: { en: 'critical quality attributes identified, each with its driver, control and in-process check.', zh: '項關鍵品質屬性，各附驅動因子、管制方式與製程中檢驗。' },
-    anaTeaser: { en: 'analytical tests in the package.', zh: '項分析方法納入此組合。' },
-    planTeaser: { en: 'development phases with go/no-go gates.', zh: '個開發階段，各附通過／中止關卡。' }
+    planLead: { en: 'The regulatory basis and analytical package that justify the phased plan below — both collapsed by default, expand either to see the full detail.', zh: '支撐下方分階段計畫的法規依據與分析方法組合——預設皆為收合狀態，展開即可檢視完整內容。' },
+    planSub: { en: 'Phased plan and gates', zh: '分階段計畫與關卡' },
+    anaTest: { en: 'Test', zh: '測試項目' },
+    anaMethod: { en: 'Method', zh: '方法' },
+    anaPurpose: { en: 'Purpose', zh: '目的' },
+    cqaTeaser: { en: 'critical quality attributes identified, each with its driver, control and in-process check.', zh: '項關鍵品質屬性，各附驅動因子、管制方式與製程中檢驗。' }
   },
 
   /* --- Protocol --- */

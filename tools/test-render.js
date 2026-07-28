@@ -69,6 +69,10 @@ chk('regulatory items = 6', n('#ddReg') === 6, `got ${n('#ddReg')}`);
 chk('qtpp rows = 8', n('#ddQtpp') === 8, `got ${n('#ddQtpp')}`);
 chk('cqa rows = 8', n('#ddCqa') === 8, `got ${n('#ddCqa')}`);
 chk('analytics rows = 9', n('#ddAna') === 9, `got ${n('#ddAna')}`);
+chk('analytics is now a table, not stacked cards', $('#ddAna').children[0].tagName === 'TR',
+  `got <${$('#ddAna').children[0] && $('#ddAna').children[0].tagName}>`);
+chk('analytics rows have 3 columns', $('#ddAna').children[0].querySelectorAll('td').length === 3,
+  `got ${$('#ddAna').children[0].querySelectorAll('td').length}`);
 chk('plan phases = 5', n('#ddPlan') === 5, `got ${n('#ddPlan')}`);
 
 rep.push('=== protocol ===');
@@ -88,11 +92,16 @@ chk('how-to-read strip = 4 cells', n('#howToRead') === 4, `got ${n('#howToRead')
 chk('screener table starts compact (5 cols)', n('#molHead') === 5, `got ${n('#molHead')}`);
 chk('disclosures exist', doc.querySelectorAll('[data-disc]').length >= 4, `got ${doc.querySelectorAll('[data-disc]').length}`);
 chk('disclosures start closed', doc.querySelectorAll('[data-disc].open').length === 0);
-chk('dossier CQA/analytics/plan are behind disclosures (density pass)',
+chk('dossier CQA/regulatory/analytics are behind disclosures (density pass)',
   doc.querySelectorAll('[data-disc]').length >= 7, `got ${doc.querySelectorAll('[data-disc]').length}`);
+chk('regulatory reading and analytical package now live inside the Development Plan panel',
+  (() => {
+    const panel = [...doc.querySelectorAll('.panel')].find(p => p.querySelector('#ddPlan'));
+    return !!panel && !!panel.querySelector('#ddReg') && !!panel.querySelector('#ddAna');
+  })());
+chk('regulatory reading panel is no longer a separate top-level panel',
+  ![...doc.querySelectorAll('.panel')].some(p => p.querySelector('#ddReg') && !p.querySelector('#ddPlan')));
 chk('CQA teaser gives a count', /^\d+/.test($('#ddCqaTeaser').textContent));
-chk('analytics teaser gives a count', /^\d+/.test($('#ddAnaTeaser').textContent));
-chk('plan teaser gives a count', /^\d+/.test($('#ddPlanTeaser').textContent));
 chk('dossier lead is one paragraph', n('#ddWhyLead') === 1, `got ${n('#ddWhyLead')}`);
 chk('capsule svg rendered', $('#capsuleFig').innerHTML.includes('<svg'));
 chk('capsule imprint matches label', $('#capsuleFig').innerHTML.includes('FL 145'));
