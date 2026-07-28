@@ -220,6 +220,15 @@ try {
   chk('zh: nothing left invisible after a re-render',
     doc.querySelectorAll('.reveal').every(n => n.classList.contains('in')),
     `${doc.querySelectorAll('.reveal').filter(n => !n.classList.contains('in')).length} stuck at opacity 0`);
+
+  // regression: the map overlay is built once and cached, so a language
+  // switch has to explicitly refresh its contents or it keeps showing
+  // whichever language was active when it was first opened
+  $('#mapBtn').click();
+  chk('zh: reopened map is Chinese', /[一-鿿]/.test($('#mapOverlay .map-canvas').textContent));
+  chk('zh: map node labels are Chinese', /[一-鿿]/.test($('#mapOverlay').querySelector('.mn-t.live').textContent));
+  $('#mapOverlay .map-skip').click();
+
   $('#langBtn').click();
   chk('switched back to EN', !doc.body.classList.contains('zh'));
 } catch (e) { chk('language switch threw', false, e.message); }

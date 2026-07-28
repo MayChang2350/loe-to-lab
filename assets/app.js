@@ -220,6 +220,17 @@ const MODULE_NODES = [
    otherwise words are packed to the character budget the box allows. */
 function wrapLines(txt, maxChars, maxLines) {
   if (txt.includes('|')) return txt.split('|').slice(0, maxLines);
+  // Chinese carries no spaces between words, so word-wrapping does nothing —
+  // pack by character instead.
+  if (LANG === 'zh') {
+    const out = []; let cur = '';
+    for (const ch of txt) {
+      if ((cur + ch).length <= maxChars) cur += ch;
+      else { out.push(cur); cur = ch; }
+    }
+    if (cur) out.push(cur);
+    return out.slice(0, maxLines);
+  }
   const words = txt.split(/\s+/), out = [];
   let cur = '';
   words.forEach(w => {
@@ -236,9 +247,12 @@ function buildMap() {
   const ih = 92, mh = 114;
   const iw = 196, gap = (W - 60 - inn.length * iw) / (inn.length - 1);
   const mw = 168, mgap = (W - 60 - MODULE_NODES.length * mw) / (MODULE_NODES.length - 1);
-  // usable text width inside a node, at roughly 0.5 em advance for the sans face
-  const iChars = Math.floor((iw - 32) / 5.6);
-  const mChars = Math.floor((mw - 32) / 5.6);
+  // usable text width inside a node. CJK glyphs render roughly full-width
+  // (~1em) versus a Latin lowercase advance of ~0.5em, so the character
+  // budget for zh needs to be about half of the Latin one.
+  const advance = LANG === 'zh' ? 12.4 : 5.6;
+  const iChars = Math.floor((iw - 32) / advance);
+  const mChars = Math.floor((mw - 32) / advance);
 
   let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="mapsvg">
     <defs>
@@ -290,6 +304,36 @@ function buildMap() {
   return s + '</svg>';
 }
 
+/* Refresh the overlay's own copy in place — called on language switch so a
+   cached #mapOverlay (built once, then just toggled) doesn't keep showing
+   stale-language text and mis-sized wraps. */
+function refreshMapOverlay() {
+  const ov = $('#mapOverlay');
+  if (!ov) return;
+  const head = ov.querySelector('.map-head');
+  if (head) head.innerHTML = `
+        <span class="map-kicker">${esc(t(UI.map.kicker))}</span>
+        <h2>${esc(t(UI.map.title))}</h2>
+        <p>${esc(t(UI.map.lead))}</p>`;
+  const canvas = ov.querySelector('.map-canvas');
+  if (canvas) canvas.innerHTML = buildMap();
+  const skip = ov.querySelector('.map-skip');
+  if (skip) skip.textContent = t(UI.map.skip) + ' →';
+  const remember = ov.querySelector('.map-remember');
+  if (remember) remember.innerHTML = `<input type="checkbox" id="mapDont"> ${esc(t(UI.map.dontShow))}`;
+  const escLbl = ov.querySelector('.map-esc');
+  if (escLbl) escLbl.textContent = t(UI.map.esc);
+  // node clicks are freshly built markup — rewire them
+  ov.querySelectorAll('[data-go]').forEach(g => {
+    g.onclick = () => closeMapOverlay(g.dataset.go);
+    g.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') closeMapOverlay(g.dataset.go); };
+  });
+  const skipBtn = ov.querySelector('.map-skip');
+  if (skipBtn) skipBtn.onclick = () => closeMapOverlay();
+}
+
+let closeMapOverlay = () => {};
+
 function openMap() {
   if ($('#mapOverlay')) { $('#mapOverlay').classList.add('show'); return; }
   const ov = el('div', 'map-ov');
@@ -327,6 +371,7 @@ function openMap() {
   };
   const onKey = e => { if (e.key === 'Escape') close(); };
   window.addEventListener('keydown', onKey);
+  closeMapOverlay = close;
 
   ov.querySelector('.map-skip').onclick = () => close();
   ov.onclick = e => { if (e.target === ov) close(); };
@@ -1719,6 +1764,7 @@ document.addEventListener('DOMContentLoaded', () => {
     LANG = LANG === 'en' ? 'zh' : 'en';
     store.set('loelang', LANG);
     renderAll();
+    refreshMapOverlay();
   };
   $('#treeReset').onclick = () => { treeNode = PATHWAY_TREE.start; treeTrail = []; renderTree(); };
   $('#batchSize').oninput = renderProtocolNumbers;
