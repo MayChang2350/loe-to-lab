@@ -28,7 +28,7 @@ sandbox.matchMedia = () => ({ matches: false });
 vm.createContext(sandbox);
 
 const errs = [];
-const files = ['data/i18n.js', 'data/molecules.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'assets/forms.js', 'assets/app.js'];
+const files = ['data/i18n.js', 'data/molecules.js', 'data/jurisdictions.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'assets/forms.js', 'assets/app.js'];
 files.forEach(f => {
   try { vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), sandbox, { filename: f }); }
   catch (e) { errs.push(`LOAD ${f}: ${e.message}`); }
@@ -51,6 +51,10 @@ chk('weight sliders = 7', n('#wSliders') === 7, `got ${n('#wSliders')}`);
 chk('preset chips = 4', n('#presets') === 4, `got ${n('#presets')}`);
 chk('detail panel populated', $('#molDetail').innerHTML.length > 800);
 chk('pathway question rendered', $('#treeBody').textContent.length > 200);
+chk('jurisdiction chips = 3', n('#jurChips') === 3, `got ${n('#jurChips')}`);
+chk('jurisdiction note populated', $('#jurNote').textContent.length > 60);
+chk('jurisdiction links >= 3', doc.querySelectorAll('#jurLinks a').length >= 3, `got ${doc.querySelectorAll('#jurLinks a').length}`);
+chk('jurisdiction links are https', [...doc.querySelectorAll('#jurLinks a')].every(a => (a.getAttribute('href') || '').startsWith('https://')));
 chk('clock bars >= 4', n('#clockChart') >= 4, `got ${n('#clockChart')}`);
 chk('clock verdict text', $('#clockVerdict').textContent.length > 60);
 chk('cost readouts = 6', n('#costOut') === 6, `got ${n('#costOut')}`);
@@ -232,6 +236,7 @@ try {
     const linRow = rows.find(r => r.textContent.includes('LINZESS'));
     linRow.click();
   }
+  chk('zh: jurisdiction note is Chinese', /[一-鿿]/.test($('#jurNote').textContent));
   chk('zh: nothing left invisible after a re-render',
     doc.querySelectorAll('.reveal').every(n => n.classList.contains('in')),
     `${doc.querySelectorAll('.reveal').filter(n => !n.classList.contains('in')).length} stuck at opacity 0`);
@@ -257,6 +262,15 @@ try {
   chk('tree reaches a result', $('#treeBody').textContent.length > 300);
   $('#treeReset').click();
   chk('tree resets', n('#treeTrail') === 0);
+
+  const jurBefore = $('#jurNote').textContent;
+  doc.querySelectorAll('#jurChips .chip')[1].click();
+  chk('switching jurisdiction changes the note', $('#jurNote').textContent !== jurBefore);
+  chk('switching jurisdiction changes the chip selection', doc.querySelectorAll('#jurChips .chip')[1].classList.contains('on'));
+  doc.querySelectorAll('#jurChips .chip')[2].click();
+  chk('TFDA jurisdiction also has links', doc.querySelectorAll('#jurLinks a').length >= 3, `got ${doc.querySelectorAll('#jurLinks a').length}`);
+  doc.querySelectorAll('#jurChips .chip')[0].click();
+  chk('back to FDA', doc.querySelectorAll('#jurChips .chip')[0].classList.contains('on'));
 
   const before = $('#molBody tr:nth-child(1)').textContent;
   doc.querySelectorAll('#presets .chip')[1].click();

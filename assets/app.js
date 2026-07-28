@@ -478,6 +478,22 @@ function renderCapsule() {
    2 · PATHWAY
    ========================================================================== */
 
+let selectedJurisdiction = (store.get('loejur') && JURISDICTIONS[store.get('loejur')]) ? store.get('loejur') : 'FDA';
+
+function renderJurisdiction() {
+  const chips = $('#jurChips'); if (!chips) return;
+  chips.innerHTML = '';
+  JURISDICTION_ORDER.forEach(id => {
+    const j = JURISDICTIONS[id];
+    const c = el('button', 'chip' + (id === selectedJurisdiction ? ' on' : ''), esc(t(j.name)));
+    c.onclick = () => { selectedJurisdiction = id; store.set('loejur', id); renderJurisdiction(); };
+    chips.appendChild(c);
+  });
+  const j = JURISDICTIONS[selectedJurisdiction];
+  $('#jurNote').innerHTML = `<b>${esc(t(j.agency))} — ${esc(t(j.body))}</b>${esc(t(j.note))}`;
+  $('#jurLinks').innerHTML = j.links.map(l => `<a class="link-chip" href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join('');
+}
+
 let treeNode = PATHWAY_TREE.start;
 let treeTrail = [];
 
@@ -1788,6 +1804,7 @@ function renderAll() {
   renderWeightUI();
   renderTable();
   renderCapsule();
+  renderJurisdiction();
   renderTree();
   renderClockControls(); drawClock();
   renderCostControls(); renderCost();

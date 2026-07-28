@@ -54,7 +54,7 @@ const UI = {
   /* --- Screener --- */
   scr: {
     title:   { en: 'Loss-of-exclusivity screener', zh: '專屬權到期篩選' },
-    lead:    { en: 'Twenty-one molecules, scored against a weighting you control. Drag the sliders and watch the ranking change — the point is not the answer, it is that the answer depends on what you decided to value.', zh: '二十一個分子，依你所控制的權重評分。拖動滑桿，看排名如何改變——重點不在於答案，而在於答案取決於你決定重視什麼。' },
+    lead:    { en: 'Twenty-one molecules, scored against a weighting you control. Drag the sliders and watch the ranking change.', zh: '二十一個分子，依你所控制的權重評分。拖動滑桿，看排名如何改變。' },
     weights: { en: 'Scoring weights', zh: '評分權重' },
     preset:  { en: 'Presets', zh: '預設情境' },
     presets: {
@@ -108,9 +108,7 @@ const UI = {
     form:  { en: 'Formulation design target', zh: '處方設計目標' },
     cqa:   { en: 'Critical quality attributes', zh: '關鍵品質屬性' },
     ana:   { en: 'Analytical package', zh: '分析方法組合' },
-    plan:  { en: 'Development plan and gates', zh: '開發計畫與關卡' },
-    flagship: { en: 'Flagship deep dive — hand-researched from the FDA label, the product-specific guidance and standard practice for this molecule.', zh: '旗艦深度案例——依此分子的 FDA 標示、產品專屬指引與標準實務逐項研究而成。' },
-    templated: { en: 'Generated framework for this product — built from the verified screening data (pathway, guidance, unit operations), using generic quality-by-design patterns rather than molecule-specific research. See the linaclotide dossier for the fully researched example.', zh: '此產品為生成式框架——由已核實的篩選資料（法規路徑、指引、單元操作）建構而成，採用通用的品質源於設計模式，而非針對此分子的專屬研究。完整研究範例請見 linaclotide 產品評估。' }
+    plan:  { en: 'Development plan and gates', zh: '開發計畫與關卡' }
   },
 
   /* --- Protocol --- */
@@ -136,11 +134,7 @@ const UI = {
     checks: { en: 'Check these first', zh: '先檢查這些' },
     actions: { en: 'Actions, in order', zh: '處置措施，依順序' },
     wrong: { en: 'The instinctive move that makes it worse', zh: '會讓情況更糟的直覺反應' },
-    disclaimer: { en: 'Not a validated master batch record. A real MBR is a controlled GMP document with revision control, approvals and signature blocks.', zh: '這不是已驗證的主批次紀錄。真正的 MBR 是具版本控制、核准與簽章欄位的受控 GMP 文件。' },
-    flagship: { en: 'Flagship worked example — a full numeric pilot-batch protocol for linaclotide capsules, wired to real Wurster drug-layering physics.', zh: '旗艦實作範例——linaclotide 膠囊的完整數值中試批操作程序，並連結真實的 Wurster 藥物層積物理模型。' },
-    overviewTitle: { en: 'Process overview for this product', zh: '此產品的製程概覽' },
-    overviewNote: { en: 'This product\'s numeric batch calculator has not been built — that engine is wired specifically to Wurster capsule physics. What follows is a generic, honestly-labelled step overview built from this product\'s own unit operations. For real numeric exploration of coating, blending, compression, dissolution, homogenisation or particle size for THIS product\'s unit operations, use the process lab below.', zh: '尚未為此產品建立數值批次計算引擎——該引擎專門連結 Wurster 膠囊物理模型。以下是依此產品自身單元操作建構、如實標示的通用步驟概覽。若要對此產品的包衣、混合、壓錠、溶離、均質或粒徑等單元操作做真正的數值探索，請使用下方的製程實驗室。' },
-    goToLab: { en: 'Open the process lab →', zh: '前往製程實驗室 →' }
+    disclaimer: { en: 'Not a validated master batch record. A real MBR is a controlled GMP document with revision control, approvals and signature blocks.', zh: '這不是已驗證的主批次紀錄。真正的 MBR 是具版本控制、核准與簽章欄位的受控 GMP 文件。' }
   },
 
   /* --- Process lab (tab shell around the seven simulators) --- */
@@ -237,10 +231,10 @@ const UI = {
 
   map: {
     kicker: { en: 'How a medicine reaches a patient', zh: '一款藥如何走到病人手上' },
-    title: { en: 'Where this project sits', zh: '這個專案的位置' },
+    title: { en: 'Where Contract Development and Manufacturing Organization (CDMO) sits', zh: '這個專案的位置' },
     lead: {
-      en: 'The top row is how a new medicine gets invented — twelve to fifteen years, mostly before anyone can make a copy. The bottom row is what happens once its patents run out, and that is the part this site is about. Pick anywhere to start.',
-      zh: '上排是一款新藥被發明出來的過程——十二到十五年，且幾乎都發生在任何人能製造仿製品之前。下排是它的專利到期之後所發生的事，而這個網站談的正是那一部分。從任何一處開始都可以。'
+      en: 'Pick anywhere to start.',
+      zh: '請點選想要進任的階段。'
     },
     innovatorLane: { en: 'Innovator · creating the molecule', zh: '原開發廠 · 創造分子' },
     genericLane: { en: 'CDMO · copying it, once the law allows', zh: 'CDMO · 在法律允許後複製它' },
@@ -296,7 +290,6 @@ const UI = {
     high:     { en: 'high', zh: '高' },
     medium:   { en: 'medium', zh: '中' },
     thesisLbl:{ en: 'Reading', zh: '判讀' },
-    toDossier:{ en: 'Full technical dossier for this product →', zh: '此產品的完整技術評估 →' },
     close:    { en: 'Close', zh: '關閉' }
   },
 
