@@ -14,7 +14,7 @@ const sb={document:doc,window:null,localStorage:{getItem:k=>k in store?store[k]:
  matchMedia:()=>({matches:false}),console,Math,Date,JSON,Number,String,Array,Object,Intl,isFinite,parseInt,parseFloat,NaN,Infinity};
 sb.window=sb;sb.self=sb;sb.addEventListener=()=>{};sb.removeEventListener=()=>{};
 vm.createContext(sb);
-['data/i18n.js','data/molecules.js','data/pathway.js','data/deepdive.js','data/protocol.js',
+['data/i18n.js','data/molecules.js','data/pathway.js','data/deepdive.js','data/dossierTemplates.js','data/protocol.js','data/protocolTemplates.js',
  'data/dosageforms.js','data/fluidbed.js','data/unitops.js','assets/forms.js','assets/app.js']
  .forEach(f=>vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),sb,{filename:f}));
 doc.dispatchEvent({type:'DOMContentLoaded'});

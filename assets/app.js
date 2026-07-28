@@ -168,6 +168,7 @@ function renderTable() {
     tr.onclick = () => {
       selectedMol = m.id;
       renderTable(); renderDetail(m, row); renderCapsule();
+      renderDossier(); renderProtocol();
       $('#molDetail').scrollIntoView({ block: 'nearest' });
     };
     body.appendChild(tr);
@@ -194,7 +195,8 @@ function renderDetail(m, row) {
       <dt>Unit ops</dt><dd>${m.unitOps.map(u => `<span class="pill">${esc(u)}</span>`).join(' ')}</dd>
     </dl>
     <div class="callout"><b>${esc(t(UI.common.thesisLbl))}</b>${esc(t(m.thesis))}</div>
-    <div class="srcs"><b>${esc(t(UI.common.sources))}</b> · ${esc(t(UI.common.conf))}: ${esc(confLabel)}<br>${m.sources.map(esc).join(' · ')}</div>`;
+    <div class="srcs"><b>${esc(t(UI.common.sources))}</b> · ${esc(t(UI.common.conf))}: ${esc(confLabel)}<br>${m.sources.map(esc).join(' · ')}</div>
+    <a class="btn tiny detail-dossier-link" href="#dossier">${esc(t(UI.common.toDossier))}</a>`;
 }
 
 /* ============================================================================
@@ -672,38 +674,56 @@ function drawErosion() {
    3 · DOSSIER
    ========================================================================== */
 
+/* Returns the dossier content for a molecule: the hand-researched DD object
+   for linaclotide, or a generated framework (data/dossierTemplates.js) for
+   everything else. */
+function dossierFor(m) {
+  return m.id === 'linaclotide' ? DD : generateDossier(m);
+}
+
 function renderDossier() {
-  const h = DD.header;
+  const m = MOLECULES.find(x => x.id === selectedMol) || MOLECULES[0];
+  const dd = dossierFor(m);
+  const h = dd.header;
   $('#ddHeader').innerHTML = [
-    ['Brand', h.brand], ['INN', h.inn], ['Application', h.app],
+    ['Brand', h.brand], ['INN', t(h.inn)], ['Application', h.app],
     ['Form', t(h.form)], ['Strengths', h.strengths], ['Sponsor', h.sponsor]
   ].map(([k, v]) => `<div><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join('');
 
-  const why = t(DD.rationale);
+  $('#ddBadge').innerHTML = dd.templated
+    ? `<div class="callout templated"><b>${esc(t(UI.common.thesisLbl))}</b>${esc(t(UI.dd.templated))}</div>`
+    : `<div class="callout flagship"><b>★</b>${esc(t(UI.dd.flagship))}</div>`;
+
+  const why = t(dd.rationale);
   $('#ddWhyLead').innerHTML = `<p>${esc(why[0])}</p>`;
   $('#ddWhy').innerHTML = why.slice(1).map(p => `<p>${esc(p)}</p>`).join('');
 
-  $('#ddReg').innerHTML = DD.regulatory.map(r =>
+  $('#ddReg').innerHTML = dd.regulatory.map(r =>
     `<div class="qa"><div class="q">${esc(t(r.q))}</div><div class="src">${esc(r.src)}</div><div class="a">${esc(t(r.a))}</div></div>`
   ).join('');
 
-  $('#ddQtpp').innerHTML = DD.qtpp.map(q =>
+  $('#ddQtpp').innerHTML = dd.qtpp.map(q =>
     `<div class="si"><div class="si-h"><b>${esc(t(q.attr))}</b><span class="meta">${esc(t(q.target))}</span></div><p>${esc(t(q.just))}</p></div>`
   ).join('');
 
-  const f = DD.formulation;
-  const coatMg = f.fillWeightMg * f.coatingLoadPct / 100;
-  let rows = f.components.map(c => {
-    let mg = '—';
-    if (c.layer === 'coat') mg = (coatMg * c.pctOfCoat / 100).toFixed(3) + ' mg';
-    else if (c.layer === 'core') mg = (f.fillWeightMg - coatMg).toFixed(2) + ' mg';
-    return `<div class="si"><div class="si-h"><b>${esc(c.name)}</b><span class="meta">${mg}</span></div>
-      <p class="tag">${esc(t(c.role))}</p><p>${esc(t(c.note))}</p></div>`;
-  }).join('');
+  const f = dd.formulation;
+  let rows;
+  if (f.fillWeightMg == null || !f.components.length) {
+    rows = '';
+  } else {
+    const coatMg = f.fillWeightMg * f.coatingLoadPct / 100;
+    rows = f.components.map(c => {
+      let mg = '—';
+      if (c.layer === 'coat') mg = (coatMg * c.pctOfCoat / 100).toFixed(3) + ' mg';
+      else if (c.layer === 'core') mg = (f.fillWeightMg - coatMg).toFixed(2) + ' mg';
+      return `<div class="si"><div class="si-h"><b>${esc(c.name)}</b><span class="meta">${mg}</span></div>
+        <p class="tag">${esc(t(c.role))}</p><p>${esc(t(c.note))}</p></div>`;
+    }).join('');
+  }
   $('#ddForm').innerHTML = `<p class="fine" style="margin-top:0;margin-bottom:12px">${esc(t(f.note))}</p>
     <div class="stack-list">${rows}</div>`;
 
-  $('#ddCqa').innerHTML = DD.cqas.map(c => {
+  $('#ddCqa').innerHTML = dd.cqas.map(c => {
     let sev = '<span class="sev">'; for (let i = 1; i <= 5; i++) sev += `<i class="${i <= c.sev ? 'f' : ''}"></i>`; sev += '</span>';
     return `<div class="si"><div class="si-h"><b>${esc(t(c.cqa))}${sev}</b></div>
       <p><span class="tag">driver</span> ${esc(t(c.driver))}</p>
@@ -711,11 +731,11 @@ function renderDossier() {
       <p><span class="tag">IPC</span> ${esc(t(c.ipc))}</p></div>`;
   }).join('');
 
-  $('#ddAna').innerHTML = DD.analytics.map(a =>
+  $('#ddAna').innerHTML = dd.analytics.map(a =>
     `<div class="si"><div class="si-h"><b>${esc(t(a.test))}</b><span class="meta">${esc(a.method)}</span></div><p>${esc(t(a.purpose))}</p></div>`
   ).join('');
 
-  $('#ddPlan').innerHTML = DD.plan.map(p =>
+  $('#ddPlan').innerHTML = dd.plan.map(p =>
     `<div class="pstep"><div class="ph"><b>${esc(t(p.phase))}</b><span>month ${esc(p.months)}</span></div>
      <div><ul>${t(p.items).map(i => `<li>${esc(i)}</li>`).join('')}</ul>
      <div class="gate">${esc(t(p.gate))}</div></div></div>`
@@ -811,6 +831,37 @@ function renderSteps() {
     d.appendChild(b);
     box.appendChild(d);
   });
+}
+
+/* Decide whether to show the linaclotide worked numeric protocol or the
+   generated step-overview for whichever molecule is currently selected. */
+function renderProtocol() {
+  const m = MOLECULES.find(x => x.id === selectedMol) || MOLECULES[0];
+  const flagship = m.id === 'linaclotide';
+  if ($('#prNumericPanel')) $('#prNumericPanel').hidden = !flagship;
+  if ($('#prTroublePanel')) $('#prTroublePanel').hidden = !flagship;
+  if ($('#prDisclaimer')) $('#prDisclaimer').hidden = !flagship;
+
+  if (flagship) {
+    $('#prBadge').innerHTML = `<div class="callout flagship"><b>★</b>${esc(t(UI.pr.flagship))}</div>`;
+    $('#prOverview').innerHTML = '';
+    // steps first: renderProtocolNumbers() fills in the #apiCharge span that
+    // renderSteps() creates, so it must run after the steps exist
+    renderSteps(); renderProtocolNumbers(); renderTrouble();
+  } else {
+    $('#prBadge').innerHTML = `<div class="callout templated"><b>${esc(t(UI.common.thesisLbl))}</b>${esc(t(UI.dd.templated))}</div>`;
+    $('#steps').innerHTML = '';
+    const ov = stepsOverviewFor(m.unitOps);
+    $('#prOverview').innerHTML = `<div class="panel">
+      <h3>${esc(t(UI.pr.overviewTitle))}</h3>
+      <p class="fine">${esc(t(UI.pr.overviewNote))}</p>
+      <div class="stack-list">${ov.map(s => `<div class="si"><div class="si-h"><b>${esc(t(s.title))}</b><span class="meta">${esc(s.fromOp)}</span></div>
+        <p><span class="tag">${esc(t(UI.pr.purpose))}</span> ${esc(t(s.purpose))}</p>
+        <p><span class="tag">${esc(t(UI.pr.equipment))}</span> ${esc(t(s.equipment))}</p>
+        <p><span class="tag">${esc(t(UI.pr.watch))}</span> ${t(s.watch).map(esc).join(' · ')}</p></div>`).join('')}</div>
+      <a class="btn tiny" href="#fluidbed">${esc(t(UI.pr.goToLab))}</a>
+    </div>`;
+  }
 }
 
 let tsSel = 'agglom';
@@ -1741,7 +1792,7 @@ function renderAll() {
   renderClockControls(); drawClock();
   renderCostControls(); renderCost();
   renderDossier();
-  renderProtocolNumbers(); renderSteps(); renderProtocolNumbers(); renderTrouble();
+  renderProtocol();
   renderFbControls();
   renderScenarios(); renderKnobs();
   renderLabTabs(); showLabStage();

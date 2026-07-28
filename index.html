@@ -142,6 +142,7 @@
       <span class="sec-n">03</span>
       <h2 data-t="dd.title"></h2>
       <div id="ddHeader" class="dd-header"></div>
+      <div id="ddBadge"></div>
     </div>
 
     <div class="panel">
@@ -193,9 +194,12 @@
       <span class="sec-n">04</span>
       <h2 data-t="pr.title"></h2>
       <p class="lead" data-t="pr.lead"></p>
+      <div id="prBadge"></div>
     </div>
 
-    <div class="panel">
+    <div id="prOverview"></div>
+
+    <div id="prNumericPanel" class="panel">
       <div class="batch-row">
         <label class="mini-label" data-t="pr.batch"></label>
         <input id="batchSize" type="range" min="10000" max="300000" step="5000" value="50000">
@@ -216,9 +220,9 @@
     </div>
 
     <div id="steps" class="steps"></div>
-    <p class="fine warn-txt" data-t="pr.disclaimer"></p>
+    <p id="prDisclaimer" class="fine warn-txt" data-t="pr.disclaimer"></p>
 
-    <div class="panel">
+    <div id="prTroublePanel" class="panel">
       <h3 data-t="pr.tsTitle"></h3>
       <p class="fine" data-t="pr.tsLead"></p>
       <div id="tsChips" class="chips"></div>
@@ -394,7 +398,9 @@
 <script src="data/molecules.js"></script>
 <script src="data/pathway.js"></script>
 <script src="data/deepdive.js"></script>
+<script src="data/dossierTemplates.js"></script>
 <script src="data/protocol.js"></script>
+<script src="data/protocolTemplates.js"></script>
 <script src="data/fluidbed.js"></script>
 <script src="data/unitops.js"></script>
 <script src="assets/app.js"></script>

@@ -28,7 +28,7 @@ sandbox.matchMedia = () => ({ matches: false });
 vm.createContext(sandbox);
 
 const errs = [];
-const files = ['data/i18n.js', 'data/molecules.js', 'data/pathway.js', 'data/deepdive.js', 'data/protocol.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'assets/forms.js', 'assets/app.js'];
+const files = ['data/i18n.js', 'data/molecules.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'assets/forms.js', 'assets/app.js'];
 files.forEach(f => {
   try { vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), sandbox, { filename: f }); }
   catch (e) { errs.push(`LOAD ${f}: ${e.message}`); }
@@ -217,6 +217,21 @@ try {
   h = bad(doc.body.textContent);
   chk('zh: no undefined / NaN', h.length === 0, h.join(','));
   chk('zh: no stray English-only fallback in dossier', /[一-鿿]/.test($('#ddCqa').textContent));
+
+  // a templated (non-linaclotide) dossier + protocol overview must also be
+  // clean and Chinese once the molecule is switched under zh
+  {
+    const rows = doc.querySelectorAll('#molBody tr');
+    const other = rows.find(r => !r.textContent.includes('LINZESS'));
+    other.click();
+    chk('zh: templated dossier badge is Chinese', /[一-鿿]/.test($('#ddBadge').textContent));
+    chk('zh: templated dossier CQA is Chinese', /[一-鿿]/.test($('#ddCqa').textContent));
+    chk('zh: protocol overview is Chinese', /[一-鿿]/.test($('#prOverview').textContent));
+    h = bad($('#ddBadge').textContent + $('#ddCqa').textContent + $('#prOverview').textContent);
+    chk('zh: templated dossier/protocol has no undefined / NaN', h.length === 0, h.join(','));
+    const linRow = rows.find(r => r.textContent.includes('LINZESS'));
+    linRow.click();
+  }
   chk('zh: nothing left invisible after a re-render',
     doc.querySelectorAll('.reveal').every(n => n.classList.contains('in')),
     `${doc.querySelectorAll('.reveal').filter(n => !n.classList.contains('in')).length} stuck at opacity 0`);
@@ -280,9 +295,30 @@ try {
     if (bad($('#capsuleParts').textContent).length) figFails.push(m.id + ':dirty');
     if (!$('#figWho').textContent.trim()) figFails.push(m.id + ':nolabel');
     formsSeen.add(VIZ[m.id].form);
+
+    // dossier + protocol must follow the row click for every product, not
+    // just linaclotide — this is the point of request #7
+    if (!$('#ddHeader').textContent.includes(m.brand)) figFails.push(m.id + ':dossier-not-selected');
+    const ddDirty = bad($('#ddCqa').innerHTML + $('#ddReg').innerHTML + $('#ddPlan').innerHTML + $('#ddQtpp').innerHTML + $('#ddAna').innerHTML);
+    if (ddDirty.length) figFails.push(m.id + ':dossier-dirty:' + ddDirty.join(','));
+    const prDirty = bad(($('#prOverview') ? $('#prOverview').innerHTML : '') + ($('#steps') ? $('#steps').innerHTML : ''));
+    if (prDirty.length) figFails.push(m.id + ':protocol-dirty:' + prDirty.join(','));
+    if (m.id === 'linaclotide') {
+      if ($('#prNumericPanel').hidden) figFails.push('linaclotide:numeric-panel-should-show');
+    } else {
+      if (!$('#prNumericPanel').hidden) figFails.push(m.id + ':numeric-panel-should-hide');
+    }
   });
   chk('all 21 products render a figure cleanly', figFails.length === 0, figFails.join(' '));
   chk('at least 9 distinct dosage forms drawn', formsSeen.size >= 9, `got ${formsSeen.size}: ${[...formsSeen].join(',')}`);
+
+  // the per-drug loop above leaves selection on the last molecule; the
+  // remaining checks below assume linaclotide (the flagship, numeric panel)
+  {
+    const rows = doc.querySelectorAll('#molBody tr');
+    const linRow = rows.find(r => r.textContent.includes('LINZESS'));
+    if (linRow) linRow.click();
+  }
   chk('every drawn form produces distinct SVG', (() => {
     const draw = vm.runInContext('drawDosageForm', sandbox);
     const seen = new Set();
