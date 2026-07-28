@@ -15,10 +15,10 @@ This site closes that gap in one continuous chain, on one molecule, from a line 
 | # | Module | What it does |
 |---|--------|--------------|
 | 01 | **LOE screener** | 21 molecules losing US exclusivity 2026–2033, scored against weights you control. Technical difficulty is scored **twice, with opposite signs** — as a barrier that deters rivals and as an execution risk that may sink you. |
-| 02 | **Pathway engine** | A four-question decision tree across 505(b)(1) / 505(b)(2) / ANDA 505(j) / 351(k), plus an exclusivity-and-entry clock and a programme-economics model built on FY2026 statutory user fees. |
-| 03 | **Product dossier** | Linaclotide (LINZESS, NDA 202811): regulatory reading, QTPP, formulation design target, CQA register, analytical package, phased development plan with gates. |
-| 04 | **Pilot batch coach** | A step-by-step Wurster drug-layering protocol whose quantities recalculate from batch size, with parameter rationales, in-process controls, decision branches, and a troubleshooting engine that ends each entry with the instinctive move that makes things worse. |
-| 05 | **Process lab** | Seven live machines from the real manufacturing chain. Move a slider and equations decide what comes out — including what goes wrong and what you would see on the bench when it does. |
+| 02 | **Pathway engine** | A four-question decision tree across 505(b)(1) / 505(b)(2) / ANDA 505(j) / 351(k), plus an exclusivity-and-entry clock, a programme-economics model built on FY2026 statutory user fees, an FDA/EMA/TFDA jurisdiction context layer, and a patent-life/litigation status panel. |
+| 03 | **Product dossier** | Molecule-aware for all 21 products, driven by whichever row is selected in the screener. Linaclotide (LINZESS, NDA 202811) is the hand-researched flagship: regulatory reading, QTPP, formulation design target, CQA register, analytical package, phased development plan with gates. The other 20 get an honestly-labelled *generated framework* built from the same verified screening data. |
+| 04 | **Pilot batch coach** | A step-by-step Wurster drug-layering protocol for linaclotide whose quantities recalculate from batch size, with parameter rationales, in-process controls, decision branches, and a troubleshooting engine. For the other 20 products, a generated process-step overview keyed to their own unit operations, with a link to the process lab for real numeric exploration. |
+| 05 | **Process lab** | Seven live machines from the real manufacturing chain. Move a slider and equations decide what comes out — including what goes wrong and what you would see on the bench when it does. Every machine now offers a downloadable protocol sheet and, when a setting drifts into failure territory, a popup naming the comparison experiment that would isolate the cause. |
 | 06 | **Transfer & validation** | URS → DQ → FAT/SAT → IQ/OQ/PQ → PPQ → CPV, plus a seven-point gap assessment for technology transfer. |
 
 Fully bilingual (English / 繁體中文) with a single toggle — every panel, every rationale, every alert.
@@ -90,11 +90,15 @@ assets/styles.css     design system
 assets/app.js         rendering, interaction, canvas animation
 data/i18n.js          interface strings + long-form narrative, EN/繁中
 data/molecules.js     LOE screening dataset + scoring model
+data/jurisdictions.js FDA/EMA/TFDA context: agency names, review bodies, official links
 data/pathway.js       route decision tree, exclusivity catalogue, fee & erosion model
-data/deepdive.js      linaclotide dossier
-data/protocol.js      pilot batch protocol + troubleshooting engine
+data/deepdive.js      linaclotide dossier (hand-researched flagship)
+data/dossierTemplates.js  generated dossier framework for the other 20 products
+data/protocol.js      linaclotide pilot batch protocol + troubleshooting engine
+data/protocolTemplates.js generated step overview for the other 20 products
 data/fluidbed.js      fluid-bed physics, knob dictionary, scenarios, validation content
 data/unitops.js       six unit-operation models, controls, verdicts and teaching notes
+data/labTroubleshoot.js   comparison-experiment suggestions for process-lab failure states
 data/dosageforms.js   what each product physically is, and why the form decides how it is made
 assets/forms.js       eleven dosage-form drawings
 tools/domshim.js      minimal DOM shim (testing only)
@@ -107,7 +111,7 @@ DATA_SOURCES.md       evidence log
 
 ```bash
 node tools/test-models.js       # 164 checks — physics and figure geometry
-node tools/test-render.js       # 164 checks — rendering and interaction
+node tools/test-render.js       # 200+ checks — rendering and interaction, across all 21 products
 node tools/test-interactive.js  # is anything invisible covering the page?
 ```
 
@@ -178,6 +182,9 @@ Spot values against literature (250 µm sphere, ρ = 1400 kg/m³, air at 45 °C)
 - Sales figures flagged *medium* confidence are order-of-magnitude. Adequate for ranking, inadequate for a business case.
 - The linaclotide formulation is a **design target** built from the label's inactive-ingredient list, the PSG, the Inactive Ingredient Database and standard drug-layering practice. It is not the innovator's composition, which is not public. Establishing Q1/Q2 sameness appears in the development plan as work to be done, not as a result.
 - The pilot batch protocol is **not a validated master batch record**. A real MBR is a controlled GMP document with revision control, approvals and signature blocks.
+- The 20 non-flagship product dossiers and protocol overviews are **generated frameworks**, not molecule-specific technical research — built from the same verified screening fields (pathway, PSG text, entry timing, unit operations), using generic quality-by-design patterns rather than invented, product-specific numbers. Every generated section says so on the page and points back to the linaclotide dossier as the worked example.
+- Litigation/settlement tracking in the pathway module is **U.S.-only** (Orange Book / Paragraph IV filings and settlement disclosures already in the screening dataset). Taiwan and EU patent status are not tracked here; the panel links to TIPO and Espacenet/EPO directly rather than presenting invented Taiwan/EU litigation events.
+- The EMA and TFDA jurisdiction views give real agency names, review bodies and official links, with an orientation note on how each maps to the FDA pathway this module is built from — they are not full parallel decision trees at the same depth as the FDA one.
 - Nothing here is proprietary to Bora, TWi or any client. Every regulatory fact traces to a public FDA source; see `DATA_SOURCES.md`.
 
 ---
