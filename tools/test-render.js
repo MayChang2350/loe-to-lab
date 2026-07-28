@@ -125,6 +125,28 @@ chk('no other full-screen fixed layer can swallow clicks', (() => {
   });
 })());
 
+rep.push('=== opens straight from the filesystem ===');
+chk('no fetch / XHR / ES modules — needs no web server', (() => {
+  const files = ['index.html', 'assets/app.js', 'assets/forms.js']
+    .concat(fs.readdirSync(path.join(root, 'data')).map(f => 'data/' + f));
+  return files.every(f => !/fetch\(|XMLHttpRequest|type="module"|\bimport\s+.*\bfrom\b/
+    .test(fs.readFileSync(path.join(root, f), 'utf8')));
+})());
+chk('every asset path is relative, so file:// resolves it', (() => {
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  return [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
+    .map(m => m[1])
+    .every(u => u.startsWith('#') || u.startsWith('https://') || !/^(\/|[a-z]+:)/i.test(u));
+})());
+chk('storage is wrapped, so a SecurityError cannot kill the page', (() => {
+  const js = fs.readFileSync(path.join(root, 'assets/app.js'), 'utf8');
+  // every localStorage reference must sit inside a try block
+  return [...js.matchAll(/localStorage\.\w+\(/g)].every(m => {
+    const line = js.slice(js.lastIndexOf('\n', m.index), js.indexOf('\n', m.index));
+    return /try\s*\{/.test(line);
+  });
+})());
+
 rep.push('=== motion layer ===');
 chk('reveal classes applied', doc.querySelectorAll('.reveal').length > 30,
   `got ${doc.querySelectorAll('.reveal').length}`);

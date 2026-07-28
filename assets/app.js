@@ -6,7 +6,17 @@
 
 /* ---------- language ---------------------------------------------------- */
 
-let LANG = (localStorage.getItem('loelang') === 'zh') ? 'zh' : 'en';
+/* localStorage is not guaranteed to exist. Safari throws a SecurityError for
+   it on file:// pages, and several browsers throw when site data is blocked or
+   in private mode. An unguarded call on the first line of this file would kill
+   the whole script and leave a page that renders nothing and does nothing, so
+   remembering a preference degrades to simply not remembering it. */
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* not fatal */ } }
+};
+
+let LANG = (store.get('loelang') === 'zh') ? 'zh' : 'en';
 const t = v => (v == null) ? '' : (typeof v === 'string' ? v : (v[LANG] ?? v.en ?? ''));
 const dig = (o, path) => path.split('.').reduce((a, k) => (a ? a[k] : undefined), o);
 const $ = s => document.querySelector(s);
@@ -304,7 +314,7 @@ function openMap() {
   const close = (goto) => {
     ov.classList.remove('show');
     document.body.classList.remove('locked');
-    if ($('#mapDont') && $('#mapDont').checked) localStorage.setItem('loemap', 'seen');
+    if ($('#mapDont') && $('#mapDont').checked) store.set('loemap', 'seen');
     window.removeEventListener('keydown', onKey);
     // Take it out of the document. Fading it to opacity 0 is not enough: a
     // position:fixed inset:0 element still sits over the whole page and
@@ -1709,7 +1719,7 @@ let firstPaint = true;
 document.addEventListener('DOMContentLoaded', () => {
   $('#langBtn').onclick = () => {
     LANG = LANG === 'en' ? 'zh' : 'en';
-    localStorage.setItem('loelang', LANG);
+    store.set('loelang', LANG);
     renderAll();
   };
   $('#treeReset').onclick = () => { treeNode = PATHWAY_TREE.start; treeTrail = []; renderTree(); };
@@ -1737,5 +1747,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (localStorage.getItem('loemap') !== 'seen') openMap();
+  if (store.get('loemap') !== 'seen') openMap();
 });
