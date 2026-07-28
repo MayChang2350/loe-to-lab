@@ -486,6 +486,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   border-radius:0 6px 6px 0;font-size:13px;color:var(--ink2);margin-bottom:20px;max-width:82ch;line-height:1.65}
 .op-try b{color:var(--acc);font-family:var(--mono);font-size:10px;letter-spacing:.11em;
   text-transform:uppercase;margin-right:8px}
+.op-try.fixpop{
+  background:rgba(216,161,60,.07);border-left-color:var(--warn);margin-top:14px;margin-bottom:0;
+}
+.op-try.fixpop b{color:var(--warn);display:block;margin-bottom:6px}
+.op-try.fixpop ul{margin:0;padding-left:18px}
+.op-try.fixpop li{margin:6px 0}
 .op-grid{display:grid;grid-template-columns:290px minmax(0,1fr);gap:18px;align-items:start;margin-bottom:20px}
 .op-controls{max-height:none}
 .op-chart{padding:16px;background:#0a0d11}

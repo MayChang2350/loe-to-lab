@@ -28,7 +28,7 @@ sandbox.matchMedia = () => ({ matches: false });
 vm.createContext(sandbox);
 
 const errs = [];
-const files = ['data/i18n.js', 'data/molecules.js', 'data/jurisdictions.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'assets/forms.js', 'assets/app.js'];
+const files = ['data/i18n.js', 'data/molecules.js', 'data/jurisdictions.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'data/labTroubleshoot.js', 'assets/forms.js', 'assets/app.js'];
 files.forEach(f => {
   try { vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), sandbox, { filename: f }); }
   catch (e) { errs.push(`LOAD ${f}: ${e.message}`); }
@@ -398,6 +398,27 @@ try {
       inputs[0].dispatchEvent({ type: 'input', target: inputs[0] });
       chk(`${id}: verdict changes at the other extreme`, $('#opVerdict').textContent !== b);
     }
+    // failure-mode popup: sweep every control across its full range and, at
+    // every point where the bench verdict is bad/warn, the comparison-
+    // experiment popup must be visible with real content; at ok it must hide
+    let sawFixShown = false, sawFixHidden = false, fixDirty = [];
+    inputs.forEach(inp => {
+      [inp.getAttribute('min'), inp.getAttribute('max')].forEach(edge => {
+        if (edge == null) return;
+        inp.value = edge; inp.dispatchEvent({ type: 'input', target: inp });
+        const cls = $('#opVerdict').className;
+        const fixEl = $('#opFix');
+        const isBad = /\bbad\b/.test(cls) || /\bwarn\b/.test(cls);
+        if (isBad) {
+          if (!fixEl.hidden) sawFixShown = true;
+          if (!fixEl.hidden && fixEl.textContent.trim().length < 20) fixDirty.push(id + ':empty-fix');
+          if (!fixEl.hidden) fixDirty.push(...bad(fixEl.textContent).map(x => id + ':' + x));
+        } else {
+          if (fixEl.hidden) sawFixHidden = true;
+        }
+      });
+    });
+    chk(`${id}: fix popup is clean whenever shown`, fixDirty.length === 0, fixDirty.join(' '));
     $('#opReset').click();
     const hits = bad($('#opReadouts').textContent + $('#opVerdict').textContent);
     chk(`${id}: clean numbers`, hits.length === 0, hits.join(','));

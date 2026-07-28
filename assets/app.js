@@ -1485,6 +1485,19 @@ function updateOp() {
   $('#opVerdict').innerHTML =
     `<span class="bench-lbl">${esc(t(UI.lab.onBench))}</span><p>${esc(LANG === 'zh' ? v.zh : v.en)}</p>`;
 
+  // failure-mode popup: when the bench view is bad or marginal, suggest the
+  // comparison experiment that would isolate which cause is the real one
+  const fixBox = $('#opFix');
+  if (fixBox) {
+    const fixes = (v.tone === 'bad' || v.tone === 'warn') ? (LAB_FIXES[op.id] || []) : [];
+    fixBox.hidden = fixes.length === 0;
+    if (fixes.length) {
+      fixBox.className = 'op-try fixpop';
+      fixBox.innerHTML = `<b>${esc(t(UI.lab.fixTitle))}</b>` +
+        `<ul class="wlist">${fixes.map(f => `<li>${esc(t(f.compare))}</li>`).join('')}</ul>`;
+    }
+  }
+
   drawOpChart(op, st, r);
 }
 

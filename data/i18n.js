@@ -162,7 +162,8 @@ const UI = {
     deep: { en: 'Why this matters', zh: '為什麼這重要' },
     reset: { en: 'Reset', zh: '重設' },
     chainNote: { en: 'Some outputs feed the next machine. Particle size from the mill, hardness from the press and coating level all reappear as inputs to the dissolution test — which is the point.', zh: '部分輸出會餵給下一台機器。整粒機的粒徑、壓錠機的硬度與包衣量，都會再度出現在溶離試驗的輸入端——這正是重點。' },
-    carry: { en: 'Carried from', zh: '沿用自' }
+    carry: { en: 'Carried from', zh: '沿用自' },
+    fixTitle: { en: 'If this went sideways, run this comparison next', zh: '若結果失控，接下來跑這個比較試驗' }
   },
 
   /* --- Fluid bed --- */
