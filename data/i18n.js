@@ -5,7 +5,7 @@
 const UI = {
 
   siteTitle:   { en: 'From Patent Cliff to Pilot Batch', zh: '從專利懸崖到中試批' },
-  siteSub:     { en: 'A CDMO decision chain, end to end', zh: '一條 CDMO 決策鏈，從頭到尾' },
+  siteSub:     { en: 'A CDMO decision chain', zh: '一條 CDMO 決策鏈' },
   byline:      { en: 'May Chang · Bora Pharmaceuticals / TWi · R&D Summer Internship 2026', zh: 'May Chang · 保瑞藥業／安成生技 · 2026 R&D暑期實習' },
 
   nav: {
@@ -288,7 +288,7 @@ const UI = {
       kicker: { en: 'Get in touch', zh: '聯絡我' },
       title:  { en: 'Contact', zh: '聯絡方式' },
       lead: {
-        en: 'Questions about this project, the data behind it, or the internship — I\'d like to hear from you.',
+        en: 'Questions about this project, the data behind it, or the internship — Let me know!',
         zh: '如果你對這個專案、背後的資料，或這次實習有任何問題，歡迎與我聯繫。'
       },
       cards: [
@@ -309,16 +309,16 @@ const UI = {
       },
       body: {
         en: [
-          'This whole summer felt like a crash course — not just into linaclotide or fluid-bed granulation, but into how a pharmaceutical company actually thinks. I came in knowing almost none of it, and I\'m leaving with a working sense of how a decision made in business development in month one quietly decides what a process engineer is allowed to do in month thirty.',
-          'None of it happens without the people who made room for it. Mink connected me to this opportunity in the first place, through CFO Alice Wang — a conversation I almost didn\'t think to have, and the one that put me in this building. Dr. Chou gave me industry guidance I didn\'t know I needed: the context behind a process, and why a regulatory pathway matters as much as a formulation. And Nick taught me nearly everything hands-on — wet lab technique, how a real manufacturing floor actually runs, and, more than he probably realizes, most of what made this website possible. Almost every control on this site exists because he explained what it actually does first.',
-          'Some of my clearest memories are the smallest ones: long stretches watching a fluid bed through the sight glass, waiting to see whether it would tip from bubbling into slugging; the team\'s afternoon snack runs; the number of times someone answered a question I was a little embarrassed to ask. I learned a lot of technical things this summer. I think I learned more from watching a team treat a summer intern\'s questions as worth answering in full.',
-          'Thank you — to Mink, to Dr. Chou, to Nick, and to everyone else who made room for someone still learning the difference between a d50 and a D50.'
+          'This summer felt like a crash course — not just into a single drug or fluid-bed granulation, but into how a pharmaceutical company actually thinks. I came in knowing almost none of it, just passion and an ambitious drive to excel in drug discovery by applying what I\'d learned in computational medicine. I\'m leaving with a real picture of all the pharma niches that don\'t get enough attention — drug screening, business development, dissolution, bioequivalence, FDA regulation, and more. It was a lot to juggle, but all of it in service of better health for our community and the generations after us.',
+          'None of this would have happened without the people who made room for it. Mink connected me to this opportunity in the first place, through CFO Alice Wang — a conversation I almost didn\'t think to have, and the one that put me in this building. Dr. Chou gave me industry guidance and support throughout the summer. And Nick taught me nearly everything hands-on: wet lab technique, how a real manufacturing floor actually runs, and a deep dive into reverse engineering and fluid-bed thermodynamics. More than he probably realizes, he\'s responsible for most of what made this website possible — almost every control on this site exists because he explained what it actually does first.',
+          'Some of my clearest memories are the smallest ones: long stretches watching a fluid bed through the sight glass, waiting to see whether it would tip from bubbling into slugging; the team\'s afternoon snacks; the number of times someone answered a question I was a little embarrassed to ask. I learned a lot of technical things this summer. I think I learned more from watching a team treat a summer intern\'s questions as worth answering in full.',
+          'Thank you — to Mink, to Alice, to Dr. Chou, to Nick, to my fellow intern Charlie, and to everyone else who made room for someone still learning the difference between a d50 and a D50.'
         ],
         zh: [
-          '整個夏天感覺像是一堂密集特訓班——不只是關於 linaclotide 或流體床製粒，而是關於一家製藥公司實際上是怎麼思考的。我進來的時候幾乎什麼都不懂，離開的時候，已經對「第一個月由業務開發做出的決定，如何悄悄決定了第三十個月製程工程師被允許做什麼」有了實際的體會。',
-          '這一切都少不了願意為此騰出空間的人。Mink 最早把這個機會介紹給我，透過 CFO Alice Wang 牽線——那是一次我差點沒想過要去進行的談話，卻是把我帶進這棟大樓的關鍵一步。Chou 博士給了我不知道自己需要的產業指引：製程背後的脈絡，以及為什麼法規路徑和劑型一樣重要。而 Nick 幾乎手把手教了我所有實作的東西——濕實驗室技巧、真實產線是如何運作的，還有——大概比他自己意識到的還多——這個網站之所以能做出來的大半原因。網站上幾乎每一個控制項的存在，都是因為他先解釋了它實際上在做什麼。',
-          '我記得最清楚的往往是最小的事：長時間透過視窗盯著流體床，等著看它會不會從鼓泡轉為節湧；團隊的下午茶點時間；還有多少次，有人認真回答了一個我問得有點不好意思的問題。這個夏天我學到很多技術上的東西。但我想，我從「這個團隊願意認真回答一個暑期實習生的問題」這件事上，學到的更多。',
-          '謝謝——謝謝 Mink、謝謝 Chou 博士、謝謝 Nick，也謝謝每一位為一個還在搞清楚 d50 和 D50 差別的人，騰出空間的人。'
+          '這個夏天感覺像一堂密集特訓班——不只是關於某一款藥物或流體床製粒，而是關於一家製藥公司實際上是怎麼思考的。我進來的時候幾乎什麼都不懂，只有一股熱忱，以及想把在計算醫學學到的東西應用在藥物發現上、盼望能做出一番成績的企圖心。而現在，我對許多在製藥產業裡容易被忽略的領域，都有了真實的認識——藥物篩選、業務開發、溶離、生體相等性、FDA 法規，還有更多更多。要同時兼顧的事情很多，但這一切都是為了社區、也為了下一代能有更好的健康。',
+          '這一切都少不了願意為此騰出空間的人。Mink 最早把這個機會介紹給我，透過 CFO Alice Wang 牽線——那是一次我差點沒想過要去進行的談話，卻是把我帶進這棟大樓的關鍵一步。Chou 博士在這整個夏天裡，給了我產業上的指引與支持。而 Nick 幾乎手把手教了我所有實作的東西：濕實驗室技巧、真實產線是如何運作的，還有深入的逆向工程與流體床熱力學。大概比他自己意識到的還多，這個網站之所以能做出來，大半都要歸功於他——網站上幾乎每一個控制項的存在，都是因為他先解釋了它實際上在做什麼。',
+          '我記得最清楚的往往是最小的事：長時間透過視窗盯著流體床，等著看它會不會從鼓泡轉為節湧；團隊的下午茶點；還有多少次，有人認真回答了一個我問得有點不好意思的問題。這個夏天我學到很多技術上的東西。但我想，我從「這個團隊願意認真回答一個暑期實習生的問題」這件事上，學到的更多。',
+          '謝謝——謝謝 Mink、謝謝 Alice、謝謝 Chou 博士、謝謝 Nick、謝謝我的實習夥伴 Charlie，也謝謝每一位為一個還在搞清楚 d50 和 D50 差別的人，騰出空間的人。'
         ]
       },
       galleryTitle: { en: 'A few moments from the summer', zh: '這個夏天的幾個片刻' },
@@ -334,7 +334,7 @@ const UI = {
       zh: '請點選想要進任的階段。'
     },
     innovatorLane: { en: 'Innovator · creating the molecule', zh: '原開發廠 · 創造分子' },
-    genericLane: { en: 'CDMO · copying it, once the law allows', zh: 'CDMO · 在法律允許後複製它' },
+    genericLane: { en: 'CDMO · faster reproduction and at a lower price', zh: 'CDMO · 快速複製和降低藥價' },
     cliff: { en: 'Loss of exclusivity', zh: '專屬權到期' },
     cliffSub: { en: 'the moment the second row becomes legal', zh: '第二排在此刻成為合法' },
     notCovered: { en: 'Not covered here', zh: '本站未涵蓋' },
