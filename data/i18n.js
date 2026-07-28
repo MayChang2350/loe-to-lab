@@ -97,6 +97,18 @@ const UI = {
     costTitle: { en: 'Programme economics', zh: '專案經濟效益' },
     costLead:  { en: 'FY2026 statutory user fees, development cost, and a price-erosion curve driven by competitor count rather than by time.', zh: '2026 會計年度法定使用者費用、開發成本，以及由競爭者數量而非時間驅動的價格侵蝕曲線。' },
     jurLabel:  { en: 'Which regulator are you filing with?', zh: '你要向哪個主管機關送件？' },
+    jurForm:   { en: 'Form / dossier', zh: '申請表件' },
+    jurTimeline: { en: 'Typical timeline', zh: '典型時程' },
+    jurOdds:   { en: 'Chances of approval', zh: '核准機率' },
+    jurContact: { en: 'Who to contact', zh: '聯絡窗口' },
+    jurFdaOnlyLbl: { en: 'Scope note', zh: '範圍說明' },
+    jurFdaOnly: {
+      en: 'The clock and the economics below model FDA statutory exclusivities and FY2026 user fees only. With {jur} selected above, treat these as an FDA-equivalent reference point, not as {jur} figures — check the jurisdiction panel\'s links for the real numbers.',
+      zh: '下方的時鐘與經濟模型僅採用 FDA 法定專屬權與 2026 會計年度使用者費用。目前選取的是 {jur}，請將以下內容視為 FDA 對應參考點，而非 {jur} 的實際數字——正確數字請查閱上方主管機關面板的連結。'
+    },
+    jurEquivTitle: { en: 'Closest FDA-equivalent pathway', zh: '最接近的 FDA 對應路徑' },
+    jurGenericLbl: { en: 'Generic / hybrid route', zh: '學名藥／混合型途徑' },
+    jurBiosimLbl: { en: 'Biosimilar route', zh: '生物相似藥途徑' },
     litTitle:  { en: 'Patent life and litigation status', zh: '專利存續期與訴訟狀態' },
     litLead:   { en: 'What the screening snapshot actually says about this molecule\'s patent and litigation position, for the product currently selected in the screener.', zh: '目前於篩選器中選取的產品，其專利與訴訟狀態在篩選快照中的實際記載。' },
     litScope:  { en: 'Litigation and settlement tracking in this snapshot is U.S.-only (Orange Book / Paragraph IV filings and settlement disclosures). Taiwan and EU patent status are NOT tracked here — use the official registers linked above to check them directly for any molecule before a decision gate.', zh: '本快照的訴訟與和解追蹤僅涵蓋美國（Orange Book／Paragraph IV 申請與和解揭露）。台灣與歐盟的專利狀態「未」於此追蹤——任何決策關卡前，請使用上方連結的官方資料庫直接查詢。' },
@@ -128,7 +140,6 @@ const UI = {
     anaMethod: { en: 'Method', zh: '方法' },
     anaPurpose: { en: 'Purpose', zh: '目的' },
     cqaTeaser: { en: 'critical quality attributes identified, each with its driver, control and in-process check.', zh: '項關鍵品質屬性，各附驅動因子、管制方式與製程中檢驗。' },
-    flagship: { en: 'Flagship deep dive — hand-researched from the FDA label, the product-specific guidance and standard practice for this molecule.', zh: '旗艦深度案例——依此分子的 FDA 標示、產品專屬指引與標準實務逐項研究而成。' },
     templated: { en: 'Generated framework for this product — built from the verified screening data (pathway, guidance, unit operations), using generic quality-by-design patterns rather than molecule-specific research. See the linaclotide dossier for the fully researched example.', zh: '此產品為生成式框架——由已核實的篩選資料（法規路徑、指引、單元操作）建構而成，採用通用的品質源於設計模式，而非針對此分子的專屬研究。完整研究範例請見 linaclotide 產品評估。' }
   },
 
@@ -156,7 +167,6 @@ const UI = {
     actions: { en: 'Actions, in order', zh: '處置措施，依順序' },
     wrong: { en: 'The instinctive move that makes it worse', zh: '會讓情況更糟的直覺反應' },
     disclaimer: { en: 'Not a validated master batch record. A real MBR is a controlled GMP document with revision control, approvals and signature blocks.', zh: '這不是已驗證的主批次紀錄。真正的 MBR 是具版本控制、核准與簽章欄位的受控 GMP 文件。' },
-    flagship: { en: 'Flagship worked example — a full numeric pilot-batch protocol for linaclotide capsules, wired to real Wurster drug-layering physics.', zh: '旗艦實作範例——linaclotide 膠囊的完整數值中試批操作程序，並連結真實的 Wurster 藥物層積物理模型。' },
     overviewTitle: { en: 'Process overview for this product', zh: '此產品的製程概覽' },
     overviewNote: { en: 'This product\'s numeric batch calculator has not been built — that engine is wired specifically to Wurster capsule physics. What follows is a generic, honestly-labelled step overview built from this product\'s own unit operations. For real numeric exploration of coating, blending, compression, dissolution, homogenisation or particle size for THIS product\'s unit operations, use the process lab below.', zh: '尚未為此產品建立數值批次計算引擎——該引擎專門連結 Wurster 膠囊物理模型。以下是依此產品自身單元操作建構、如實標示的通用步驟概覽。若要對此產品的包衣、混合、壓錠、溶離、均質或粒徑等單元操作做真正的數值探索，請使用下方的製程實驗室。' },
     goToLab: { en: 'Open the process lab →', zh: '前往製程實驗室 →' }

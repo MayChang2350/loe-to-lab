@@ -289,6 +289,7 @@ try {
     linRow.click();
   }
   chk('zh: jurisdiction note is Chinese', /[一-鿿]/.test($('#jurNote').textContent));
+  chk('zh: jurisdiction bullets are Chinese', /[一-鿿]/.test($('#jurBullets').textContent));
   chk('zh: litigation status is Chinese', /[一-鿿]/.test($('#litStatus').textContent));
   {
     $('#litAllBtn').click();
@@ -323,14 +324,36 @@ try {
   $('#treeReset').click();
   chk('tree resets', n('#treeTrail') === 0);
 
+  chk('jurisdiction bullets = 4 (form/timeline/odds/contact)', doc.querySelectorAll('#jurBullets li').length === 4,
+    `got ${doc.querySelectorAll('#jurBullets li').length}`);
+  chk('FDA-only banner hidden while FDA is selected', $('#jurFdaOnlyBanner').hidden === true);
+  chk('FDA question is the statute question', $('#treeBody .q-title').textContent.includes('statute'));
+
   const jurBefore = $('#jurNote').textContent;
   doc.querySelectorAll('#jurChips .chip')[1].click();
   chk('switching jurisdiction changes the note', $('#jurNote').textContent !== jurBefore);
   chk('switching jurisdiction changes the chip selection', doc.querySelectorAll('#jurChips .chip')[1].classList.contains('on'));
+  chk('switching jurisdiction still shows 4 bullets', doc.querySelectorAll('#jurBullets li').length === 4,
+    `got ${doc.querySelectorAll('#jurBullets li').length}`);
+  chk('FDA-only banner shows once EMA is selected', $('#jurFdaOnlyBanner').hidden === false);
+  chk('banner mentions European Union', $('#jurFdaOnlyBanner').textContent.includes('European Union'));
+  chk('pathway question changes to the EMA legal-basis question', $('#treeBody .q-title').textContent.includes('EU legal basis'));
+  const emaOpts = doc.querySelectorAll('#treeBody .opt');
+  chk('EMA question has 3 options', emaOpts.length === 3, `got ${emaOpts.length}`);
+  emaOpts[1].click();
+  chk('EMA answer produces a result card naming the jurisdiction', $('#treeBody .res-card h4').textContent.includes('European Union'));
+  chk('EMA result card is not empty', $('#treeBody .res-card p').textContent.length > 100);
+  h = bad($('#treeBody').textContent);
+  chk('EMA result has no undefined / NaN', h.length === 0, h.join(','));
+
   doc.querySelectorAll('#jurChips .chip')[2].click();
   chk('TFDA jurisdiction also has links', doc.querySelectorAll('#jurLinks a').length >= 3, `got ${doc.querySelectorAll('#jurLinks a').length}`);
+  chk('switching jurisdiction resets the tree trail', n('#treeTrail') === 0, `got ${n('#treeTrail')}`);
+  chk('TFDA question is the Taiwan registration-category question', $('#treeBody .q-title').textContent.includes('Taiwan registration category'));
   doc.querySelectorAll('#jurChips .chip')[0].click();
   chk('back to FDA', doc.querySelectorAll('#jurChips .chip')[0].classList.contains('on'));
+  chk('FDA-only banner hides again once FDA is reselected', $('#jurFdaOnlyBanner').hidden === true);
+  chk('question is back to the FDA statute question', $('#treeBody .q-title').textContent.includes('statute'));
 
   const before = $('#molBody tr:nth-child(1)').textContent;
   doc.querySelectorAll('#presets .chip')[1].click();

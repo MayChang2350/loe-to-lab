@@ -567,12 +567,34 @@ function renderJurisdiction() {
   JURISDICTION_ORDER.forEach(id => {
     const j = JURISDICTIONS[id];
     const c = el('button', 'chip' + (id === selectedJurisdiction ? ' on' : ''), esc(t(j.name)));
-    c.onclick = () => { selectedJurisdiction = id; store.set('loejur', id); renderJurisdiction(); };
+    c.onclick = () => {
+      if (selectedJurisdiction === id) return;
+      selectedJurisdiction = id; store.set('loejur', id);
+      // the FDA statute tree and the lighter jurisdiction tree are different
+      // shapes of state — jumping jurisdiction mid-tree would leave treeNode
+      // pointing at a node that does not exist in the new tree
+      treeNode = treeStartNode(); treeTrail = []; jurEquivLabel = null;
+      renderJurisdiction(); renderTree();
+    };
     chips.appendChild(c);
   });
   const j = JURISDICTIONS[selectedJurisdiction];
   $('#jurNote').innerHTML = `<b>${esc(t(j.agency))} — ${esc(t(j.body))}</b>${esc(t(j.note))}`;
+  $('#jurBullets').innerHTML = [
+    [UI.pw.jurForm, j.form], [UI.pw.jurTimeline, j.timeline],
+    [UI.pw.jurOdds, j.approvalOdds], [UI.pw.jurContact, j.contact]
+  ].map(([label, val]) => `<li><b>${esc(t(label))}</b>${esc(t(val))}</li>`).join('');
   $('#jurLinks').innerHTML = j.links.map(l => `<a class="link-chip" href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join('');
+
+  const banner = $('#jurFdaOnlyBanner');
+  if (banner) {
+    if (selectedJurisdiction === 'FDA') {
+      banner.hidden = true;
+    } else {
+      banner.hidden = false;
+      banner.innerHTML = `<b>${esc(t(UI.pw.jurFdaOnlyLbl))}</b>${esc(t(UI.pw.jurFdaOnly).replace(/\{jur\}/g, t(j.name)))}`;
+    }
+  }
 }
 
 /* Patent life / litigation status for the currently-selected molecule.
@@ -601,10 +623,22 @@ function renderLitigation() {
   ].map(l => `<a class="link-chip" href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join('');
 }
 
-let treeNode = PATHWAY_TREE.start;
+/* The FDA tree (PATHWAY_TREE) is a real multi-question decision tree with
+   fees, months and results wired to it. EMA and TFDA do not get a fabricated
+   tree of the same depth — see the HONESTY NOTE at the top of
+   jurisdictions.js — so a non-FDA jurisdiction gets a single relabelled
+   question (JURISDICTIONS[id].pathwayQ) that names which FDA-equivalent
+   branch applies, then a result card that is honest about what this module
+   does and does not model for that jurisdiction. */
+function treeStartNode() { return selectedJurisdiction === 'FDA' ? PATHWAY_TREE.start : 'jur_q1'; }
+
+let treeNode = treeStartNode();
 let treeTrail = [];
+let jurEquivLabel = null;
 
 function renderTree() {
+  if (selectedJurisdiction !== 'FDA') { renderJurTree(); return; }
+
   const trail = $('#treeTrail');
   trail.innerHTML = treeTrail.map(s => `<span>${esc(s)}</span>`).join('');
   const body = $('#treeBody'); body.innerHTML = '';
@@ -612,7 +646,7 @@ function renderTree() {
   if (PATHWAY_TREE.results[treeNode]) {
     const r = PATHWAY_TREE.results[treeNode];
     const card = el('div', 'res-card');
-    card.innerHTML = `<h4>${esc(r.title)}</h4><p style="color:var(--ink2);font-size:13.5px;line-height:1.75;max-width:86ch">${esc(t(r.body))}</p>
+    card.innerHTML = `<h4>${esc(r.title)}</h4><p style="color:var(--ink2);font-size:13.5px;line-height:1.75">${esc(t(r.body))}</p>
       <div class="res-meta">
         <div><b>US$${fmt(r.fee)}</b>${esc(r.feeLabel)}</div>
         <div><b>${r.typicalMonths} mo</b>typical development to approval</div>
@@ -631,6 +665,45 @@ function renderTree() {
   node.opts.forEach(o => {
     const b = el('button', 'opt', esc(t(o.label)));
     b.onclick = () => { treeTrail.push(t(o.label)); treeNode = o.next; renderTree(); };
+    opts.appendChild(b);
+  });
+  body.appendChild(opts);
+}
+
+/* Lighter question for EMA/TFDA: one relabelled question, then a result card
+   naming the closest FDA-equivalent branch and pointing back at the
+   jurisdiction panel above for the real fee/timeline/exclusivity figures —
+   rather than pretending this module has EU/TW-specific numbers to show. */
+function renderJurTree() {
+  const j = JURISDICTIONS[selectedJurisdiction];
+  const trail = $('#treeTrail');
+  trail.innerHTML = treeTrail.map(s => `<span>${esc(s)}</span>`).join('');
+  const body = $('#treeBody'); body.innerHTML = '';
+
+  if (treeNode === 'jur_result') {
+    const card = el('div', 'res-card');
+    card.innerHTML = `<h4>${esc(t(j.name))} — ${esc(jurEquivLabel || '')}</h4>
+      <p style="color:var(--ink2);font-size:13.5px;line-height:1.75">${esc(t(j.note))}</p>
+      <div class="res-meta">
+        <div><b>${esc(t(j.guidanceName))}</b>${esc(t(UI.pw.jurEquivTitle))}</div>
+        <div><b>${esc(t(j.genericRoute))}</b>${esc(t(UI.pw.jurGenericLbl))}</div>
+        <div><b>${esc(t(j.biosimRoute))}</b>${esc(t(UI.pw.jurBiosimLbl))}</div>
+      </div>`;
+    body.appendChild(card);
+    return;
+  }
+
+  const q = j.pathwayQ;
+  body.appendChild(el('div', 'q-title', esc(t(q.q))));
+  const opts = el('div', 'opts');
+  q.opts.forEach(o => {
+    const b = el('button', 'opt', esc(t(o.label)));
+    b.onclick = () => {
+      treeTrail.push(t(o.label));
+      jurEquivLabel = t(o.label).split(/[—-]/)[0].trim();
+      treeNode = 'jur_result';
+      renderTree();
+    };
     opts.appendChild(b);
   });
   body.appendChild(opts);
@@ -814,7 +887,7 @@ function renderDossier() {
 
   $('#ddBadge').innerHTML = dd.templated
     ? `<div class="callout templated"><b>${esc(t(UI.common.thesisLbl))}</b>${esc(t(UI.dd.templated))}</div>`
-    : `<div class="callout flagship"><b>★</b>${esc(t(UI.dd.flagship))}</div>`;
+    : '';
 
   const why = t(dd.rationale);
   $('#ddWhyLead').innerHTML = `<p>${esc(why[0])}</p>`;
@@ -968,7 +1041,7 @@ function renderProtocol() {
   if ($('#prDisclaimer')) $('#prDisclaimer').hidden = !flagship;
 
   if (flagship) {
-    $('#prBadge').innerHTML = `<div class="callout flagship"><b>★</b>${esc(t(UI.pr.flagship))}</div>`;
+    $('#prBadge').innerHTML = '';
     $('#prOverview').innerHTML = '';
     // steps first: renderProtocolNumbers() fills in the #apiCharge span that
     // renderSteps() creates, so it must run after the steps exist
@@ -2150,7 +2223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAll();
     refreshMapOverlay();
   };
-  $('#treeReset').onclick = () => { treeNode = PATHWAY_TREE.start; treeTrail = []; renderTree(); };
+  $('#treeReset').onclick = () => { treeNode = treeStartNode(); treeTrail = []; jurEquivLabel = null; renderTree(); };
   $('#batchSize').oninput = renderProtocolNumbers;
   $('#colToggle').onclick = () => { tableWide = !tableWide; renderTable(); };
   $('#opReset').onclick = () => {
