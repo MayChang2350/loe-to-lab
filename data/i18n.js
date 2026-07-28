@@ -6,17 +6,17 @@ const UI = {
 
   siteTitle:   { en: 'From Patent Cliff to Pilot Batch', zh: '從專利懸崖到中試批' },
   siteSub:     { en: 'A CDMO decision chain, end to end', zh: '一條 CDMO 決策鏈，從頭到尾' },
-  byline:      { en: 'May Chang · Technical Services Participant Programme · Bora Pharmaceuticals / TWi · Summer 2026', zh: 'May Chang · 技術服務人才培育計畫 · 保瑞藥業／安成生技 · 2026 夏' },
+  byline:      { en: 'May Chang · Bora Pharmaceuticals / TWi · Summer Internship 2026', zh: 'May Chang · 保瑞藥業／安成生技 · 2026 暑期實習' },
 
   nav: {
     thesis:   { en: 'Premise', zh: '前提' },
     screener: { en: '1 · Screen', zh: '1 · 篩選' },
     pathway:  { en: '2 · Pathway', zh: '2 · 路徑' },
     dossier:  { en: '3 · Dossier', zh: '3 · 產品評估' },
-    protocol: { en: '4 · Pilot batch', zh: '4 · 中試批' },
-    fluidbed: { en: '5 · Process lab', zh: '5 · 製程實驗室' },
+    protocol: { en: '4 · Pilot Batch', zh: '4 · 中試批' },
+    fluidbed: { en: '5 · Process Lab', zh: '5 · 製程實驗室' },
     validation: { en: '6 · Transfer', zh: '6 · 技術移轉' },
-    method:   { en: 'Method & limits', zh: '方法與限制' }
+    method:   { en: 'Method & Limits', zh: '方法與限制' }
   },
 
   heroLead: {
@@ -26,14 +26,10 @@ const UI = {
 
   heroBody: {
     en: [
-      'When a medicine\'s patents expire, other manufacturers are allowed to copy it. Choosing which medicine to copy is a business decision. Actually making it is an engineering one. Those two decisions are usually made by different people who never sit in the same room — and the gap between them is where projects quietly fail.',
-      'So this site closes the gap on a single molecule. It starts with twenty-one medicines losing protection between 2026 and 2033 and ranks them by criteria you can change yourself. Then it follows the winner all the way down: which legal route to file under, what has to be proven, how the first batch is actually made, and what the machines are doing while they make it.',
-      'The machines are the part worth playing with. Seven of them are live — move a slider and real equations decide what comes out, including what goes wrong and what you would see when it does. Nothing here is confidential; every fact links to a public FDA source.'
+      'This site starts with twenty-one medicines losing protection between 2026 and 2033 and ranks them by criteria you can change yourself. Then it follows the winner all the way down: which legal route to file under, what has to be proven, how the first batch is actually made, and what the machines are doing while they make it.',
     ],
     zh: [
-      '當一款藥的專利到期，其他廠商就可以合法地製造它。選哪一款藥來做，是商業決定；真正把它做出來，則是工程問題。這兩個決定通常由從未同桌的兩群人分別做出——而專案就在這道縫隙裡悄悄失敗。',
-      '所以這個網站在單一分子上把這道縫隙補起來。它從 2026 至 2033 年間失去保護的二十一款藥開始，依你可以自行更改的標準排序；接著把勝出的那一個一路帶到底：該依哪一條法規路徑送件、必須證明什麼、第一批要怎麼做出來，以及製造時機器在做什麼。',
-      '機器是最值得玩的部分。有七台是即時運算的——拖動滑桿，真實的方程式決定產出，包括會出什麼錯、以及出錯時你會看到什麼。這裡沒有任何機密內容；每一項事實都連結到公開的 FDA 來源。'
+      '這個網站從 2026 至 2033 年間失去保護的二十一款藥開始，依你可以自行更改的標準排序；接著把勝出的那一個一路帶到底：該依哪一條法規路徑送件、必須證明什麼、第一批要怎麼做出來，以及製造時機器在做什麼。',
     ]
   },
 
@@ -296,19 +292,6 @@ const UI = {
     thesisLbl:{ en: 'Reading', zh: '判讀' },
     close:    { en: 'Close', zh: '關閉' }
   },
-
-  curriculum: [
-    { n: 1, t: { en: 'Bora Group and TWi introduction', zh: '保瑞集團與安成生技簡介' } },
-    { n: 2, t: { en: 'Pharmaceutical company and product', zh: '製藥公司與產品介紹' } },
-    { n: 3, t: { en: 'Composition of company departments', zh: '製藥公司部門組成' } },
-    { n: 4, t: { en: 'Pharmaceutical plant and GMP', zh: '藥廠與 GMP' } },
-    { n: 5, t: { en: 'Project evaluation: FDA databases', zh: '專案評估：FDA 資料庫' } },
-    { n: 8, t: { en: 'NDA / ANDA / BLA regulation, part 1', zh: 'NDA／ANDA／BLA 法規（一）' } },
-    { n: 9, t: { en: 'NDA / ANDA / BLA regulation, part 2', zh: 'NDA／ANDA／BLA 法規（二）' } },
-    { n: 10, t: { en: 'Pharmaceutical processes and equipment', zh: '製劑製程與設備' } },
-    { n: '—', t: { en: 'Own outputs: Restasis evaluation, Rechon GMP, USP overview, EMA overview, PharmaEssentia', zh: '自製產出：Restasis 評估、Rechon GMP、USP 概論、EMA 概論、藥華藥' } },
-    { n: '—', t: { en: 'Own presentation: Technical Services — technology transfer and process validation', zh: '自製簡報：Technical Services——技術移轉與製程驗證' } }
-  ],
 
   sourceList: [
     { t: 'Drugs@FDA', u: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm' },

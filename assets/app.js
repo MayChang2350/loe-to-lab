@@ -1678,8 +1678,6 @@ function renderMethod() {
   $('#mtData').innerHTML = t(UI.mt.data).map(p => `<p>${esc(p)}</p>`).join('');
   $('#mtSources').innerHTML = UI.sourceList.map(s =>
     `<li><a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a></li>`).join('');
-  $('#mtCurriculum').innerHTML = UI.curriculum.map(c =>
-    `<li><span>${esc(c.n)}</span>${esc(t(c.t))}</li>`).join('');
   $('#mtClosing').innerHTML = t(UI.mt.closing).map(p => `<p>${esc(p)}</p>`).join('');
 }
 
