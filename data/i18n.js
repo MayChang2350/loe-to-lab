@@ -10,13 +10,20 @@ const UI = {
 
   nav: {
     thesis:   { en: 'Premise', zh: '前提' },
-    screener: { en: '1 · Screen', zh: '1 · 篩選' },
-    pathway:  { en: '2 · Pathway', zh: '2 · 路徑' },
-    dossier:  { en: '3 · Dossier', zh: '3 · 產品評估' },
-    protocol: { en: '4 · Pilot Batch', zh: '4 · 中試批' },
-    fluidbed: { en: '5 · Process Lab', zh: '5 · 製程實驗室' },
-    validation: { en: '6 · Transfer', zh: '6 · 技術移轉' },
-    method:   { en: 'Method & Limits', zh: '方法與限制' }
+    screener: { en: '1·Screen', zh: '1·篩選' },
+    pathway:  { en: '2·Pathway', zh: '2·路徑' },
+    dossier:  { en: '3·Dossier', zh: '3·產品評估' },
+    protocol: { en: '4·Pilot Batch', zh: '4·中試批' },
+    fluidbed: { en: '5·Process Lab', zh: '5·製程實驗室' },
+    validation: { en: '6·Transfer', zh: '6·技術移轉' }
+  },
+
+  /* --- hamburger menu: the three pages that sit outside the main chain --- */
+  menu: {
+    label:    { en: 'Menu', zh: '選單' },
+    methods:  { en: 'Methods, Limitations & Sources', zh: '方法、限制與來源' },
+    contact:  { en: 'Contact', zh: '聯絡方式' },
+    reflection: { en: 'Reflection', zh: '心得反思' }
   },
 
   heroLead: {
@@ -228,42 +235,94 @@ const UI = {
     title: { en: 'Validation and technology transfer', zh: '驗證與技術移轉' },
     lead:  { en: 'The lifecycle that turns a process that worked once into a process that is allowed to run.', zh: '把「曾經成功過一次的製程」變成「被允許持續運行的製程」的生命週期。' },
     gaps:  { en: 'Gap assessment: the seven questions before a transfer', zh: '差異評估：移轉前的七個問題' },
-    gapsLead: { en: 'A transfer fails on the item nobody assessed, and it is almost never the equipment.', zh: '移轉失敗在沒有人評估過的那一項上，而那幾乎從來不是設備。' }
+    gapsLead: { en: 'A transfer fails on the item nobody assessed, and it is almost never the equipment.', zh: '移轉失敗在沒有人評估過的那一項上，而那幾乎從來不是設備。' },
+    nextLine: { en: 'And next, let the experiments begin!', zh: '接下來，讓實驗開始吧！' }
   },
 
-  /* --- Method --- */
-  mt: {
-    title: { en: 'Method, sources and limitations', zh: '方法、來源與限制' },
-    dataTitle: { en: 'What the data is and is not', zh: '資料是什麼、不是什麼' },
-    data: {
-      en: [
-        'FDA publishes no public API for Orange Book patent and exclusivity data. The screening dataset is therefore a hand-compiled snapshot dated 27 July 2026, not a live feed. Every row carries its sources and a confidence flag, and every entry-date claim should be re-verified in Drugs@FDA and the Orange Book before any decision gate — which is precisely the discipline the project-evaluation curriculum insists on.',
-        'Sales figures marked medium confidence are order-of-magnitude, drawn from company filings and trade press. They are adequate for ranking and inadequate for a business case.',
-        'The linaclotide formulation shown is a design target constructed from the label\'s inactive-ingredient list, the FDA product-specific guidance and standard drug-layering practice. It is not the innovator\'s composition, which is not public. Establishing Q1/Q2 sameness is listed in the development plan as work to be done, not presented as a result.',
-        'The fluid-bed model is a lumped first-principles calculation, not a simulation of any specific machine. Geometry is representative of a GPCG-5 class unit with a Wurster insert.'
-      ],
-      zh: [
-        'FDA 並未提供 Orange Book 專利與專屬權資料的公開 API。因此篩選資料集是一份日期為 2026 年 7 月 27 日的人工彙整快照，不是即時資料流。每一列都附有來源與信心標記，所有進場日期的主張都應在任何決策關卡前於 Drugs@FDA 與 Orange Book 重新查證——這正是專案評估課程所堅持的紀律。',
-        '標記為中等信心的銷售數字屬於數量級估計，取自公司財報與產業媒體。用於排序足夠，用於商業計畫則不足。',
-        '所呈現的 linaclotide 處方是依標示的賦形劑清單、FDA 產品專屬指引與標準藥物層積實務所建構的設計目標。它不是原開發廠的組成，該組成並未公開。建立 Q1/Q2 相同性在開發計畫中被列為「待完成的工作」，而非呈現為「已得到的結果」。',
-        '流體床模型是集總的第一原理計算，不是任何特定機台的模擬。幾何條件代表配有 Wurster 內筒的 GPCG-5 級機組。'
+  /* --- Methods / Limitations / Sources / Contact / Reflection ---
+     These live in dedicated overlay pages reachable from the header's
+     hamburger menu, not in the main scroll. --- */
+  pages: {
+    methods: {
+      kicker: { en: 'How this site is built', zh: '這個網站是怎麼做出來的' },
+      title:  { en: 'Methods, limitations & sources', zh: '方法、限制與來源' },
+      lead: {
+        en: 'What is a model and what is real data, how the twelve process-lab machines actually work, and where every number on this site comes from.',
+        zh: '什麼是模型、什麼是真實資料，十二座製程實驗室機台實際上如何運作，以及網站上每一個數字的出處。'
+      },
+      methodsSecTitle: { en: 'Methods', zh: '方法' },
+      methodsBody: {
+        en: [
+          'Every module here is built the same way: real regulatory and product data first, then a model on top of it, then a UI that lets you change one input and watch the consequence move through the chain. The screener, the pathway tree, and the jurisdiction bullets are driven by hand-compiled FDA / EMA / TFDA data (see Sources below); the process-lab machines and the fluid-bed simulator are first-principles physics models, not lookup tables, so every slider genuinely changes the number that comes out.',
+          'The twelve process-lab stations share one architecture: each machine is a self-contained object with its own controls, its own solve() function, and its own live canvas animation, so the schematic you see is drawn from the same numbers as the readouts and the verdict underneath it — nothing is animated for show.',
+          'The site is tested, not just written. Three automated test suites run against a headless copy of the page on every change: one checks that every model responds in the right direction when you move a control, one renders the full page in both languages and clicks through every interactive element, and one audits every full-screen overlay so an invisible layer can never silently block a click.',
+          'Bilingual by construction: every string in the interface lives in one data file as an { en, zh } pair. Nothing is machine-translated at runtime — the Chinese and the English are both authored copy.'
+        ],
+        zh: [
+          '這裡的每一個模組都用同一種方式打造：先有真實的法規與產品資料，再在上面建立模型，最後才是讓你能改動一個輸入值、並看著結果沿著整條鏈傳遞下去的介面。篩選器、路徑決策樹與各法規機關的重點條列，都是由人工彙整的 FDA／EMA／TFDA 資料驅動（見下方「來源」）；製程實驗室的機台與流體床模擬器則是第一原理的物理模型，不是查表，所以每一個滑桿真的會改變算出來的數字。',
+          '十二座製程實驗室機台共用同一套架構：每一台機器都是一個獨立物件，有自己的控制項、自己的 solve() 運算，也有自己的即時畫布動畫，所以你看到的示意圖，跟下面的讀數和判定用的是同一組數字——沒有任何動畫只是做做樣子。',
+          '這個網站是被測試過的，不只是被寫出來的。每次修改都會針對頁面的無頭副本跑三套自動化測試：一套檢查每個模型在你移動控制項時，反應方向是否正確；一套用兩種語言完整渲染整個頁面，並點過每一個可互動元件；一套稽核每一個全螢幕覆蓋層，確保不會有隱形的圖層悄悄擋掉點擊。',
+          '從架構上就是雙語的：介面裡的每一段文字都存放在同一份資料檔中，以 { en, zh } 成對的形式存在。沒有任何內容是執行時機器翻譯出來的——中文和英文都是自己寫的。'
+        ]
+      },
+      limitationsSecTitle: { en: 'Limitations', zh: '限制' },
+      limitationsBody: {
+        en: [
+          'FDA publishes no public API for Orange Book patent and exclusivity data. The screening dataset is therefore a hand-compiled snapshot dated 27 July 2026, not a live feed. Every row carries its sources and a confidence flag, and every entry-date claim should be re-verified in Drugs@FDA and the Orange Book before any decision gate — which is precisely the discipline the project-evaluation curriculum insists on.',
+          'Sales figures marked medium confidence are order-of-magnitude, drawn from company filings and trade press. They are adequate for ranking and inadequate for a business case.',
+          'The linaclotide formulation shown is a design target constructed from the label\'s inactive-ingredient list, the FDA product-specific guidance and standard drug-layering practice. It is not the innovator\'s composition, which is not public. Establishing Q1/Q2 sameness is listed in the development plan as work to be done, not presented as a result.',
+          'The fluid-bed model is a lumped first-principles calculation, not a simulation of any specific machine. Geometry is representative of a GPCG-5 class unit with a Wurster insert.',
+          'The EMA and TFDA sections are deliberately thinner than the FDA tree: the FDA decision logic is reproduced at real depth, while EMA and TFDA are represented at the level of form, timeline and contact — not a full legal-basis decision tree. That scope gap is intentional and is not filled in with invented detail.'
+        ],
+        zh: [
+          'FDA 並未提供 Orange Book 專利與專屬權資料的公開 API。因此篩選資料集是一份日期為 2026 年 7 月 27 日的人工彙整快照，不是即時資料流。每一列都附有來源與信心標記，所有進場日期的主張都應在任何決策關卡前於 Drugs@FDA 與 Orange Book 重新查證——這正是專案評估課程所堅持的紀律。',
+          '標記為中等信心的銷售數字屬於數量級估計，取自公司財報與產業媒體。用於排序足夠，用於商業計畫則不足。',
+          '所呈現的 linaclotide 處方是依標示的賦形劑清單、FDA 產品專屬指引與標準藥物層積實務所建構的設計目標。它不是原開發廠的組成，該組成並未公開。建立 Q1/Q2 相同性在開發計畫中被列為「待完成的工作」，而非呈現為「已得到的結果」。',
+          '流體床模型是集總的第一原理計算，不是任何特定機台的模擬。幾何條件代表配有 Wurster 內筒的 GPCG-5 級機組。',
+          'EMA 與 TFDA 的部分刻意做得比 FDA 淺：FDA 的決策邏輯以真實的深度重現，而 EMA 與 TFDA 只呈現到表單、時程與聯絡窗口的層級，並非完整的法律依據決策樹。這個範圍上的落差是刻意的，也不會用虛構的細節去填補。'
+        ]
+      },
+      sourcesSecTitle: { en: 'Sources', zh: '來源' }
+    },
+    contact: {
+      kicker: { en: 'Get in touch', zh: '聯絡我' },
+      title:  { en: 'Contact', zh: '聯絡方式' },
+      lead: {
+        en: 'Questions about this project, the data behind it, or the internship — I\'d like to hear from you.',
+        zh: '如果你對這個專案、背後的資料，或這次實習有任何問題，歡迎與我聯繫。'
+      },
+      cards: [
+        { label: { en: 'Personal email', zh: '個人信箱' }, value: 'maychang2350@gmail.com', href: 'mailto:maychang2350@gmail.com' },
+        { label: { en: 'Johns Hopkins email', zh: '約翰霍普金斯信箱' }, value: 'cchan148@jh.edu', href: 'mailto:cchan148@jh.edu' },
+        { label: { en: 'LinkedIn', zh: 'LinkedIn' }, value: 'linkedin.com/in/may-chang-836761219', href: 'https://www.linkedin.com/in/may-chang-836761219' },
+        { label: { en: 'GitHub', zh: 'GitHub' }, value: 'github.com/MayChang2350', href: 'https://github.com/MayChang2350' },
+        { label: { en: 'Personal website', zh: '個人網站' }, value: 'maychang2350.github.io', href: 'https://maychang2350.github.io' },
+        { label: { en: 'CV / résumé', zh: '履歷' }, value: { en: 'Download PDF', zh: '下載 PDF' }, href: 'https://maychang2350.github.io/assets/documents/May_Chang_Resume.pdf' }
       ]
     },
-    srcTitle: { en: 'Primary sources', zh: '主要來源' },
-    curTitle: { en: 'Curriculum this is built on', zh: '本作品所依據的課程' },
-    curLead: { en: 'Fourteen sessions of the Bora / TWi technical development programme, June to July 2026, plus my own evaluation outputs.', zh: '保瑞／安成技術培育計畫 2026 年 6 至 7 月的十四場課程，以及我自己的評估產出。' },
-    closingTitle: { en: 'What I took from it', zh: '我從中帶走了什麼' },
-    closing: {
-      en: [
-        'The single idea that reorganised everything else for me is that the hard problem in this industry is almost never the chemistry. It is that a decision made in business development in month one determines what the process engineer is allowed to do in month thirty, and neither of them is usually in the room when the other decides.',
-        'Choosing linaclotide over apixaban is not a chemistry judgement. It is the observation that one product\'s guidance offers an in vitro route and the other\'s does not, that the in vitro route converts clinical spend into analytical capability, and that analytical capability is a barrier which keeps the field at one competitor instead of twenty-five. That reasoning has to survive intact all the way down to a spray rate on a control panel, or it was never a strategy.',
-        'The other thing I learned is smaller and more practical: raising the inlet temperature when the bed gets wet feels like control and is actually avoidance. Most process mistakes have that shape — a fast action on the symptom that closes off the slower correct action on the cause. Learning to notice the shape is, I think, most of what technical services is.'
-      ],
-      zh: [
-        '真正把其他一切重新組織起來的那個想法是：這個產業裡困難的問題幾乎從來不是化學。困難的是，第一個月由業務開發做出的決定，決定了第三十個月製程工程師被允許做什麼——而通常另一方做決定時，這一方並不在場。',
-        '選擇 linaclotide 而非 apixaban 不是化學判斷。而是觀察到：一個產品的指引提供了體外路徑，另一個沒有；體外路徑把臨床支出轉換成分析能力；而分析能力是一道門檻，使賽道上只剩一個競爭者而不是二十五個。這串推理必須完整地一路存活到控制面板上的一個噴速設定值，否則它從來就不是策略。',
-        '另一件學到的事比較小、比較實用：床體變濕時提高進風溫度，感覺像是在控制，實際上是在迴避。多數製程錯誤都有這個形狀——對症狀採取快速行動，因而堵住了對原因採取的較慢但正確的行動。學會辨認這個形狀，我想，就是技術服務工作的絕大部分。'
-      ]
+    reflection: {
+      kicker: { en: 'End of summer', zh: '夏末' },
+      title:  { en: 'Reflection', zh: '心得反思' },
+      lead: {
+        en: 'What I took from this internship, and who made it possible.',
+        zh: '這次實習帶給我的，以及讓這一切成真的人。'
+      },
+      body: {
+        en: [
+          'This whole summer felt like a crash course — not just into linaclotide or fluid-bed granulation, but into how a pharmaceutical company actually thinks. I came in knowing almost none of it, and I\'m leaving with a working sense of how a decision made in business development in month one quietly decides what a process engineer is allowed to do in month thirty.',
+          'None of it happens without the people who made room for it. Mink connected me to this opportunity in the first place, through CFO Alice Wang — a conversation I almost didn\'t think to have, and the one that put me in this building. Dr. Chou gave me industry guidance I didn\'t know I needed: the context behind a process, and why a regulatory pathway matters as much as a formulation. And Nick taught me nearly everything hands-on — wet lab technique, how a real manufacturing floor actually runs, and, more than he probably realizes, most of what made this website possible. Almost every control on this site exists because he explained what it actually does first.',
+          'Some of my clearest memories are the smallest ones: long stretches watching a fluid bed through the sight glass, waiting to see whether it would tip from bubbling into slugging; the team\'s afternoon snack runs; the number of times someone answered a question I was a little embarrassed to ask. I learned a lot of technical things this summer. I think I learned more from watching a team treat a summer intern\'s questions as worth answering in full.',
+          'Thank you — to Mink, to Dr. Chou, to Nick, and to everyone else who made room for someone still learning the difference between a d50 and a D50.'
+        ],
+        zh: [
+          '整個夏天感覺像是一堂密集特訓班——不只是關於 linaclotide 或流體床製粒，而是關於一家製藥公司實際上是怎麼思考的。我進來的時候幾乎什麼都不懂，離開的時候，已經對「第一個月由業務開發做出的決定，如何悄悄決定了第三十個月製程工程師被允許做什麼」有了實際的體會。',
+          '這一切都少不了願意為此騰出空間的人。Mink 最早把這個機會介紹給我，透過 CFO Alice Wang 牽線——那是一次我差點沒想過要去進行的談話，卻是把我帶進這棟大樓的關鍵一步。Chou 博士給了我不知道自己需要的產業指引：製程背後的脈絡，以及為什麼法規路徑和劑型一樣重要。而 Nick 幾乎手把手教了我所有實作的東西——濕實驗室技巧、真實產線是如何運作的，還有——大概比他自己意識到的還多——這個網站之所以能做出來的大半原因。網站上幾乎每一個控制項的存在，都是因為他先解釋了它實際上在做什麼。',
+          '我記得最清楚的往往是最小的事：長時間透過視窗盯著流體床，等著看它會不會從鼓泡轉為節湧；團隊的下午茶點時間；還有多少次，有人認真回答了一個我問得有點不好意思的問題。這個夏天我學到很多技術上的東西。但我想，我從「這個團隊願意認真回答一個暑期實習生的問題」這件事上，學到的更多。',
+          '謝謝——謝謝 Mink、謝謝 Chou 博士、謝謝 Nick，也謝謝每一位為一個還在搞清楚 d50 和 D50 差別的人，騰出空間的人。'
+        ]
+      },
+      galleryTitle: { en: 'A few moments from the summer', zh: '這個夏天的幾個片刻' },
+      galleryNote: { en: 'Photos coming soon.', zh: '照片即將更新。' }
     }
   },
 

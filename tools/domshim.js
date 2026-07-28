@@ -133,11 +133,15 @@ function matchOne(el, part) {
       const m2 = tk.slice(1, -1).match(/^([\w-]+)(?:\s*=\s*"?([^"]*)"?)?$/);
       if (!m2) return false;
       const key = m2[1];
-      const has = key.startsWith('data-')
-        ? (el.dataset[key.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase())] !== undefined)
+      const isData = key.startsWith('data-');
+      const dataKey = isData ? key.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase()) : null;
+      const has = isData
+        ? (el.dataset[dataKey] !== undefined)
         : (el.attrs[key] !== undefined || (key === 'class' && el.className));
       if (m2[2] === undefined) return has;
-      return String(el.getAttribute(key)) === m2[2];
+      // data-* attributes are stored in .dataset, not .attrs (see setAttribute),
+      // so a value match has to read from there too, not just getAttribute().
+      return String(isData ? el.dataset[dataKey] : el.getAttribute(key)) === m2[2];
     }
     return el.tagName === tk.toUpperCase();
   });

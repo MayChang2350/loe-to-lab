@@ -36,9 +36,17 @@ function applyStatic() {
 
 function buildNav() {
   const nav = $('#nav'); nav.innerHTML = '';
-  Object.entries(UI.nav).forEach(([id, label]) => {
+  const entries = Object.entries(UI.nav);
+  entries.forEach(([id, label], i) => {
     const a = el('a'); a.href = '#' + id; a.textContent = t(label); a.dataset.sec = id;
     nav.appendChild(a);
+    // a small arrow between steps, not inside the link — it shows the chain
+    // moving forward without being part of anyone's click target
+    if (i < entries.length - 1) {
+      const sep = el('span', 'nav-sep', '→');
+      sep.setAttribute('aria-hidden', 'true');
+      nav.appendChild(sep);
+    }
   });
 }
 
@@ -2120,11 +2128,113 @@ function renderValidation() {
   ).join('');
 }
 
-function renderMethod() {
-  $('#mtData').innerHTML = t(UI.mt.data).map(p => `<p>${esc(p)}</p>`).join('');
-  $('#mtSources').innerHTML = UI.sourceList.map(s =>
-    `<li><a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a></li>`).join('');
-  $('#mtClosing').innerHTML = t(UI.mt.closing).map(p => `<p>${esc(p)}</p>`).join('');
+/* ============================================================================
+   EXTRA PAGES — Methods/Limitations/Sources, Contact, Reflection.
+   Reachable only from the header's hamburger menu, not part of the six-step
+   main chain. Each shares the .map-ov overlay pattern used by the landing
+   map and the litigation page, but — like the litigation page — is rebuilt
+   fresh on every open rather than cached-and-patched, so there is no stale
+   copy to worry about keeping in sync while it is closed.
+   ========================================================================== */
+
+function buildExtraPage(kind) {
+  const foot = `<div class="map-foot">
+      <button class="map-skip">${esc(t(UI.map.close))} →</button>
+      <span class="map-esc">${esc(t(UI.map.esc))}</span>
+    </div>`;
+
+  if (kind === 'methods') {
+    const P = UI.pages.methods;
+    return `<div class="map-inner page-inner">
+      <div class="map-head">
+        <span class="map-kicker">${esc(t(P.kicker))}</span>
+        <h2>${esc(t(P.title))}</h2>
+        <p>${esc(t(P.lead))}</p>
+      </div>
+      <div class="page-sections">
+        <div class="panel">
+          <h3>${esc(t(P.methodsSecTitle))}</h3>
+          <div class="prose">${t(P.methodsBody).map(p => `<p>${esc(p)}</p>`).join('')}</div>
+        </div>
+        <div class="panel">
+          <h3>${esc(t(P.limitationsSecTitle))}</h3>
+          <div class="prose">${t(P.limitationsBody).map(p => `<p>${esc(p)}</p>`).join('')}</div>
+        </div>
+        <div class="panel">
+          <h3>${esc(t(P.sourcesSecTitle))}</h3>
+          <ul class="src-list">${UI.sourceList.map(s =>
+            `<li><a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a></li>`).join('')}</ul>
+        </div>
+      </div>
+      ${foot}
+    </div>`;
+  }
+
+  if (kind === 'contact') {
+    const P = UI.pages.contact;
+    return `<div class="map-inner page-inner">
+      <div class="map-head">
+        <span class="map-kicker">${esc(t(P.kicker))}</span>
+        <h2>${esc(t(P.title))}</h2>
+        <p>${esc(t(P.lead))}</p>
+      </div>
+      <div class="lit-grid contact-grid">
+        ${P.cards.map(c => `<div class="lit-card contact-card">
+          <div class="lit-card-h"><b>${esc(t(c.label))}</b></div>
+          <p><a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(t(c.value))}</a></p>
+        </div>`).join('')}
+      </div>
+      ${foot}
+    </div>`;
+  }
+
+  // reflection
+  const P = UI.pages.reflection;
+  return `<div class="map-inner page-inner">
+    <div class="map-head">
+      <span class="map-kicker">${esc(t(P.kicker))}</span>
+      <h2>${esc(t(P.title))}</h2>
+      <p>${esc(t(P.lead))}</p>
+    </div>
+    <div class="panel closing">
+      <div class="prose">${t(P.body).map(p => `<p>${esc(p)}</p>`).join('')}</div>
+    </div>
+    <div class="panel">
+      <h3>${esc(t(P.galleryTitle))}</h3>
+      <div class="photo-gallery">
+        ${Array.from({ length: 6 }).map(() => `<div class="photo-slot" aria-hidden="true"></div>`).join('')}
+      </div>
+      <p class="fine">${esc(t(P.galleryNote))}</p>
+    </div>
+    ${foot}
+  </div>`;
+}
+
+const EXTRA_PAGE_IDS = { methods: 'methodsOverlay', contact: 'contactOverlay', reflection: 'reflectionOverlay' };
+
+function openExtraPage(kind) {
+  const id = EXTRA_PAGE_IDS[kind];
+  const existing = $('#' + id);
+  if (existing) existing.remove();
+
+  const ov = el('div', 'map-ov page-ov');
+  ov.id = id;
+  ov.innerHTML = buildExtraPage(kind);
+  document.body.appendChild(ov);
+  requestAnimationFrame(() => ov.classList.add('show'));
+
+  const close = () => {
+    ov.classList.remove('show');
+    document.body.classList.remove('locked');
+    window.removeEventListener('keydown', onKey);
+    setTimeout(() => { if (ov.parentNode) ov.remove(); }, 340);
+  };
+  const onKey = e => { if (e.key === 'Escape') close(); };
+  window.addEventListener('keydown', onKey);
+
+  ov.querySelector('.map-skip').onclick = close;
+  ov.onclick = e => { if (e.target === ov) close(); };
+  document.body.classList.add('locked');
 }
 
 /* ============================================================================
@@ -2149,7 +2259,6 @@ function renderAll() {
   renderScenarios(); renderKnobs();
   renderLabTabs(); showLabStage();
   renderValidation();
-  renderMethod();
   wireDisclosures();
   $('#mapBtn').textContent = t(UI.map.reopen);
   markReveals();
@@ -2168,7 +2277,24 @@ document.addEventListener('DOMContentLoaded', () => {
     store.set('loelang', LANG);
     renderAll();
     refreshMapOverlay();
+    $('#menuBtn').setAttribute('aria-label', t(UI.menu.label));
   };
+  $('#menuBtn').setAttribute('aria-label', t(UI.menu.label));
+  const menuDropdown = $('#menuDropdown');
+  const closeMenu = () => { menuDropdown.hidden = true; $('#menuBtn').setAttribute('aria-expanded', 'false'); };
+  closeMenu();
+  $('#menuBtn').onclick = e => {
+    if (e && e.stopPropagation) e.stopPropagation();
+    const willOpen = menuDropdown.hidden;
+    menuDropdown.hidden = !willOpen;
+    $('#menuBtn').setAttribute('aria-expanded', String(willOpen));
+  };
+  $$('#menuDropdown [data-page]').forEach(btn => {
+    btn.onclick = () => { closeMenu(); openExtraPage(btn.dataset.page); };
+  });
+  document.addEventListener('click', e => { if (!menuDropdown.hidden && !e.target.closest('.menu-wrap')) closeMenu(); });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape' && !menuDropdown.hidden) closeMenu(); });
+
   $('#treeReset').onclick = () => { treeNode = treeStartNode(); treeTrail = []; jurEquivLabel = null; renderTree(); };
   $('#batchSize').oninput = renderProtocolNumbers;
   $('#colToggle').onclick = () => { tableWide = !tableWide; renderTable(); };

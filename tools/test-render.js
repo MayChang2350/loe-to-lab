@@ -43,7 +43,8 @@ const chk = (name, cond, extra = '') => { if (!cond) fails++; rep.push(`${cond ?
 const n = s => ($(s) ? $(s).children.length : -1);
 
 rep.push('=== structure ===');
-chk('nav links = 8', n('#nav') === 8, `got ${n('#nav')}`);
+chk('nav = 7 links + 6 arrow separators (Premise + six steps; Method moved to the hamburger menu)',
+  n('#nav') === 13, `got ${n('#nav')}`);
 chk('hero has body copy', n('#heroBody') >= 1, `got ${n('#heroBody')}`);
 chk('chain items = 6', n('#chain') === 6, `got ${n('#chain')}`);
 chk('molecule rows = 21', n('#molBody') === 21, `got ${n('#molBody')}`);
@@ -244,12 +245,62 @@ chk('scenarios = 4', n('#scenList') === 4, `got ${n('#scenList')}`);
 chk('knobs = 8', n('#knobList') === 8, `got ${n('#knobList')}`);
 chk('principles = 5', n('#principleList') === 5, `got ${n('#principleList')}`);
 
-rep.push('=== transfer + method ===');
+rep.push('=== transfer ===');
 chk('validation stages = 8', n('#vlChain') === 8, `got ${n('#vlChain')}`);
 chk('gap items = 7', n('#gapList') === 7, `got ${n('#gapList')}`);
-chk('source links = 15', n('#mtSources') === 15, `got ${n('#mtSources')}`);
+chk('exclamation line after gap assessment is present', $('.exclaim').textContent.trim().length > 0);
 
-chk('closing paragraphs = 3', n('#mtClosing') === 3, `got ${n('#mtClosing')}`);
+rep.push('=== header nav ===');
+chk('in-page Method section removed from main scroll', !$('#method'));
+chk('nav has one entry per module (Premise + six steps)', doc.querySelectorAll('#nav a').length === 7,
+  `got ${doc.querySelectorAll('#nav a').length}`);
+chk('nav has an arrow separator between each pair of items', doc.querySelectorAll('#nav .nav-sep').length === 6,
+  `got ${doc.querySelectorAll('#nav .nav-sep').length}`);
+chk('nav labels are tight (no spaced middot)', !/\d · /.test($('#nav').textContent));
+
+rep.push('=== hamburger menu + extra pages ===');
+chk('menu button exists', !!$('#menuBtn'));
+chk('menu dropdown starts hidden', $('#menuDropdown').hidden === true);
+$('#menuBtn').click();
+chk('menu dropdown opens', $('#menuDropdown').hidden === false);
+chk('menu has three page links', doc.querySelectorAll('#menuDropdown [data-page]').length === 3,
+  `got ${doc.querySelectorAll('#menuDropdown [data-page]').length}`);
+
+['methods', 'contact', 'reflection'].forEach(kind => {
+  const btn = doc.querySelector(`#menuDropdown [data-page="${kind}"]`);
+  btn.click();
+  const ovId = { methods: 'methodsOverlay', contact: 'contactOverlay', reflection: 'reflectionOverlay' }[kind];
+  chk(`${kind} overlay opens from the menu`, !!$('#' + ovId));
+  chk(`${kind} overlay is not in the served markup (JS-injected)`,
+    !fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes(ovId));
+  chk(`${kind} overlay locks scroll while open`, doc.body.classList.contains('locked'));
+  $(`#${ovId} .map-skip`).click();
+  chk(`${kind} overlay removed after closing`, !$('#' + ovId));
+});
+
+chk('methods page has three sections (methods/limitations/sources) and a populated source list', (() => {
+  $(`#menuDropdown [data-page="methods"]`).click();
+  const ok = doc.querySelectorAll('#methodsOverlay .page-sections .panel').length === 3 &&
+    doc.querySelectorAll('#methodsOverlay .src-list li').length === 15;
+  $('#methodsOverlay .map-skip').click();
+  return ok;
+})());
+
+chk('contact page has real contact cards (email present)', (() => {
+  $(`#menuDropdown [data-page="contact"]`).click();
+  const ok = /maychang2350@gmail\.com/.test($('#contactOverlay').textContent);
+  $('#contactOverlay .map-skip').click();
+  return ok;
+})());
+
+chk('reflection page names Mink, Dr. Chou, and Nick', (() => {
+  $(`#menuDropdown [data-page="reflection"]`).click();
+  const txt = $('#reflectionOverlay').textContent;
+  const ok = /Mink/.test(txt) && /Chou/.test(txt) && /Nick/.test(txt);
+  const gallery = doc.querySelectorAll('#reflectionOverlay .photo-slot').length === 6;
+  $('#reflectionOverlay .map-skip').click();
+  return ok && gallery;
+})());
 
 const bad = txt => {
   const hits = [];

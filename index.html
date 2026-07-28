@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>From Patent Cliff to Pilot Batch — May Chang</title>
-<meta name="description" content="A medicine loses its patent; someone else has to make it. Seven live process simulators, an FDA pathway engine and a full product dossier, following one molecule end to end. Technical Services participant project, Bora Pharmaceuticals / TWi, 2026.">
+<meta name="description" content="A medicine loses its patent; someone else has to make it. Twelve live process-lab simulators, an FDA/EMA/TFDA pathway engine and a full product dossier, following one molecule end to end. Technical Services participant project, Bora Pharmaceuticals / TWi, 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -28,6 +28,16 @@
     <button id="langBtn" class="lang-btn" aria-label="Switch language">
       <span class="lang-on">EN</span><span class="lang-sep">/</span><span class="lang-off">繁中</span>
     </button>
+    <div class="menu-wrap">
+      <button id="menuBtn" class="lang-btn menu-btn" aria-label="More pages" aria-haspopup="true" aria-expanded="false">
+        <span class="menu-bars"><i></i><i></i><i></i></span>
+      </button>
+      <div id="menuDropdown" class="menu-dropdown" hidden>
+        <button type="button" data-page="methods" data-t="menu.methods"></button>
+        <button type="button" data-page="contact" data-t="menu.contact"></button>
+        <button type="button" data-page="reflection" data-t="menu.reflection"></button>
+      </div>
+    </div>
   </div>
   <div class="scrollbar"><div id="scrollProgress"></div></div>
 </header>
@@ -395,29 +405,7 @@
       <h3 data-t="vl.gaps"></h3>
       <p class="fine" data-t="vl.gapsLead"></p>
       <div id="gapList" class="stack-list"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= METHOD ================= -->
-<section id="method" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 data-t="mt.title"></h2>
-    </div>
-    <div class="two-col">
-      <div class="panel">
-        <h3 data-t="mt.dataTitle"></h3>
-        <div id="mtData" class="prose"></div>
-      </div>
-      <div class="panel">
-        <h3 data-t="mt.srcTitle"></h3>
-        <ul id="mtSources" class="src-list"></ul>
-      </div>
-    </div>
-    <div class="panel closing">
-      <h3 data-t="mt.closingTitle"></h3>
-      <div id="mtClosing" class="prose"></div>
+      <p class="fine exclaim" data-t="vl.nextLine"></p>
     </div>
   </div>
 </section>
