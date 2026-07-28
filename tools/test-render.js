@@ -261,8 +261,12 @@ chk('nav labels are tight (no spaced middot)', !/\d · /.test($('#nav').textCont
 rep.push('=== hamburger menu + extra pages ===');
 chk('menu button exists', !!$('#menuBtn'));
 chk('menu dropdown starts hidden', $('#menuDropdown').hidden === true);
+chk('menu dropdown starts hidden via style.display too (the CSS carries its own display:flex, '
+  + 'which beats [hidden] on specificity/origin — same trap #opCanvas hit earlier)',
+  $('#menuDropdown').style.display === 'none');
 $('#menuBtn').click();
 chk('menu dropdown opens', $('#menuDropdown').hidden === false);
+chk('menu dropdown opens visually (style.display no longer none)', $('#menuDropdown').style.display !== 'none');
 chk('menu has three page links', doc.querySelectorAll('#menuDropdown [data-page]').length === 3,
   `got ${doc.querySelectorAll('#menuDropdown [data-page]').length}`);
 

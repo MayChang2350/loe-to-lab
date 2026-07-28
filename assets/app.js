@@ -2281,13 +2281,22 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   $('#menuBtn').setAttribute('aria-label', t(UI.menu.label));
   const menuDropdown = $('#menuDropdown');
-  const closeMenu = () => { menuDropdown.hidden = true; $('#menuBtn').setAttribute('aria-expanded', 'false'); };
+  // .menu-dropdown carries its own `display:flex` (author-origin, needed so
+  // it lays out as a column when shown). An author rule with an explicit
+  // display value always beats the UA `[hidden]{display:none}` rule, so the
+  // hidden *attribute* alone does nothing visually — same cascade trap as
+  // #opCanvas earlier in this file. Setting inline style.display directly
+  // is what actually shows/hides it; .hidden is kept in sync for a11y.
+  const setMenuOpen = open => {
+    menuDropdown.hidden = !open;
+    menuDropdown.style.display = open ? '' : 'none';
+    $('#menuBtn').setAttribute('aria-expanded', String(open));
+  };
+  const closeMenu = () => setMenuOpen(false);
   closeMenu();
   $('#menuBtn').onclick = e => {
     if (e && e.stopPropagation) e.stopPropagation();
-    const willOpen = menuDropdown.hidden;
-    menuDropdown.hidden = !willOpen;
-    $('#menuBtn').setAttribute('aria-expanded', String(willOpen));
+    setMenuOpen(menuDropdown.hidden);
   };
   $$('#menuDropdown [data-page]').forEach(btn => {
     btn.onclick = () => { closeMenu(); openExtraPage(btn.dataset.page); };
