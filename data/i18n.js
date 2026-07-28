@@ -172,9 +172,11 @@ const UI = {
     goToLab: { en: 'Open the process lab →', zh: '前往製程實驗室 →' }
   },
 
-  /* --- Process lab (tab shell around the seven simulators) --- */
+  /* --- Process lab (tab shell around the fluid bed, six unit operations
+     and five analytical instruments) --- */
   lab: {
     title: { en: 'Process lab', zh: '製程實驗室' },
+    lead: { en: 'The machines that make the batch, and the instruments that measure it — twelve stations from a real CDMO process and QC lab. Move a control and watch the live schematic, the numbers and the plain-language verdict all respond together.', zh: '製造批次的機台，以及量測成品的儀器——十二個站台，取材自真實 CDMO 製程與品管實驗室。移動任一控制項，即時示意圖、數字與白話判讀會一起反應。' },
     pick: { en: 'Pick a machine', zh: '選擇機台' },
     tryThis: { en: 'Try this', zh: '試試看' },
     controls: { en: 'Controls', zh: '控制項' },
@@ -218,70 +220,6 @@ const UI = {
     modelNote: {
       en: 'A lumped first-principles model using Wen & Yu, Haider & Levenspiel, Sutherland and standard psychrometrics. It reproduces the direction and rough magnitude of every response and the location of the failure modes. It is not CFD and it is not your machine — a real operating window comes from your own development batches.',
       zh: '一個採用 Wen & Yu、Haider & Levenspiel、Sutherland 與標準濕空氣性質的集總第一原理模型。它能重現每個響應的方向與大致量級，以及各失效模式的位置。它不是 CFD，也不是你的機台——真正的操作窗口來自你自己的開發批次。'
-    }
-  },
-
-  /* --- Instrument bench --- */
-  instr: {
-    title: { en: 'Instrument bench', zh: '儀器操作台' },
-    lead: { en: 'The simulators above model unit operations — the machines that make the batch. Real R&D also runs analytical instruments that measure it. Click any card to see how it works.', zh: '上方的模擬器示範的是製程單元操作——真正製造批次的機台。研發同時也仰賴分析儀器來量測成品。點擊任一卡片，看看它如何運作。' },
-    play: { en: 'Click to run', zh: '點擊啟動' },
-    stop: { en: 'Stop', zh: '停止' },
-    used: { en: 'What it tells you', zh: '它能告訴你什麼' },
-    steps: { en: 'How a run goes', zh: '操作流程' },
-    hplc: {
-      name: { en: 'HPLC', zh: '高效液相層析儀 (HPLC)' },
-      full: { en: 'High-performance liquid chromatography', zh: 'High-Performance Liquid Chromatography' },
-      use: { en: 'Separates and quantifies the API and any degradation products or related substances — this is the workhorse assay and purity method behind most release specs.', zh: '分離並定量原料藥與其降解產物或相關物質——這是大多數放行規格背後最主要的含量與純度分析方法。' },
-      steps: {
-        en: ['Dissolve a sample of the tablet or capsule in mobile-phase diluent', 'Inject onto the column; a pump drives constant high-pressure flow through the packing', 'A UV/PDA detector reads each peak as it elutes — retention time identifies the compound, peak area gives the amount'],
-        zh: ['將錠劑或膠囊樣品溶於流動相稀釋劑中', '注入管柱；幫浦以恆定高壓驅動流動通過填充物', 'UV/PDA 偵測器讀取每個波峰的洗脫——滯留時間判斷化合物身分，波峰面積判斷含量']
-      }
-    },
-    dsc: {
-      name: { en: 'DSC', zh: '示差掃描熱量儀 (DSC)' },
-      full: { en: 'Differential scanning calorimetry', zh: 'Differential Scanning Calorimetry' },
-      use: { en: 'Heats a tiny sample at a controlled ramp and measures heat flow — reveals melting point, polymorphic form, and whether excipients and API are compatible.', zh: '以受控升溫速率加熱微量樣品並量測熱流——可揭示熔點、多晶型，以及賦形劑與原料藥是否相容。' },
-      steps: {
-        en: ['Seal a few milligrams of powder into an aluminium pan next to an empty reference pan', 'Ramp both pans at a fixed rate (e.g. 10°C/min) inside the furnace', 'Plot heat flow vs. temperature — a sharp endotherm is a clean melt; extra or shifted peaks flag a new polymorph or an incompatibility'],
-        zh: ['將數毫克粉末封入鋁盤，旁邊放一個空的參考盤', '兩盤以固定升溫速率（如 10°C/min）在爐內同步升溫', '繪製熱流對溫度圖——尖銳的吸熱峰代表乾淨的熔化；多餘或偏移的波峰顯示新的多晶型或不相容']
-      }
-    },
-    kf: {
-      name: { en: 'Karl Fischer titrator', zh: '卡爾費雪滴定儀' },
-      full: { en: 'Karl Fischer titration', zh: 'Karl Fischer Titration' },
-      use: { en: 'Titrates residual water content down to parts-per-million — critical for moisture-sensitive APIs and for setting drying-step endpoints.', zh: '滴定殘留水分含量，精度可達百萬分之一（ppm）——對濕氣敏感的原料藥及設定乾燥終點至關重要。' },
-      steps: {
-        en: ['Dissolve or disperse the sample in anhydrous methanol inside the titration vessel', 'The instrument doses Karl Fischer reagent dropwise while a sensor tracks conductivity', 'Reagent addition stops the instant all water has reacted — the titrant volume converts directly to % moisture'],
-        zh: ['將樣品溶解或分散於滴定槽中的無水甲醇', '儀器逐滴加入卡爾費雪試劑，同時感測器追蹤電導率', '所有水分反應完畢的瞬間停止加液——滴定劑用量直接換算為水分百分比']
-      }
-    },
-    psa: {
-      name: { en: 'Laser diffraction PSD analyzer', zh: '雷射繞射粒徑分析儀' },
-      full: { en: 'Particle size distribution by laser diffraction', zh: 'Particle Size Distribution (Laser Diffraction)' },
-      use: { en: 'Measures the particle size distribution of a powder in seconds — feeds directly back into the mill and fluid-bed granulation targets you set upstream.', zh: '在數秒內量測粉體的粒徑分布——結果會直接回饋至上游的整粒機與流體床造粒目標設定。' },
-      steps: {
-        en: ['Disperse the powder in air or liquid so particles pass individually through the beam', 'A laser shines through the stream; particles scatter light at angles that depend on their size', 'A detector ring captures the scattering pattern and the software inverts it into a size-distribution curve'],
-        zh: ['將粉體分散於空氣或液體中，使顆粒逐一通過光束', '雷射照射流動樣品；顆粒依其大小以不同角度散射光線', '環形偵測器擷取散射圖樣，軟體再反演為粒徑分布曲線']
-      }
-    },
-    dis: {
-      name: { en: 'Dissolution tester', zh: '溶離度測試儀' },
-      full: { en: 'USP Apparatus II — paddle', zh: 'USP Apparatus II — Paddle' },
-      use: { en: 'Simulates GI-tract conditions to track how fast the API releases from the dosage form over time — the test that ties formulation and process choices back to expected in-vivo performance.', zh: '模擬腸胃道環境，追蹤原料藥自劑型釋出的速率——這項測試將配方與製程選擇與預期體內表現連結起來。' },
-      steps: {
-        en: ['Drop one dosage unit into each vessel of temperature-controlled dissolution medium (37°C)', 'A paddle rotates at a fixed speed, keeping the medium gently stirred around the dissolving unit', 'Samples are pulled at set timepoints and assayed (often by HPLC) to build a % dissolved vs. time curve'],
-        zh: ['將一個劑型單位投入每個溫控溶離槽（37°C）', '槳葉以固定轉速旋轉，使介質在溶解單位周圍溫和攪拌', '在設定時間點取樣並分析（常用 HPLC），繪製出溶離百分比對時間曲線']
-      }
-    },
-    ftir: {
-      name: { en: 'FTIR spectrometer', zh: 'FTIR 傅立葉轉換紅外光譜儀' },
-      full: { en: 'Fourier-transform infrared spectroscopy', zh: 'Fourier-Transform Infrared Spectroscopy' },
-      use: { en: 'Fingerprints a sample\'s chemical bonds — used to confirm raw-material identity on receipt and to distinguish polymorphic or crystalline forms.', zh: '為樣品的化學鍵結建立指紋圖譜——用於原料進廠時確認身分，並區分多晶型或結晶型態。' },
-      steps: {
-        en: ['Press the sample against the ATR crystal so infrared light can pass through it', 'A moving mirror inside the interferometer scans, creating an interference pattern for every wavelength at once', 'A Fourier transform converts that pattern into a spectrum, then software matches the peak pattern against a reference library'],
-        zh: ['將樣品壓在 ATR 晶體上，使紅外光能穿透樣品', '干涉儀內的移動鏡片掃描，同時為每個波長產生干涉圖樣', '傅立葉轉換將圖樣轉為光譜，軟體再將波峰圖譜與參考資料庫比對']
-      }
     }
   },
 

@@ -1458,16 +1458,32 @@ function drawParticles(x, r) {
 }
 
 function animate() {
-  const cv = $('#fbCanvas'); if (!cv) return;
-  // don't burn frames animating a bed nobody is looking at
-  if (labTab !== 'fluidbed') { rafId = requestAnimationFrame(animate); return; }
-  const x = cv.getContext('2d');
-  const r = lastSolve || fbSolve(fb);
-  x.clearRect(0, 0, CANV.W, CANV.H);
-  const g = geomPx();
-  drawVessel(x, g, r);
-  stepParticles(r);
-  drawParticles(x, r);
+  if (labTab === 'fluidbed') {
+    const cv = $('#fbCanvas');
+    if (cv) {
+      const x = cv.getContext('2d');
+      const r = lastSolve || fbSolve(fb);
+      x.clearRect(0, 0, CANV.W, CANV.H);
+      const g = geomPx();
+      drawVessel(x, g, r);
+      stepParticles(r);
+      drawParticles(x, r);
+    }
+  } else {
+    // every other lab tab (unit operations + instruments) gets a small
+    // live schematic above its analytical chart, driven by the same
+    // control state and solve() output as the readouts beside it
+    const op = currentOp();
+    const cv = $('#opAnimCanvas');
+    if (op && op.animate && cv) {
+      const x = cv.getContext('2d');
+      const st = opState[op.id];
+      const r = lastOpSolve || op.solve(st);
+      x.clearRect(0, 0, cv.width, cv.height);
+      try { op.animate(x, cv.width, cv.height, Date.now() / 1000, st, r); }
+      catch (e) { /* a schematic must never be able to break the page */ }
+    }
+  }
   rafId = requestAnimationFrame(animate);
 }
 
@@ -1733,10 +1749,13 @@ function buildOpSheet(op, st, r) {
   return lines.join('\n');
 }
 
+let lastOpSolve = null;
+
 function updateOp() {
   const op = currentOp(); if (!op) return;
   const st = opState[op.id];
   const r = op.solve(st);
+  lastOpSolve = r;
 
   $('#opReadouts').innerHTML = op.readouts(r).map(o =>
     `<div class="ro ${o.cls || ''}"><span class="k">${o.k}</span>` +
@@ -1815,10 +1834,24 @@ const T_ACC = '#2fc2c8', T_B = '#4a8fd6', T_OK = '#5fc08a', T_WARN = '#d8a13c', 
 
 /* ---------- per-operation charts ---------------------------------------- */
 
+const OP_CHARTS = { psd: chPSD, blend: chBlend, compress: chCompress, coating: chCoating, dissol: chDissol, homog: chHomog };
+
+/* The six original unit operations each carry a dedicated analytical chart
+   (particle-size curve, RSD-vs-time, force-vs-hardness, and so on) drawn
+   here. The five instruments added alongside them lead with the live
+   schematic canvas above instead — a chromatogram/thermogram/spectrum shape
+   already lives inside that schematic — so there is deliberately no second
+   static chart function for them, and this hides the (otherwise blank)
+   analytical-chart canvas rather than throwing on a missing lookup. */
 function drawOpChart(op, p, r) {
   const cv = $('#opCanvas'); if (!cv) return;
-  ({ psd: chPSD, blend: chBlend, compress: chCompress,
-     coating: chCoating, dissol: chDissol, homog: chHomog })[op.id](cv, p, r);
+  const fn = OP_CHARTS[op.id];
+  // #opCanvas has an explicit display:block rule (an author style, which
+  // always outranks the UA [hidden]{display:none} rule regardless of
+  // specificity) — so hiding it reliably means setting display directly,
+  // not just toggling the hidden attribute
+  cv.style.display = fn ? '' : 'none';
+  if (fn) fn(cv, p, r);
 }
 
 function chPSD(cv, p, r) {
@@ -2095,92 +2128,6 @@ function renderMethod() {
 }
 
 /* ============================================================================
-   5c · INSTRUMENT BENCH — analytical instruments, animated on click
-   ========================================================================== */
-
-const INSTRUMENTS = [
-  { id: 'hplc', svg: () => `
-    <svg viewBox="0 0 160 96" class="instr-svg">
-      <rect x="6" y="40" width="18" height="14" rx="2" class="instr-static"/>
-      <circle cx="15" cy="47" r="3" class="anim-part instr-piston"/>
-      <rect x="30" y="30" width="70" height="34" rx="4" class="instr-static instr-column"/>
-      <circle class="anim-part instr-band" cx="34" cy="47" r="4"/>
-      <rect x="106" y="24" width="30" height="46" rx="3" class="instr-static"/>
-      <polyline class="anim-part instr-trace" points="108,60 114,60 118,40 122,58 126,44 130,58 134,60" />
-    </svg>` },
-  { id: 'dsc', svg: () => `
-    <svg viewBox="0 0 160 96" class="instr-svg">
-      <rect x="20" y="20" width="120" height="40" rx="4" class="instr-static"/>
-      <rect class="anim-part instr-pan" x="38" y="34" width="16" height="12" rx="2"/>
-      <rect x="70" y="34" width="16" height="12" rx="2" class="instr-static instr-refpan"/>
-      <polyline class="anim-part instr-dsctrace" points="20,80 45,80 60,64 75,84 90,58 105,80 140,80" />
-    </svg>` },
-  { id: 'kf', svg: () => `
-    <svg viewBox="0 0 160 96" class="instr-svg">
-      <rect x="66" y="8" width="10" height="30" class="instr-static"/>
-      <circle class="anim-part instr-drop" cx="71" cy="40" r="3"/>
-      <path d="M40 50 h62 l-8 34 q-2 6 -8 6 h-30 q-6 0 -8 -6 z" class="instr-static instr-beaker"/>
-      <rect class="anim-part instr-liquid" x="46" y="66" width="50" height="16"/>
-    </svg>` },
-  { id: 'psa', svg: () => `
-    <svg viewBox="0 0 160 96" class="instr-svg">
-      <rect x="10" y="42" width="16" height="10" class="instr-static"/>
-      <line x1="26" y1="47" x2="80" y2="47" class="instr-static instr-beam"/>
-      <circle class="anim-part instr-ring" cx="80" cy="47" r="6"/>
-      <circle class="anim-part instr-ring instr-ring2" cx="80" cy="47" r="6"/>
-      <circle class="anim-part instr-ring instr-ring3" cx="80" cy="47" r="6"/>
-      <rect x="120" y="20" width="8" height="54" class="instr-static"/>
-    </svg>` },
-  { id: 'dis', svg: () => `
-    <svg viewBox="0 0 160 96" class="instr-svg">
-      <path d="M40 20 h60 l-6 60 q-1 8 -8 8 h-32 q-7 0 -8 -8 z" class="instr-static instr-vessel"/>
-      <line x1="80" y1="6" x2="80" y2="34" class="instr-static"/>
-      <g class="anim-part instr-paddle" style="transform-origin:80px 40px">
-        <line x1="66" y1="40" x2="94" y2="40" />
-      </g>
-      <circle class="anim-part instr-particle" cx="80" cy="60" r="6"/>
-    </svg>` },
-  { id: 'ftir', svg: () => `
-    <svg viewBox="0 0 160 96" class="instr-svg">
-      <rect x="8" y="38" width="14" height="10" class="instr-static"/>
-      <line x1="22" y1="43" x2="60" y2="43" class="instr-static instr-beam"/>
-      <rect class="anim-part instr-mirror" x="58" y="30" width="4" height="26"/>
-      <line x1="62" y1="43" x2="100" y2="43" class="instr-static instr-beam"/>
-      <rect x="100" y="20" width="30" height="46" rx="3" class="instr-static"/>
-      <polyline class="anim-part instr-ftirtrace" points="102,58 108,58 111,36 114,54 117,30 120,58 126,58" />
-    </svg>` }
-];
-
-function renderInstruments() {
-  const box = $('#instrGrid'); if (!box) return;
-  box.innerHTML = '';
-  INSTRUMENTS.forEach(inst => {
-    const d = UI.instr[inst.id];
-    const card = el('div', 'instr-card');
-    card.innerHTML = `
-      <div class="instr-stage">${inst.svg()}</div>
-      <div class="instr-body">
-        <h4>${esc(t(d.name))}</h4>
-        <p class="instr-full">${esc(t(d.full))}</p>
-        <p class="instr-use"><b>${esc(t(UI.instr.used))}</b> ${esc(t(d.use))}</p>
-        <button type="button" class="btn tiny ghost instr-play">${esc(t(UI.instr.play))}</button>
-        <div class="instr-steps" hidden>
-          <b>${esc(t(UI.instr.steps))}</b>
-          <ol>${t(d.steps).map(s => `<li>${esc(s)}</li>`).join('')}</ol>
-        </div>
-      </div>`;
-    const btn = card.querySelector('.instr-play');
-    const stepsBox = card.querySelector('.instr-steps');
-    btn.onclick = () => {
-      const on = card.classList.toggle('playing');
-      stepsBox.hidden = !on;
-      btn.textContent = on ? t(UI.instr.stop) : t(UI.instr.play);
-    };
-    box.appendChild(card);
-  });
-}
-
-/* ============================================================================
    BOOT
    ========================================================================== */
 
@@ -2201,7 +2148,6 @@ function renderAll() {
   renderFbControls();
   renderScenarios(); renderKnobs();
   renderLabTabs(); showLabStage();
-  renderInstruments();
   renderValidation();
   renderMethod();
   wireDisclosures();

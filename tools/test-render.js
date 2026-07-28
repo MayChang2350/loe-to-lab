@@ -28,7 +28,7 @@ sandbox.matchMedia = () => ({ matches: false });
 vm.createContext(sandbox);
 
 const errs = [];
-const files = ['data/i18n.js', 'data/molecules.js', 'data/jurisdictions.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'data/labTroubleshoot.js', 'assets/forms.js', 'assets/app.js'];
+const files = ['data/i18n.js', 'data/molecules.js', 'data/jurisdictions.js', 'data/pathway.js', 'data/deepdive.js', 'data/dossierTemplates.js', 'data/protocol.js', 'data/protocolTemplates.js', 'data/dosageforms.js', 'data/fluidbed.js', 'data/unitops.js', 'data/instruments.js', 'data/labTroubleshoot.js', 'assets/forms.js', 'assets/app.js'];
 files.forEach(f => {
   try { vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), sandbox, { filename: f }); }
   catch (e) { errs.push(`LOAD ${f}: ${e.message}`); }
@@ -230,7 +230,7 @@ chk('every opacity:0 rule has a paired rule that restores it', (() => {
 })());
 
 rep.push('=== process lab ===');
-chk('lab tabs = 7', n('#labTabs') === 7, `got ${n('#labTabs')}`);
+chk('lab tabs = 12 (fluid bed + 6 unit ops + 5 instruments)', n('#labTabs') === 12, `got ${n('#labTabs')}`);
 chk('fluid bed shown first', $('#fbStage').hidden === false && $('#opStage').hidden === true);
 
 rep.push('=== fluid bed ===');
@@ -457,10 +457,13 @@ try {
   try { $('#fbDownload').click(); } catch (e) { fbThrew = true; }
   chk('fluid bed download button does not throw without Blob support', !fbThrew);
 
-  rep.push('=== each unit operation ===');
+  rep.push('=== each unit operation and instrument ===');
   const tabs = doc.querySelectorAll('#labTabs .labtab');
-  const expectCtl = { psd: 4, blend: 5, compress: 6, coating: 8, dissol: 8, homog: 5 };
-  const ops = ['psd', 'blend', 'compress', 'coating', 'dissol', 'homog'];
+  const expectCtl = {
+    psd: 4, blend: 5, compress: 6, coating: 8, dissol: 8, homog: 5,
+    hplc: 4, dsc: 4, kf: 3, psa: 2, ftir: 3
+  };
+  const ops = ['psd', 'blend', 'compress', 'coating', 'dissol', 'homog', 'hplc', 'dsc', 'kf', 'psa', 'ftir'];
   ops.forEach((id, idx) => {
     tabs[idx + 1].click();
     const ok = $('#opStage').hidden === false && $('#fbStage').hidden === true;
@@ -540,25 +543,53 @@ try {
   h = bad(doc.body.textContent);
   chk('post-interaction: no undefined / NaN', h.length === 0, h.join(','));
 
-  rep.push('=== instrument bench ===');
-  const instrCards = doc.querySelectorAll('.instr-card');
-  chk('instrument cards = 6', instrCards.length === 6, `got ${instrCards.length}`);
-  chk('instrument cards have no undefined / NaN', bad(doc.querySelector('#instrGrid').textContent).length === 0);
-  const card0 = instrCards[0];
-  chk('card has a name', card0.querySelector('h4').textContent.trim().length > 0);
-  chk('card has a use description', card0.querySelector('.instr-use').textContent.length > 20);
-  chk('card has 3 usage steps', card0.querySelectorAll('.instr-steps ol li').length === 3);
-  chk('card not playing before click', !card0.classList.contains('playing'));
-  card0.querySelector('.instr-play').click();
-  chk('card enters playing state on click', card0.classList.contains('playing'));
-  chk('steps unhidden on click', card0.querySelector('.instr-steps').hidden === false);
-  card0.querySelector('.instr-play').click();
-  chk('card exits playing state on second click', !card0.classList.contains('playing'));
+  rep.push('=== live schematic canvas (merged into the process-lab tabs) ===');
+  chk('instrument bench is no longer a separate section', !$('#instrGrid'));
+  chk('#opAnimCanvas exists inside the op-chart panel', !!$('#opAnimCanvas'));
+
+  // #opCanvas has an explicit display:block CSS rule, which as an author
+  // style always outranks the UA [hidden]{display:none} rule regardless of
+  // specificity — so an op without a static chart (the five instruments)
+  // must hide it via inline style.display, not the hidden attribute, or it
+  // would show as a stale/blank canvas in a real browser
+  tabs[7].click();  // hplc — has no entry in OP_CHARTS
+  chk('opCanvas is hidden via style.display for an op without a static chart',
+    $('#opCanvas').style.display === 'none');
+  tabs[1].click();  // psd — has a static chart
+  chk('opCanvas is shown again via style.display for an op with a static chart',
+    $('#opCanvas').style.display !== 'none');
+  // every op — old unit operations and new instruments alike — must expose
+  // an animate() function, and it must run against a stand-in 2D context
+  // without throwing at every control extreme, since this canvas draws on
+  // every animation frame rather than once on control change
+  const fakeCtx = new Proxy({}, {
+    get(_, prop) {
+      if (['strokeStyle', 'fillStyle', 'lineWidth', 'font', 'textAlign'].includes(prop)) return '';
+      return () => {};
+    },
+    set() { return true; }
+  });
+  const allOps = vm.runInContext('UNIT_OPS', sandbox);
+  let animFails = [];
+  allOps.forEach(op => {
+    if (typeof op.animate !== 'function') { animFails.push(op.id + ':no-animate'); return; }
+    const base = {}; op.controls.forEach(c => base[c.id] = c.def);
+    op.controls.forEach(c => {
+      if (c.type === 'select') return;
+      [c.min, c.def, c.max].forEach(v => {
+        const st = { ...base, [c.id]: v };
+        const r = op.solve(st);
+        try { op.animate(fakeCtx, 720, 180, 1.234, st, r); }
+        catch (e) { animFails.push(`${op.id}:${c.id}=${v}:${e.message}`); }
+      });
+    });
+  });
+  chk('every op (unit operations + instruments) has a working animate()', animFails.length === 0, animFails.join(' | '));
+  chk('all 11 unit-ops/instruments have animate (fluid bed animates separately)', allOps.every(op => typeof op.animate === 'function'));
+
   vm.runInContext('LANG = "zh"; renderAll();', sandbox);
-  const zhCards = doc.querySelectorAll('.instr-card');
-  chk('zh: instrument cards still = 6', zhCards.length === 6, `got ${zhCards.length}`);
-  chk('zh: instrument bench has Chinese text', /[一-鿿]/.test(doc.querySelector('#instrGrid').textContent));
-  chk('zh: instrument bench has no undefined / NaN', bad(doc.querySelector('#instrGrid').textContent).length === 0);
+  h = bad(doc.body.textContent);
+  chk('zh: no undefined / NaN after switching through every lab tab', h.length === 0, h.join(','));
   vm.runInContext('LANG = "en"; renderAll();', sandbox);
 } catch (e) { chk('interaction threw', false, e.stack.split('\n').slice(0, 3).join(' | ')); }
 

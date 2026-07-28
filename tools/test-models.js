@@ -4,7 +4,7 @@ const fs = require('fs'), path = require('path'), vm = require('vm');
 const root = path.join(__dirname, '..');
 const sb = { Math, console, Number, isFinite, NaN, Infinity };
 vm.createContext(sb);
-['data/fluidbed.js', 'data/unitops.js'].forEach(f =>
+['data/fluidbed.js', 'data/unitops.js', 'data/instruments.js'].forEach(f =>
   vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), sb, { filename: f }));
 
 let fails = 0;

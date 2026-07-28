@@ -293,6 +293,7 @@
           <div id="opControls"></div>
         </aside>
         <div class="panel op-chart">
+          <div class="op-anim-wrap"><canvas id="opAnimCanvas" width="720" height="180"></canvas></div>
           <canvas id="opCanvas" width="720" height="420"></canvas>
         </div>
       </div>
@@ -377,12 +378,6 @@
       <p class="fine" data-t="fb.modelNote"></p>
     </div>
 
-    <div class="panel instr-panel">
-      <h3 data-t="instr.title"></h3>
-      <p class="fine" data-t="instr.lead"></p>
-      <div id="instrGrid" class="instr-grid"></div>
-    </div>
-
     <p class="fine" data-t="lab.chainNote"></p>
   </div>
 </section>
@@ -448,6 +443,7 @@
 <script src="data/protocolTemplates.js"></script>
 <script src="data/fluidbed.js"></script>
 <script src="data/unitops.js"></script>
+<script src="data/instruments.js"></script>
 <script src="data/labTroubleshoot.js"></script>
 <script src="assets/app.js"></script>
 </body>

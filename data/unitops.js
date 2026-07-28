@@ -122,6 +122,33 @@ const OP_PSD = {
       en: `A well-behaved distribution: D50 ${r.d50.toFixed(0)} µm, span ${r.span.toFixed(1)}, ${r.fines.toFixed(1)} % fines. This would pour cleanly, fill a die reproducibly, and give you a dissolution profile you can defend.`,
       zh: `分佈良好：D50 ${r.d50.toFixed(0)} µm、span ${r.span.toFixed(1)}、細粉 ${r.fines.toFixed(1)} %。這樣的物料會流暢傾倒、可重現地填滿模孔，並給你一條站得住腳的溶離曲線。` };
   },
+  /* Live schematic: a spinning rotor flings particles across the gap toward
+     a screen; particle size and colour track the live d50/fines readouts so
+     the picture changes with the sliders, not just the numbers beside it. */
+  animate(x, W, H, t, p, r) {
+    const cx = W * 0.22, cy = H * 0.52, R = Math.min(W, H) * 0.26;
+    x.strokeStyle = '#2e3742'; x.lineWidth = 2;
+    x.beginPath(); x.arc(cx, cy, R + 12, 0, Math.PI * 2); x.stroke();
+    x.save(); x.translate(cx, cy); x.rotate(t * (p.rpm / 60) * Math.PI * 2);
+    x.strokeStyle = '#2fc2c8'; x.lineWidth = 3;
+    for (let i = 0; i < 6; i++) {
+      const a = i / 6 * Math.PI * 2;
+      x.beginPath(); x.moveTo(0, 0); x.lineTo(Math.cos(a) * R, Math.sin(a) * R); x.stroke();
+    }
+    x.restore();
+    const n = 16, ex0 = cx + R + 16, span = W * 0.62;
+    for (let i = 0; i < n; i++) {
+      const ph = (t * 1.3 + i / n) % 1;
+      const ex = ex0 + ph * span;
+      const ey = cy + Math.sin(ph * 9 + i * 2) * (H * 0.22);
+      const size = Math.max(1.2, Math.min(5, r.d50 / 90));
+      x.fillStyle = r.fines > 16 ? '#d9614f' : r.fines > 8 ? '#d8a13c' : '#2fc2c8';
+      x.beginPath(); x.arc(ex, ey, size, 0, Math.PI * 2); x.fill();
+    }
+    const sx = W * 0.92;
+    x.strokeStyle = '#4a5563'; x.lineWidth = 1;
+    for (let y = 6; y < H - 6; y += 9) { x.beginPath(); x.moveTo(sx - 7, y); x.lineTo(sx + 7, y); x.stroke(); }
+  },
   deep: {
     en: [
       'A mill has exactly one job that matters: it does not make particles a single size, it makes them a distribution. Everyone quotes D50 because it is one number, but the two numbers that actually cause trouble sit at the ends. D90 tells you about the lumps that will not dissolve on time. D10 and the fines fraction tell you about the dust that will not flow, will segregate, and will carry drug into the dust collector.',
@@ -210,6 +237,33 @@ const OP_BLEND = {
     return { tone: 'ok',
       en: `Inside the window: RSD ${r.rsd.toFixed(1)} %, strength retained at ${(r.hardnessFactor * 100).toFixed(0)} %, clean ejection. This is the compromise you would write into the batch record.`,
       zh: `落在窗口內：RSD ${r.rsd.toFixed(1)} %、強度保留 ${(r.hardnessFactor * 100).toFixed(0)} %、脫模乾淨。這就是你會寫進批次紀錄的那個折衷點。` };
+  },
+  /* Live schematic: a tumbling drum of two-colour dots. How intermingled the
+     colours look tracks the live RSD — clustered and separated at high RSD,
+     well interspersed once mixed; dots dim toward brown as lubrication rises. */
+  animate(x, W, H, t, p, r) {
+    const cx = W * 0.34, cy = H * 0.5, R = Math.min(W, H) * 0.32;
+    const spin = t * (p.rpm / 12) * 0.9;
+    x.strokeStyle = '#2e3742'; x.lineWidth = 2;
+    x.beginPath(); x.arc(cx, cy, R, 0, Math.PI * 2); x.stroke();
+    const mixedness = Math.max(0, Math.min(1, 1 - (r.rsd - 1) / 20));
+    const n = 70;
+    for (let i = 0; i < n; i++) {
+      // clustered placement at low mixedness: dots for colour A bias to one
+      // half of the drum; as mixedness rises they spread uniformly
+      const isA = i % 2 === 0;
+      const baseAngle = (i / n) * Math.PI * 2 + spin;
+      const clusterBias = isA ? -0.6 : 0.6;
+      const angle = baseAngle + clusterBias * (1 - mixedness) * 1.2;
+      const rad = R * (0.25 + 0.7 * ((i * 37) % 100) / 100);
+      const px = cx + Math.cos(angle) * rad;
+      const py = cy + Math.sin(angle) * rad * 0.9;
+      const lube = Math.min(1, r.lubNumber / 30);
+      x.fillStyle = isA
+        ? `rgba(47,194,200,${0.9 - lube * 0.3})`
+        : `rgba(150,150,160,${0.85})`;
+      x.beginPath(); x.arc(px, py, 2.6, 0, Math.PI * 2); x.fill();
+    }
   },
   deep: {
     en: [
@@ -314,6 +368,30 @@ const OP_COMPRESS = {
     return { tone: 'ok',
       en: `A good tablet: ${r.hardnessN.toFixed(0)} N, ${r.thick.toFixed(2)} mm thick, disintegrating in ${r.disint.toFixed(0)} s with ${r.friab.toFixed(2)} % friability. Strong enough to ship, loose enough to work.`,
       zh: `一顆好錠劑：硬度 ${r.hardnessN.toFixed(0)} N、厚度 ${r.thick.toFixed(2)} mm、${r.disint.toFixed(0)} 秒崩解、脆碎度 ${r.friab.toFixed(2)} %。強到能出貨，鬆到能作用。` };
+  },
+  /* Live schematic: an upper punch drives down into a die at the turret's
+     cyclic rate, compressing a powder bed into a tablet whose thickness
+     reflects the live porosity; the tablet ejects and a fresh charge refills. */
+  animate(x, W, H, t, p, r) {
+    const cx = W * 0.3, dieTop = H * 0.32, dieBot = H * 0.86, dieHalf = 42;
+    const cycle = (t * (p.turret / 60) * 2) % 1;   // one down-up cycle
+    // punch position: 0 = fully up, 1 = fully down (bottom of stroke)
+    const downFrac = cycle < 0.5 ? Math.sin(cycle * Math.PI) : 0;
+    const tabThickPx = Math.max(6, 30 - r.porosity * 40);
+    const bedTopY = dieBot - tabThickPx;
+    const punchTipY = cycle < 0.5 ? (dieTop + (bedTopY - dieTop) * downFrac) : dieTop;
+    x.strokeStyle = '#4a5563'; x.lineWidth = 2;
+    x.strokeRect(cx - dieHalf, dieTop, dieHalf * 2, dieBot - dieTop);
+    x.fillStyle = r.capping > 0.6 ? 'rgba(217,97,79,.65)' : '#2fc2c8';
+    x.fillRect(cx - dieHalf + 2, bedTopY, dieHalf * 2 - 4, dieBot - bedTopY - 2);
+    x.fillStyle = '#8b95a1';
+    x.fillRect(cx - dieHalf + 3, punchTipY, dieHalf * 2 - 6, 14);
+    // ejected tablet sliding away during the back half of the cycle
+    if (cycle > 0.55) {
+      const slide = (cycle - 0.55) / 0.45;
+      x.fillStyle = r.friab > 1 ? 'rgba(216,161,60,.85)' : '#5fc08a';
+      x.fillRect(cx + dieHalf + 10 + slide * (W * 0.4), dieBot - tabThickPx - 2, 30, tabThickPx);
+    }
   },
   deep: {
     en: [
@@ -445,6 +523,38 @@ const OP_COATING = {
       en: `A clean coat: ${r.filmThick.toFixed(0)} µm film, CV ${r.coatCV.toFixed(1)} %, ${r.timeMin.toFixed(0)} minutes, ${(r.eff * 100).toFixed(0)} % of what you sprayed ended up on a tablet.`,
       zh: `一次乾淨的包衣：膜厚 ${r.filmThick.toFixed(0)} µm、CV ${r.coatCV.toFixed(1)} %、耗時 ${r.timeMin.toFixed(0)} 分鐘，噴出去的有 ${(r.eff * 100).toFixed(0)} % 留在錠劑上。` };
   },
+  /* Live schematic: a rotating pan of tumbling tablets under a spray nozzle;
+     tablets darken toward the target colour as coating time/CV improve, and
+     droplets fall faster with spray rate. */
+  animate(x, W, H, t, p, r) {
+    const cx = W * 0.5, cy = H * 0.56, R = Math.min(W, H) * 0.4;
+    x.strokeStyle = '#2e3742'; x.lineWidth = 2;
+    x.beginPath(); x.ellipse(cx, cy, R, R * 0.62, 0, 0, Math.PI * 2); x.stroke();
+    const spin = t * (p.panRpm / 8) * 1.1;
+    const n = 22;
+    const coatFrac = Math.min(1, (r.filmThick || 0) / 30);
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 + spin;
+      const rad = R * (0.35 + 0.55 * ((i * 53) % 100) / 100);
+      const px = cx + Math.cos(a) * rad;
+      const py = cy + Math.sin(a) * rad * 0.62;
+      const tone = r.sticking > 0.5 ? '217,97,79' : r.orangePeel > 0.5 ? '216,161,60' : '95,192,138';
+      x.fillStyle = '#8b95a1';
+      x.beginPath(); x.arc(px, py, 4, 0, Math.PI * 2); x.fill();
+      x.fillStyle = `rgba(${tone},${0.2 + coatFrac * 0.7})`;
+      x.beginPath(); x.arc(px, py, 4, 0, Math.PI * 2); x.fill();
+    }
+    // spray nozzle + droplets
+    const nx = cx, ny = cy - R * 0.9;
+    x.strokeStyle = '#4a5563'; x.lineWidth = 3;
+    x.beginPath(); x.moveTo(nx, ny - 14); x.lineTo(nx, ny); x.stroke();
+    const dn = 5;
+    for (let i = 0; i < dn; i++) {
+      const ph = (t * (1 + p.spray / 60) * 2 + i / dn) % 1;
+      x.fillStyle = 'rgba(74,143,214,.8)';
+      x.beginPath(); x.arc(nx + (i - dn / 2) * 5, ny + ph * (cy - ny - 10), 2, 0, Math.PI * 2); x.fill();
+    }
+  },
   deep: {
     en: [
       'A pan coater is the same physics as the Wurster, arranged differently and with a much worse statistical starting point. In a Wurster every particle is forced through the spray zone in a near-identical trajectory; in a pan, tablets tumble and only the ones currently at the bed surface get sprayed. Whether any given tablet gets its fair share is a matter of probability, and probability needs repetitions to converge.',
@@ -563,6 +673,39 @@ const OP_DISSOL = {
       en: `f2 is ${r.f2.toFixed(0)}. The profiles are similar with comfortable margin. Note that a comfortable f2 in one medium proves very little — the guidance asks for four.`,
       zh: `f2 為 ${r.f2.toFixed(0)}。兩條曲線相似且餘裕充足。但請注意，在單一介質中漂亮的 f2 證明不了什麼——指引要求四種介質。` };
   },
+  /* Live schematic: a paddle rotates in a vessel of medium around a
+     dissolving unit whose radius shrinks in real time using the same Td/lag/b
+     Weibull parameters as the analytical curve, so the picture and the
+     Q-at-15/30 readouts are the same model, not two different ones. */
+  animate(x, W, H, t, p, r) {
+    const cx = W * 0.5, top = H * 0.1, bot = H * 0.92, halfW = W * 0.22;
+    x.strokeStyle = '#2e3742'; x.lineWidth = 2;
+    x.beginPath();
+    x.moveTo(cx - halfW, top); x.lineTo(cx - halfW, bot - 14);
+    x.quadraticCurveTo(cx - halfW, bot, cx - halfW + 14, bot);
+    x.lineTo(cx + halfW - 14, bot);
+    x.quadraticCurveTo(cx + halfW, bot, cx + halfW, bot - 14);
+    x.lineTo(cx + halfW, top);
+    x.stroke();
+    x.fillStyle = 'rgba(74,143,214,.10)';
+    x.fillRect(cx - halfW, top + 8, halfW * 2, bot - top - 8);
+    // paddle shaft + blade rotating at rpm
+    const spin = t * (p.rpm / 30) * Math.PI * 2;
+    const midY = (top + bot) / 2;
+    x.strokeStyle = '#8b95a1'; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(cx, top - 8); x.lineTo(cx, midY); x.stroke();
+    x.save(); x.translate(cx, midY); x.rotate(spin);
+    x.fillStyle = '#8b95a1'; x.fillRect(-26, -3, 52, 6);
+    x.restore();
+    // dissolving unit: radius shrinks over a repeating 60-second-scaled loop
+    // using the same Weibull shape as solve(), so bench and chart agree
+    const loopT = (t * 6) % 60;                      // compress ~60 min into a loop
+    const ttL = Math.max(0, loopT - r.lag);
+    const pct = 100 * (1 - Math.exp(-Math.pow(ttL / Math.max(r.Td, 0.5), r.b)));
+    const rad = Math.max(2, 16 * (1 - pct / 100));
+    x.fillStyle = '#2fc2c8';
+    x.beginPath(); x.arc(cx, bot - 26, rad, 0, Math.PI * 2); x.fill();
+  },
   deep: {
     en: [
       'Dissolution is the only test in this whole site that is simultaneously a quality control check, a development tool and a regulatory substitute for a clinical trial, and it behaves differently in each role. As a QC check it only has to detect a batch that has gone wrong. As a development tool it has to discriminate — to change when the formulation changes — which is the opposite of a method designed to pass. As a regulatory bridge it has to do both while being reproducible in someone else\'s laboratory.',
@@ -659,6 +802,40 @@ const OP_HOMOG = {
     return { tone: 'ok',
       en: `A stable emulsion: d₃₂ ${r.d32.toFixed(0)} nm, polydispersity ${r.pdi.toFixed(2)}, creaming ${r.vCream.toFixed(2)} mm per day. Fine enough to hold, narrow enough to defend against a reference profile.`,
       zh: `一個穩定的乳劑：d₃₂ 為 ${r.d32.toFixed(0)} nm、多分散度 ${r.pdi.toFixed(2)}、乳析速率每天 ${r.vCream.toFixed(2)} mm。細到能維持懸浮，窄到足以對參考曲線提出辯護。` };
+  },
+  /* Live schematic: a coarse oil droplet on the left is forced through a
+     narrow homogenising valve and emerges as a cloud of small droplets
+     sized off the live d32 — and, when surfactant-starved, some visibly
+     recoalesce on the right, matching the 'extra pressure makes it worse'
+     verdict rather than just asserting it in text. */
+  animate(x, W, H, t, p, r) {
+    const midY = H * 0.55, gapX = W * 0.42;
+    x.strokeStyle = '#2e3742'; x.lineWidth = 2;
+    x.beginPath(); x.moveTo(gapX - 10, midY - 34); x.lineTo(gapX, midY - 6); x.lineTo(gapX, midY + 6); x.lineTo(gapX - 10, midY + 34); x.stroke();
+    x.beginPath(); x.moveTo(gapX + 10, midY - 34); x.lineTo(gapX, midY - 6); x.lineTo(gapX, midY + 6); x.lineTo(gapX + 10, midY + 34); x.stroke();
+    const starved = r.coverage < 1;
+    const dSize = Math.max(1.4, Math.min(7, r.d32 / 130));
+    const n = 10;
+    for (let i = 0; i < n; i++) {
+      const ph = (t * (0.4 + p.pressure / 900) + i / n) % 1;
+      if (ph < 0.42) {
+        const ex = 12 + ph / 0.42 * (gapX - 24);
+        x.fillStyle = 'rgba(216,161,60,.85)';
+        x.beginPath(); x.arc(ex, midY + Math.sin(i) * 14, 9, 0, Math.PI * 2); x.fill();
+      } else {
+        const past = (ph - 0.42) / 0.58;
+        const ex = gapX + past * (W - gapX - 16);
+        const jitter = Math.sin(i * 3 + t * 2) * 10;
+        // starved case: droplets drift back together (recoalescence) as they travel right
+        const merge = starved ? past * 0.5 : 0;
+        for (let k = 0; k < (starved ? 2 : 4); k++) {
+          const cx2 = ex + k * (starved ? (3 - merge * 6) : 7);
+          const cy2 = midY + jitter + k * (starved ? (3 - merge * 6) : 6) - 8;
+          x.fillStyle = starved ? 'rgba(217,97,79,.8)' : 'rgba(47,194,200,.85)';
+          x.beginPath(); x.arc(cx2, cy2, dSize, 0, Math.PI * 2); x.fill();
+        }
+      }
+    }
   },
   deep: {
     en: [

@@ -18,7 +18,7 @@ This site closes that gap in one continuous chain, on one molecule, from a line 
 | 02 | **Pathway engine** | A four-question decision tree across 505(b)(1) / 505(b)(2) / ANDA 505(j) / 351(k), plus an exclusivity-and-entry clock, a programme-economics model built on FY2026 statutory user fees, an FDA/EMA/TFDA jurisdiction context layer, and a patent-life/litigation status panel. |
 | 03 | **Product dossier** | Molecule-aware for all 21 products, driven by whichever row is selected in the screener. Linaclotide (LINZESS, NDA 202811) is the hand-researched flagship: regulatory reading, QTPP, formulation design target, CQA register, analytical package, phased development plan with gates. The other 20 get an honestly-labelled *generated framework* built from the same verified screening data. |
 | 04 | **Pilot batch coach** | A step-by-step Wurster drug-layering protocol for linaclotide whose quantities recalculate from batch size, with parameter rationales, in-process controls, decision branches, and a troubleshooting engine. For the other 20 products, a generated process-step overview keyed to their own unit operations, with a link to the process lab for real numeric exploration. |
-| 05 | **Process lab** | Seven live machines from the real manufacturing chain. Move a slider and equations decide what comes out — including what goes wrong and what you would see on the bench when it does. Every machine now offers a downloadable protocol sheet and, when a setting drifts into failure territory, a popup naming the comparison experiment that would isolate the cause. |
+| 05 | **Process lab** | Twelve live stations: the fluid bed and six unit operations that make the batch, plus five analytical instruments (HPLC, DSC, Karl Fischer, laser diffraction PSD, FTIR) that measure it, all in one tab shell. Move a slider and a live schematic, a set of readouts and a plain-language verdict all respond together — including what goes wrong and what you would see on the bench when it does. Every station offers a downloadable protocol sheet and, when a setting drifts into failure territory, a popup naming the comparison experiment that would isolate the cause. |
 | 06 | **Transfer & validation** | URS → DQ → FAT/SAT → IQ/OQ/PQ → PPQ → CPV, plus a seven-point gap assessment for technology transfer. |
 
 Fully bilingual (English / 繁體中文) with a single toggle — every panel, every rationale, every alert.
@@ -98,6 +98,7 @@ data/protocol.js      linaclotide pilot batch protocol + troubleshooting engine
 data/protocolTemplates.js generated step overview for the other 20 products
 data/fluidbed.js      fluid-bed physics, knob dictionary, scenarios, validation content
 data/unitops.js       six unit-operation models, controls, verdicts and teaching notes
+data/instruments.js   five analytical instruments, same shape as unitops.js
 data/labTroubleshoot.js   comparison-experiment suggestions for process-lab failure states
 data/dosageforms.js   what each product physically is, and why the form decides how it is made
 assets/forms.js       eleven dosage-form drawings
@@ -129,7 +130,7 @@ The general lesson, kept here deliberately: a headless DOM cannot tell you what 
 
 ## The process lab
 
-Seven machines, each with its own model, its own chart, and a plain-language verdict that tells you what you would actually see if you ran those settings.
+Twelve stations, each with its own model, its own live animated schematic, and a plain-language verdict that tells you what you would actually see if you ran those settings. The first seven are the machines that make the batch; the last five are the instruments that measure it.
 
 | Machine | What you control | What breaks |
 |---|---|---|
@@ -141,12 +142,22 @@ Seven machines, each with its own model, its own chart, and a plain-language ver
 | **Dissolution testing** | Apparatus, rpm, medium, pH dependence, plus particle size, hardness and coating carried over | f2 failure, and the f2 validity rule most people get wrong |
 | **Homogenisation** | Pressure, passes, oil phase, surfactant, temperature | Surfactant starvation, where more pressure makes it worse |
 
-Three of the operations deliberately share variables. Particle size from the mill, tablet strength from the press and coating level from the coater all reappear as inputs to the dissolution test — so a decision made in one machine shows up as a regulatory result in another. That is the argument of the whole site, made operable.
+| Instrument | What you control | What breaks |
+|---|---|---|
+| **HPLC** | Flow rate, column length, mobile-phase % organic, injection volume | Poor resolution, retention too close to the dead volume |
+| **DSC** | Heating rate, sample mass, start/end temperature | Thermal lag smearing and shifting the melting endotherm |
+| **Karl Fischer titrator** | Sample mass, titrant titer, stir rate | Titrant volume below reliable burette resolution, drifting endpoint |
+| **Laser diffraction PSD** | Dispersion pressure, obscuration | Unbroken agglomerates, attrition-created artificial fines, multiple scattering |
+| **FTIR spectrometer** | Co-added scans, spectral resolution, ATR contact pressure | Poor ATR contact, excessive crystal pressure, noisy spectrum |
 
-Two failure modes are worth finding on purpose:
+Three of the unit operations deliberately share variables. Particle size from the mill, tablet strength from the press and coating level from the coater all reappear as inputs to the dissolution test — so a decision made in one machine shows up as a regulatory result in another. That is the argument of the whole site, made operable.
+
+Two failure modes among the machines are worth finding on purpose:
 
 - **Blending** is the only operation here whose objective function is not monotonic. Uniformity improves, then over-lubrication quietly destroys the tablet. There is a usable window and the chart shades it.
 - **Homogenisation** has a turning point. Below a certain surfactant level, extra pressure creates interface faster than the surfactant can stabilise it, and the droplets get *bigger*. The chart shows the ideal curve alongside the real one so you can see them separate.
+
+The instruments have their own version of the same idea: HPLC resolution falls off on both sides of an optimal flow rate (too slow loses time to diffusion, too fast loses plates to mass-transfer resistance), and the particle size analyzer's D50 is biased high at low dispersion pressure (unbroken agglomerates) and biased low at high pressure (attrition creating fines that were never in the powder) — the same "measurement artefact, not the real material" trap the mill's own fines readout is teaching two stations earlier.
 
 ## The physics engines
 
