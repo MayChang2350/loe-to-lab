@@ -971,6 +971,48 @@ function renderFbControls() {
 
 let lastSolve = null;
 
+/* Same idea as buildOpSheet(), for the fluid bed — built separately because
+   the fluid bed's controls and readouts are not driven through the generic
+   op.controls/readouts() shape the other six simulators share. */
+function buildFbSheet() {
+  const L = LANG === 'zh';
+  const line = (k, v) => `${k.padEnd(34, ' ')} ${v}`;
+  const lines = [];
+  lines.push(t(UI.fb.title) + ' (' + fb.mode + ') — ' + (L ? '中試實驗記錄表' : 'Pilot Experiment Record'));
+  lines.push('='.repeat(60));
+  lines.push('');
+  lines.push((L ? '日期：______________' : 'Date: ______________') + '    ' + (L ? '操作者：______________' : 'Operator: ______________'));
+  lines.push((L ? '批號／實驗編號：______________________________' : 'Batch / experiment ID: ______________________________'));
+  lines.push('');
+  lines.push(L ? '模擬器設定值（複製到實際設備）：' : 'Simulator settings (replicate on the real equipment):');
+  lines.push('-'.repeat(60));
+  Object.keys(FB_RANGE).forEach(k => {
+    if (k === 'gap' && fb.mode !== 'wurster') return;
+    const knob = FB_KNOBS.find(x => x.id === k);
+    const label = knob ? t(knob.name) : k;
+    lines.push(line('  ' + (L ? '參數：' : 'Param: ') + label, fb[k] + ' ' + FB_RANGE[k][3]));
+  });
+  lines.push('');
+  if (lastSolve) {
+    const r = lastSolve;
+    lines.push(L ? '模型預測讀值 vs. 實測值：' : 'Model-predicted readouts vs. what you actually measure:');
+    lines.push('-'.repeat(60));
+    [['Product temp', r.Tprod.toFixed(1), '°C'], ['Outlet air', r.Tout.toFixed(1), '°C'],
+     ['Outlet RH', r.rhOut.toFixed(0), '%'], ['Outlet dew pt', r.dpOut.toFixed(1), '°C'],
+     ['U_mf', r.Umf.toFixed(3), 'm/s'], ['U_t', r.Ut.toFixed(2), 'm/s'],
+     ['Superficial U', r.Usup.toFixed(2), 'm/s']].forEach(([k, v, u]) =>
+      lines.push(line(`  ${k}`, `predicted ${v} ${u}   |   actual: ______________`)));
+  }
+  lines.push('');
+  lines.push(L ? '現場觀察（自行填寫）：' : 'Bench observations (fill in as you go):');
+  for (let i = 0; i < 4; i++) lines.push('  _______________________________________________________');
+  lines.push('');
+  lines.push(L
+    ? '非驗證文件——由教學用模擬器產生，僅供記錄實測數字之用。正式批次紀錄請見「4. 中試批」章節。'
+    : 'Not a validated document — generated from a teaching simulator, for recording real numbers only. See section 4 (Pilot Batch) for a real batch-record format.');
+  return lines.join('\n');
+}
+
 function fbUpdate() {
   const r = fbSolve(fb);
   lastSolve = r;
@@ -1471,6 +1513,70 @@ function renderOp() {
   updateOp();
 }
 
+/* Trigger a plain-text file download via a blob URL. No-ops safely where
+   Blob/URL are unavailable (e.g. the headless test sandbox) rather than
+   throwing, since this is a progressive-enhancement feature, not core
+   functionality the page depends on. */
+function downloadText(filename, text) {
+  if (typeof Blob === 'undefined' || typeof URL === 'undefined' || !URL.createObjectURL) return false;
+  try {
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+    return true;
+  } catch (e) { return false; }
+}
+
+/* Build a printable pilot-experiment record for the currently-configured
+   process-lab unit operation: the model's own settings and readouts, laid
+   out as blanks a researcher fills in while actually running the
+   equivalent bench or pilot experiment. Not a validated protocol — a
+   record sheet for replicating what the simulator is modelling. */
+function buildOpSheet(op, st, r) {
+  const L = LANG === 'zh';
+  const line = (k, v) => `${k.padEnd(34, ' ')} ${v}`;
+  const lines = [];
+  lines.push(t(op.name) + ' — ' + (L ? '中試實驗記錄表' : 'Pilot Experiment Record'));
+  lines.push('='.repeat(60));
+  lines.push('');
+  lines.push((L ? '日期：______________' : 'Date: ______________') + '    ' + (L ? '操作者：______________' : 'Operator: ______________'));
+  lines.push((L ? '批號／實驗編號：______________________________' : 'Batch / experiment ID: ______________________________'));
+  lines.push('');
+  lines.push(L ? '模擬器設定值（複製到實際設備）：' : 'Simulator settings (replicate on the real equipment):');
+  lines.push('-'.repeat(60));
+  op.controls.forEach(c => {
+    let v;
+    if (c.type === 'select') {
+      const opt = (c.options || []).find(o => o.v === +st[c.id]);
+      v = opt ? t(opt.l) : st[c.id];
+    } else {
+      v = st[c.id] + ' ' + (c.unit || '');
+    }
+    lines.push(line((L ? '  參數：' : '  Param: ') + t(c.label), v));
+  });
+  lines.push('');
+  lines.push(L ? '模型預測讀值 vs. 實測值：' : 'Model-predicted readouts vs. what you actually measure:');
+  lines.push('-'.repeat(60));
+  op.readouts(r).forEach(o => {
+    lines.push(line(`  ${o.k}`, `predicted ${o.v} ${o.u || ''}   |   actual: ______________`));
+  });
+  lines.push('');
+  const v = op.verdict(r);
+  lines.push(L ? '模型判讀：' : 'Model reading:');
+  lines.push('  ' + (L ? v.zh : v.en));
+  lines.push('');
+  lines.push(L ? '現場觀察（自行填寫）：' : 'Bench observations (fill in as you go):');
+  for (let i = 0; i < 4; i++) lines.push('  _______________________________________________________');
+  lines.push('');
+  lines.push(L
+    ? '非驗證文件——由教學用模擬器產生，僅供記錄實測數字之用。正式批次紀錄請見「4. 中試批」章節。'
+    : 'Not a validated document — generated from a teaching simulator, for recording real numbers only. See section 4 (Pilot Batch) for a real batch-record format.');
+  return lines.join('\n');
+}
+
 function updateOp() {
   const op = currentOp(); if (!op) return;
   const st = opState[op.id];
@@ -1882,7 +1988,13 @@ document.addEventListener('DOMContentLoaded', () => {
     op.controls.forEach(c => opState[op.id][c.id] = c.def);
     renderOp();
   };
+  $('#opDownload').onclick = () => {
+    const op = currentOp(); if (!op) return;
+    const st = opState[op.id];
+    downloadText(`${op.id}-protocol-sheet.txt`, buildOpSheet(op, st, op.solve(st)));
+  };
   $('#fbReset').onclick = () => { fb = { ...FB_BASE }; activeScenario = null; renderFbControls(); initParticles(); fbUpdate(); renderScenarios(); };
+  $('#fbDownload').onclick = () => downloadText(`fluidbed-${fb.mode}-protocol-sheet.txt`, buildFbSheet());
 
   $('#mapBtn').onclick = () => { const o = $('#mapOverlay'); if (o) o.remove(); openMap(); };
 

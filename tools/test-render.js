@@ -370,6 +370,15 @@ try {
   sl.value = 70; sl.dispatchEvent({ type: 'input', target: sl });
   chk('moving a fluid-bed slider updates alerts', n('#fbAlerts') >= 1);
 
+  const buildFbSheet = vm.runInContext('buildFbSheet', sandbox);
+  const fbSheet = buildFbSheet();
+  chk('fluid bed protocol sheet has settings + readouts + blanks',
+    fbSheet.includes('Date:') && fbSheet.includes('actual:') && fbSheet.includes('___'));
+  chk('fluid bed protocol sheet is clean', bad(fbSheet).length === 0, bad(fbSheet).join(','));
+  let fbThrew = false;
+  try { $('#fbDownload').click(); } catch (e) { fbThrew = true; }
+  chk('fluid bed download button does not throw without Blob support', !fbThrew);
+
   rep.push('=== each unit operation ===');
   const tabs = doc.querySelectorAll('#labTabs .labtab');
   const expectCtl = { psd: 4, blend: 5, compress: 6, coating: 8, dissol: 8, homog: 5 };
@@ -422,6 +431,19 @@ try {
     $('#opReset').click();
     const hits = bad($('#opReadouts').textContent + $('#opVerdict').textContent);
     chk(`${id}: clean numbers`, hits.length === 0, hits.join(','));
+
+    // downloadable protocol sheet: must build clean, complete text and the
+    // button must not throw even though Blob/URL don't exist in this sandbox
+    const opObj = vm.runInContext('currentOp()', sandbox);
+    const stObj = vm.runInContext(`opState['${id}']`, sandbox);
+    const buildOpSheet = vm.runInContext('buildOpSheet', sandbox);
+    const sheet = buildOpSheet(opObj, stObj, opObj.solve(stObj));
+    chk(`${id}: protocol sheet has settings + readouts + blanks`,
+      sheet.includes('Date:') && sheet.includes('actual:') && sheet.includes('___'));
+    chk(`${id}: protocol sheet is clean`, bad(sheet).length === 0, bad(sheet).join(','));
+    let threw = false;
+    try { $('#opDownload').click(); } catch (e) { threw = true; }
+    chk(`${id}: download button does not throw without Blob support`, !threw);
   });
   tabs[0].click();
   chk('back to fluid bed', $('#fbStage').hidden === false);
