@@ -168,7 +168,7 @@ function renderTable() {
     tr.onclick = () => {
       selectedMol = m.id;
       renderTable(); renderDetail(m, row); renderCapsule();
-      renderDossier(); renderProtocol();
+      renderDossier(); renderProtocol(); renderLitigation();
       $('#molDetail').scrollIntoView({ block: 'nearest' });
     };
     body.appendChild(tr);
@@ -492,6 +492,32 @@ function renderJurisdiction() {
   const j = JURISDICTIONS[selectedJurisdiction];
   $('#jurNote').innerHTML = `<b>${esc(t(j.agency))} — ${esc(t(j.body))}</b>${esc(t(j.note))}`;
   $('#jurLinks').innerHTML = j.links.map(l => `<a class="link-chip" href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join('');
+}
+
+/* Patent life / litigation status for the currently-selected molecule.
+   Everything shown is already-verified data from molecules.js (entryBasis,
+   legalRisk) — this is a presentation, not a new research claim. Coverage
+   is U.S.-only, which is stated explicitly rather than papered over with
+   invented Taiwan/EU litigation events. */
+function renderLitigation() {
+  const box = $('#litStatus'); if (!box) return;
+  const m = MOLECULES.find(x => x.id === selectedMol) || MOLECULES[0];
+  const riskWord = m.legalRisk <= 2 ? t(UI.lit.clean) : (m.legalRisk >= 4 ? t(UI.lit.active) : t(UI.lit.moderate));
+  let dots = '<span class="sev">'; for (let i = 1; i <= 5; i++) dots += `<i class="${i <= m.legalRisk ? 'f' : ''}"></i>`; dots += '</span>';
+  box.innerHTML = `
+    <div class="dp-head">
+      <div class="dp-title"><b>${esc(m.brand)}</b><span>${esc(t(m.inn))}</span></div>
+      <div class="dp-score"><b>${dots}</b><span>${esc(riskWord.toUpperCase())}</span></div>
+    </div>
+    <dl class="kv">
+      <dt>${esc(t(UI.pw.result))}</dt><dd><b class="mono">${esc(m.entryDate)}</b></dd>
+    </dl>
+    <div class="callout"><b>${esc(t(UI.common.thesisLbl))}</b>${esc(t(m.entryBasis))}</div>`;
+  $('#litLinks').innerHTML = [
+    { t: t(UI.pw.litLinkUS), u: 'https://www.accessdata.fda.gov/scripts/cder/ob/index.cfm' },
+    { t: t(UI.pw.litLinkTW), u: 'https://www.tipo.gov.tw/en/tipo2' },
+    { t: t(UI.pw.litLinkEU), u: 'https://worldwide.espacenet.com/?locale=en_EP' }
+  ].map(l => `<a class="link-chip" href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join('');
 }
 
 let treeNode = PATHWAY_TREE.start;
@@ -1805,6 +1831,7 @@ function renderAll() {
   renderTable();
   renderCapsule();
   renderJurisdiction();
+  renderLitigation();
   renderTree();
   renderClockControls(); drawClock();
   renderCostControls(); renderCost();

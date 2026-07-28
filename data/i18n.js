@@ -6,7 +6,7 @@ const UI = {
 
   siteTitle:   { en: 'From Patent Cliff to Pilot Batch', zh: '從專利懸崖到中試批' },
   siteSub:     { en: 'A CDMO decision chain, end to end', zh: '一條 CDMO 決策鏈，從頭到尾' },
-  byline:      { en: 'May Chang · Bora Pharmaceuticals / TWi · Summer Internship 2026', zh: 'May Chang · 保瑞藥業／安成生技 · 2026 暑期實習' },
+  byline:      { en: 'May Chang · Bora Pharmaceuticals / TWi · R&D Summer Internship 2026', zh: 'May Chang · 保瑞藥業／安成生技 · 2026 R&D暑期實習' },
 
   nav: {
     thesis:   { en: 'Premise', zh: '前提' },
@@ -96,7 +96,20 @@ const UI = {
     clockTitle: { en: 'Exclusivity and entry clock', zh: '專屬權與進場時鐘' },
     clockLead: { en: 'Patents and regulatory exclusivities run on separate clocks and are read separately. Set the inputs and see which one is actually binding.', zh: '專利與法規專屬權各自獨立計時、獨立判讀。設定輸入值，看看真正產生拘束力的是哪一個。' },
     costTitle: { en: 'Programme economics', zh: '專案經濟效益' },
-    costLead:  { en: 'FY2026 statutory user fees, development cost, and a price-erosion curve driven by competitor count rather than by time.', zh: '2026 會計年度法定使用者費用、開發成本，以及由競爭者數量而非時間驅動的價格侵蝕曲線。' }
+    costLead:  { en: 'FY2026 statutory user fees, development cost, and a price-erosion curve driven by competitor count rather than by time.', zh: '2026 會計年度法定使用者費用、開發成本，以及由競爭者數量而非時間驅動的價格侵蝕曲線。' },
+    jurLabel:  { en: 'Which regulator are you filing with?', zh: '你要向哪個主管機關送件？' },
+    litTitle:  { en: 'Patent life and litigation status', zh: '專利存續期與訴訟狀態' },
+    litLead:   { en: 'What the screening snapshot actually says about this molecule\'s patent and litigation position, for the product currently selected in the screener.', zh: '目前於篩選器中選取的產品，其專利與訴訟狀態在篩選快照中的實際記載。' },
+    litScope:  { en: 'Litigation and settlement tracking in this snapshot is U.S.-only (Orange Book / Paragraph IV filings and settlement disclosures). Taiwan and EU patent status are NOT tracked here — use the official registers linked above to check them directly for any molecule before a decision gate.', zh: '本快照的訴訟與和解追蹤僅涵蓋美國（Orange Book／Paragraph IV 申請與和解揭露）。台灣與歐盟的專利狀態「未」於此追蹤——任何決策關卡前，請使用上方連結的官方資料庫直接查詢。' },
+    litLinkUS: { en: 'US — Orange Book patent listing', zh: '美國——Orange Book 專利清單' },
+    litLinkTW: { en: 'Taiwan — TIPO patent search', zh: '台灣——TIPO 專利檢索' },
+    litLinkEU: { en: 'Europe — Espacenet / EPO register', zh: '歐洲——Espacenet／EPO 專利註冊簿' }
+  },
+
+  lit: {
+    clean: { en: 'clean', zh: '乾淨' },
+    moderate: { en: 'moderate', zh: '中等' },
+    active: { en: 'active litigation risk', zh: '活躍訴訟風險' }
   },
 
   /* --- Dossier --- */

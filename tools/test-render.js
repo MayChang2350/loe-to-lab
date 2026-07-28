@@ -55,6 +55,10 @@ chk('jurisdiction chips = 3', n('#jurChips') === 3, `got ${n('#jurChips')}`);
 chk('jurisdiction note populated', $('#jurNote').textContent.length > 60);
 chk('jurisdiction links >= 3', doc.querySelectorAll('#jurLinks a').length >= 3, `got ${doc.querySelectorAll('#jurLinks a').length}`);
 chk('jurisdiction links are https', [...doc.querySelectorAll('#jurLinks a')].every(a => (a.getAttribute('href') || '').startsWith('https://')));
+chk('litigation status populated', $('#litStatus').textContent.length > 60);
+chk('litigation status names the selected product', $('#litStatus').textContent.includes('LINZESS'));
+chk('litigation links = 3 (US/TW/EU)', doc.querySelectorAll('#litLinks a').length === 3, `got ${doc.querySelectorAll('#litLinks a').length}`);
+chk('litigation links are https', [...doc.querySelectorAll('#litLinks a')].every(a => (a.getAttribute('href') || '').startsWith('https://')));
 chk('clock bars >= 4', n('#clockChart') >= 4, `got ${n('#clockChart')}`);
 chk('clock verdict text', $('#clockVerdict').textContent.length > 60);
 chk('cost readouts = 6', n('#costOut') === 6, `got ${n('#costOut')}`);
@@ -237,6 +241,7 @@ try {
     linRow.click();
   }
   chk('zh: jurisdiction note is Chinese', /[一-鿿]/.test($('#jurNote').textContent));
+  chk('zh: litigation status is Chinese', /[一-鿿]/.test($('#litStatus').textContent));
   chk('zh: nothing left invisible after a re-render',
     doc.querySelectorAll('.reveal').every(n => n.classList.contains('in')),
     `${doc.querySelectorAll('.reveal').filter(n => !n.classList.contains('in')).length} stuck at opacity 0`);
@@ -313,6 +318,7 @@ try {
     // dossier + protocol must follow the row click for every product, not
     // just linaclotide — this is the point of request #7
     if (!$('#ddHeader').textContent.includes(m.brand)) figFails.push(m.id + ':dossier-not-selected');
+    if (!$('#litStatus').textContent.includes(m.brand)) figFails.push(m.id + ':litigation-not-selected');
     const ddDirty = bad($('#ddCqa').innerHTML + $('#ddReg').innerHTML + $('#ddPlan').innerHTML + $('#ddQtpp').innerHTML + $('#ddAna').innerHTML);
     if (ddDirty.length) figFails.push(m.id + ':dossier-dirty:' + ddDirty.join(','));
     const prDirty = bad(($('#prOverview') ? $('#prOverview').innerHTML : '') + ($('#steps') ? $('#steps').innerHTML : ''));
