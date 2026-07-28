@@ -515,6 +515,27 @@ try {
   chk('column toggle collapses to 5', n('#molHead') === 5);
   h = bad(doc.body.textContent);
   chk('post-interaction: no undefined / NaN', h.length === 0, h.join(','));
+
+  rep.push('=== instrument bench ===');
+  const instrCards = doc.querySelectorAll('.instr-card');
+  chk('instrument cards = 6', instrCards.length === 6, `got ${instrCards.length}`);
+  chk('instrument cards have no undefined / NaN', bad(doc.querySelector('#instrGrid').textContent).length === 0);
+  const card0 = instrCards[0];
+  chk('card has a name', card0.querySelector('h4').textContent.trim().length > 0);
+  chk('card has a use description', card0.querySelector('.instr-use').textContent.length > 20);
+  chk('card has 3 usage steps', card0.querySelectorAll('.instr-steps ol li').length === 3);
+  chk('card not playing before click', !card0.classList.contains('playing'));
+  card0.querySelector('.instr-play').click();
+  chk('card enters playing state on click', card0.classList.contains('playing'));
+  chk('steps unhidden on click', card0.querySelector('.instr-steps').hidden === false);
+  card0.querySelector('.instr-play').click();
+  chk('card exits playing state on second click', !card0.classList.contains('playing'));
+  vm.runInContext('LANG = "zh"; renderAll();', sandbox);
+  const zhCards = doc.querySelectorAll('.instr-card');
+  chk('zh: instrument cards still = 6', zhCards.length === 6, `got ${zhCards.length}`);
+  chk('zh: instrument bench has Chinese text', /[一-鿿]/.test(doc.querySelector('#instrGrid').textContent));
+  chk('zh: instrument bench has no undefined / NaN', bad(doc.querySelector('#instrGrid').textContent).length === 0);
+  vm.runInContext('LANG = "en"; renderAll();', sandbox);
 } catch (e) { chk('interaction threw', false, e.stack.split('\n').slice(0, 3).join(' | ')); }
 
 console.log(rep.join('\n'));
