@@ -100,11 +100,17 @@ let weights = { ...DEFAULT_WEIGHTS };
 let selectedMol = 'linaclotide';
 
 const PRESETS = {
-  cdmo:   { market: 20, timing: 25, legal: 15, barrier: 22, exec: 10, competition: 20, fit: 15 },
-  volume: { market: 35, timing: 20, legal: 12, barrier: 3,  exec: 22, competition: 5,  fit: 10 },
-  risk:   { market: 12, timing: 20, legal: 28, barrier: 8,  exec: 25, competition: 15, fit: 12 },
-  flat:   { market: 15, timing: 15, legal: 15, barrier: 15, exec: 15, competition: 15, fit: 15 }
+  cdmo:   { market: 20, timing: 25, legal: 15, apiAvail: 8, peptideRepro: 7, rdDifficulty: 7, exec: 10, competition: 20, fit: 15 },
+  volume: { market: 35, timing: 20, legal: 12, apiAvail: 1, peptideRepro: 1, rdDifficulty: 1, exec: 22, competition: 5,  fit: 10 },
+  risk:   { market: 12, timing: 20, legal: 28, apiAvail: 3, peptideRepro: 2, rdDifficulty: 3, exec: 25, competition: 15, fit: 12 },
+  flat:   { market: 15, timing: 15, legal: 15, apiAvail: 5, peptideRepro: 5, rdDifficulty: 5, exec: 15, competition: 15, fit: 15 }
 };
+
+// The old single "technical barrier" weight is now three specific sliders
+// (API availability & price, peptide/molecule reproduction, R&D difficulty).
+// Grouped visually under one label so it still reads as one concept with
+// three knobs, not three unrelated weights.
+const BARRIER_GROUP = ['apiAvail', 'peptideRepro', 'rdDifficulty'];
 
 function renderWeightUI() {
   const p = $('#presets'); p.innerHTML = '';
@@ -117,7 +123,11 @@ function renderWeightUI() {
 
   const box = $('#wSliders'); box.innerHTML = '';
   Object.keys(DEFAULT_WEIGHTS).forEach(k => {
-    const row = el('div', 'wrow');
+    if (k === BARRIER_GROUP[0]) {
+      const group = el('div', 'wgroup-label', esc(t(UI.scr.barrierGroupLabel)));
+      box.appendChild(group);
+    }
+    const row = el('div', BARRIER_GROUP.includes(k) ? 'wrow wrow-sub' : 'wrow');
     row.innerHTML = `<div class="wrow-top"><label>${esc(t(UI.scr.w[k]))}</label><span class="v">${weights[k]}</span></div>`;
     const inp = el('input'); inp.type = 'range'; inp.min = 0; inp.max = 40; inp.step = 1; inp.value = weights[k];
     inp.oninput = () => {
@@ -2202,7 +2212,10 @@ function buildExtraPage(kind) {
     <div class="panel">
       <h3>${esc(t(P.galleryTitle))}</h3>
       <div class="photo-gallery">
-        ${Array.from({ length: 6 }).map(() => `<div class="photo-slot" aria-hidden="true"></div>`).join('')}
+        ${Array.from({ length: 6 }).map((_, i) => `<div class="photo-slot">
+          <img src="assets/photos/reflection-${i + 1}.jpg" alt=""
+            onerror="this.parentElement.classList.add('empty');this.remove();">
+        </div>`).join('')}
       </div>
       <p class="fine">${esc(t(P.galleryNote))}</p>
     </div>

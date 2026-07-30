@@ -71,14 +71,17 @@ const UI = {
       flat:  { en: 'Everything equal', zh: '全部等權' }
     },
     w: {
-      market:      { en: 'Market size', zh: '市場規模' },
-      timing:      { en: 'Entry timing fit', zh: '進場時機契合度' },
-      legal:       { en: 'Low legal risk', zh: '低法律風險' },
-      barrier:     { en: 'Technical barrier (deters rivals)', zh: '技術門檻（嚇阻競爭者）' },
-      exec:        { en: 'Low execution risk', zh: '低執行風險' },
-      competition: { en: 'Empty field', zh: '賽道空曠' },
-      fit:         { en: 'Capability fit', zh: '能力契合度' }
+      market:       { en: 'Market size', zh: '市場規模' },
+      timing:       { en: 'Entry timing fit', zh: '進場時機契合度' },
+      legal:        { en: 'Low legal risk', zh: '低法律風險' },
+      apiAvail:     { en: 'API availability & price', zh: 'API 可得性與價格' },
+      peptideRepro: { en: 'Peptide / molecule reproduction difficulty', zh: '胜肽／分子複製難度' },
+      rdDifficulty: { en: 'R&D & analytical difficulty', zh: '研發與分析難度' },
+      exec:         { en: 'Low execution risk', zh: '低執行風險' },
+      competition:  { en: 'Empty field', zh: '賽道空曠' },
+      fit:          { en: 'Capability fit', zh: '能力契合度' }
     },
+    barrierGroupLabel: { en: 'Technical barrier (deters rivals)', zh: '技術門檻（嚇阻競爭者）' },
     barrierNote: {
       en: 'Technical difficulty appears twice, with opposite signs. It keeps competitors out, and it may keep you out too. Screeners that use a single "complexity" number cannot express that, and end up recommending either commodity tablets or things nobody can make.',
       zh: '技術難度出現兩次，符號相反。它把競爭者擋在外面，也可能把你擋在外面。使用單一「複雜度」數值的篩選系統無法表達這一點，最後推薦的不是大宗錠劑，就是沒有人做得出來的東西。'

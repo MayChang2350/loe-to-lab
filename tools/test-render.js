@@ -48,7 +48,13 @@ chk('nav = 7 links + 6 arrow separators (Premise + six steps; Method moved to th
 chk('hero has body copy', n('#heroBody') >= 1, `got ${n('#heroBody')}`);
 chk('chain items = 6', n('#chain') === 6, `got ${n('#chain')}`);
 chk('molecule rows = 21', n('#molBody') === 21, `got ${n('#molBody')}`);
-chk('weight sliders = 7', n('#wSliders') === 7, `got ${n('#wSliders')}`);
+chk('weight sliders = 9 (technical barrier is now 3 specific sliders) + 1 group label',
+  n('#wSliders') === 10, `got ${n('#wSliders')}`);
+chk('all 9 weight sliders present', doc.querySelectorAll('#wSliders .wrow').length === 9,
+  `got ${doc.querySelectorAll('#wSliders .wrow').length}`);
+chk('technical-barrier group label present', !!$('.wgroup-label'));
+chk('the 3 barrier sub-sliders are visually grouped', doc.querySelectorAll('#wSliders .wrow-sub').length === 3,
+  `got ${doc.querySelectorAll('#wSliders .wrow-sub').length}`);
 chk('preset chips = 4', n('#presets') === 4, `got ${n('#presets')}`);
 chk('detail panel populated', $('#molDetail').innerHTML.length > 800);
 chk('pathway question rendered', $('#treeBody').textContent.length > 200);

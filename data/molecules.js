@@ -12,9 +12,24 @@
      entryDate     : earliest realistic U.S. generic/biosimilar entry (ISO)
      entryBasis    : WHY that date — patent expiry, settlement licence, or exclusivity
      legalRisk     : 1 (clean) .. 5 (active litigation / unsettled PIV / thicket)
-     techBarrier   : 1 (commodity) .. 5 (complex generic, hard to copy)
+     techBarrier   : 1 (commodity) .. 5 (complex generic, hard to copy). Kept as the
+                     single number shown in the screener table's "Barrier" column.
                      NOTE: high techBarrier is a *defensive asset* for a CDMO —
                      it suppresses competitor count. It is scored positively.
+     apiAvail      : 1 (API is a commodity, cheap and widely sourced) .. 5 (API is
+                     scarce, proprietary-route, or expensive to secure)
+     peptideRepro  : 1 (ordinary small-molecule synthesis, nothing to "reproduce")
+                     .. 5 (a peptide/protein chain or biologic that must be matched
+                     residue-for-residue). Scores low for almost every small
+                     molecule in this set by design — that absence of a chain to
+                     reproduce is itself the honest reading for those rows.
+     rdDifficulty  : 1 (routine formulation/analytics) .. 5 (genuinely hard R&D —
+                     polymorph control, osmotic engineering, aseptic/biologic
+                     characterisation, novel permeation chemistry, etc.)
+                     These three replace the screener's single "technical barrier"
+                     weight with the specific sub-factors an intern actually asked
+                     about; techBarrier itself is left in place, and was set to
+                     track roughly the average of the three below.
      execRisk      : 1 (routine) .. 5 (we may fail to execute it) — scored negatively.
                      Separating these two is the whole point: "hard" is good for
                      margin and bad for delivery, and they are not the same number.
@@ -57,6 +72,9 @@ const MOLECULES = [
     tentativeApprovals: 1,
     legalRisk: 2,
     techBarrier: 5,
+    apiAvail: 5,
+    peptideRepro: 5,
+    rdDifficulty: 4,
     execRisk: 4,
     competition: 2,
     fitBora: 5,
@@ -97,6 +115,9 @@ const MOLECULES = [
     tentativeApprovals: 25,
     legalRisk: 2,
     techBarrier: 1,
+    apiAvail: 1,
+    peptideRepro: 1,
+    rdDifficulty: 1,
     execRisk: 1,
     competition: 5,
     fitBora: 2,
@@ -132,6 +153,9 @@ const MOLECULES = [
     tentativeApprovals: 19,
     legalRisk: 3,
     techBarrier: 1,
+    apiAvail: 1,
+    peptideRepro: 1,
+    rdDifficulty: 2,
     execRisk: 1,
     competition: 5,
     fitBora: 2,
@@ -167,6 +191,9 @@ const MOLECULES = [
     tentativeApprovals: 6,
     legalRisk: 3,
     techBarrier: 2,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 2,
     execRisk: 2,
     competition: 3,
     fitBora: 3,
@@ -202,6 +229,9 @@ const MOLECULES = [
     tentativeApprovals: 4,
     legalRisk: 4,
     techBarrier: 2,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 2,
     execRisk: 3,
     competition: 3,
     fitBora: 3,
@@ -240,6 +270,9 @@ const MOLECULES = [
     tentativeApprovals: 2,
     legalRisk: 5,
     techBarrier: 5,
+    apiAvail: 4,
+    peptideRepro: 1,
+    rdDifficulty: 5,
     execRisk: 5,
     competition: 1,
     fitBora: 2,
@@ -275,6 +308,9 @@ const MOLECULES = [
     tentativeApprovals: 8,
     legalRisk: 2,
     techBarrier: 2,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 3,
     execRisk: 3,
     competition: 4,
     fitBora: 2,
@@ -310,6 +346,9 @@ const MOLECULES = [
     tentativeApprovals: 12,
     legalRisk: 1,
     techBarrier: 1,
+    apiAvail: 1,
+    peptideRepro: 1,
+    rdDifficulty: 1,
     execRisk: 1,
     competition: 5,
     fitBora: 1,
@@ -342,6 +381,9 @@ const MOLECULES = [
     tentativeApprovals: 10,
     legalRisk: 1,
     techBarrier: 2,
+    apiAvail: 1,
+    peptideRepro: 1,
+    rdDifficulty: 2,
     execRisk: 2,
     competition: 5,
     fitBora: 2,
@@ -374,6 +416,9 @@ const MOLECULES = [
     tentativeApprovals: 9,
     legalRisk: 1,
     techBarrier: 4,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 5,
     execRisk: 4,
     competition: 4,
     fitBora: 2,
@@ -409,6 +454,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 1,
     techBarrier: 4,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 4,
     execRisk: 4,
     competition: 5,
     fitBora: 3,
@@ -444,6 +492,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 1,
     techBarrier: 5,
+    apiAvail: 3,
+    peptideRepro: 1,
+    rdDifficulty: 5,
     execRisk: 4,
     competition: 5,
     fitBora: 5,
@@ -476,6 +527,9 @@ const MOLECULES = [
     tentativeApprovals: 7,
     legalRisk: 3,
     techBarrier: 3,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 3,
     execRisk: 3,
     competition: 4,
     fitBora: 2,
@@ -508,6 +562,9 @@ const MOLECULES = [
     tentativeApprovals: 2,
     legalRisk: 3,
     techBarrier: 2,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 2,
     execRisk: 2,
     competition: 2,
     fitBora: 3,
@@ -543,6 +600,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 5,
     techBarrier: 5,
+    apiAvail: 5,
+    peptideRepro: 5,
+    rdDifficulty: 5,
     execRisk: 5,
     competition: 3,
     fitBora: 2,
@@ -578,6 +638,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 4,
     techBarrier: 5,
+    apiAvail: 5,
+    peptideRepro: 5,
+    rdDifficulty: 5,
     execRisk: 5,
     competition: 4,
     fitBora: 1,
@@ -610,6 +673,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 3,
     techBarrier: 3,
+    apiAvail: 3,
+    peptideRepro: 1,
+    rdDifficulty: 3,
     execRisk: 3,
     competition: 1,
     fitBora: 2,
@@ -642,6 +708,9 @@ const MOLECULES = [
     tentativeApprovals: 1,
     legalRisk: 3,
     techBarrier: 3,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 3,
     execRisk: 2,
     competition: 2,
     fitBora: 3,
@@ -674,6 +743,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 4,
     techBarrier: 3,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 3,
     execRisk: 3,
     competition: 1,
     fitBora: 2,
@@ -709,6 +781,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 2,
     techBarrier: 2,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 2,
     execRisk: 2,
     competition: 1,
     fitBora: 4,
@@ -744,6 +819,9 @@ const MOLECULES = [
     tentativeApprovals: 0,
     legalRisk: 1,
     techBarrier: 4,
+    apiAvail: 2,
+    peptideRepro: 1,
+    rdDifficulty: 4,
     execRisk: 3,
     competition: 4,
     fitBora: 3,
@@ -796,7 +874,9 @@ const DEFAULT_WEIGHTS = {
   market: 20,
   timing: 25,
   legal: 15,
-  barrier: 20,
+  apiAvail: 7,
+  peptideRepro: 7,
+  rdDifficulty: 6,
   exec: 10,
   competition: 20,
   fit: 15
@@ -804,13 +884,20 @@ const DEFAULT_WEIGHTS = {
 
 function scoreMolecule(m, w, today) {
   const parts = {
-    market:      marketScore(m.usSalesM),
-    timing:      timingScore(m.entryDate, today),
-    legal:       (5 - m.legalRisk) / 4,
-    barrier:     (m.techBarrier - 1) / 4,
-    exec:        (5 - m.execRisk) / 4,
-    competition: (5 - m.competition) / 4,
-    fit:         (m.fitBora - 1) / 4
+    market:       marketScore(m.usSalesM),
+    timing:       timingScore(m.entryDate, today),
+    legal:        (5 - m.legalRisk) / 4,
+    // the old single "barrier" weight, split into the three specific factors
+    // an intern actually has to weigh: can we even get the API, can we match
+    // the molecule itself, and is the R&D genuinely hard. All three keep the
+    // original barrier philosophy — difficulty is scored positively, because
+    // it is what keeps rivals out.
+    apiAvail:     (m.apiAvail - 1) / 4,
+    peptideRepro: (m.peptideRepro - 1) / 4,
+    rdDifficulty: (m.rdDifficulty - 1) / 4,
+    exec:         (5 - m.execRisk) / 4,
+    competition:  (5 - m.competition) / 4,
+    fit:          (m.fitBora - 1) / 4
   };
   let total = 0, wsum = 0;
   for (const k in parts) { total += parts[k] * (w[k] || 0); wsum += (w[k] || 0); }
