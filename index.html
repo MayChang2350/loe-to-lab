@@ -434,5 +434,19 @@
 <script src="data/instruments.js"></script>
 <script src="data/labTroubleshoot.js"></script>
 <script src="assets/app.js"></script>
+
+<script>
+  // Only count real visits on the published GitHub Pages site — not local
+  // file:// previews or a dev server, so editing/testing this project
+  // doesn't pollute the analytics. To also exclude a specific browser on
+  // the live site (e.g. your own regular browsing), visit the site with
+  // #toggle-goatcounter appended to the URL once — GoatCounter remembers
+  // that per-browser after that. IPs can additionally be excluded from
+  // Settings -> Tracking -> Ignore IPs in the GoatCounter dashboard.
+  if (window.location.protocol === 'file:' || window.location.hostname === 'localhost')
+    window.goatcounter = { no_onload: true };
+</script>
+<script data-goatcounter="https://maychang.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
