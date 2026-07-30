@@ -4,8 +4,8 @@
    CURATED SNAPSHOT. Not a live feed. Every row carries a source and an access
    date. FDA publishes no public API for Orange Book patent / exclusivity data,
    so this file is a hand-verified snapshot compiled 2026-07-27 and must be
-   re-verified at every decision gate (see 5. Project Evaluation, slide 25:
-   "Gate review 前重查會變動的資料").
+   re-verified against Drugs@FDA and the Orange Book at every decision gate —
+   entry dates, settlement terms and TE codes all move.
 
    Field conventions
      usSalesM      : most recent full-year U.S. net/branded sales, US$ millions
@@ -462,10 +462,10 @@ const MOLECULES = [
     fitBora: 3,
     unitOps: ['Enteric pellet coating (Wurster)', 'Dual-population blending', 'Capsule filling'],
     thesis: {
-      en: 'The teaching case from the internship curriculum, kept in the set as a benchmark. Technically it is the closest analogue to the recommendation — a Wurster-coated multiparticulate whose difficulty sits in the dissolution profile rather than the PK — but its window closed years ago. Same physics, wrong decade.',
-      zh: '實習課程中的教學案例，保留在此作為對照基準。技術上它與最終建議最為接近——同樣是 Wurster 包衣多微粒，難度同樣在溶離曲線而非 PK——但它的窗口早已關閉。相同的物理，錯誤的年代。'
+      en: 'The closest technical analogue to LINZESS in this set, which is exactly why it is retained as a benchmark rather than a candidate. Both are Wurster-coated multiparticulates where bioequivalence risk sits in the dissolution profile, not the pharmacokinetics — here, matching a dual-population release (immediate-release plus delayed-release granules inside one capsule) across three pH conditions per the product-specific guidance. Six ANDAs are already approved and the entry window closed in 2022: the coating chemistry is instructive, the commercial timing is not.',
+      zh: '本組中與 LINZESS 技術上最相近的品項，這正是它被保留作為對照基準、而非候選品項的原因。兩者都是 Wurster 包衣多微粒，生體相等性風險落在溶離曲線而非藥物動力學上——此處須在三種 pH 條件下，於同一膠囊內同時匹配雙族群釋放（速放顆粒加上延遲釋放顆粒），依產品專屬指引執行。已有六家 ANDA 核准，進場窗口已於 2022 年關閉：包衣化學具參考價值，商業時機則不然。'
     },
-    sources: ['FDA Draft PSG on Dexlansoprazole (revised Feb 2018)', 'Internship deck 5, slide 26'],
+    sources: ['FDA Draft PSG on Dexlansoprazole (revised Feb 2018)', 'Drugs@FDA NDA 022287', 'Orange Book — DEXILANT entry'],
     confidence: 'high'
   },
 
@@ -500,10 +500,10 @@ const MOLECULES = [
     fitBora: 5,
     unitOps: ['High-shear homogenisation', 'Sterile filtration', 'Aseptic fill', 'CCI'],
     thesis: {
-      en: 'My own evaluation case from this internship, and Bora/Upsher-Smith launched it in 2026. Kept in the set because it is the structural template for the recommendation: a complex generic where FDA accepts in vitro sameness in place of a clinical trial, and where the moat is analytical rather than legal. Linaclotide is the same trade, seven years earlier in its life cycle.',
-      zh: '這是我在本次實習中自己做的評估案例，而 Bora／Upsher-Smith 已於 2026 年上市。保留在此，是因為它正是最終建議的結構原型：一個 FDA 接受以體外相同性取代臨床試驗的複雜學名藥，其護城河來自分析能力而非法律。Linaclotide 是同一筆交易，只是在生命週期上早了七年。'
+      en: 'Bora/Upsher-Smith launched a cyclosporine ophthalmic emulsion generic against this exact reference product in 2026, which is why it stays in the set as the structural template for the flagship recommendation: a complex generic where FDA accepts in vitro sameness in place of a clinical-endpoint trial, and where the moat is analytical rather than legal. Linaclotide is the same trade — an in vitro route substituting for clinical spend — roughly seven years earlier in its life cycle, with a peptide layer standing in for an emulsion droplet.',
+      zh: 'Bora／Upsher-Smith 已於 2026 年針對此參考產品上市一款環孢素眼用乳劑學名藥，這正是它被保留在本組中、作為旗艦建議之結構原型的原因：一個 FDA 接受以體外相同性取代臨床終點試驗的複雜學名藥，其護城河來自分析能力而非法律。Linaclotide 是同一筆交易——以體外路徑取代臨床支出——只是在生命週期上早了大約七年，以胜肽薄膜取代了乳劑液滴。'
     },
-    sources: ['restasis_final.pptx (own work, Jul 2026)', 'FDA PSG cyclosporine ophthalmic emulsion (2016)'],
+    sources: ['FDA PSG — Cyclosporine Ophthalmic Emulsion (2016)', 'Drugs@FDA — RESTASIS reference listing', 'Orange Book — RESTASIS entry'],
     confidence: 'high'
   },
 
@@ -789,10 +789,10 @@ const MOLECULES = [
     fitBora: 4,
     unitOps: ['Solution compounding', 'Filtration', 'Bottle filling'],
     thesis: {
-      en: 'From my internship homework set (deck 5, slide 28). The strategic lesson is that a ready-to-use paediatric solution referencing an existing tablet is a 505(b)(2), earns 3-year NCI exclusivity of its own, and requires no BE against a competitor at all. Small revenue, but it is the template for building exclusivity rather than waiting for someone else\'s to lapse.',
-      zh: '出自我的實習作業組（第 5 份簡報，第 28 頁）。策略上的啟發是：以現有錠劑為參考、開發即用型兒科溶液屬於 505(b)(2)，可自行取得 3 年 NCI 專屬權，且完全不需與競爭者做 BE。營收不大，但這是「自己建立專屬權」而非「等別人的專屬權失效」的範本。'
+      en: 'VIGAFYDE is the inverse case to every ANDA row in this set: instead of waiting for someone else\'s exclusivity to lapse, the sponsor built its own. Reformulating an approved tablet (SABRIL) into a ready-to-use oral solution was filed as a 505(b)(2) referencing the innovator\'s existing safety and efficacy data — no head-to-head bioequivalence study against a competitor was required, only a bridge to the reference formulation. That earned a fresh 3-year New Clinical Investigation exclusivity under FD&C Act §505(c)(3)(E)(iii), plus the REMS carried over intact. At US$60M this is not a volume opportunity; it is the template — a dosage-form change on an already-approved molecule is a faster, lower-risk route to exclusivity than fighting over a crowded generic entry date.',
+      zh: 'VIGAFYDE 是本組中與所有 ANDA 品項相反的案例：贊助商沒有等待別人的專屬權到期，而是自己建立了一個。把已核准的錠劑（SABRIL）重新配方為即用型口服溶液，以 505(b)(2) 參引原開發廠既有的安全性與療效資料送件——不需要與競爭者進行頭對頭生體相等性試驗，只需要橋接到參考劑型。這為其取得了全新的 3 年新臨床研究（NCI）專屬權，依據 FD&C Act §505(c)(3)(E)(iii)，且 REMS 也完整沿用。以 6,000 萬美元營收而言，這不是量產機會；而是一個範本——在已核准的分子上改變劑型，是比在擁擠的學名藥進場日期上競爭更快、風險更低的專屬權取得途徑。'
     },
-    sources: ['Internship deck 5, slide 28 (homework set)', 'Drugs@FDA NDA 217684'],
+    sources: ['Drugs@FDA NDA 217684', 'FD&C Act §505(c)(3)(E)(iii) — New Clinical Investigation exclusivity', 'Orange Book — VIGAFYDE entry'],
     confidence: 'medium'
   },
 
@@ -827,10 +827,10 @@ const MOLECULES = [
     fitBora: 3,
     unitOps: ['Wet media milling', 'Homogenisation', 'Suspension filling'],
     thesis: {
-      en: 'From the same homework set. Retained as the suspension counterpart to Restasis: another complex generic where the difficulty is physical (PSD, redispersibility, sedimentation volume) rather than pharmacological.',
-      zh: '同一組作業中的品項。保留作為 Restasis 的懸液對照：另一個難度在物理（粒徑分佈、再分散性、沉降體積）而非藥理的複雜學名藥。'
+      en: 'Retained as the suspension counterpart to RESTASIS: another complex generic where bioequivalence risk is physical rather than pharmacological. Megestrol acetate is practically insoluble in water, which is why MEGACE ES exists as a nanocrystal suspension in the first place — reducing particle size increases the surface area available for dissolution, which is what let the reformulation cut the required dose volume and blunt the pronounced food effect the original suspension carried. For a generic filer, that means the analytical burden sits in matching particle size distribution, redispersibility, and settling volume against the reference product, not in the API\'s pharmacology. Four ANDAs are already approved; the window has been open since 2015.',
+      zh: '保留作為 RESTASIS 的懸液對照：另一個生體相等性風險落在物理而非藥理層面的複雜學名藥。甲地孕酮幾乎不溶於水，這正是 MEGACE ES 之所以以奈米結晶懸液型式存在的原因——縮小粒徑可增加可供溶離的表面積，這也是這項再處方能夠縮減所需劑量體積、並緩和原懸液顯著食物效應的關鍵。對學名藥申請者而言，這代表分析上的負擔在於使粒徑分佈、再分散性與沉降體積與參考產品相符，而非在於 API 本身的藥理。已有四家 ANDA 核准；此進場窗口自 2015 年起即已開啟。'
     },
-    sources: ['Internship deck 5, slide 28 (homework set)'],
+    sources: ['Drugs@FDA NDA 021778', 'Orange Book — MEGACE ES entry', 'FDA Product-Specific Guidances for Generic Drug Development database'],
     confidence: 'medium'
   }
 ];

@@ -45,8 +45,8 @@ const JURISDICTIONS = {
       ]
     },
     note: {
-      en: 'This is the pathway this whole module is built from (internship decks 8–9, NDA/ANDA/BLA regulation). The decision tree in section 2 is FDA-specific — use it directly.',
-      zh: '本模組即以此路徑建構而成（實習教材第 8–9 講，NDA／ANDA／BLA 法規）。第 2 節的決策樹即為 FDA 專屬版本——可直接使用。'
+      en: 'This is the pathway this whole module is built from — FD&C Act §505 (NDA/ANDA/505(b)(2)) and PHS Act §351 (BLA/351(k)). The decision tree in section 2 is FDA-specific — use it directly.',
+      zh: '本模組即以此路徑建構而成——FD&C Act §505（NDA／ANDA／505(b)(2)）與 PHS Act §351（BLA／351(k)）。第 2 節的決策樹即為 FDA 專屬版本——可直接使用。'
     },
     links: [
       { t: 'Orange Book — Approved Drug Products with Therapeutic Equivalence Evaluations', u: 'https://www.accessdata.fda.gov/scripts/cder/ob/index.cfm' },

@@ -189,7 +189,7 @@ const DRUG_VIZ = {
   dexlansoprazole: { form: 'capsule-dr', sizeLabel: 'dual-release enteric pellets',
     note: { en: 'Two pellet populations with different enteric coat thicknesses give two release pulses hours apart. Technically the closest analogue to the recommended project — same equipment, same physics, wrong decade.', zh: '兩種不同腸溶膜厚的微丸族群，產生相隔數小時的兩次釋放脈衝。技術上與最終建議的專案最為接近——相同設備、相同物理，錯誤的年代。' } },
   'cyclosporine-oph': { form: 'emulsion-oph', sizeLabel: '0.4 mL single-use vial',
-    note: { en: 'My own evaluation case. The oil droplets have to be small enough to stay suspended and matched closely enough to the brand that FDA accepts the comparison instead of a clinical trial.', zh: '這是我自己的評估案例。油滴必須小到足以保持懸浮，且與原廠品相符到讓 FDA 願意以此比較取代臨床試驗。' } },
+    note: { en: 'The structural template for this whole set: the oil droplets have to be small enough to stay suspended through shelf life and matched closely enough to the reference product\'s droplet-size distribution that FDA accepts the in vitro comparison instead of a clinical trial.', zh: '本組的結構原型：油滴必須小到足以在保存期限內維持懸浮，且其粒徑分佈須與參考產品緊密相符，才能讓 FDA 願意以體外比較取代臨床試驗。' } },
   enzalutamide: { form: 'softgel', sizeLabel: 'oblong soft capsule, liquid fill',
     note: { en: 'A liquid-filled soft capsule, because the drug will not dissolve in water on its own. Softgel encapsulation is capacity, not skill — you either have the line or you are quoting someone else\'s.', zh: '液體填充的軟膠囊，因為該藥本身不溶於水。軟膠囊填充是「產能」而非「技術」——你要嘛擁有產線，要嘛是在報別人的價。' } },
   valbenazine: { form: 'capsule', sizeLabel: 'hard capsule, three strengths',
@@ -205,7 +205,7 @@ const DRUG_VIZ = {
   upadacitinib: { form: 'tablet-er-matrix', sizeLabel: 'extended-release tablet',
     note: { en: 'A gelling matrix releases the drug over the day. Large, growing, and the clock has not started — watchlist rather than pipeline.', zh: '凝膠基質使藥物在一天內緩慢釋放。規模大、仍在成長，但時鐘尚未啟動——屬於觀察名單而非產品線。' } },
   'vigabatrin-sol': { form: 'solution', sizeLabel: 'ready-to-use oral solution',
-    note: { en: 'From my homework set, and the most instructive item on it. Turning an existing tablet into a ready-to-use paediatric solution is a 505(b)(2) that earns three years of exclusivity of its own — building a barrier instead of waiting for someone else\'s to fall.', zh: '出自我的作業組，也是其中最具啟發性的一項。把既有錠劑改成即用型兒科溶液屬於 505(b)(2)，可自行取得三年專屬權——這是建立門檻，而不是等別人的門檻倒下。' } },
+    note: { en: 'The most instructive item in the set for exclusivity strategy: turning an existing tablet into a ready-to-use oral solution is a 505(b)(2) that earns three years of New Clinical Investigation exclusivity of its own — building a barrier instead of waiting for someone else\'s to fall.', zh: '在專屬權策略上，本組中最具啟發性的一項：把既有錠劑改成即用型口服溶液屬於 505(b)(2)，可自行取得三年新臨床研究專屬權——這是建立門檻，而不是等別人的門檻倒下。' } },
   'megestrol-susp': { form: 'suspension', sizeLabel: 'nanocrystal oral suspension',
-    note: { en: 'Also from my homework set. Drug crystals milled to a few hundred nanometres, where equivalence depends on particle size, redispersibility and settling volume rather than on chemistry.', zh: '同樣出自我的作業組。藥物結晶被磨到數百奈米，其等效性取決於粒徑、再分散性與沉降體積，而非化學。' } }
+    note: { en: 'Drug crystals milled to a few hundred nanometres to increase dissolution surface area — the API is practically insoluble in water, so equivalence depends on particle size, redispersibility and settling volume rather than on chemistry.', zh: '藥物結晶被磨到數百奈米以增加溶離表面積——該 API 幾乎不溶於水，因此等效性取決於粒徑、再分散性與沉降體積，而非化學。' } }
 };

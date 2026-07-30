@@ -202,6 +202,6 @@ Spot values against literature (250 µm sphere, ρ = 1400 kg/m³, air at 45 °C)
 
 ## Built on
 
-Fourteen sessions of the Bora / TWi technical development programme, June–July 2026 — company and product introduction, departmental structure, GMP plant and inspection readiness, FDA database project evaluation, NDA/ANDA/BLA regulation parts 1 and 2, and pharmaceutical processes and equipment — plus my own evaluation outputs (Restasis, Rechon GMP, USP, EMA, PharmaEssentia) and my Technical Services presentation on technology transfer and process validation.
+FD&C Act §505 (NDA, 505(b)(2), ANDA) and PHS Act §351 (BLA, 351(k) biosimilars), read against 21 CFR Parts 314/320/601, GDUFA III / PDUFA / BsUFA fee schedules, and the FDA product-specific guidance database — see `DATA_SOURCES.md` for the full evidence log, source by source.
 
 **May Chang**, 2026.

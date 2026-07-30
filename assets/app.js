@@ -2212,9 +2212,9 @@ function buildExtraPage(kind) {
     <div class="panel">
       <h3>${esc(t(P.galleryTitle))}</h3>
       <div class="photo-gallery">
-        ${Array.from({ length: 6 }).map((_, i) => `<div class="photo-slot">
+        ${Array.from({ length: 2 }).map((_, i) => `<div class="photo-slot" id="photoSlot${i + 1}">
           <img src="assets/photos/reflection-${i + 1}.jpg" alt=""
-            onerror="this.parentElement.classList.add('empty');this.remove();">
+            onerror="document.getElementById('photoSlot${i + 1}').remove();">
         </div>`).join('')}
       </div>
       <p class="fine">${esc(t(P.galleryNote))}</p>

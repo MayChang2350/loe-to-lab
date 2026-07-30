@@ -1,8 +1,9 @@
 /* ============================================================================
    pathway.js — regulatory route selection, exclusivity clock, and cost model
    ----------------------------------------------------------------------------
-   Built from internship decks 8 and 9 (NDA / ANDA / BLA Regulation Part 1+2)
-   and deck 5 (Project Evaluation). Fee figures are FY2026 statutory rates.
+   Built from the FD&C Act §505 pathways (NDA/505(b)(2)/ANDA), the Public
+   Health Service Act §351(k) biosimilar pathway, and 21 CFR Parts 314/320/
+   601. Fee figures are FY2026 statutory rates under GDUFA III / PDUFA.
    ========================================================================== */
 
 /* ---------- 1. Route decision tree -------------------------------------- */
@@ -150,7 +151,7 @@ const PATHWAY_TREE = {
   }
 };
 
-/* ---------- 2. Exclusivity catalogue (deck 5, slide 19) ------------------ */
+/* ---------- 2. Exclusivity catalogue (FD&C Act §505(c)(3)(E) / §527) ----- */
 
 const EXCLUSIVITIES = [
   { code: 'NCE', name: { en: 'New Chemical Entity', zh: '新化學實體' }, months: 60,

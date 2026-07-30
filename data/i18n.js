@@ -271,14 +271,14 @@ const UI = {
       limitationsSecTitle: { en: 'Limitations', zh: '限制' },
       limitationsBody: {
         en: [
-          'FDA publishes no public API for Orange Book patent and exclusivity data. The screening dataset is therefore a hand-compiled snapshot dated 27 July 2026, not a live feed. Every row carries its sources and a confidence flag, and every entry-date claim should be re-verified in Drugs@FDA and the Orange Book before any decision gate — which is precisely the discipline the project-evaluation curriculum insists on.',
+          'FDA publishes no public API for Orange Book patent and exclusivity data. The screening dataset is therefore a hand-compiled snapshot dated 27 July 2026, not a live feed. Every row carries its sources and a confidence flag, and every entry-date claim should be re-verified in Drugs@FDA and the Orange Book before any decision gate — the same due diligence any CDMO business-development review would require before committing capacity.',
           'Sales figures marked medium confidence are order-of-magnitude, drawn from company filings and trade press. They are adequate for ranking and inadequate for a business case.',
           'The linaclotide formulation shown is a design target constructed from the label\'s inactive-ingredient list, the FDA product-specific guidance and standard drug-layering practice. It is not the innovator\'s composition, which is not public. Establishing Q1/Q2 sameness is listed in the development plan as work to be done, not presented as a result.',
           'The fluid-bed model is a lumped first-principles calculation, not a simulation of any specific machine. Geometry is representative of a GPCG-5 class unit with a Wurster insert.',
           'The EMA and TFDA sections are deliberately thinner than the FDA tree: the FDA decision logic is reproduced at real depth, while EMA and TFDA are represented at the level of form, timeline and contact — not a full legal-basis decision tree. That scope gap is intentional and is not filled in with invented detail.'
         ],
         zh: [
-          'FDA 並未提供 Orange Book 專利與專屬權資料的公開 API。因此篩選資料集是一份日期為 2026 年 7 月 27 日的人工彙整快照，不是即時資料流。每一列都附有來源與信心標記，所有進場日期的主張都應在任何決策關卡前於 Drugs@FDA 與 Orange Book 重新查證——這正是專案評估課程所堅持的紀律。',
+          'FDA 並未提供 Orange Book 專利與專屬權資料的公開 API。因此篩選資料集是一份日期為 2026 年 7 月 27 日的人工彙整快照，不是即時資料流。每一列都附有來源與信心標記，所有進場日期的主張都應在任何決策關卡前於 Drugs@FDA 與 Orange Book 重新查證——這正是任何 CDMO 業務開發審查在承諾產能之前都會要求的盡職調查。',
           '標記為中等信心的銷售數字屬於數量級估計，取自公司財報與產業媒體。用於排序足夠，用於商業計畫則不足。',
           '所呈現的 linaclotide 處方是依標示的賦形劑清單、FDA 產品專屬指引與標準藥物層積實務所建構的設計目標。它不是原開發廠的組成，該組成並未公開。建立 Q1/Q2 相同性在開發計畫中被列為「待完成的工作」，而非呈現為「已得到的結果」。',
           '流體床模型是集總的第一原理計算，不是任何特定機台的模擬。幾何條件代表配有 Wurster 內筒的 GPCG-5 級機組。',

@@ -307,7 +307,7 @@ chk('reflection page names Mink, Dr. Chou, and Nick', (() => {
   $(`#menuDropdown [data-page="reflection"]`).click();
   const txt = $('#reflectionOverlay').textContent;
   const ok = /Mink/.test(txt) && /Chou/.test(txt) && /Nick/.test(txt);
-  const gallery = doc.querySelectorAll('#reflectionOverlay .photo-slot').length === 6;
+  const gallery = doc.querySelectorAll('#reflectionOverlay .photo-slot').length === 2;
   $('#reflectionOverlay .map-skip').click();
   return ok && gallery;
 })());

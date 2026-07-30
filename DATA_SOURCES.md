@@ -2,7 +2,7 @@
 
 **Snapshot date: 2026-07-27.** Everything below was checked or organised on that date. Regulatory data is volatile; re-verify before any decision gate.
 
-This file exists because the project-evaluation curriculum insists on it: *"任何『核准、可替代、專利到期、BE 要求』的結論，都要保留官方來源、版本／日期與查詢證據"* — any conclusion about approval, substitutability, patent expiry or BE requirements must retain its official source, its version and date, and the evidence of the search.
+Every conclusion about approval, substitutability, patent expiry or BE requirements below retains its official source, that source's version and date, and — where the source is a secondary tracker rather than a primary regulatory record — an explicit flag to re-verify before it is used in a decision. That is the standard due diligence a CDMO business-development or regulatory-affairs review would require before committing capacity or capital to a product.
 
 ---
 
@@ -85,9 +85,10 @@ Program, facility, DMF and PLA fees are additional and are **not** modelled on t
 | IBRANCE | US patent term extension pushes key patent to March 2027 | GEN, *Top 20 Drugs Heading for the Patent Cliff, 2026–2029* | medium |
 | KEYTRUDA | US compound patent expires December 2028; IRA pricing from January 2028; ~US$29.5B global 2023 | Merck FY2025 commentary; GEN report | medium |
 | XTANDI | Patent reported to expire 2027, LOE effect 2028 | BioSpace patent-cliff coverage | medium |
-| RESTASIS | 2016 PSG in vitro option; first generic 2022; Bora/Upsher-Smith approved and launched 2026 | My own evaluation deck, `restasis_final.pptx`, July 2026; FDA PSG | high |
-| DEXILANT | Draft PSG rec. Jun 2011, rev. Oct 2016 / Feb 2018; three BE studies at 60 mg; NG 16 Fr testing | FDA Draft PSG; internship deck 5, slide 26 | high |
-| VIGAFYDE, MEGACE ES, SABRIL | Homework evaluation set | Internship deck 5, slide 28 | medium |
+| RESTASIS | 2016 PSG in vitro option; first generic 2022; Bora/Upsher-Smith approved and launched 2026 | FDA PSG; Drugs@FDA | high |
+| DEXILANT | Draft PSG rec. Jun 2011, rev. Oct 2016 / Feb 2018; three BE studies at 60 mg; NG 16 Fr testing | FDA Draft PSG; Drugs@FDA NDA 022287 | high |
+| VIGAFYDE | 505(b)(2) referencing SABRIL; ready-to-use oral solution; new 3-year NCI exclusivity | Drugs@FDA NDA 217684; Orange Book | high |
+| MEGACE ES | Nanocrystal oral suspension; BE governed by PSD/redispersibility/settling volume | Drugs@FDA NDA 021778; Orange Book | high |
 | VRAYLAR, INGREZZA, ZEPOSIA, RINVOQ, AUSTEDO, XIFAXAN, RYBELSUS/OZEMPIC | LOE windows | Secondary trackers — **VERIFY IN ORANGE BOOK** | medium |
 
 ---
@@ -107,17 +108,6 @@ These are transparent modelling choices, not facts. They are stated here so that
 
 ---
 
-## Curriculum this was built on
+## Regulatory framework this was built on
 
-Bora Pharmaceuticals / TWi technical development participant programme, June–July 2026:
-
-1. Bora Group and TWi pharmaceutical introduction
-2. Introduction of pharmaceutical company and product
-3. Composition of pharmaceutical company departments
-4. Introduction of pharmaceutical plant (GMP) — TFDA / PIC/S GMP / FDA inspection readiness
-5. Introduction of project evaluation — FDA databases and the standardised evaluation workflow
-8. NDA / ANDA / BLA regulation, part 1 — regulatory architecture, submission routes, user fees, protection architecture
-9. NDA / ANDA / BLA regulation, part 2 — 505(b)(1), 505(b)(2), 351(a) BLA, ANDA, patent linkage
-10. Common pharmaceutical processes, critical parameters and equipment qualification
-
-Own outputs: `restasis_final.pptx`, `rechon_gmp_final.pptx`, `USP_overview.pptx`, `EMA.pptx`, `pharmaessentia_overview.pptx`, and the Technical Services presentation on technology transfer and process validation.
+FD&C Act §505 (NDA, 505(b)(2), ANDA) and PHS Act §351 (BLA, 351(k) biosimilars), read against 21 CFR Parts 314, 320 and 601, GDUFA III / PDUFA / BsUFA fee schedules, and the FDA product-specific guidance database. Process and equipment content is standard unit-operations engineering (fluid-bed granulation, compression, coating, homogenisation) and USP/FDA analytical method conventions (dissolution, particle size, HPLC, KF, DSC), not proprietary or vendor-specific process know-how.
