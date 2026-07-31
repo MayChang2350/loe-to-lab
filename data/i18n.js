@@ -325,7 +325,6 @@ const UI = {
         ]
       },
       galleryTitle: { en: 'A few moments from the summer', zh: '這個夏天的幾個片刻' },
-      galleryNote: { en: 'Photos coming soon.', zh: '照片即將更新。' }
     }
   },
 
